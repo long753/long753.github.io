@@ -1,1 +1,1 @@
-This is my personal blog, I'll renew some interesting things or my current works in this palce. Holp this will help you.
+This is my personal website, I'll upload my currently project and some interesting things.
