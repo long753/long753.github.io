@@ -1,0 +1,9 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title>Linux_problem_list - Category - LONG</title><link>https://long753.github.io/en/categories/linux_problem_list/</link><description>Linux_problem_list - Category - LONG</description><generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Tue, 07 Oct 2025 15:08:07 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/categories/linux_problem_list/" rel="self" type="application/rss+xml"/><item><title>Network issues</title><link>https://long753.github.io/en/linuxproblem/</link><pubDate>Tue, 07 Oct 2025 15:08:07 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/linuxproblem/</guid><description>一、WiFi图标消失 原因解析 WiFi 图标自动消失的原因是 Ubuntu 在执行 sudo apt update &amp;amp;&amp;amp; sudo apt upgrade 时，默认启用了内核自动升级服务（unattended-upgrades），导致内核从 5.15.0-67-generic 升级至 5.15.0-130-generic。由于新内核与 AX211 网卡驱动（iwlwifi）不兼容，驱动加载失败，固件文件无法正确加载，且内核模块版本不匹配，最终导致无线网卡无法正常工作，WiFi 图标消失。
+ps：可以使用 uname -r 命令检查当前内核版本，如果与 WiFi 正常工作时的内核版本不一致，则很可能是系统自动更新后，内核升级导致新版本与 AX211 网卡驱动不兼容，从而影响 WiFi 功能。
+解决方案 回滚到旧内核版本
+重启后，在引导界面选择 “Ubuntu 的高级选项” 进入 GRUB 菜单，然后选择原来的内核版本 (5.15.0-67-generic) 进行启动，并测试 WiFi 功能是否恢复正常。
+锁定当前内核版本
+sudo apt-mark hold linux-image-5.15.0-67-generic sudo apt-mark hold linux-headers-5.15.0-67-generic sudo apt-mark hold linux-modules-5.15.0-67-generic sudo apt-mark hold linux-modules-extra-5.15.0-67-generic 验证 输入apt-mark showhold查看是否锁定成功
+修改GRUB配置 sudo nano /etc/default/grub
+二、常用指令 连接热点：
+sudo nmtui 启动NetworkManager</description></item></channel></rss>

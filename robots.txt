@@ -61,4 +61,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://long753.github.io/zh-cn/sitemap.xml
+Sitemap: https://long753.github.io/sitemap.xml

@@ -3,7 +3,9 @@ ps：可以使用 uname -r 命令检查当前内核版本，如果与 WiFi 正�
 解决方案 回滚到旧内核版本
 重启后，在引导界面选择 “Ubuntu 的高级选项” 进入 GRUB 菜单，然后选择原来的内核版本 (5.15.0-67-generic) 进行启动，并测试 WiFi 功能是否恢复正常。
 锁定当前内核版本
-sudo apt-mark hold linux-image-5.15.0-67-generic sudo apt-mark hold linux-headers-5.15.0-67-generic sudo apt-mark hold linux-modules-5.15.0-67-generic sudo apt-mark hold linux-modules-extra-5.15.0-67-generic 验证 输入apt-mark showhold查看是否锁定成功
+sudo apt-mark hold linux-image-5.15.0-67-generic sudo apt-mark hold linux-headers-5.15.0-67-generic sudo apt-mark hold linux-modules-5.15.0-67-generic sudo apt-mark hold linux-modules-extra-5.15.0-67-generic
+验证 输入apt-mark showhold查看是否锁定成功
 修改GRUB配置 sudo nano /etc/default/grub
 二、常用指令 连接热点：
-sudo nmtui 启动NetworkManager</description></item></channel></rss>
+sudo nmtui
+启动NetworkManager</description></item></channel></rss>
