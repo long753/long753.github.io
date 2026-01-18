@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux Problem List - 分类 - LONG</title>
+    <link>http://localhost:1313/categories/linux-problem-list/</link>
+    <description>LONG</description>
+    <generator>Hugo 0.154.5 &amp; FixIt v0.4.2</generator>
+    <language>zh-CN</language>
+    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:1313/categories/linux-problem-list/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
