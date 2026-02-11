@@ -1,96 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.155.3 &amp; FixIt v0.4.2</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Mon, 19 Jan 2026 00:06:34 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>Network issues</title><link>https://long753.github.io/en/linuxproblem/</link><pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/linuxproblem/</guid><description>&lt;h2 class="heading-element" id="一wifi图标消失"&gt;&lt;span&gt;一、WiFi图标消失&lt;/span&gt;
- &lt;a href="#%e4%b8%80wifi%e5%9b%be%e6%a0%87%e6%b6%88%e5%a4%b1" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h2&gt;&lt;h4 class="heading-element" id="原因解析"&gt;&lt;span&gt;原因解析&lt;/span&gt;
- &lt;a href="#%e5%8e%9f%e5%9b%a0%e8%a7%a3%e6%9e%90" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;WiFi 图标自动消失的原因是 Ubuntu 在执行&lt;code&gt; sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt; 时，默认启用了内核自动升级服务（unattended-upgrades），导致内核从 5.15.0-67-generic 升级至 5.15.0-130-generic。由于新内核与 AX211 网卡驱动（iwlwifi）不兼容，驱动加载失败，固件文件无法正确加载，且内核模块版本不匹配，最终导致无线网卡无法正常工作，WiFi 图标消失。&lt;/p&gt;
-&lt;p&gt;ps：可以使用 uname -r 命令检查当前内核版本，如果与 WiFi 正常工作时的内核版本不一致，则很可能是系统自动更新后，内核升级导致新版本与 AX211 网卡驱动不兼容，从而影响 WiFi 功能。&lt;/p&gt;
-&lt;h4 class="heading-element" id="解决方案"&gt;&lt;span&gt;解决方案&lt;/span&gt;
- &lt;a href="#%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;回滚到旧内核版本&lt;/strong&gt;&lt;br&gt;
-重启后，在引导界面选择 &lt;strong&gt;“Ubuntu 的高级选项”&lt;/strong&gt; 进入 GRUB 菜单，然后选择原来的内核版本 (5.15.0-67-generic) 进行启动，并测试 WiFi 功能是否恢复正常。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;锁定当前内核版本&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt-mark hold linux-image-5.15.0-67-generic
-sudo apt-mark hold linux-headers-5.15.0-67-generic
-sudo apt-mark hold linux-modules-5.15.0-67-generic
-sudo apt-mark hold linux-modules-extra-5.15.0-67-generic&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;验证&lt;/strong&gt;
-输入&lt;code&gt;apt-mark showhold&lt;/code&gt;查看是否锁定成功&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;修改GRUB配置&lt;/strong&gt;
-&lt;code&gt;sudo nano /etc/default/grub&lt;/code&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 class="heading-element" id="二常用指令"&gt;&lt;span&gt;二、常用指令&lt;/span&gt;
- &lt;a href="#%e4%ba%8c%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;连接热点：&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;启动NetworkManager&lt;/strong&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Robotic Arm Design</title><link>https://long753.github.io/en/roboticarmdesign/</link><pubDate>Wed, 22 Oct 2025 23:15:26 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/roboticarmdesign/</guid><description/></item><item><title>Smart Car Innovation</title><link>https://long753.github.io/en/smarcar_innovitation/</link><pubDate>Mon, 06 Oct 2025 23:26:12 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smarcar_innovitation/</guid><description>&lt;p&gt;这篇文档的内容是一些可能可以提高车模上限的方案。&lt;/p&gt;
-&lt;h4 class="heading-element" id="一机械结构部分"&gt;&lt;span&gt;一、机械结构部分&lt;/span&gt;
- &lt;a href="#%e4%b8%80%e6%9c%ba%e6%a2%b0%e7%bb%93%e6%9e%84%e9%83%a8%e5%88%86" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;机械结构决定了车模上限！！！！！一定要非常无敌的重视机械结构！！！！&lt;/p&gt;
-&lt;h5 class="heading-element" id="1轮胎处理"&gt;&lt;span&gt;1.轮胎处理&lt;/span&gt;
- &lt;a href="#1%e8%bd%ae%e8%83%8e%e5%a4%84%e7%90%86" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;&lt;p&gt;车模原始轮胎非常的不好使用，很容易打滑。因此对轮胎进行处理是十分有必要的。
-首先，原始的轮胎里面是空的，我们需要先给轮胎在轮胎里面塞一些海绵，保证轮胎可以鼓起来。之后，我们就可以用砂纸对轮胎进行打磨处理，把轮胎打磨的尽可能粗糙。最后，对轮胎进行软化处理。&lt;/p&gt;
-&lt;h5 class="heading-element" id="2舵机前总成处理"&gt;&lt;span&gt;2.舵机（前总成）处理&lt;/span&gt;
- &lt;a href="#2%e8%88%b5%e6%9c%ba%e5%89%8d%e6%80%bb%e6%88%90%e5%a4%84%e7%90%86" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;&lt;p&gt;根据杭电佬的操作，似乎把舵机连接的那个杆整水平可以提高舵机的响应速度？我们没试过，你们可以试一试，然后为了车身水平，后轮也需要进行相同的处理，这样还可以进一步的降低整体的重心。&lt;/p&gt;
-&lt;h5 class="heading-element" id="3差速器后总成处理"&gt;&lt;span&gt;3.差速器（后总成）处理&lt;/span&gt;
- &lt;a href="#3%e5%b7%ae%e9%80%9f%e5%99%a8%e5%90%8e%e6%80%bb%e6%88%90%e5%a4%84%e7%90%86" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;&lt;p&gt;差速器的第一个要处理的地方就上油，给差速器上润滑油，可以防止差速器卡顿。
-其次就是要对轮胎位置进行处理
-后轮安装：后轮的两个垫片都需要按上去！！！
-处理的好的标准：电机以特定速度空转时，不会发生异响并保持速度稳定（当然前提是你电机PID调好了）&lt;/p&gt;
-&lt;h5 class="heading-element" id="4重心"&gt;&lt;span&gt;4.重心&lt;/span&gt;
- &lt;a href="#4%e9%87%8d%e5%bf%83" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;&lt;p&gt;重心也是一个特别无敌关键的点，它确定了你的速度上限，但如果你的速度慢还没有发生侧翻的情况，应该先提速而不是先搞这个。当你的重心较高时，车模突然转向就非常容易发生侧翻，特别是速度还很快的时候。这个可以通过合理布局实现，尽量不要让这个成为你们车模的速度限制点。
-下面是几个可以实现重心降低的方案：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;建议使用主驱一体设计，左右两边一边放主驱一体的板子，一边放算力板。&lt;/li&gt;
-&lt;li&gt;电池平放，不要立着放（似乎非常困难，这对画板子的要求特别高，但是杭电佬做到了，你们也可以）&lt;/li&gt;
-&lt;li&gt;车壳高度尽可能紧贴车模机架，中间只保留部分空间用于排线，因此排线也特别重要！！！&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h5 class="heading-element" id="5摄像头"&gt;&lt;span&gt;5.摄像头&lt;/span&gt;
- &lt;a href="#5%e6%91%84%e5%83%8f%e5%a4%b4" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;&lt;p&gt;使用120+°、320×240，120+帧的摄像头，这非常重要！！！不要怕贵！！！我们是110度摄像头，环内元素看不到，对此我们进行了许多不必要的处理，你们不要再用110度摄像头了！！！
-摄像头需要标定，这个网上有相关的资料，反正底下不要看到太多车头，上面不要看到赛道外面太多的东西。确定好摄像头位置后，就把摄像头固定下来，防止摄像头松动导致参数的变化。&lt;/p&gt;
-&lt;h4 class="heading-element" id="二算法部分"&gt;&lt;span&gt;二、算法部分&lt;/span&gt;
- &lt;a href="#%e4%ba%8c%e7%ae%97%e6%b3%95%e9%83%a8%e5%88%86" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;h5 class="heading-element" id="1基础巡线"&gt;&lt;span&gt;1.基础巡线&lt;/span&gt;
- &lt;a href="#1%e5%9f%ba%e7%a1%80%e5%b7%a1%e7%ba%bf" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h5&gt;</description></item><item><title>Smart Car Workflow</title><link>https://long753.github.io/en/smartcar_workflow/</link><pubDate>Mon, 06 Oct 2025 23:26:12 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_workflow/</guid><description>&lt;h3 class="heading-element" id="1open-the-car"&gt;&lt;span&gt;1.open the car&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.155.3 &amp; FixIt v0.4.2</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Wed, 11 Feb 2026 22:37:51 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>CD-WTA Model Derivation</title><link>https://long753.github.io/en/cd-wta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/cd-wta/</guid><category domain="https://long753.github.io/en/categories/math--physics/">Math &amp; Physics</category><description/></item><item><title>6-DOF Robot Design</title><link>https://long753.github.io/en/6-dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/6-dof_robot/</guid><category domain="https://long753.github.io/en/categories/robot/">Robot</category><description/></item><item><title>Second training session for SmartCar – connect the edgeboard</title><link>https://long753.github.io/en/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun2/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1open-the-car"&gt;&lt;span&gt;1.open the car&lt;/span&gt;
  &lt;a href="#1open-the-car" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
@@ -253,4 +161,269 @@ xterm -geometry 80×24&amp;#43;10&amp;#43;10 -ls -title “$VNCDESKTOP Desktop�
 gnome-session gnome #添加这一句是连接时使用gnome 桌面环境
 twm &amp;amp;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重新启动vnc：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vncserver -kill :1
-sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>
+sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>First training session for SmartCar – basic Git and Linux operations</title><link>https://long753.github.io/en/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun1/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;p&gt;该文档只讲解了Git和Linux系统的基础内容，这部分内容可以应对智能车比赛的大多数情况。但是除了所讲解的基础内容，还有很多重要的内容我没有讲解。根据我的经验，这些内容在智能车比赛中使用的较少，所以请各位同学遇到的时候再进一步学习。此外，大家没有必要去系统的学习git和linux，这会消耗大家大量时间，而且对智能车比赛的帮助是很小的，因此希望大家可以在比赛中学习，应用中学习，而不是盲目追求系统学习。由于本人水平有限，若有讲解错误或者不恰当的地方请多多包含！&lt;/p&gt;
+&lt;h3 class="heading-element" id="1-git基础内容"&gt;&lt;span&gt;1. Git基础内容&lt;/span&gt;
+ &lt;a href="#1-git%e5%9f%ba%e7%a1%80%e5%86%85%e5%ae%b9" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="11-git有何用"&gt;&lt;span&gt;1.1 Git有何用？&lt;/span&gt;
+ &lt;a href="#11-git%e6%9c%89%e4%bd%95%e7%94%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;git是一个常用的分布式版本控制系统，跟github或者gitee配合使用（windows直接在git官网下载git就可以了）。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;跟GitHub和gitee配合，创建代码仓库（important）&lt;/li&gt;
+&lt;li&gt;可以对代码进行版本管理&lt;/li&gt;
+&lt;li&gt;可以多人协作
+使用github或者gitee创建一个代码仓库，并且&lt;strong&gt;定期保存小车上的代码&lt;/strong&gt;是十分重要的！！！以防小车突然暴毙之后，之前写的代码没了！！！每次调完车都要提交当前代码。
+推荐的代码提交方案：在小车以及队员电脑上创建本地仓库，共同关联一个远程仓库，小车上push代码，队员电脑上pull代码，这样可以防止push冲突。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="12-github-or-gitee"&gt;&lt;span&gt;1.2 GitHub or gitee？&lt;/span&gt;
+ &lt;a href="#12-github-or-gitee" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;由于板卡（edgerboard或者rk3588）是连接的我们手机的热点，大概率是不能直接访问GitHub的，需要使用代理。因此，为了简单操作，推荐直接使用gitee来保存代码就可以了。此外，gitee和GitHub操作几乎没什么区别，因此我们培训的东西也是可以用于GitHub的。当然，如果你是GitHub的忠实用户，你可以在板卡上面使用代理或者在gitee和GitHub之间创建镜像仓库，这里不再赘述。&lt;/p&gt;
+&lt;h4 class="heading-element" id="13-使用gitee创建远程仓库"&gt;&lt;span&gt;1.3 使用gitee创建远程仓库&lt;/span&gt;
+ &lt;a href="#13-%e4%bd%bf%e7%94%a8gitee%e5%88%9b%e5%bb%ba%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;这里我们将介绍如何使用gitee来创建一个远程仓库&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;登录gitee：https://gitee.com/&lt;/li&gt;
+&lt;li&gt;点击创建仓库，设置仓库名称，并将仓库改为私有。&lt;/li&gt;
+&lt;li&gt;点击管理-&amp;gt;仓库成员管理-&amp;gt;管理员-&amp;gt;邀请用户-&amp;gt;直接添加-&amp;gt;仓库权限选为管理者-&amp;gt;输入你的好队友的账户-&amp;gt;添加&lt;/li&gt;
+&lt;li&gt;现在你就可以和你的好队友一起使用这个远程仓库了！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 class="heading-element" id="14-创建本地仓库"&gt;&lt;span&gt;1.4 创建本地仓库&lt;/span&gt;
+ &lt;a href="#14-%e5%88%9b%e5%bb%ba%e6%9c%ac%e5%9c%b0%e4%bb%93%e5%ba%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;在非中文目录下创建一个空文件夹（比如桌面），然后在终端中进入该文件夹，最后输入指令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样你就有一个空的本地仓库了&lt;/p&gt;
+&lt;h4 class="heading-element" id="15-关联本地仓库和远程仓库"&gt;&lt;span&gt;1.5 关联本地仓库和远程仓库&lt;/span&gt;
+ &lt;a href="#15-%e5%85%b3%e8%81%94%e6%9c%ac%e5%9c%b0%e4%bb%93%e5%ba%93%e5%92%8c%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;git remote add origin https://gitee.com/yourname/yourworkSpace.git&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;使用&lt;code&gt;git remote -v&lt;/code&gt;检查；&lt;/p&gt;
+&lt;h4 class="heading-element" id="16-git的常用指令"&gt;&lt;span&gt;1.6 git的常用指令⭐⭐⭐⭐⭐&lt;/span&gt;
+ &lt;a href="#16-git%e7%9a%84%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;h5 class="heading-element" id="161提交拉取代码这一部分用的最多"&gt;&lt;span&gt;1.6.1提交、拉取代码（这一部分用的最多）&lt;/span&gt;
+ &lt;a href="#161%e6%8f%90%e4%ba%a4%e6%8b%89%e5%8f%96%e4%bb%a3%e7%a0%81%e8%bf%99%e4%b8%80%e9%83%a8%e5%88%86%e7%94%a8%e7%9a%84%e6%9c%80%e5%a4%9a" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h5&gt;&lt;p&gt;提交我们的第一个代码！&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;touch README.md
+git add .
+git commit -m&amp;#34;版本信息&amp;#34;
+git push origin master&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;拉取一个代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://gitee.com/yourname/yourworkSpace.git
+git pull origin master&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;强制提交(一定要确保这个是最新的！！！！)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git push -f origin master&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;查看当前的文件状态：&lt;code&gt;git status&lt;/code&gt;&lt;/p&gt;
+&lt;h5 class="heading-element" id="162-代码版本管理"&gt;&lt;span&gt;1.6.2 代码版本管理&lt;/span&gt;
+ &lt;a href="#162-%e4%bb%a3%e7%a0%81%e7%89%88%e6%9c%ac%e7%ae%a1%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h5&gt;&lt;p&gt;查看提交历史：&lt;code&gt;git log --oneline&lt;/code&gt;
+退回指定版本：&lt;code&gt;git reset (哈希值)&lt;/code&gt;&lt;/p&gt;
+&lt;h5 class="heading-element" id="163-远程仓库管理"&gt;&lt;span&gt;1.6.3 远程仓库管理&lt;/span&gt;
+ &lt;a href="#163-%e8%bf%9c%e7%a8%8b%e4%bb%93%e5%ba%93%e7%ae%a1%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h5&gt;&lt;p&gt;查看当前远程仓库：&lt;code&gt;git remote -v &lt;/code&gt;
+添加远程仓库：&lt;code&gt;git remote add origin https://gitee.com/xxx/xxx.git&lt;/code&gt;&lt;/p&gt;
+&lt;h5 class="heading-element" id="164-分支管理"&gt;&lt;span&gt;1.6.4 分支管理&lt;/span&gt;
+ &lt;a href="#164-%e5%88%86%e6%94%af%e7%ae%a1%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h5&gt;&lt;p&gt;分支管理是git的一个很重要的功能，但是我不推荐初学者使用。第一个原因是分支管理这一部分涉及到较多的git知识，大家想要用好git branch需要进一步学习；第二个原因是智能车比赛这个项目不算大，各个同学的协作还是比较方便，没必要杀鸡用牛刀。但是还是建议各位学习一下git branch，这个东西在大型项目中还是比较常用的。
+查看分支：&lt;code&gt;git branch&lt;/code&gt;
+创建分支：&lt;code&gt;git branch branch_name&lt;/code&gt;
+切换分支：&lt;code&gt;git switch branch_name&lt;/code&gt;
+合并分支：&lt;code&gt;git merge branch_name 删除分支：&lt;/code&gt;git branch -d branch_name`&lt;/p&gt;
+&lt;h3 class="heading-element" id="2-linux基础内容"&gt;&lt;span&gt;2. Linux基础内容&lt;/span&gt;
+ &lt;a href="#2-linux%e5%9f%ba%e7%a1%80%e5%86%85%e5%ae%b9" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="21-智能车的linux"&gt;&lt;span&gt;2.1 智能车的Linux？&lt;/span&gt;
+ &lt;a href="#21-%e6%99%ba%e8%83%bd%e8%bd%a6%e7%9a%84linux" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;板卡的默认系统是Linux，我们需要熟练使用Linux的各种指令来进行文件管理、依赖获取、系统配置等等。这里我们会介绍一些在调车过程中，常用的Linux指令，当然Linux系统的内容远远不止这些，剩下的东西同学们在实际使用过程中可以进一步学习。
+Linux系统和Windows系统不同，Linux的大多数操作都是使用终端来实现的，因此我们需要学习一些常用的bash指令。&lt;/p&gt;
+&lt;h4 class="heading-element" id="22-切换目录"&gt;&lt;span&gt;2.2 切换目录&lt;/span&gt;
+ &lt;a href="#22-%e5%88%87%e6%8d%a2%e7%9b%ae%e5%bd%95" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;进入指定目录：&lt;code&gt;cd /path/dir&lt;/code&gt;
+回到用户主目录：&lt;code&gt;cd ~&lt;/code&gt;
+回到上一级：&lt;code&gt;cd ..&lt;/code&gt;&lt;/p&gt;
+&lt;h4 class="heading-element" id="23-文件管理"&gt;&lt;span&gt;2.3 文件管理&lt;/span&gt;
+ &lt;a href="#23-%e6%96%87%e4%bb%b6%e7%ae%a1%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;列出当前目录下的所有文件：&lt;code&gt;ll&lt;/code&gt; ,&lt;code&gt;ls&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;创建文件：&lt;code&gt;touch file.txt&lt;/code&gt;
+创建文件夹：&lt;code&gt;mkdir dir&lt;/code&gt;
+删除文件：&lt;code&gt;rm file.txt&lt;/code&gt;
+删除文件夹：&lt;code&gt;rm -rf dir/&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;复制文件(前源后标)：&lt;code&gt;cp a.txt b.txt&lt;/code&gt;
+复制目录(前源后标)：&lt;code&gt;cp -r dir1 dir2&lt;/code&gt;
+重命名(前源后标)：&lt;code&gt;mv a.txt b.txt&lt;/code&gt;
+移动：&lt;code&gt;mv a.txt dir&lt;/code&gt;&lt;/p&gt;
+&lt;h4 class="heading-element" id="24-vim使用"&gt;&lt;span&gt;2.4 vim使用&lt;/span&gt;
+ &lt;a href="#24-vim%e4%bd%bf%e7%94%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;vim是一个强大的可以直接在终端上修改代码的工具，虽然代码可以在vscode上面改，但是以防万一，各位还是学一下vim的使用
+vim中有三种模式：Normal, Insert, Command&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Normal模式：我们用vim打开这个文件的默认模式，这个模式下我们只能看代码，用快捷键对代码进行操作&lt;/li&gt;
+&lt;li&gt;Insert模式：使用&lt;code&gt;i&lt;/code&gt;从Normal模式切换为Insert模式，使用&lt;code&gt;ESC&lt;/code&gt;从Insert模式切换为Normal模式。在该模式下，我们可以修改代码&lt;/li&gt;
+&lt;li&gt;Command模式：输入&lt;code&gt;:&lt;/code&gt;后进入，然后再输入一定指令即可实现文件的保存和退出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;相关指令：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;修改文件：&lt;code&gt;vim file.txt&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;保存并退出：&lt;code&gt;:wq&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;强制不保存并退出：&lt;code&gt;:q!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;强制保存退出：&lt;code&gt;:wq!&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;其余指令请在需要使用时学习&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="25-权限管理"&gt;&lt;span&gt;2.5 权限管理*&lt;/span&gt;
+ &lt;a href="#25-%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;这一部分的内容只有在遇到少许猎奇问题的时候才会使用
+查看权限：&lt;code&gt;ll&lt;/code&gt;
+修改权限：&lt;code&gt;chmod a+x file.txt&lt;/code&gt;(其中，r是可读权限，w是可写权限，x是可执行权限)&lt;/p&gt;
+&lt;h4 class="heading-element" id="26-其他"&gt;&lt;span&gt;2.6 其他&lt;/span&gt;
+ &lt;a href="#26-%e5%85%b6%e4%bb%96" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;连接热点：&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="3-资料作业"&gt;&lt;span&gt;3 资料&amp;amp;作业&lt;/span&gt;
+ &lt;a href="#3-%e8%b5%84%e6%96%99%e4%bd%9c%e4%b8%9a" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;AI老师&lt;/strong&gt;：ChatGPT, Gemini, Grok, Claude, Copilot, Deepseek(随机排序)
+git教程：https://liaoxuefeng.com/books/git/introduction/index.html
+作业：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;每个小组创建一个远程仓库&lt;/li&gt;
+&lt;li&gt;负责写代码的同学练习一下git的相关操作&lt;/li&gt;
+&lt;li&gt;负责写代码的同学练习一下Linux的相关操作，可以直接弄一个虚拟机来玩，或者等到我们发板卡再练习也行&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Linux Configuration Issues</title><link>https://long753.github.io/en/linuxproblem/</link><pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/linuxproblem/</guid><category domain="https://long753.github.io/en/categories/troubleshooting-notes/">Troubleshooting Notes</category><description>&lt;h3 class="heading-element" id="一common-commands"&gt;&lt;span&gt;一、Common Commands&lt;/span&gt;
+ &lt;a href="#%e4%b8%80common-commands" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Check camera devices: &lt;code&gt;ls -l /dev/video*&lt;/code&gt;
+Start Network Manager: &lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="二common-errors"&gt;&lt;span&gt;二、Common Errors&lt;/span&gt;
+ &lt;a href="#%e4%ba%8ccommon-errors" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-issues-potentially-caused-by-graphics-drivers"&gt;&lt;span&gt;1. Issues potentially caused by graphics drivers:&lt;/span&gt;
+ &lt;a href="#1-issues-potentially-caused-by-graphics-drivers" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;If any of the following issues occur, configure the graphics driver first:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Screen flickering&lt;/li&gt;
+&lt;li&gt;Dual-monitor resolution issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="2-unable-to-adjust-screen-brightness"&gt;&lt;span&gt;2. Unable to adjust screen brightness&lt;/span&gt;
+ &lt;a href="#2-unable-to-adjust-screen-brightness" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Use xrandr to force adjust screen brightness:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 1. Identify your monitor ID
+xrandr | grep &amp;#34; connected&amp;#34; # Assuming the output starts with DP-4
+
+# 2. Adjust brightness to 0.6 (range 0.0-1.0)
+xrandr --output DP-4 --brightness 0.6&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-wifi-icon-disappeared"&gt;&lt;span&gt;3. WiFi icon disappeared&lt;/span&gt;
+ &lt;a href="#3-wifi-icon-disappeared" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;The WiFi icon disappears because Ubuntu, while executing &lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt;, enables the automatic kernel upgrade service (unattended-upgrades) by default. This causes the kernel to upgrade from 5.15.0-67-generic to 5.15.0-130-generic. Since the new kernel is incompatible with the AX211 network card driver, the driver fails to load, firmware files cannot be loaded correctly, and the kernel module versions do not match, ultimately causing the wireless card to malfunction and the WiFi icon to vanish.&lt;/p&gt;
+&lt;p&gt;You can use the &lt;code&gt;uname -r&lt;/code&gt; command to check the current kernel version. If it differs from the version when the WiFi was working, it is likely that the automatic system update caused a kernel upgrade that is incompatible with the AX211 driver.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Roll back to the previous kernel version&lt;/strong&gt;&lt;br&gt;
+After rebooting, select &amp;ldquo;Advanced options for Ubuntu&amp;rdquo; at the boot interface to enter the GRUB menu. Then, select the original kernel version (5.15.0-67-generic) to boot and test if the WiFi functionality is restored.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Lock the current kernel version&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-mark hold linux-image-5.15.0-67-generic
+sudo apt-mark hold linux-headers-5.15.0-67-generic
+sudo apt-mark hold linux-modules-5.15.0-67-generic
+sudo apt-mark hold linux-modules-extra-5.15.0-67-generic&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Verification&lt;/strong&gt;
+Enter&lt;code&gt;apt-mark showhold&lt;/code&gt;to check if the lock was successful&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Modify GRUB configuration&lt;/strong&gt;
+&lt;code&gt;sudo nano /etc/default/grub&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="heading-element" id="三common-configurations"&gt;&lt;span&gt;三、Common Configurations&lt;/span&gt;
+ &lt;a href="#%e4%b8%89common-configurations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-latex-configuration"&gt;&lt;span&gt;1. Latex Configuration&lt;/span&gt;
+ &lt;a href="#1-latex-configuration" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Local installation command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt update
+sudo apt install texlive-latex-extra texlive-lang-chinese texlive-science latexmk texlive-xetex -y&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For VS Code, simply sync your GitHub configuration.&lt;/p&gt;
+&lt;h4 class="heading-element" id="2-fishros-one-click-configuration"&gt;&lt;span&gt;2. FishROS one-click configuration&lt;/span&gt;
+ &lt;a href="#2-fishros-one-click-configuration" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-bash_aliases-configuration"&gt;&lt;span&gt;3. &lt;code&gt;.bash_aliases&lt;/code&gt; Configuration&lt;/span&gt;
+ &lt;a href="#3-bash_aliases-configuration" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;# 代理配置
+alias proxy_on=&amp;#39;export http_proxy=&amp;#34;http://127.0.0.1:7897&amp;#34;; export https_proxy=&amp;#34;http://127.0.0.1:7897&amp;#34;; export all_proxy=&amp;#34;socks5://127.0.0.1:7897&amp;#34;&amp;#39;
+alias proxy_off=&amp;#39;unset http_proxy; unset https_proxy; unset all_proxy&amp;#39;
+
+# 快捷传送
+alias cdgs=&amp;#39;cd ~/projects/GS-MOPSO&amp;#39;
+alias cdd=&amp;#39;cd ~/.dotfiles/&amp;#39;
+
+# 常用指令
+alias ...=&amp;#39;cd ~&amp;#39;
+alias gpu=&amp;#39;watch -n 1 nvidia-smi&amp;#39;
+alias sb=&amp;#39;source ~/.bashrc&amp;#39;
+alias v=&amp;#39;vim&amp;#39;
+alias ga=&amp;#39;git add&amp;#39;
+alias gc=&amp;#39;git commit -m&amp;#39;
+alias gp=&amp;#39;git push&amp;#39;
+alias gs=&amp;#39;git status&amp;#39;
+alias br=&amp;#39;xrandr --output DP-4 --brightness&amp;#39; # 调整显示亮度&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="4-double-click-icon-to-minimize"&gt;&lt;span&gt;4. Double-click icon to minimize&lt;/span&gt;
+ &lt;a href="#4-double-click-icon-to-minimize" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Configure: &lt;code&gt;gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'&lt;/code&gt;
+Restore: &lt;code&gt;gsettings reset org.gnome.shell.extensions.dash-to-dock click-action&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="四common-operations"&gt;&lt;span&gt;四、Common Operations&lt;/span&gt;
+ &lt;a href="#%e5%9b%9bcommon-operations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-reallocating-linux-disk-space"&gt;&lt;span&gt;1. Reallocating Linux disk space&lt;/span&gt;
+ &lt;a href="#1-reallocating-linux-disk-space" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Enter the Live System (Third System):
+&lt;ul&gt;
+&lt;li&gt;Create an Ubuntu bootable USB drive (standard installation media).&lt;/li&gt;
+&lt;li&gt;Press F9 to enter the BIOS, boot from the USB drive, and enter the Live environment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Perform disk space operations.&lt;/li&gt;
+&lt;li&gt;Verify if the disk space meets requirements.&lt;/li&gt;
+&lt;li&gt;Appendix: Reference Video&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>
