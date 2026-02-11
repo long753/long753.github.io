@@ -1,43 +1,31 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.155.3 &amp; FixIt v0.4.2</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Wed, 11 Feb 2026 22:37:51 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>考虑级联毁伤的毁伤概率模型推导</title><link>https://long753.github.io/cd-wta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cd-wta/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description/></item><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6-dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6-dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description/></item><item><title>人工智能模型组第二次培训——edgeboard连接</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.155.3 &amp; FixIt v0.4.2</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Wed, 11 Feb 2026 22:45:51 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>考虑级联毁伤的毁伤概率模型推导</title><link>https://long753.github.io/cd-wta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cd-wta/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description/></item><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6-dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6-dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description/></item><item><title>人工智能模型组第二次培训——edgeboard连接</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
  &lt;a href="#1%e6%89%93%e5%bc%80%e5%b0%8f%e8%bd%a6" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;首先，观察小车的上位机，主控，驱动板的开关是否处于关闭状态（分别位于小车的左右两边）。其次，把电源插上，注意观察电池的电压，要在11.6v到12.6v之间，不要过充过放。最后，打开那三个开关，等待edgeboard上的指示灯显示为绿色，小车成功启动。  &lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;首先检查电池的电压是否是在11.6~12.6V之间，不要过充过放；然后，将状态良好的电池插入小车之中并打开电源开关；最后，打开电源等待edgeboard亮绿灯。&lt;/p&gt;
 &lt;h3 class="heading-element" id="2连接电脑"&gt;&lt;span&gt;2.连接电脑&lt;/span&gt;
  &lt;a href="#2%e8%bf%9e%e6%8e%a5%e7%94%b5%e8%84%91" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="211-有线连接第一次连接优先这种方式"&gt;&lt;span&gt;2.1.1 有线连接（第一次连接优先这种方式）&lt;/span&gt;
- &lt;a href="#211-%e6%9c%89%e7%ba%bf%e8%bf%9e%e6%8e%a5%e7%ac%ac%e4%b8%80%e6%ac%a1%e8%bf%9e%e6%8e%a5%e4%bc%98%e5%85%88%e8%bf%99%e7%a7%8d%e6%96%b9%e5%bc%8f" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="21-有线连接第一次连接"&gt;&lt;span&gt;2.1 有线连接（第一次连接）&lt;/span&gt;
+ &lt;a href="#21-%e6%9c%89%e7%ba%bf%e8%bf%9e%e6%8e%a5%e7%ac%ac%e4%b8%80%e6%ac%a1%e8%bf%9e%e6%8e%a5" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;ol&gt;
 &lt;li&gt;用网线连接电脑和智能小车&lt;/li&gt;
 &lt;li&gt;打开终端，输入指令：（有可能连接不上，多试几次）&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后输入密码：edgeboard，即可连接成功。&lt;/p&gt;
-&lt;h4 class="heading-element" id="212-有线连接路由器连接方式"&gt;&lt;span&gt;2.1.2 有线连接(路由器连接方式)&lt;/span&gt;
- &lt;a href="#212-%e6%9c%89%e7%ba%bf%e8%bf%9e%e6%8e%a5%e8%b7%af%e7%94%b1%e5%99%a8%e8%bf%9e%e6%8e%a5%e6%96%b9%e5%bc%8f" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;用网线连接路由器和智能小车，同时电脑也连接这个路由器，进入路由器的管理界面，找到智能小车的IP地址。&lt;/li&gt;
-&lt;li&gt;在电脑上打开终端，输入指令：&lt;/li&gt;
-&lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi #换成对应的ip地址&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
-&lt;li&gt;输入edgeboard的密码：edgeboard，即可连接成功。&lt;/li&gt;
-&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输入密码：edgeboard，即可连接成功。
+&lt;strong&gt;注：&lt;/strong&gt; 如果这一步都连不上，多尝试几次，如果一直不行，找我换板卡&lt;/p&gt;
 &lt;h4 class="heading-element" id="22-无线连接最常用"&gt;&lt;span&gt;2.2 无线连接（最常用）&lt;/span&gt;
  &lt;a href="#22-%e6%97%a0%e7%ba%bf%e8%bf%9e%e6%8e%a5%e6%9c%80%e5%b8%b8%e7%94%a8" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;第一次无线连接时：保证有线连接成功，然后在终端中输入&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后点击active connect连接你的热点即可。&lt;/p&gt;
-&lt;p&gt;如果不是第一次连接，只需打开手机热点让算力版连接到你的热点即可。&lt;/p&gt;
-&lt;p&gt;打开终端，输入指令：（有可能连接不上，多试几次）&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;无线连接是paddle和你所使用的电脑都连接同一个热点的情况下常用的一种连接方式。第一次无线连接时，在终端中输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;点击active connect连接你的热点即可。之后连接小车只需要你打开热点，等待小车连接上你的电脑后，直接在终端中输入：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;密码：edgeboard&lt;/p&gt;
-&lt;h3 class="heading-element" id="3连接vscode"&gt;&lt;span&gt;3.连接vscode&lt;/span&gt;
- &lt;a href="#3%e8%bf%9e%e6%8e%a5vscode" class="heading-mark"&gt;
+&lt;h3 class="heading-element" id="3通过ssh连接vscode"&gt;&lt;span&gt;3.通过ssh连接vscode&lt;/span&gt;
+ &lt;a href="#3%e9%80%9a%e8%bf%87ssh%e8%bf%9e%e6%8e%a5vscode" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;h4 class="heading-element" id="31安装插件"&gt;&lt;span&gt;3.1安装插件&lt;/span&gt;
@@ -45,8 +33,8 @@
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;p&gt;首先在vscode里面安装&lt;code&gt;Remote - SSH&lt;/code&gt;，这一步很ez&lt;/p&gt;
-&lt;h4 class="heading-element" id="32在插件里面点进car-work"&gt;&lt;span&gt;3.2.在插件里面点进car-work&lt;/span&gt;
- &lt;a href="#32%e5%9c%a8%e6%8f%92%e4%bb%b6%e9%87%8c%e9%9d%a2%e7%82%b9%e8%bf%9bcar-work" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="32-在插件里面进入edgeboard"&gt;&lt;span&gt;3.2 在插件里面进入edgeboard&lt;/span&gt;
+ &lt;a href="#32-%e5%9c%a8%e6%8f%92%e4%bb%b6%e9%87%8c%e9%9d%a2%e8%bf%9b%e5%85%a5edgeboard" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;ol&gt;
@@ -58,11 +46,20 @@
 &lt;li&gt;一直允许，配置文件点第一个就可以了（记住这个配置文件的位置）&lt;/li&gt;
 &lt;li&gt;在vscode里面打开car-work文件夹&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;/home/edgeboard/car-work&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;注意：这里很有可能会连接失败，经过我的多次测试，我发现有两个可能，第一个是你的vscode版本太高，你去下载一个相对老一点版本的VScode就可以了，第二种情况可以通过下面的方式的解决：
-![[Pasted image 20250429000335.png]]
-点击上面图片中的扩展设置，将下面的这个路径改成你当时用ssh连接时的算力版的配置文件，忘记了也没事，你可以通过ssh中的查看配置来找到这个文件，而且大概率也跟我的路径差不多
-![[Pasted image 20250429000429.png]]
-之后你只需要点击并输入密码即可连接&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/home/edgeboard/car-work&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这一步，90%会失败。由于edgeboard太古老了，用的还是Ubuntu18.04的系统，因此需要大家将VScode的版本降低一下，再重新连接一下板卡。经过测试，1.85.2是最新的可以连接ubuntu18.04的版本，这是下载连接：&lt;code&gt;https://code.visualstudio.com/updates/v1_85&lt;/code&gt;&lt;/p&gt;
+&lt;h4 class="heading-element" id="33-配置密钥可选"&gt;&lt;span&gt;3.3 配置密钥（可选）&lt;/span&gt;
+ &lt;a href="#33-%e9%85%8d%e7%bd%ae%e5%af%86%e9%92%a5%e5%8f%af%e9%80%89" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;如果你懒得每次用ssh连接板卡的时候都要输入密码，可以配置一下密钥，这样就不用每次都输入密码了。具体步骤如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在windows终端内输入指令：
+&lt;code&gt;ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot;&lt;/code&gt;
+注意，更改一下&lt;code&gt;your_email@example.com&lt;/code&gt;的内容，尽量改成你熟悉的，我个人比较喜欢用&lt;code&gt;long753-win&lt;/code&gt;这种命名&lt;/li&gt;
+&lt;li&gt;将你生成的密钥对中的公钥（有.pub后缀）的内容复制下来，粘贴到edgeboard的&lt;code&gt;.ssh/authorized_keys&lt;/code&gt;中&lt;/li&gt;
+&lt;li&gt;在windows中的./ssh/config里面输入，跟我视频里面的那个格式一样
+&lt;code&gt;IdentityFile C:\Users\cl284\.ssh/id_ed25519&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
 &lt;h3 class="heading-element" id="4打开vnc图形化界面"&gt;&lt;span&gt;4.打开VNC图形化界面&lt;/span&gt;
  &lt;a href="#4%e6%89%93%e5%bc%80vnc%e5%9b%be%e5%bd%a2%e5%8c%96%e7%95%8c%e9%9d%a2" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -71,10 +68,15 @@
 &lt;p&gt;进入edgeboard终端后，输入指令：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中：&lt;code&gt;:1&lt;/code&gt;表示图形化界面端口号，可以自行设置。优先使用1号端口，当端口被占用时，可以尝试其他端口,只使用1~4号端口。&lt;/p&gt;
 &lt;p&gt;当出现下面的提示则说明启动成功：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vnc vnc vnc vnc&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后打开VNC,建立新的连接：（如果连接过，直接点你原来建立的就ok）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;New &amp;#39;paddlepi:1 (edgeboard)&amp;#39; desktop at :1 on machine paddlepi
+
+Starting applications specified in /etc/X11/Xvnc-session
+Log file is /home/edgeboard/.vnc/paddlepi:1.log
+
+Use xtigervncviewer -SecurityTypes VncAuth,TLSVnc -passwd /home/edgeboard/.vnc/passwd paddlepi:1 to connect to the VNC server.&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后打开VNC,建立新的连接：（如果连接过，直接点你原来建立的就ok）&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vncserver：paddlepi:5901
-name: edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;同时，如果使用的不是1端口，例如是2端口，对应的应该为：&lt;code&gt;vncserver：paddlepi:5902&lt;/code&gt;
-进入后输入密码：&lt;code&gt;edgeboard&lt;/code&gt;&lt;/p&gt;
+name: edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;同时，如果使用的不是1端口，例如是2端口，对应的用户名应该为：
+&lt;code&gt;vncserver：paddlepi:5901&lt;/code&gt;&lt;/p&gt;
 &lt;h3 class="heading-element" id="5配置算力版环境"&gt;&lt;span&gt;5.配置算力版环境&lt;/span&gt;
  &lt;a href="#5%e9%85%8d%e7%bd%ae%e7%ae%97%e5%8a%9b%e7%89%88%e7%8e%af%e5%a2%83" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -129,6 +131,7 @@ g&amp;#43;&amp;#43; --version&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-elem
 &lt;pre&gt;&lt;code&gt; cd /home/edgeboard/car-work #切换到自己的那个工作空间里面
  rm -rf build
  mkdir build
+ cd build
  cmake .. #如果你修改了整个代码框架，可能需要修改一下CMakeList文件，如何修改可以去问AI
  make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;完全配置完全之后，保存你修改的代码后，进入build目录输入指令即可完成编译：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，“icar”表示编译的目标文件，“-j3”表示使用三个线程编译，可以加快编译时间。这里的编译时间会根据你的修改程度而变化。&lt;/p&gt;
@@ -161,7 +164,14 @@ xterm -geometry 80×24&amp;#43;10&amp;#43;10 -ls -title “$VNCDESKTOP Desktop�
 gnome-session gnome #添加这一句是连接时使用gnome 桌面环境
 twm &amp;amp;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重新启动vnc：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vncserver -kill :1
-sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>人工智能模型组第一次培训——git和Linux基础操作</title><link>https://long753.github.io/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun1/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;p&gt;该文档只讲解了Git和Linux系统的基础内容，这部分内容可以应对智能车比赛的大多数情况。但是除了所讲解的基础内容，还有很多重要的内容我没有讲解。根据我的经验，这些内容在智能车比赛中使用的较少，所以请各位同学遇到的时候再进一步学习。此外，大家没有必要去系统的学习git和linux，这会消耗大家大量时间，而且对智能车比赛的帮助是很小的，因此希望大家可以在比赛中学习，应用中学习，而不是盲目追求系统学习。由于本人水平有限，若有讲解错误或者不恰当的地方请多多包含！&lt;/p&gt;
+sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="二edgeboard环境已经坏掉了需要刷系统"&gt;&lt;span&gt;二、edgeboard环境已经坏掉了，需要刷系统&lt;/span&gt;
+ &lt;a href="#%e4%ba%8cedgeboard%e7%8e%af%e5%a2%83%e5%b7%b2%e7%bb%8f%e5%9d%8f%e6%8e%89%e4%ba%86%e9%9c%80%e8%a6%81%e5%88%b7%e7%b3%bb%e7%bb%9f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;打开百度网盘：
+通过网盘分享的文件：赛事专用卡-镜像开源资料
+链接: &lt;a href="https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111" target="_blank" rel="external nofollow noopener noreferrer"&gt;https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111&lt;/a&gt; 提取码: 1111
+烧录EMMC镜像，其他的按照压缩包里面的“EdgeBoard赛事专用卡-镜像烧写说明”操作即可&lt;/p&gt;</description></item><item><title>人工智能模型组第一次培训——git和Linux基础操作</title><link>https://long753.github.io/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun1/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;p&gt;该文档只讲解了Git和Linux系统的基础内容，这部分内容可以应对智能车比赛的大多数情况。但是除了所讲解的基础内容，还有很多重要的内容我没有讲解。根据我的经验，这些内容在智能车比赛中使用的较少，所以请各位同学遇到的时候再进一步学习。此外，大家没有必要去系统的学习git和linux，这会消耗大家大量时间，而且对智能车比赛的帮助是很小的，因此希望大家可以在比赛中学习，应用中学习，而不是盲目追求系统学习。由于本人水平有限，若有讲解错误或者不恰当的地方请多多包含！&lt;/p&gt;
 &lt;h3 class="heading-element" id="1-git基础内容"&gt;&lt;span&gt;1. Git基础内容&lt;/span&gt;
  &lt;a href="#1-git%e5%9f%ba%e7%a1%80%e5%86%85%e5%ae%b9" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
