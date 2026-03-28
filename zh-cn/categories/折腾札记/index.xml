@@ -1,6 +1,22 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>折腾札记 - 分类 - LONG</title><link>https://long753.github.io/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/</link><description>LONG</description><generator>Hugo 0.157.0 &amp; FixIt v0.4.3</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://long753.github.io/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/index.xml" rel="self" type="application/rss+xml"/><item><title>如何使用AI？</title><link>https://long753.github.io/zh-cn/how_to_use_ai/</link><pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/zh-cn/how_to_use_ai/</guid><category domain="https://long753.github.io/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/">折腾札记</category><description>如何使用AI？</description></item><item><title>Linux配置问题</title><link>https://long753.github.io/zh-cn/linuxproblem/</link><pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/zh-cn/linuxproblem/</guid><category domain="https://long753.github.io/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/">折腾札记</category><description>&lt;h3 class="heading-element" id="一常用指令"&gt;&lt;span&gt;一、常用指令&lt;/span&gt;
- &lt;a href="#%e4%b8%80%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;查看摄像头设备：&lt;code&gt;ls -l /dev/video*&lt;/code&gt;
-启动Network Manager:&lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/p&gt;</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>折腾札记 - 分类 - LONG</title>
+    <link>http://localhost:1313/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/</link>
+    <description>LONG</description>
+    <generator>Hugo 0.156.0 &amp; FixIt v0.4.3</generator>
+    <language>zh-CN</language>
+    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <lastBuildDate>Thu, 16 Oct 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux配置问题</title>
+      <link>http://localhost:1313/zh-cn/linuxproblem/</link>
+      <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author>
+      <guid>http://localhost:1313/zh-cn/linuxproblem/</guid>
+      <category domain="http://localhost:1313/zh-cn/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/">折腾札记</category>
+      <description>&lt;h3 class=&#34;heading-element&#34; id=&#34;一常用指令&#34;&gt;&lt;span&gt;一、常用指令&lt;/span&gt;&#xA;  &lt;a href=&#34;#%e4%b8%80%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4&#34; class=&#34;heading-mark&#34;&gt;&#xA;    &lt;svg class=&#34;octicon octicon-link&#34; viewBox=&#34;0 0 16 16&#34; version=&#34;1.1&#34; width=&#34;16&#34; height=&#34;16&#34; aria-hidden=&#34;true&#34;&gt;&lt;path d=&#34;m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&#xA;  &lt;/a&gt;&#xA;&lt;/h3&gt;&lt;p&gt;查看摄像头设备：&lt;code&gt;ls -l /dev/video*&lt;/code&gt;&#xA;启动Network Manager:&lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

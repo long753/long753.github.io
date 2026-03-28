@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.157.0 &amp; FixIt v0.4.3</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sat, 07 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF Robot Design</title><link>https://long753.github.io/6-dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6-dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6-dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h3 class="heading-element" id="mechanical-design"&gt;&lt;span&gt;Mechanical Design&lt;/span&gt;
- &lt;a href="#mechanical-design" class="heading-mark"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.159.1 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 29 Mar 2026 01:37:22 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6-dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6-dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6-dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h3 class="heading-element" id="结构设计"&gt;&lt;span&gt;结构设计&lt;/span&gt;
+ &lt;a href="#%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="thruster-design"&gt;&lt;span&gt;Thruster Design&lt;/span&gt;
- &lt;a href="#thruster-design" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="推进器分布"&gt;&lt;span&gt;推进器分布&lt;/span&gt;
+ &lt;a href="#%e6%8e%a8%e8%bf%9b%e5%99%a8%e5%88%86%e5%b8%83" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;Traditional UUA mecha&lt;/p&gt;</description></item><item><title>How to use AI?</title><link>https://long753.github.io/how_to_use_ai/</link><pubDate>Sat, 07 Mar 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/how_to_use_ai/</guid><category domain="https://long753.github.io/categories/troubleshooting-notes/">Troubleshooting Notes</category><description/></item><item><title>CD-WTA Model Derivation</title><link>https://long753.github.io/cd-wta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cd-wta/</guid><category domain="https://long753.github.io/categories/math--physics/">Math &amp; Physics</category><description/></item><item><title>Second training session for SmartCar – connect the edgeboard</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
+&lt;/h4&gt;&lt;p&gt;传统推进器分布分为欠驱动、全驱动、过余驱动三类。考虑到机器人需要在紧凑设计的基础上实现高水平的抓取任务，因此选用6-DOF全驱动方案。常规全驱动方案即使用6个固定推进器或4个矢量推进器，由于矢量推荐器由一个旋转（这里写为什么不用四个矢量推进器与六个固定推荐器）。针对上诉问题，本文设计了一种4推进器+2舵机的推进方案，旨在紧凑设计的基础上实现机器人的高水平抓取任务。该推进方案具体结构如图（）所示。&lt;/p&gt;</description></item><item><title>考虑级联毁伤的毁伤概率模型推导</title><link>https://long753.github.io/cd-wta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cd-wta/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description/></item><item><title>人工智能模型组第二次培训——edgeboard连接</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
  &lt;a href="#1%e6%89%93%e5%bc%80%e5%b0%8f%e8%bd%a6" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
@@ -179,7 +179,7 @@ sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-el
 &lt;/h4&gt;&lt;p&gt;打开百度网盘：
 通过网盘分享的文件：赛事专用卡-镜像开源资料
 链接: &lt;a href="https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111" target="_blank" rel="external nofollow noopener noreferrer"&gt;https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111&lt;/a&gt; 提取码: 1111
-烧录EMMC镜像，其他的按照压缩包里面的“EdgeBoard赛事专用卡-镜像烧写说明”操作即可&lt;/p&gt;</description></item><item><title>First training session for SmartCar – basic Git and Linux operations</title><link>https://long753.github.io/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun1/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;p&gt;该文档只讲解了Git和Linux系统的基础内容，这部分内容可以应对智能车比赛的大多数情况。但是除了所讲解的基础内容，还有很多重要的内容我没有讲解。根据我的经验，这些内容在智能车比赛中使用的较少，所以请各位同学遇到的时候再进一步学习。此外，大家没有必要去系统的学习git和linux，这会消耗大家大量时间，而且对智能车比赛的帮助是很小的，因此希望大家可以在比赛中学习，应用中学习，而不是盲目追求系统学习。由于本人水平有限，若有讲解错误或者不恰当的地方请多多包含！&lt;/p&gt;
+烧录EMMC镜像，其他的按照压缩包里面的“EdgeBoard赛事专用卡-镜像烧写说明”操作即可&lt;/p&gt;</description></item><item><title>人工智能模型组第一次培训——git和Linux基础操作</title><link>https://long753.github.io/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun1/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;p&gt;该文档只讲解了Git和Linux系统的基础内容，这部分内容可以应对智能车比赛的大多数情况。但是除了所讲解的基础内容，还有很多重要的内容我没有讲解。根据我的经验，这些内容在智能车比赛中使用的较少，所以请各位同学遇到的时候再进一步学习。此外，大家没有必要去系统的学习git和linux，这会消耗大家大量时间，而且对智能车比赛的帮助是很小的，因此希望大家可以在比赛中学习，应用中学习，而不是盲目追求系统学习。由于本人水平有限，若有讲解错误或者不恰当的地方请多多包含！&lt;/p&gt;
 &lt;h3 class="heading-element" id="1-git基础内容"&gt;&lt;span&gt;1. Git基础内容&lt;/span&gt;
  &lt;a href="#1-git%e5%9f%ba%e7%a1%80%e5%86%85%e5%ae%b9" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -332,75 +332,71 @@ git教程：https://liaoxuefeng.com/books/git/introduction/index.html
 &lt;li&gt;每个小组创建一个远程仓库&lt;/li&gt;
 &lt;li&gt;负责写代码的同学练习一下git的相关操作&lt;/li&gt;
 &lt;li&gt;负责写代码的同学练习一下Linux的相关操作，可以直接弄一个虚拟机来玩，或者等到我们发板卡再练习也行&lt;/li&gt;
-&lt;/ol&gt;</description></item><item><title>Linux Configuration Issues</title><link>https://long753.github.io/linuxproblem/</link><pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/linuxproblem/</guid><category domain="https://long753.github.io/categories/troubleshooting-notes/">Troubleshooting Notes</category><description>&lt;h3 class="heading-element" id="一common-commands"&gt;&lt;span&gt;一、Common Commands&lt;/span&gt;
- &lt;a href="#%e4%b8%80common-commands" class="heading-mark"&gt;
+&lt;/ol&gt;</description></item><item><title>Linux配置问题</title><link>https://long753.github.io/linuxproblem/</link><pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/linuxproblem/</guid><category domain="https://long753.github.io/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/">折腾札记</category><description>&lt;h3 class="heading-element" id="一常用指令"&gt;&lt;span&gt;一、常用指令&lt;/span&gt;
+ &lt;a href="#%e4%b8%80%e5%b8%b8%e7%94%a8%e6%8c%87%e4%bb%a4" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;Check camera devices: &lt;code&gt;ls -l /dev/video*&lt;/code&gt;
-Start Network Manager: &lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/p&gt;
-&lt;h3 class="heading-element" id="二common-errors"&gt;&lt;span&gt;二、Common Errors&lt;/span&gt;
- &lt;a href="#%e4%ba%8ccommon-errors" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;p&gt;查看摄像头设备：&lt;code&gt;ls -l /dev/video*&lt;/code&gt;
+启动Network Manager:&lt;code&gt;sudo systemctl start NetworkManager&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="二常见错误"&gt;&lt;span&gt;二、常见错误&lt;/span&gt;
+ &lt;a href="#%e4%ba%8c%e5%b8%b8%e8%a7%81%e9%94%99%e8%af%af" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="1-issues-potentially-caused-by-graphics-drivers"&gt;&lt;span&gt;1. Issues potentially caused by graphics drivers:&lt;/span&gt;
- &lt;a href="#1-issues-potentially-caused-by-graphics-drivers" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-显卡驱动可能导致的问题"&gt;&lt;span&gt;1. 显卡驱动可能导致的问题：&lt;/span&gt;
+ &lt;a href="#1-%e6%98%be%e5%8d%a1%e9%a9%b1%e5%8a%a8%e5%8f%af%e8%83%bd%e5%af%bc%e8%87%b4%e7%9a%84%e9%97%ae%e9%a2%98" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;If any of the following issues occur, configure the graphics driver first:&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;出现下列问题都先配置一下显卡驱动&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Screen flickering&lt;/li&gt;
-&lt;li&gt;Dual-monitor resolution issues&lt;/li&gt;
+&lt;li&gt;屏幕闪烁&lt;/li&gt;
+&lt;li&gt;双屏分配率问题&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 class="heading-element" id="2-unable-to-adjust-screen-brightness"&gt;&lt;span&gt;2. Unable to adjust screen brightness&lt;/span&gt;
- &lt;a href="#2-unable-to-adjust-screen-brightness" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="2-屏幕无法调节亮度"&gt;&lt;span&gt;2. 屏幕无法调节亮度&lt;/span&gt;
+ &lt;a href="#2-%e5%b1%8f%e5%b9%95%e6%97%a0%e6%b3%95%e8%b0%83%e8%8a%82%e4%ba%ae%e5%ba%a6" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;Use xrandr to force adjust screen brightness:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 1. Identify your monitor ID
-xrandr | grep &amp;#34; connected&amp;#34; # Assuming the output starts with DP-4
+&lt;/h4&gt;&lt;p&gt;使用xrandr来强制调节屏幕亮度&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 1. 确认你的显示器代号
+xrandr | grep &amp;#34; connected&amp;#34; # 假设输出开头是DP-4
 
-# 2. Adjust brightness to 0.6 (range 0.0-1.0)
-xrandr --output DP-4 --brightness 0.6&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-wifi-icon-disappeared"&gt;&lt;span&gt;3. WiFi icon disappeared&lt;/span&gt;
- &lt;a href="#3-wifi-icon-disappeared" class="heading-mark"&gt;
+# 2. 调节亮度到 0.6（范围 0.0-1.0） 
+xrandr --output DP-4 --brightness 0.6&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-wifi图标消失"&gt;&lt;span&gt;3. WiFi图标消失&lt;/span&gt;
+ &lt;a href="#3-wifi%e5%9b%be%e6%a0%87%e6%b6%88%e5%a4%b1" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;The WiFi icon disappears because Ubuntu, while executing &lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt;, enables the automatic kernel upgrade service (unattended-upgrades) by default. This causes the kernel to upgrade from 5.15.0-67-generic to 5.15.0-130-generic. Since the new kernel is incompatible with the AX211 network card driver, the driver fails to load, firmware files cannot be loaded correctly, and the kernel module versions do not match, ultimately causing the wireless card to malfunction and the WiFi icon to vanish.&lt;/p&gt;
-&lt;p&gt;You can use the &lt;code&gt;uname -r&lt;/code&gt; command to check the current kernel version. If it differs from the version when the WiFi was working, it is likely that the automatic system update caused a kernel upgrade that is incompatible with the AX211 driver.&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;WiFi 图标自动消失的原因是 Ubuntu 在执行&lt;code&gt; sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt; 时，默认启用了内核自动升级服务（unattended-upgrades），导致内核从 5.15.0-67-generic 升级至 5.15.0-130-generic。由于新内核与 AX211 网卡驱动不兼容，驱动加载失败，固件文件无法正确加载，且内核模块版本不匹配，最终导致无线网卡无法正常工作，WiFi 图标消失。
+可以使用 &lt;code&gt;uname -r&lt;/code&gt; 命令检查当前内核版本，如果与 WiFi 正常工作时的内核版本不一致，则很可能是系统自动更新后，内核升级导致新版本与 AX211 网卡驱动不兼容，从而影响 WiFi 功能。&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Roll back to the previous kernel version&lt;/strong&gt;&lt;br&gt;
-After rebooting, select &amp;ldquo;Advanced options for Ubuntu&amp;rdquo; at the boot interface to enter the GRUB menu. Then, select the original kernel version (5.15.0-67-generic) to boot and test if the WiFi functionality is restored.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Lock the current kernel version&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;回滚到旧内核版本&lt;/strong&gt;&lt;br&gt;
+重启后，在引导界面选择 &lt;strong&gt;“Ubuntu 的高级选项”&lt;/strong&gt; 进入 GRUB 菜单，然后选择原来的内核版本 (5.15.0-67-generic) 进行启动，并测试 WiFi 功能是否恢复正常。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;锁定当前内核版本&lt;/strong&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-mark hold linux-image-5.15.0-67-generic
 sudo apt-mark hold linux-headers-5.15.0-67-generic
 sudo apt-mark hold linux-modules-5.15.0-67-generic
-sudo apt-mark hold linux-modules-extra-5.15.0-67-generic&lt;/code&gt;&lt;/pre&gt;&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Verification&lt;/strong&gt;
-Enter&lt;code&gt;apt-mark showhold&lt;/code&gt;to check if the lock was successful&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Modify GRUB configuration&lt;/strong&gt;
+sudo apt-mark hold linux-modules-extra-5.15.0-67-generic&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
+&lt;li&gt;&lt;strong&gt;验证&lt;/strong&gt;
+输入&lt;code&gt;apt-mark showhold&lt;/code&gt;查看是否锁定成功&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;修改GRUB配置&lt;/strong&gt;
 &lt;code&gt;sudo nano /etc/default/grub&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 class="heading-element" id="三common-configurations"&gt;&lt;span&gt;三、Common Configurations&lt;/span&gt;
- &lt;a href="#%e4%b8%89common-configurations" class="heading-mark"&gt;
+&lt;h3 class="heading-element" id="三常用配置"&gt;&lt;span&gt;三、常用配置&lt;/span&gt;
+ &lt;a href="#%e4%b8%89%e5%b8%b8%e7%94%a8%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="1-latex-configuration"&gt;&lt;span&gt;1. Latex Configuration&lt;/span&gt;
- &lt;a href="#1-latex-configuration" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-latex配置"&gt;&lt;span&gt;1. Latex配置&lt;/span&gt;
+ &lt;a href="#1-latex%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;Local installation command:&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;本地安装指令：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt update
-sudo apt install texlive-latex-extra texlive-lang-chinese texlive-science latexmk texlive-xetex -y&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For VS Code, simply sync your GitHub configuration.&lt;/p&gt;
-&lt;h4 class="heading-element" id="2-fishros-one-click-configuration"&gt;&lt;span&gt;2. FishROS one-click configuration&lt;/span&gt;
- &lt;a href="#2-fishros-one-click-configuration" class="heading-mark"&gt;
+sudo apt install texlive-latex-extra texlive-lang-chinese texlive-science latexmk texlive-xetex -y&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;VScode同步github配置即可&lt;/p&gt;
+&lt;h4 class="heading-element" id="2-鱼香ros一键配置"&gt;&lt;span&gt;2. 鱼香ros一键配置&lt;/span&gt;
+ &lt;a href="#2-%e9%b1%bc%e9%a6%99ros%e4%b8%80%e9%94%ae%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-bash_aliases-configuration"&gt;&lt;span&gt;3. &lt;code&gt;.bash_aliases&lt;/code&gt; Configuration&lt;/span&gt;
- &lt;a href="#3-bash_aliases-configuration" class="heading-mark"&gt;
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;wget http://fishros.com/install -O fishros &amp;amp;&amp;amp; . fishros&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="3-bash_aliases配置"&gt;&lt;span&gt;3. &lt;code&gt;.bash_aliases&lt;/code&gt;配置&lt;/span&gt;
+ &lt;a href="#3-bash_aliases%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;pre&gt;&lt;code&gt;# 代理配置
@@ -420,28 +416,28 @@ alias ga=&amp;#39;git add&amp;#39;
 alias gc=&amp;#39;git commit -m&amp;#39;
 alias gp=&amp;#39;git push&amp;#39;
 alias gs=&amp;#39;git status&amp;#39;
-alias br=&amp;#39;xrandr --output DP-4 --brightness&amp;#39; # 调整显示亮度&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="4-double-click-icon-to-minimize"&gt;&lt;span&gt;4. Double-click icon to minimize&lt;/span&gt;
- &lt;a href="#4-double-click-icon-to-minimize" class="heading-mark"&gt;
+alias br=&amp;#39;xrandr --output DP-4 --brightness&amp;#39; # 调整显示亮度&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="4-双击图标缩小"&gt;&lt;span&gt;4. 双击图标缩小&lt;/span&gt;
+ &lt;a href="#4-%e5%8f%8c%e5%87%bb%e5%9b%be%e6%a0%87%e7%bc%a9%e5%b0%8f" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;Configure: &lt;code&gt;gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'&lt;/code&gt;
-Restore: &lt;code&gt;gsettings reset org.gnome.shell.extensions.dash-to-dock click-action&lt;/code&gt;&lt;/p&gt;
-&lt;h3 class="heading-element" id="四common-operations"&gt;&lt;span&gt;四、Common Operations&lt;/span&gt;
- &lt;a href="#%e5%9b%9bcommon-operations" class="heading-mark"&gt;
+&lt;/h4&gt;&lt;p&gt;配置：&lt;code&gt;gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'&lt;/code&gt;
+复原：&lt;code&gt;gsettings reset org.gnome.shell.extensions.dash-to-dock click-action&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="四常见操作"&gt;&lt;span&gt;四、常见操作&lt;/span&gt;
+ &lt;a href="#%e5%9b%9b%e5%b8%b8%e8%a7%81%e6%93%8d%e4%bd%9c" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="1-reallocating-linux-disk-space"&gt;&lt;span&gt;1. Reallocating Linux disk space&lt;/span&gt;
- &lt;a href="#1-reallocating-linux-disk-space" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-重新分配linux磁盘空间"&gt;&lt;span&gt;1. 重新分配Linux磁盘空间&lt;/span&gt;
+ &lt;a href="#1-%e9%87%8d%e6%96%b0%e5%88%86%e9%85%8dlinux%e7%a3%81%e7%9b%98%e7%a9%ba%e9%97%b4" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;Enter the Live System (Third System):
+&lt;li&gt;进入第三系统：
 &lt;ul&gt;
-&lt;li&gt;Create an Ubuntu bootable USB drive (standard installation media).&lt;/li&gt;
-&lt;li&gt;Press F9 to enter the BIOS, boot from the USB drive, and enter the Live environment.&lt;/li&gt;
+&lt;li&gt;制作Ubuntu的启动盘，这个启动盘就是正常的启动盘&lt;/li&gt;
+&lt;li&gt;F9进入电脑的BIOS界面，使用U盘启动系统，进入第三系统&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;Perform disk space operations.&lt;/li&gt;
-&lt;li&gt;Verify if the disk space meets requirements.&lt;/li&gt;
-&lt;li&gt;Appendix: Reference Video&lt;/li&gt;
+&lt;li&gt;进行磁盘空间操作&lt;/li&gt;
+&lt;li&gt;检验磁盘空间是否符合要求&lt;/li&gt;
+&lt;li&gt;附录：参考视频&lt;/li&gt;
 &lt;/ol&gt;</description></item></channel></rss>
