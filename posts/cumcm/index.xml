@@ -1,1 +1,14 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>全国大学生数学建模大赛 - LONG</title><link>https://long753.github.io/posts/cumcm/</link><description>LONG</description><generator>Hugo 0.159.1 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate/><atom:link href="https://long753.github.io/posts/cumcm/index.xml" rel="self" type="application/rss+xml"/></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>全国大学生数学建模大赛 - LONG</title>
+    <link>http://localhost:46079/posts/cumcm/</link>
+    <description>LONG</description>
+    <generator>Hugo 0.156.0 &amp; FixIt v0.4.3</generator>
+    <language>zh-CN</language>
+    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="http://localhost:46079/posts/cumcm/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
