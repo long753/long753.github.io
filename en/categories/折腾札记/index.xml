@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>折腾札记 - Category - LONG</title>
+    <link>http://localhost:1313/en/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/</link>
+    <description>LONG</description>
+    <generator>Hugo 0.156.0 &amp; FixIt v0.4.3</generator>
+    <language>en</language>
+    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <lastBuildDate>Wed, 11 Feb 2026 22:37:51 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Configuration Issues</title>
+      <link>http://localhost:1313/en/linuxproblem/</link>
+      <pubDate>Thu, 16 Oct 2025 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author>
+      <guid>http://localhost:1313/en/linuxproblem/</guid>
+      <category domain="http://localhost:1313/en/categories/%E6%8A%98%E8%85%BE%E6%9C%AD%E8%AE%B0/">折腾札记</category>
+      <description>This document records various problems encountered during the use of Ubuntu and its configuration files.</description>
+    </item>
+  </channel>
+</rss>

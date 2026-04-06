@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Math Modleing - 标签 - LONG</title>
+    <link>http://localhost:1313/tags/math-modleing/</link>
+    <description>LONG</description>
+    <generator>Hugo 0.156.0 &amp; FixIt v0.4.3</generator>
+    <language>zh-CN</language>
+    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <lastBuildDate>Fri, 03 Apr 2026 00:44:31 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/math-modleing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2024年全国大学生数学建模竞赛（A题）</title>
+      <link>http://localhost:1313/cumcu/</link>
+      <pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author>
+      <guid>http://localhost:1313/cumcu/</guid>
+      <description>&lt;p&gt;在这里开始撰写正文&amp;hellip;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
