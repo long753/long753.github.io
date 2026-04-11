@@ -1,112 +1,1225 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.160.0 &amp; FixIt v0.4.5</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Mon, 06 Apr 2026 17:01:18 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF Robot Development</title><link>https://long753.github.io/en/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/6dof_robot/</guid><category domain="https://long753.github.io/en/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h3 class="heading-element" id="mechanical-design"&gt;&lt;span&gt;Mechanical Design&lt;/span&gt;
- &lt;a href="#mechanical-design" class="heading-mark"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 02:53:05 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF Robot Development</title><link>https://long753.github.io/en/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/6dof_robot/</guid><category domain="https://long753.github.io/en/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-project-overview"&gt;&lt;span&gt;1. Project Overview&lt;/span&gt;
+ &lt;a href="#1-project-overview" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="thruster-design"&gt;&lt;span&gt;Thruster Design&lt;/span&gt;
- &lt;a href="#thruster-design" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;p&gt;This project designs a 6-DOF (Degree of Freedom) fully-actuated underwater robot for underwater grasping tasks. Compared with traditional under-actuated underwater robots, the 6-DOF fully-actuated scheme can achieve higher-level motion control capability on a compact design basis, completing complex underwater operation tasks.&lt;/p&gt;
+&lt;h3 class="heading-element" id="11-design-objectives"&gt;&lt;span&gt;1.1 Design Objectives&lt;/span&gt;
+ &lt;a href="#11-design-objectives" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;Traditional UUA mecha&lt;/p&gt;</description></item><item><title>The 20th National Undergraduate Intelligent Vehicle Competition (Full Model Group)</title><link>https://long753.github.io/en/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;p&gt;在这里开始撰写正文&amp;hellip;&lt;/p&gt;</description></item><item><title>spline limitations</title><link>https://long753.github.io/en/spline/</link><pubDate>Fri, 03 Apr 2026 00:41:30 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/spline/</guid><description>&lt;p&gt;Writing&amp;hellip;&lt;/p&gt;</description></item><item><title>CF-DWTA Model Derivation</title><link>https://long753.github.io/en/cf_dwta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/cf_dwta/</guid><category domain="https://long753.github.io/en/categories/math--physics/">Math &amp; Physics</category><description/></item><item><title>Second training session for SmartCar – connect the edgeboard</title><link>https://long753.github.io/en/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun2/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
- &lt;a href="#1%e6%89%93%e5%bc%80%e5%b0%8f%e8%bd%a6" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Achieve independent motion control of 6 degrees of freedom&lt;/li&gt;
+&lt;li&gt;Compact mechanical structure design&lt;/li&gt;
+&lt;li&gt;Precise target grasping capability&lt;/li&gt;
+&lt;li&gt;Stable underwater motion performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="2-mechanical-design"&gt;&lt;span&gt;2. Mechanical Design&lt;/span&gt;
+ &lt;a href="#2-mechanical-design" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;首先检查电池的电压是否是在11.6~12.6V之间，不要过充过放；然后，将状态良好的电池插入小车之中并打开电源开关；最后，打开电源等待edgeboard亮绿灯。&lt;/p&gt;
-&lt;h3 class="heading-element" id="2连接电脑"&gt;&lt;span&gt;2.连接电脑&lt;/span&gt;
- &lt;a href="#2%e8%bf%9e%e6%8e%a5%e7%94%b5%e8%84%91" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-thruster-distribution-scheme"&gt;&lt;span&gt;2.1 Thruster Distribution Scheme&lt;/span&gt;
+ &lt;a href="#21-thruster-distribution-scheme" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="21-有线连接第一次连接"&gt;&lt;span&gt;2.1 有线连接（第一次连接）&lt;/span&gt;
- &lt;a href="#21-%e6%9c%89%e7%ba%bf%e8%bf%9e%e6%8e%a5%e7%ac%ac%e4%b8%80%e6%ac%a1%e8%bf%9e%e6%8e%a5" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;p&gt;Traditional thruster distribution is divided into three categories: under-actuated, fully-actuated, and over-actuated.&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Type&lt;/th&gt;
+ &lt;th&gt;Characteristics&lt;/th&gt;
+ &lt;th&gt;Application&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Under-actuated&lt;/td&gt;
+ &lt;td&gt;Fewer thrusters than DOFs&lt;/td&gt;
+ &lt;td&gt;Simple observation tasks&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Fully-actuated&lt;/td&gt;
+ &lt;td&gt;Equal thrusters and DOFs&lt;/td&gt;
+ &lt;td&gt;Precise operation tasks&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Over-actuated&lt;/td&gt;
+ &lt;td&gt;More thrusters than DOFs&lt;/td&gt;
+ &lt;td&gt;High redundancy tasks&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Considering that the robot needs to achieve high-level grasping tasks on a compact design basis, this design adopts the &lt;strong&gt;6-DOF fully-actuated scheme&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The conventional fully-actuated scheme uses 6 fixed thrusters or 4 vector thrusters. Although vector thrusters have better maneuverability, they have complex structure and low reliability. Therefore, this design proposes a &lt;strong&gt;4-thruster + 2-servo&lt;/strong&gt; hybrid propulsion scheme:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4 main thrusters provide primary thrust&lt;/li&gt;
+&lt;li&gt;2 servos control the mechanical arm angle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="22-mechanical-structure"&gt;&lt;span&gt;2.2 Mechanical Structure&lt;/span&gt;
+ &lt;a href="#22-mechanical-structure" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;用网线连接电脑和智能小车&lt;/li&gt;
-&lt;li&gt;打开终端，输入指令：（有可能连接不上，多试几次）&lt;/li&gt;
+&lt;/h3&gt;&lt;p&gt;The robot body adopts a frame-type structure, mainly consisting of:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Robot System
+├── Main Frame
+│ ├── Sealed Cabin (Electronic Equipment)
+│ ├── Battery Compartment
+│ └── Buoyancy Material
+├── Propulsion System
+│ ├── Main Thrusters × 4
+│ └── Servos × 2
+├── Robotic Arm
+│ ├── Shoulder Joint
+│ ├── Elbow Joint
+│ └── Gripper
+└── Sensor System
+ ├── Depth Sensor
+ ├── Inertial Measurement Unit (IMU)
+ └── Camera&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="23-material-selection"&gt;&lt;span&gt;2.3 Material Selection&lt;/span&gt;
+ &lt;a href="#23-material-selection" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Main Body&lt;/strong&gt;: Aluminum Alloy (lightweight and corrosion-resistant)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seals&lt;/strong&gt;: O-rings (Fluororubber)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fasteners&lt;/strong&gt;: Stainless Steel (seawater corrosion-resistant)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Buoyancy Material&lt;/strong&gt;: EPP Foam&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="3-control-scheme"&gt;&lt;span&gt;3. Control Scheme&lt;/span&gt;
+ &lt;a href="#3-control-scheme" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-kinematics-modeling"&gt;&lt;span&gt;3.1 Kinematics Modeling&lt;/span&gt;
+ &lt;a href="#31-kinematics-modeling" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Establish the robot coordinate system and use DH parameters for kinematics modeling:&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Joint&lt;/th&gt;
+ &lt;th&gt;$\theta$&lt;/th&gt;
+ &lt;th&gt;$d$&lt;/th&gt;
+ &lt;th&gt;$a$&lt;/th&gt;
+ &lt;th&gt;$\alpha$&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;1&lt;/td&gt;
+ &lt;td&gt;$\theta_1$&lt;/td&gt;
+ &lt;td&gt;$d_1$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;$\theta_2$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$a_2$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;td&gt;$\theta_3$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$a_3$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;td&gt;$\theta_4$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;5&lt;/td&gt;
+ &lt;td&gt;$\theta_5$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$-90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;6&lt;/td&gt;
+ &lt;td&gt;$\theta_6$&lt;/td&gt;
+ &lt;td&gt;$d_6$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Forward kinematics equation:
+$$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &amp;amp; \sin\theta_i\sin\alpha_i &amp;amp; a_i\cos\theta_i \ \sin\theta_i &amp;amp; \cos\theta_i\cos\alpha_i &amp;amp; -\cos\theta_i\sin\alpha_i &amp;amp; a_i\sin\theta_i \ 0 &amp;amp; \sin\alpha_i &amp;amp; \cos\alpha_i &amp;amp; d_i \ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-deep-reinforcement-learning-based-control-strategy"&gt;&lt;span&gt;3.2 Deep Reinforcement Learning Based Control Strategy&lt;/span&gt;
+ &lt;a href="#32-deep-reinforcement-learning-based-control-strategy" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;To achieve complex grasping tasks, Deep Reinforcement Learning (DRL) is used for control strategy training.&lt;/p&gt;
+&lt;h4 class="heading-element" id="321-network-architecture"&gt;&lt;span&gt;3.2.1 Network Architecture&lt;/span&gt;
+ &lt;a href="#321-network-architecture" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Using Actor-Critic architecture:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Actor Network&lt;/strong&gt;: Policy network $\pi(a|s)$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Critic Network&lt;/strong&gt;: Value network $V(s)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="322-state-space"&gt;&lt;span&gt;3.2.2 State Space&lt;/span&gt;
+ &lt;a href="#322-state-space" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;$$s = [p_{pos}, p_{vel}, q, \dot{q}, target_{pos}, image]$$&lt;/p&gt;
+&lt;p&gt;Where: position, velocity, joint angle, target position, image&lt;/p&gt;
+&lt;h4 class="heading-element" id="323-reward-function"&gt;&lt;span&gt;3.2.3 Reward Function&lt;/span&gt;
+ &lt;a href="#323-reward-function" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;$$r = r_{target} + r_{smooth} + r_{collision}$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$r_{target}$: Target achievement reward&lt;/li&gt;
+&lt;li&gt;$r_{smooth}$: Motion smoothness reward&lt;/li&gt;
+&lt;li&gt;$r_{collision}$: Collision penalty&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="324-training-algorithm"&gt;&lt;span&gt;3.2.4 Training Algorithm&lt;/span&gt;
+ &lt;a href="#324-training-algorithm" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Using PPO (Proximal Policy Optimization) algorithm for training:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class RobotAgent:
+ def __init__(self):
+ self.actor = ActorNetwork()
+ self.critic = CriticNetwork()
+ 
+ def select_action(self, state):
+ mean, std = self.actor(state)
+ action = torch.distributions.Normal(mean, std).sample()
+ return action
+ 
+ def update(self, trajectories):
+ # Compute advantage function
+ advantages = compute_gae(trajectories)
+ # Update policy
+ self.actor.optimize(trajectories, advantages)
+ # Update value function
+ self.critic.optimize(trajectories)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="33-pid-control"&gt;&lt;span&gt;3.3 PID Control&lt;/span&gt;
+ &lt;a href="#33-pid-control" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Low-level motion control uses PID controller:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class PIDController {
+public:
+ double kp, ki, kd;
+ double setpoint, current_value;
+ double integral = 0;
+ 
+ double compute(double feedback) {
+ double error = setpoint - feedback;
+ integral &amp;#43;= error;
+ double derivative = error - last_error;
+ last_error = error;
+ return kp * error &amp;#43; ki * integral &amp;#43; kd * derivative;
+ }
+};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-vision-system"&gt;&lt;span&gt;4. Vision System&lt;/span&gt;
+ &lt;a href="#4-vision-system" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-object-detection"&gt;&lt;span&gt;4.1 Object Detection&lt;/span&gt;
+ &lt;a href="#41-object-detection" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Using YOLOv8 for underwater object detection:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;model = YOLOv8(&amp;#39;yolov8n.pt&amp;#39;)
+results = model.predict(image, classes=[&amp;#39;target_object&amp;#39;])&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-depth-estimation"&gt;&lt;span&gt;4.2 Depth Estimation&lt;/span&gt;
+ &lt;a href="#42-depth-estimation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Using monocular depth estimation network:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;depth_model = MiDaS()
+depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-grasp-point-detection"&gt;&lt;span&gt;4.3 Grasp Point Detection&lt;/span&gt;
+ &lt;a href="#43-grasp-point-detection" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Using GraspNet for grasp point prediction:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grasp_poses = graspnet.predict(point_cloud)&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-simulation-results"&gt;&lt;span&gt;5. Simulation Results&lt;/span&gt;
+ &lt;a href="#5-simulation-results" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-kinematics-simulation"&gt;&lt;span&gt;5.1 Kinematics Simulation&lt;/span&gt;
+ &lt;a href="#51-kinematics-simulation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Kinematics verification in Gazebo:&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Metric&lt;/th&gt;
+ &lt;th&gt;Simulation&lt;/th&gt;
+ &lt;th&gt;Theoretical&lt;/th&gt;
+ &lt;th&gt;Error&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Maximum Depth&lt;/td&gt;
+ &lt;td&gt;50m&lt;/td&gt;
+ &lt;td&gt;50m&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Maximum Speed&lt;/td&gt;
+ &lt;td&gt;1.5 m/s&lt;/td&gt;
+ &lt;td&gt;1.6 m/s&lt;/td&gt;
+ &lt;td&gt;6.25%&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Positioning Accuracy&lt;/td&gt;
+ &lt;td&gt;±5cm&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 class="heading-element" id="52-control-strategy-training"&gt;&lt;span&gt;5.2 Control Strategy Training&lt;/span&gt;
+ &lt;a href="#52-control-strategy-training" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;DRL training curve shows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After 500 episodes, success rate reaches 85%&lt;/li&gt;
+&lt;li&gt;After 1000 episodes, success rate reaches 95%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="53-physical-testing"&gt;&lt;span&gt;5.3 Physical Testing&lt;/span&gt;
+ &lt;a href="#53-physical-testing" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Underwater experiment results show:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Robot can achieve independent control of 6 degrees of freedom&lt;/li&gt;
+&lt;li&gt;Grasping success rate reaches over 90%&lt;/li&gt;
+&lt;li&gt;Endurance time is about 2 hours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="6-conclusion"&gt;&lt;span&gt;6. Conclusion&lt;/span&gt;
+ &lt;a href="#6-conclusion" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;This paper designs a 6-DOF fully-actuated underwater robot. Main contributions include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Propulsion Scheme Innovation&lt;/strong&gt;: Proposed 4-thruster + 2-servo hybrid propulsion scheme&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control Strategy Optimization&lt;/strong&gt;: Introduced deep reinforcement learning for autonomous grasping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compact Structure Design&lt;/strong&gt;: Achieved fully-actuated configuration in limited space&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;输入密码：edgeboard，即可连接成功。
-&lt;strong&gt;注：&lt;/strong&gt; 如果这一步都连不上，多尝试几次，如果一直不行，找我换板卡&lt;/p&gt;
-&lt;h4 class="heading-element" id="22-无线连接最常用"&gt;&lt;span&gt;2.2 无线连接（最常用）&lt;/span&gt;
- &lt;a href="#22-%e6%97%a0%e7%ba%bf%e8%bf%9e%e6%8e%a5%e6%9c%80%e5%b8%b8%e7%94%a8" class="heading-mark"&gt;
+&lt;p&gt;This robot can be applied in underwater exploration, cultural relic salvage, marine biological research, and other fields.&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-improvement-directions"&gt;&lt;span&gt;6.1 Improvement Directions&lt;/span&gt;
+ &lt;a href="#61-improvement-directions" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;无线连接是paddle和你所使用的电脑都连接同一个热点的情况下常用的一种连接方式。第一次无线连接时，在终端中输入：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;点击active connect连接你的热点即可。之后连接小车只需要你打开热点，等待小车连接上你的电脑后，直接在终端中输入：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;密码：edgeboard&lt;/p&gt;
-&lt;h3 class="heading-element" id="3通过ssh连接vscode"&gt;&lt;span&gt;3.通过ssh连接vscode&lt;/span&gt;
- &lt;a href="#3%e9%80%9a%e8%bf%87ssh%e8%bf%9e%e6%8e%a5vscode" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Further optimize robotic arm end accuracy&lt;/li&gt;
+&lt;li&gt;Enhance vision algorithm robustness in turbid water environment&lt;/li&gt;
+&lt;li&gt;Extend underwater endurance time&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>The 20th National Undergraduate Intelligent Vehicle Competition (Full Model Group)</title><link>https://long753.github.io/en/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;h2 class="heading-element" id="1-competition-overview"&gt;&lt;span&gt;1. Competition Overview&lt;/span&gt;
+ &lt;a href="#1-competition-overview" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="31安装插件"&gt;&lt;span&gt;3.1安装插件&lt;/span&gt;
- &lt;a href="#31%e5%ae%89%e8%a3%85%e6%8f%92%e4%bb%b6" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;p&gt;The National Undergraduate Intelligent Vehicle Competition is one of the college student science and technology competitions endorsed by the Ministry of Education. It aims to cultivate students&amp;rsquo; innovative practical abilities and teamwork spirit. The 20th competition includes multiple groups such as the Full Model Group, Vision Group, and Hovercraft Group. The Full Model Group requires participating teams to design and build intelligent vehicles capable of autonomously completing track recognition, element processing, and path planning tasks.&lt;/p&gt;
+&lt;p&gt;This project is based on the EdgeBoard embedded platform, using YOLOv3-Mobilenet object detection algorithm combined with traditional image processing methods to implement a complete intelligent vehicle control system.&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-hardware-platform"&gt;&lt;span&gt;2. Hardware Platform&lt;/span&gt;
+ &lt;a href="#2-hardware-platform" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;首先在vscode里面安装&lt;code&gt;Remote - SSH&lt;/code&gt;，这一步很ez&lt;/p&gt;
-&lt;h4 class="heading-element" id="32-在插件里面进入edgeboard"&gt;&lt;span&gt;3.2 在插件里面进入edgeboard&lt;/span&gt;
- &lt;a href="#32-%e5%9c%a8%e6%8f%92%e4%bb%b6%e9%87%8c%e9%9d%a2%e8%bf%9b%e5%85%a5edgeboard" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-main-control-platform"&gt;&lt;span&gt;2.1 Main Control Platform&lt;/span&gt;
+ &lt;a href="#21-main-control-platform" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;This project uses Baidu EdgeBoard as the main control platform with the following specifications:&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Parameter&lt;/th&gt;
+ &lt;th&gt;Specification&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;CPU&lt;/td&gt;
+ &lt;td&gt;ARM Cortex-A53/A72&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;GPU&lt;/td&gt;
+ &lt;td&gt;Mali-T860&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Computing Power&lt;/td&gt;
+ &lt;td&gt;3.0 TOPS&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Memory&lt;/td&gt;
+ &lt;td&gt;4GB LPDDR4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;System&lt;/td&gt;
+ &lt;td&gt;Ubuntu 18.04&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;EdgeBoard has a built-in PaddlePaddle inference engine, supporting deployment of various deep learning models, and has strong real-time image processing capabilities, making it very suitable for intelligent vehicle competition applications.&lt;/p&gt;
+&lt;h3 class="heading-element" id="22-sensor-configuration"&gt;&lt;span&gt;2.2 Sensor Configuration&lt;/span&gt;
+ &lt;a href="#22-sensor-configuration" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Camera&lt;/strong&gt;: Industrial camera for track image acquisition&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Serial Port&lt;/strong&gt;: USB-to-Serial converter connecting main controller and motor driver board&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Battery&lt;/strong&gt;: 12V lithium battery providing power for the entire vehicle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="3-software-architecture"&gt;&lt;span&gt;3. Software Architecture&lt;/span&gt;
+ &lt;a href="#3-software-architecture" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-system-architecture"&gt;&lt;span&gt;3.1 System Architecture&lt;/span&gt;
+ &lt;a href="#31-system-architecture" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The system uses modular design with the following core modules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SmartCar
+├── driver/ # Hardware Driver Layer
+│ ├── camera_driver.h # Camera driver
+│ └── uart.hpp # Serial communication
+├── vision/ # Vision Processing Layer
+│ ├── ImageCapture.h # Image capture
+│ └── ImageProcess.h # Image processing
+├── detection/ # AI Detection Layer
+│ └── detection.hpp # YOLOv3 object detection
+├── element/ # Element Recognition Layer
+│ ├── Findline.h # Path extraction
+│ ├── RingElement.h # Ring processing
+│ └── CrossElement.h # Intersection processing
+└── control/ # Motion Control Layer
+ └── Control.h # PID control and speed planning&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="32-core-code-structure"&gt;&lt;span&gt;3.2 Core Code Structure&lt;/span&gt;
+ &lt;a href="#32-core-code-structure" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The main program entry is in &lt;code&gt;src/icar.cpp&lt;/code&gt;, and the core class &lt;code&gt;SmartCar&lt;/code&gt; (defined in &lt;code&gt;src/SmartCar.hpp&lt;/code&gt;) coordinates all modules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class SmartCar : public SingletonHolder&amp;lt;SmartCar&amp;gt; {
+public:
+ ImageCapture imagecapture; // Image capture
+ std::shared_ptr&amp;lt;Detection&amp;gt; detection; // AI detection
+ Findline findline; // Path planning
+ Control control; // Motion control
+ std::shared_ptr&amp;lt;Uart&amp;gt; uart; // Serial communication
+ 
+ // Track element processing
+ std::unique_ptr&amp;lt;Ring&amp;gt; ring;
+ std::unique_ptr&amp;lt;Cross&amp;gt; cross;
+ std::unique_ptr&amp;lt;Bridge&amp;gt; bridge;
+ std::unique_ptr&amp;lt;Restaurant&amp;gt; restaurant;
+ // ...
+};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-key-technology-implementation"&gt;&lt;span&gt;4. Key Technology Implementation&lt;/span&gt;
+ &lt;a href="#4-key-technology-implementation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-object-detection"&gt;&lt;span&gt;4.1 Object Detection&lt;/span&gt;
+ &lt;a href="#41-object-detection" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The YOLOv3-Mobilenet model is used for track element detection, supporting recognition of the following elements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Charging Area (BATTERY)&lt;/li&gt;
+&lt;li&gt;Black Box Obstacle (BLOCK)&lt;/li&gt;
+&lt;li&gt;Bridge (BRIDGE)&lt;/li&gt;
+&lt;li&gt;Burger Obstacle (BURGER)&lt;/li&gt;
+&lt;li&gt;Traffic Cone (CONE)&lt;/li&gt;
+&lt;li&gt;Crosswalk (CROSSWALK)&lt;/li&gt;
+&lt;li&gt;Pedestrian (PEDESTRIAN)&lt;/li&gt;
+&lt;li&gt;Dashed Line (LINE)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Model inference uses multi-threaded processing to ensure real-time detection and image capture:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void SmartCar::ai_process_mul() {
+ auto ai_process_task{
+ [](std::shared_ptr&amp;lt;Detection&amp;gt; detection){
+ cv::Mat m;
+ while(smartcar.ai_runable){
+ if(!smartcar.ai_picture_update.load()) continue;
+ m = std::move(smartcar.image_for_predict);
+ detection-&amp;gt;inference(m); // Model inference
+ smartcar.predict_result = detection-&amp;gt;results;
+ smartcar.ai_picture_update = false;
+ }
+ }
+ };
+ predict_thread = std::jthread(ai_process_task, this-&amp;gt;detection);
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-track-element-processing"&gt;&lt;span&gt;4.2 Track Element Processing&lt;/span&gt;
+ &lt;a href="#42-track-element-processing" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The system supports recognition and processing of various track elements:&lt;/p&gt;
+&lt;h4 class="heading-element" id="ring-processing"&gt;&lt;span&gt;Ring Processing&lt;/span&gt;
+ &lt;a href="#ring-processing" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;The ring is a challenging element in intelligent vehicle competitions. The system implements ring entry and exit using a combination of AI detection and image processing:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;else if(scene == Scene::RingScene){ 
+ control.motorSpeed = ring_params-&amp;gt;ring_speed; 
+ control.turnP = CarParams-&amp;gt;ring_p;
+ control.turnD = CarParams-&amp;gt;ring_d;
+ findline.line_type = LineType::STRAIGHT;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="charging-area-processing"&gt;&lt;span&gt;Charging Area Processing&lt;/span&gt;
+ &lt;a href="#charging-area-processing" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;The charging area requires completing three phases: parking, charging, and exiting:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (scene == Scene::ChargeScene ){
+ if(charge-&amp;gt;flag_down){
+ control.motorSpeed = ai_params-&amp;gt;charge_speedHigh;
+ }
+ if(charge-&amp;gt;step == Charge::Step::Enter){
+ control.motorSpeed = std::max(ai_params-&amp;gt;charge_speedLow - ((float)charge-&amp;gt;enter_count/(float)50), (float)1);
+ }
+ if(charge-&amp;gt;carStoping){
+ control.motorSpeed = 0; // Stop for charging
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-motion-control"&gt;&lt;span&gt;4.3 Motion Control&lt;/span&gt;
+ &lt;a href="#43-motion-control" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Motion control uses PID controller combined with dynamic look-ahead strategy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void SmartCar::motion_control() {
+ // Dynamic look-ahead adjustment
+ if(CarParams-&amp;gt;qianzhan_change &amp;amp;&amp;amp; control.motorSpeed &amp;lt;= CarParams-&amp;gt;speedHigh &amp;amp;&amp;amp; control.motorSpeed &amp;gt;= CarParams-&amp;gt;speedLow){
+ control.qianzhan = CarParams::qianzhan_low &amp;#43; 
+ static_cast&amp;lt;int&amp;gt;(static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - control.motorSpeed) / 
+ static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - CarParams-&amp;gt;speedLow)) * 
+ (CarParams-&amp;gt;qianzhan_high - CarParams-&amp;gt;qianzhan_low);
+ }
+ 
+ // Send control commands via serial port
+ uart-&amp;gt;carControl(control.motorSpeed, control.servoPwm);
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="44-serial-communication"&gt;&lt;span&gt;4.4 Serial Communication&lt;/span&gt;
+ &lt;a href="#44-serial-communication" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Serial communication is used for data exchange between the main controller and motor driver board:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bool SmartCar::uart_connect() {
+ uart = std::make_shared&amp;lt;Uart&amp;gt;(&amp;#34;/dev/ttyUSB0&amp;#34;);
+ int ret = uart-&amp;gt;open();
+ if (ret != 0) {
+ std::cerr &amp;lt;&amp;lt; &amp;#34;Uart Open failed!&amp;#34; &amp;lt;&amp;lt; std::endl;
+ return false;
+ }
+ uart-&amp;gt;startReceive();
+ return true;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-compilation-and-running"&gt;&lt;span&gt;5. Compilation and Running&lt;/span&gt;
+ &lt;a href="#5-compilation-and-running" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-environment-configuration"&gt;&lt;span&gt;5.1 Environment Configuration&lt;/span&gt;
+ &lt;a href="#51-environment-configuration" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Since the code uses C++20 features, gcc 11.2 needs to be installed:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Compile and install gcc 11.2
+cd ~/Downloads
+wget https://mirrors.nju.edu.cn/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+tar -xf gcc-11.2.0.tar.xz
+cd gcc-11.2.0
+./contrib/download_prerequisites
+mkdir -p gcc-11.2.0-build &amp;amp;&amp;amp; cd gcc-11.2.0-build
+../gcc-11.2.0/configure --prefix=/opt/gcc-11.2 --enable-languages=c,c&amp;#43;&amp;#43; --disable-multilib
+make -j&amp;#34;$(nproc)&amp;#34;
+sudo make install
+
+# Configure environment variables
+echo &amp;#39;export PATH=/opt/gcc-11.2/bin:$PATH&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
+source ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="52-building-the-project"&gt;&lt;span&gt;5.2 Building the Project&lt;/span&gt;
+ &lt;a href="#52-building-the-project" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;cd ~/car-work
+rm -rf build &amp;amp;&amp;amp; mkdir build &amp;amp;&amp;amp; cd build
+cmake .. 
+make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="53-running-the-program"&gt;&lt;span&gt;5.3 Running the Program&lt;/span&gt;
+ &lt;a href="#53-running-the-program" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;./icar&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="6-summary"&gt;&lt;span&gt;6. Summary&lt;/span&gt;
+ &lt;a href="#6-summary" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;This project implemented an intelligent vehicle control system based on EdgeBoard, completing the following work:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Integration&lt;/strong&gt;: Completed hardware connection and debugging between EdgeBoard and sensors/actuators&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Software Architecture&lt;/strong&gt;: Designed and implemented a modular software architecture for easy maintenance and extension&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Object Detection&lt;/strong&gt;: Deployed YOLOv3-Mobilenet model for multi-element detection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Motion Control&lt;/strong&gt;: Implemented path tracking algorithm combining PID control and dynamic look-ahead&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Element Processing&lt;/strong&gt;: Completed recognition and processing of various elements including ring, intersection, bridge, and charging area&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This project won the Second Prize in the South China Division of the 20th National Undergraduate Intelligent Vehicle Competition Full Model Group.&lt;/p&gt;</description></item><item><title>2024 National Undergraduate Mathematical Modeling Contest (Problem A)</title><link>https://long753.github.io/en/cumcm/</link><pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/cumcm/</guid><category domain="https://long753.github.io/en/categories/math--physics/">Math &amp; Physics</category><description>&lt;h2 class="heading-element" id="1-problem-background"&gt;&lt;span&gt;1. Problem Background&lt;/span&gt;
+ &lt;a href="#1-problem-background" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;&amp;ldquo;Bench Dragon&amp;rdquo; is a traditional folk activity in eastern Zhejiang Province. It consists of multiple wooden benches connected together, with lanterns fixed on each bench. During the performance, the dragon head leads the entire body to move. Since the benches are connected through pivots, complex spatial motion is generated during movement. This problem requires establishing a mathematical model to analyze the motion patterns of the Bench Dragon and perform optimization design.&lt;/p&gt;
+&lt;h3 class="heading-element" id="11-problem-description"&gt;&lt;span&gt;1.1 Problem Description&lt;/span&gt;
+ &lt;a href="#11-problem-description" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Given a Bench Dragon composed of N benches, each bench has length L and width W. Benches are connected through pivots. The dragon head moves along a given trajectory. The requirements are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Determine the pose (position and orientation) of each bench&lt;/li&gt;
+&lt;li&gt;Calculate the minimum turning radius&lt;/li&gt;
+&lt;li&gt;Optimize speed planning&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="2-model-assumptions"&gt;&lt;span&gt;2. Model Assumptions&lt;/span&gt;
+ &lt;a href="#2-model-assumptions" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;To simplify the problem, we make the following assumptions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Rigid Body Assumption&lt;/strong&gt;: Each bench is treated as a rigid body, ignoring elastic deformation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Connection Constraint&lt;/strong&gt;: Adjacent benches are connected through pivots, which act as spherical joint constraints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No-Slip Assumption&lt;/strong&gt;: Each point of the dragon body moves along the tangential direction of the trajectory without lateral sliding&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Constant Speed Assumption&lt;/strong&gt;: The dragon head moves at a constant speed V along the trajectory&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-mathematical-modeling"&gt;&lt;span&gt;3. Mathematical Modeling&lt;/span&gt;
+ &lt;a href="#3-mathematical-modeling" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-coordinate-system-establishment"&gt;&lt;span&gt;3.1 Coordinate System Establishment&lt;/span&gt;
+ &lt;a href="#31-coordinate-system-establishment" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Establish a follower coordinate system: taking the dragon head as the reference, the tangential direction of the trajectory is the x-axis, upward is the z-axis, and right is the y-axis.&lt;/p&gt;
+&lt;p&gt;Let the trajectory parametric equation of the dragon head be:
+$$\vec{r}(s) = (x(s), y(s), z(s))$$&lt;/p&gt;
+&lt;p&gt;Where s is the arc length parameter.&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-kinematics-model"&gt;&lt;span&gt;3.2 Kinematics Model&lt;/span&gt;
+ &lt;a href="#32-kinematics-model" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;For the i-th bench (i=1 represents the first bench after the dragon head), its position can be obtained by the following recursive relationship:&lt;/p&gt;
+&lt;p&gt;$$\vec{r}_{i+1} = \vec{r}_i + L \cdot \vec{t}(s_i) + \vec{d}_i$$&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\vec{t}(s)$ is the trajectory tangent vector&lt;/li&gt;
+&lt;li&gt;$\vec{d}_i$ is the offset vector due to pivot clearance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The orientation is calculated using the Frenet-Serret framework:&lt;/p&gt;
+&lt;p&gt;$$\vec{t} = \frac{d\vec{r}}{ds}, \quad \vec{n} = \frac{d\vec{t}}{ds} / |\frac{d\vec{t}}{ds}|, \quad \vec{b} = \vec{t} \times \vec{n}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="33-constraint-conditions"&gt;&lt;span&gt;3.3 Constraint Conditions&lt;/span&gt;
+ &lt;a href="#33-constraint-conditions" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="331-geometric-constraints"&gt;&lt;span&gt;3.3.1 Geometric Constraints&lt;/span&gt;
+ &lt;a href="#331-geometric-constraints" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;The angle between adjacent benches must satisfy:
+$$\theta_{i,i+1} \leq \theta_{max}$$&lt;/p&gt;
+&lt;p&gt;Where $\theta_{max}$ is determined by the pivot&amp;rsquo;s range of motion.&lt;/p&gt;
+&lt;h4 class="heading-element" id="332-motion-constraints"&gt;&lt;span&gt;3.3.2 Motion Constraints&lt;/span&gt;
+ &lt;a href="#332-motion-constraints" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Velocity constraint:
+$$v_i = v_{i-1} \cos(\theta_{i,i+1})$$&lt;/p&gt;
+&lt;p&gt;Angular velocity constraint:
+$$\omega_i \leq \omega_{max}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="34-minimum-turning-radius-solution"&gt;&lt;span&gt;3.4 Minimum Turning Radius Solution&lt;/span&gt;
+ &lt;a href="#34-minimum-turning-radius-solution" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The minimum turning radius can be solved through the following optimization problem:&lt;/p&gt;
+&lt;p&gt;$$\min R$$
+$$s.t. \quad \theta_{i,i+1} \leq \theta_{max}, \quad \forall i$$&lt;/p&gt;
+&lt;p&gt;Numerical iteration method is used with the following algorithm flow:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Initialize trajectory curvature $\kappa = 1/R$&lt;/li&gt;
+&lt;li&gt;Iteratively update curvature until constraints are satisfied&lt;/li&gt;
+&lt;li&gt;Output the minimum feasible radius R&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="4-optimization-design"&gt;&lt;span&gt;4. Optimization Design&lt;/span&gt;
+ &lt;a href="#4-optimization-design" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-speed-planning"&gt;&lt;span&gt;4.1 Speed Planning&lt;/span&gt;
+ &lt;a href="#41-speed-planning" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Based on kinematic constraints, establish a speed optimization model:&lt;/p&gt;
+&lt;p&gt;$$\min T = \int_0^L \frac{ds}{v(s)}$$
+$$s.t. \quad a_{max} \geq |\vec{a}(t)|, \quad v_{max} \geq |\vec{v}(t)|$$&lt;/p&gt;
+&lt;p&gt;Trapezoidal speed curve is used for planning:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v(s) = 
+ v_0 &amp;#43; (v_max - v_0) * s / s_1, s &amp;lt; s_1
+ v_max, s_1 ≤ s &amp;lt; L - s_1
+ v_max - (v_max - v_0) * (s - L &amp;#43; s_1) / s_1, s ≥ L - s_1&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-bench-spacing-optimization"&gt;&lt;span&gt;4.2 Bench Spacing Optimization&lt;/span&gt;
+ &lt;a href="#42-bench-spacing-optimization" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Considering the performance effect and motion flexibility, bench spacing can be optimized as:&lt;/p&gt;
+&lt;p&gt;$$d_i = d_0 + k \cdot \kappa(s_i)$$&lt;/p&gt;
+&lt;p&gt;Where $\kappa$ is the trajectory curvature and k is the adjustment coefficient.&lt;/p&gt;
+&lt;h2 class="heading-element" id="5-simulation-verification"&gt;&lt;span&gt;5. Simulation Verification&lt;/span&gt;
+ &lt;a href="#5-simulation-verification" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;MATLAB simulation is performed with the following parameter settings:&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Parameter&lt;/th&gt;
+ &lt;th&gt;Value&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Number of Benches N&lt;/td&gt;
+ &lt;td&gt;33&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Bench Length L&lt;/td&gt;
+ &lt;td&gt;1.2m&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Maximum Pivot Angle $\theta_{max}$&lt;/td&gt;
+ &lt;td&gt;30°&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Dragon Head Speed V&lt;/td&gt;
+ &lt;td&gt;1m/s&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Simulation results show:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Minimum feasible turning radius is approximately 2.5m&lt;/li&gt;
+&lt;li&gt;Optimized speed curve can reduce motion time by 30%&lt;/li&gt;
+&lt;li&gt;Dynamic spacing strategy can effectively reduce stress concentration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="6-conclusion"&gt;&lt;span&gt;6. Conclusion&lt;/span&gt;
+ &lt;a href="#6-conclusion" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;This paper establishes a kinematics model of the Bench Dragon, solves the minimum turning radius through constraint analysis, and proposes speed planning and spacing optimization schemes. The model can provide theoretical guidance for actual dragon dance performances.&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-innovations"&gt;&lt;span&gt;6.1 Innovations&lt;/span&gt;
+ &lt;a href="#61-innovations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Established a recursive pose model based on the Frenet framework&lt;/li&gt;
+&lt;li&gt;Proposed a curvature-based adaptive spacing strategy&lt;/li&gt;
+&lt;li&gt;Implemented a constraint-based speed optimization algorithm&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="heading-element" id="62-limitations"&gt;&lt;span&gt;6.2 Limitations&lt;/span&gt;
+ &lt;a href="#62-limitations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Randomness of pivot clearance not considered&lt;/li&gt;
+&lt;li&gt;Dynamic wind resistance not considered&lt;/li&gt;
+&lt;li&gt;Model assumptions are overly idealized&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Future research can introduce probabilistic constraints and dynamics models for improvement.&lt;/p&gt;</description></item><item><title>Spline Curves Summary</title><link>https://long753.github.io/en/spline/</link><pubDate>Fri, 03 Apr 2026 00:41:30 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/spline/</guid><category domain="https://long753.github.io/en/categories/math--physics/">Math &amp; Physics</category><description>&lt;h2 class="heading-element" id="1-introduction"&gt;&lt;span&gt;1. Introduction&lt;/span&gt;
+ &lt;a href="#1-introduction" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;Spline curves are essential tools in computer graphics, robot path planning, and curve fitting. Compared to high-degree polynomials, spline curves offer better local control and numerical stability, ensuring smooth curves while reducing computational complexity.&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-spline-curve-fundamentals"&gt;&lt;span&gt;2. Spline Curve Fundamentals&lt;/span&gt;
+ &lt;a href="#2-spline-curve-fundamentals" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-definition"&gt;&lt;span&gt;2.1 Definition&lt;/span&gt;
+ &lt;a href="#21-definition" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;A spline curve is a smooth curve composed of polynomial segments, where each segment between two knots can be represented by a polynomial. Given a knot sequence $t_0 &amp;lt; t_1 &amp;lt; &amp;hellip; &amp;lt; t_n$, a k-th degree spline curve satisfies:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It is a k-th degree polynomial on each interval $[t_i, t_{i+1}]$&lt;/li&gt;
+&lt;li&gt;It has continuous (k-1)-th derivatives throughout the entire domain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="22-advantages"&gt;&lt;span&gt;2.2 Advantages&lt;/span&gt;
+ &lt;a href="#22-advantages" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Locality&lt;/strong&gt;: Modifying one control point only affects the local region&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stability&lt;/strong&gt;: Low-degree polynomials have better numerical stability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Curve shape can be adjusted by changing control points&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Smoothness&lt;/strong&gt;: Automatic continuity of derivatives at connection points&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-common-spline-types"&gt;&lt;span&gt;3. Common Spline Types&lt;/span&gt;
+ &lt;a href="#3-common-spline-types" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-b-spline"&gt;&lt;span&gt;3.1 B-Spline&lt;/span&gt;
+ &lt;a href="#31-b-spline" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;B-Spline (Basis Spline) is the most commonly used spline curve, with basis functions defined as:&lt;/p&gt;
+&lt;p&gt;$$B_{i,p}(t) = \frac{t - t_i}{t_{i+p} - t_i} B_{i,p-1}(t) + \frac{t_{i+p+1} - t}{t_{i+p+1} - t_{i+1}} B_{i+1,p-1}(t)$$&lt;/p&gt;
+&lt;p&gt;Where p is the spline degree.&lt;/p&gt;
+&lt;p&gt;The B-spline curve is calculated as:
+$$C(t) = \sum_{i=0}^n N_{i,p}(t) P_i$$&lt;/p&gt;
+&lt;p&gt;Where $N_{i,p}(t)$ is the p-th degree B-spline basis function, and $P_i$ are control points.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Properties&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Convex Hull: The curve lies within the convex hull of the control polygon&lt;/li&gt;
+&lt;li&gt;Locality: The i-th control point only affects the interval $[t_i, t_{i+p+1}]$&lt;/li&gt;
+&lt;li&gt;Variation Reducing: The number of intersections with any line does not exceed that with the control polygon&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="32-nurbs"&gt;&lt;span&gt;3.2 NURBS&lt;/span&gt;
+ &lt;a href="#32-nurbs" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;NURBS (Non-Uniform Rational B-Spline) is the standard curve representation in industry:&lt;/p&gt;
+&lt;p&gt;$$C(t) = \frac{\sum_{i=0}^n R_{i,p}(t) w_i P_i}{\sum_{i=0}^n R_{i,p}(t) w_i}$$&lt;/p&gt;
+&lt;p&gt;Where the rational basis function is:
+$$R_{i,p}(t) = \frac{N_{i,p}(t) w_i}{\sum_{j=0}^n N_{j,p}(t) w_j}$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Advantages&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports precise conic curve representation&lt;/li&gt;
+&lt;li&gt;Curve shape can be adjusted through weights&lt;/li&gt;
+&lt;li&gt;Unified representation of free-form curves and analytical curves&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="33-catmull-rom-spline"&gt;&lt;span&gt;3.3 Catmull-Rom Spline&lt;/span&gt;
+ &lt;a href="#33-catmull-rom-spline" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Catmull-Rom spline is an interpolating spline that passes through all control points:&lt;/p&gt;
+&lt;p&gt;$$P(t) = [t^3 \quad t^2 \quad t \quad 1] M P$$&lt;/p&gt;
+&lt;p&gt;Where $M$ is the Catmull-Rom matrix.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Characteristics&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Interpolation passes through all control points&lt;/li&gt;
+&lt;li&gt;Tangents are automatically calculated: $C&amp;rsquo;(t_i) = \frac{P_{i+1} - P_{i-1}}{2}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="34-bézier-curve"&gt;&lt;span&gt;3.4 Bézier Curve&lt;/span&gt;
+ &lt;a href="#34-b%c3%a9zier-curve" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Bézier curve is a special form of B-spline, defined by Bernstein basis functions:&lt;/p&gt;
+&lt;p&gt;$$B(t) = \sum_{i=0}^n B_{i,n}(t) P_i$$&lt;/p&gt;
+&lt;p&gt;Where the Bernstein basis function is:
+$$B_{i,n}(t) = \binom{n}{i} t^i (1-t)^{n-i}$$&lt;/p&gt;
+&lt;h2 class="heading-element" id="4-path-planning-applications"&gt;&lt;span&gt;4. Path Planning Applications&lt;/span&gt;
+ &lt;a href="#4-path-planning-applications" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-robot-trajectory-generation"&gt;&lt;span&gt;4.1 Robot Trajectory Generation&lt;/span&gt;
+ &lt;a href="#41-robot-trajectory-generation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;In robot path planning, spline curves are used to generate smooth motion trajectories:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// Cubic B-spline trajectory planning
+class SplineTrajectory {
+public:
+ std::vector&amp;lt;Eigen::Vector3d&amp;gt; control_points;
+ std::vector&amp;lt;double&amp;gt; times;
+ 
+ Eigen::Vector3d position(double t) {
+ // Calculate position on B-spline curve
+ return evaluateSpline(t);
+ }
+ 
+ Eigen::Vector3d velocity(double t) {
+ // Calculate velocity (first derivative)
+ return evaluateDerivative(t, 1);
+ }
+ 
+ Eigen::Vector3d acceleration(double t) {
+ // Calculate acceleration (second derivative)
+ return evaluateDerivative(t, 2);
+ }
+};&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-time-optimal-planning"&gt;&lt;span&gt;4.2 Time-Optimal Planning&lt;/span&gt;
+ &lt;a href="#42-time-optimal-planning" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Combined with velocity/acceleration constraints, perform time-optimal planning:&lt;/p&gt;
+&lt;p&gt;$$\min T$$
+$$s.t. \quad |v(t)| \leq v_{max}, \quad |a(t)| \leq a_{max}$$&lt;/p&gt;
+&lt;p&gt;Trapezoidal or S-curve velocity profiles are used for planning.&lt;/p&gt;
+&lt;h3 class="heading-element" id="43-continuity-requirements"&gt;&lt;span&gt;4.3 Continuity Requirements&lt;/span&gt;
+ &lt;a href="#43-continuity-requirements" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Robot motion requires $G^2$ continuity (position, velocity, acceleration continuous):&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Continuity Level&lt;/th&gt;
+ &lt;th&gt;Requirement&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^0$&lt;/td&gt;
+ &lt;td&gt;Position continuous&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^1$&lt;/td&gt;
+ &lt;td&gt;Tangent continuous&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^2$&lt;/td&gt;
+ &lt;td&gt;Curvature continuous&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 class="heading-element" id="5-numerical-computation"&gt;&lt;span&gt;5. Numerical Computation&lt;/span&gt;
+ &lt;a href="#5-numerical-computation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-parameterization-methods"&gt;&lt;span&gt;5.1 Parameterization Methods&lt;/span&gt;
+ &lt;a href="#51-parameterization-methods" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Curve parameterization affects curve shape:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Uniform Parameterization&lt;/strong&gt;: $t_i = i / n$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chord Length Parameterization&lt;/strong&gt;: $t_i = \sum_{j=1}^{i} |P_j - P_{j-1}| / L$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Centripetal Parameterization&lt;/strong&gt;: $t_i = \sum_{j=1}^{i} \sqrt{|P_j - P_{j-1}|} / L$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="heading-element" id="52-curve-differentiation"&gt;&lt;span&gt;5.2 Curve Differentiation&lt;/span&gt;
+ &lt;a href="#52-curve-differentiation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The derivative of a spline curve can be obtained by differentiating the basis functions:&lt;/p&gt;
+&lt;p&gt;For B-splines, the derivative of a p-th degree spline is still a (p-1)-th degree B-spline:
+$$\frac{d}{dt}C(t) = \sum_{i=0}^{n-1} N_{i,p-1}(t) \cdot \frac{p}{t_{i+p+1} - t_i}(P_{i+1} - P_i)$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="53-curvature-calculation"&gt;&lt;span&gt;5.3 Curvature Calculation&lt;/span&gt;
+ &lt;a href="#53-curvature-calculation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Curve curvature is defined as:
+$$\kappa(t) = \frac{|x&amp;rsquo;y&amp;rsquo;&amp;rsquo; - y&amp;rsquo;x&amp;rsquo;&amp;rsquo;|}{(x&amp;rsquo;^2 + y&amp;rsquo;^2)^{3/2}}$$&lt;/p&gt;
+&lt;h2 class="heading-element" id="6-simulation-example"&gt;&lt;span&gt;6. Simulation Example&lt;/span&gt;
+ &lt;a href="#6-simulation-example" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;Spline curve simulation using MATLAB:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;% B-spline curve plotting
+control_points = [0 0; 1 2; 2 1; 3 3; 4 0];
+t = 0:0.01:1;
+points = zeros(length(t), 2);
+
+for i = 1:length(t)
+ points(i,:) = bspval(t(i), control_points);
+end
+
+plot(control_points(:,1), control_points(:,2), &amp;#39;o-&amp;#39;);
+hold on;
+plot(points(:,1), points(:,2), &amp;#39;r-&amp;#39;);&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="7-summary"&gt;&lt;span&gt;7. Summary&lt;/span&gt;
+ &lt;a href="#7-summary" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;Spline curves are core tools for robot path planning. This article summarizes:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Theoretical Foundation&lt;/strong&gt;: Mathematical definition and properties of spline curves&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Common Types&lt;/strong&gt;: B-spline, NURBS, Catmull-Rom, Bézier&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Engineering Applications&lt;/strong&gt;: Trajectory generation and time-optimal planning&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Numerical Methods&lt;/strong&gt;: Parameterization and derivative computation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Choosing the appropriate spline type depends on the specific application:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Trajectory Interpolation: Catmull-Rom preferred&lt;/li&gt;
+&lt;li&gt;Free-form Curves: B-spline or NURBS&lt;/li&gt;
+&lt;li&gt;Precise Representation: NURBS (conic curves)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="71-further-reading"&gt;&lt;span&gt;7.1 Further Reading&lt;/span&gt;
+ &lt;a href="#71-further-reading" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;De Boor, C. - A Practical Guide to Splines&lt;/li&gt;
+&lt;li&gt;Piegl, L. - The NURBS Book&lt;/li&gt;
+&lt;li&gt;Choi, J. - Robot Path Planning&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>CF-DWTA Model Derivation: Damage Probability Model Considering Cascading Effects</title><link>https://long753.github.io/en/cf_dwta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/cf_dwta/</guid><category domain="https://long753.github.io/en/categories/math--physics/">Math &amp; Physics</category><description>&lt;h2 class="heading-element" id="1-research-background"&gt;&lt;span&gt;1. Research Background&lt;/span&gt;
+ &lt;a href="#1-research-background" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;In modern warfare systems, attacking key targets often requires considering cascading damage effects. When a critical node is destroyed, it may cause functional degradation or failure of other connected nodes. This phenomenon is called &amp;ldquo;Cascading Damage.&amp;rdquo; For example, destroying a communication base station may cause nearby radar stations to lose information support, thereby affecting the overall effectiveness of the air defense system.&lt;/p&gt;
+&lt;p&gt;Traditional damage probability models only consider the direct damage effect of a single strike, ignoring the relationships between targets. Therefore, establishing a damage probability model considering cascading effects has important theoretical significance and practical value.&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-problem-definition"&gt;&lt;span&gt;2. Problem Definition&lt;/span&gt;
+ &lt;a href="#2-problem-definition" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;There are N interconnected target nodes, forming a network system $G=(V,E)$, where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$V = {v_1, v_2, &amp;hellip;, v_N}$ represents the set of nodes&lt;/li&gt;
+&lt;li&gt;$E \subseteq V \times V$ represents the set of edges, indicating the relationships between nodes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="21-basic-assumptions"&gt;&lt;span&gt;2.1 Basic Assumptions&lt;/span&gt;
+ &lt;a href="#21-basic-assumptions" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Each node $v_i$ has an initial functional value $F_i \in [0, 1]$, where 1 means fully functional and 0 means completely failed&lt;/li&gt;
+&lt;li&gt;Each node has a failure threshold $\theta$; when the functional value falls below the threshold, it is considered failed&lt;/li&gt;
+&lt;li&gt;Edge $(v_i, v_j)$ has a weight $w_{ij} \in [0, 1]$, indicating the degree of dependency between nodes&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-mathematical-model"&gt;&lt;span&gt;3. Mathematical Model&lt;/span&gt;
+ &lt;a href="#3-mathematical-model" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-direct-damage-model"&gt;&lt;span&gt;3.1 Direct Damage Model&lt;/span&gt;
+ &lt;a href="#31-direct-damage-model" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Assume that after striking target $v_i$, its functional value decreases to:
+$$F_i&amp;rsquo; = F_i \cdot (1 - d_i)$$&lt;/p&gt;
+&lt;p&gt;Where $d_i$ is the damage degree to the target, $d_i \in [0, 1]$.&lt;/p&gt;
+&lt;p&gt;The damage degree $d_i$ follows a probability distribution, usually described by exponential or normal distribution:
+$$P(d_i \leq x) = 1 - e^{-\lambda x}$$
+or
+$$P(d_i \leq x) = \Phi\left(\frac{x - \mu}{\sigma}\right)$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-cascading-damage-model"&gt;&lt;span&gt;3.2 Cascading Damage Model&lt;/span&gt;
+ &lt;a href="#32-cascading-damage-model" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Considering the dependency between nodes, define the functional value of node $v_i$ as:
+$$F_i = f({F_j}&lt;em&gt;{j \in N(i)}, {w&lt;/em&gt;{ij}})$$&lt;/p&gt;
+&lt;p&gt;Where $N(i)$ is the set of neighbor nodes of $v_i$.&lt;/p&gt;
+&lt;p&gt;Using the weighted average model:
+$$F_i = \sum_{j \in N(i)} w_{ij} \cdot F_j$$&lt;/p&gt;
+&lt;p&gt;When a node is struck and its functional value decreases, it affects neighbor nodes through the above relationship, generating cascading effects.&lt;/p&gt;
+&lt;h3 class="heading-element" id="33-damage-probability-calculation"&gt;&lt;span&gt;3.3 Damage Probability Calculation&lt;/span&gt;
+ &lt;a href="#33-damage-probability-calculation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Define the system damage probability as the probability that system functionality drops below the threshold:
+$$P_{damage} = P\left(\sum_{i=1}^N F_i &amp;lt; \theta \cdot \sum_{i=1}^N F_i^0\right)$$&lt;/p&gt;
+&lt;p&gt;Where $F_i^0$ is the initial functional value of the node.&lt;/p&gt;
+&lt;h3 class="heading-element" id="34-dwta-model"&gt;&lt;span&gt;3.4 DWTA Model&lt;/span&gt;
+ &lt;a href="#34-dwta-model" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The DWTA (Damage Weapons Target Assignment) problem can be expressed as:&lt;/p&gt;
+&lt;p&gt;$$\max \sum_{i=1}^N P_i(x_i)$$
+$$s.t. \sum_{i=1}^N c_i x_i \leq C$$
+$$x_i \in {0, 1}$$&lt;/p&gt;
+&lt;p&gt;Where:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$P_i(x_i)$ is the damage probability of node i after strike&lt;/li&gt;
+&lt;li&gt;$c_i$ is the resource consumption required to strike node i&lt;/li&gt;
+&lt;li&gt;$C$ is the total resource constraint&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="4-model-solution"&gt;&lt;span&gt;4. Model Solution&lt;/span&gt;
+ &lt;a href="#4-model-solution" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-monte-carlo-simulation"&gt;&lt;span&gt;4.1 Monte Carlo Simulation&lt;/span&gt;
+ &lt;a href="#41-monte-carlo-simulation" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Due to the nonlinear characteristics of cascading effects, analytical solutions are difficult to obtain. Monte Carlo method is used for simulation:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Algorithm: Monte Carlo Simulation
+Input: Network G, strike plan S
+Output: Damage probability estimate P_damage
+
+for k = 1 to M:
+ for each node i in V:
+ if i in S:
+ d_i = Random(distribution)
+ F_i = F_i^0 * (1 - d_i)
+ else:
+ F_i = F_i^0
+ 
+ repeat:
+ changed = false
+ for each node i in V:
+ F_i_new = sum(w_ij * F_j for j in N(i))
+ if |F_i_new - F_i| &amp;gt; epsilon:
+ F_i = F_i_new
+ changed = true
+ until not changed
+ 
+ if sum(F_i) &amp;lt; theta * sum(F_i^0):
+ count&amp;#43;&amp;#43;
+ 
+P_damage = count / M&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-approximate-analytical-solution"&gt;&lt;span&gt;4.2 Approximate Analytical Solution&lt;/span&gt;
+ &lt;a href="#42-approximate-analytical-solution" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;For large-scale networks, mean-field approximation can be used:&lt;/p&gt;
+&lt;p&gt;Assuming node functional values follow a normal distribution $F_i \sim N(\mu_i, \sigma_i^2)$, then the system functional value:
+$$\sum_{i=1}^N F_i \sim N\left(\sum_{i=1}^N \mu_i, \sum_{i=1}^N \sigma_i^2 + 2\sum_{(i,j)\in E} \rho_{ij}\sigma_i\sigma_j\right)$$&lt;/p&gt;
+&lt;p&gt;Where $\rho_{ij}$ is the correlation coefficient between nodes.&lt;/p&gt;
+&lt;h2 class="heading-element" id="5-simulation-analysis"&gt;&lt;span&gt;5. Simulation Analysis&lt;/span&gt;
+ &lt;a href="#5-simulation-analysis" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-parameter-settings"&gt;&lt;span&gt;5.1 Parameter Settings&lt;/span&gt;
+ &lt;a href="#51-parameter-settings" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;Parameter&lt;/th&gt;
+ &lt;th&gt;Value&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Network Size&lt;/td&gt;
+ &lt;td&gt;50 nodes&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Average Degree&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Dependency Weight&lt;/td&gt;
+ &lt;td&gt;0.3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Damage Threshold&lt;/td&gt;
+ &lt;td&gt;0.4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;Simulation Times&lt;/td&gt;
+ &lt;td&gt;10000&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 class="heading-element" id="52-result-analysis"&gt;&lt;span&gt;5.2 Result Analysis&lt;/span&gt;
+ &lt;a href="#52-result-analysis" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;The simulation results show:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Cascading effects can increase total damage probability by approximately 20-40%&lt;/li&gt;
+&lt;li&gt;Network robustness is closely related to node degree distribution&lt;/li&gt;
+&lt;li&gt;Identification of critical nodes has significant impact on damage efficiency&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="6-conclusion"&gt;&lt;span&gt;6. Conclusion&lt;/span&gt;
+ &lt;a href="#6-conclusion" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;This paper establishes a damage probability model considering cascading effects. The main contributions include:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Proposed a cascading damage propagation mechanism based on functional dependency&lt;/li&gt;
+&lt;li&gt;Provided a Monte Carlo calculation method for damage probability&lt;/li&gt;
+&lt;li&gt;Analyzed the influence of network topology on damage effects&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This model can provide decision support for weapons target assignment and can also be used to evaluate the anti-damage capability of key targets.&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-application-scenarios"&gt;&lt;span&gt;6.1 Application Scenarios&lt;/span&gt;
+ &lt;a href="#61-application-scenarios" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Combat Command: Selecting optimal target combinations&lt;/li&gt;
+&lt;li&gt;Defense Evaluation: Evaluating anti-damage capability of critical infrastructure&lt;/li&gt;
+&lt;li&gt;Plan Formulation: Developing targeted defense strategies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="62-limitations"&gt;&lt;span&gt;6.2 Limitations&lt;/span&gt;
+ &lt;a href="#62-limitations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Dependency assumptions are oversimplified&lt;/li&gt;
+&lt;li&gt;Time dynamics are not considered&lt;/li&gt;
+&lt;li&gt;Model parameters are difficult to obtain accurately&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>Second training session for SmartCar – connect the edgeboard</title><link>https://long753.github.io/en/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun2/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1-power-on-the-smart-car"&gt;&lt;span&gt;1. Power On the Smart Car&lt;/span&gt;
+ &lt;a href="#1-power-on-the-smart-car" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;First, check if the battery voltage is between 11.6~12.6V—avoid overcharging or over-discharging. Then, insert the battery into the car and turn on the power switch. Finally, wait for the EdgeBoard to show a green light.&lt;/p&gt;
+&lt;h3 class="heading-element" id="2-connect-to-computer"&gt;&lt;span&gt;2. Connect to Computer&lt;/span&gt;
+ &lt;a href="#2-connect-to-computer" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="21-wired-connection-first-connection"&gt;&lt;span&gt;2.1 Wired Connection (First Connection)&lt;/span&gt;
+ &lt;a href="#21-wired-connection-first-connection" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;ol&gt;
-&lt;li&gt;点击ssh-remote的“+”号&lt;/li&gt;
-&lt;li&gt;在输入栏中输入：&lt;/li&gt;
+&lt;li&gt;Use an Ethernet cable to connect the computer to the smart car&lt;/li&gt;
+&lt;li&gt;Open the terminal and enter the command (may need multiple attempts if it fails):&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Enter the password: edgeboard to connect successfully.
+&lt;strong&gt;Note:&lt;/strong&gt; If you cannot connect at this step, try multiple times. If it still doesn&amp;rsquo;t work, contact me to replace the board.&lt;/p&gt;
+&lt;h4 class="heading-element" id="22-wireless-connection-most-common"&gt;&lt;span&gt;2.2 Wireless Connection (Most Common)&lt;/span&gt;
+ &lt;a href="#22-wireless-connection-most-common" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Wireless connection is commonly used when both the paddle and your computer are connected to the same hotspot. For the first wireless connection, enter the following in the terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo nmtui&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Click &amp;ldquo;active connect&amp;rdquo; to connect to your hotspot. After that, to connect to the car, simply open your hotspot, wait for the car to connect, then enter in the terminal:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Password: edgeboard&lt;/p&gt;
+&lt;h3 class="heading-element" id="3-connect-to-vscode-via-ssh"&gt;&lt;span&gt;3. Connect to VSCode via SSH&lt;/span&gt;
+ &lt;a href="#3-connect-to-vscode-via-ssh" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="31-install-plugin"&gt;&lt;span&gt;3.1 Install Plugin&lt;/span&gt;
+ &lt;a href="#31-install-plugin" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;First, install &lt;code&gt;Remote - SSH&lt;/code&gt; in VSCode—this is very easy.&lt;/p&gt;
+&lt;h4 class="heading-element" id="32-connect-to-edgeboard-via-plugin"&gt;&lt;span&gt;3.2 Connect to EdgeBoard via Plugin&lt;/span&gt;
+ &lt;a href="#32-connect-to-edgeboard-via-plugin" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Click the &amp;ldquo;+&amp;rdquo; button in ssh-remote&lt;/li&gt;
+&lt;li&gt;Enter in the input field:&lt;/li&gt;
 &lt;/ol&gt;
 &lt;pre&gt;&lt;code&gt;ssh edgeboard@paddlepi
-密码：edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
-&lt;li&gt;一直允许，配置文件点第一个就可以了（记住这个配置文件的位置）&lt;/li&gt;
-&lt;li&gt;在vscode里面打开car-work文件夹&lt;/li&gt;
+Password: edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;ol start="3"&gt;
+&lt;li&gt;Click &amp;ldquo;Allow&amp;rdquo; all the way through. For the configuration file, select the first option (remember this configuration file location)&lt;/li&gt;
+&lt;li&gt;Open the car-work folder in VSCode:&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code&gt;/home/edgeboard/car-work&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这一步，90%会失败。由于edgeboard太古老了，用的还是Ubuntu18.04的系统，因此需要大家将VScode的版本降低一下，再重新连接一下板卡。经过测试，1.85.2是最新的可以连接ubuntu18.04的版本，这是下载连接：&lt;code&gt;https://code.visualstudio.com/updates/v1_85&lt;/code&gt;&lt;/p&gt;
-&lt;h4 class="heading-element" id="33-配置密钥可选"&gt;&lt;span&gt;3.3 配置密钥（可选）&lt;/span&gt;
- &lt;a href="#33-%e9%85%8d%e7%bd%ae%e5%af%86%e9%92%a5%e5%8f%af%e9%80%89" class="heading-mark"&gt;
+&lt;pre&gt;&lt;code&gt;/home/edgeboard/car-work&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This step will fail 90% of the time. Because EdgeBoard is very old and uses Ubuntu 18.04, you need to lower your VSCode version and then reconnect to the board. Through testing, 1.85.2 is the latest version that can connect to Ubuntu 18.04. Download link: &lt;code&gt;https://code.visualstudio.com/updates/v1_85&lt;/code&gt;&lt;/p&gt;
+&lt;h4 class="heading-element" id="33-configure-ssh-key-optional"&gt;&lt;span&gt;3.3 Configure SSH Key (Optional)&lt;/span&gt;
+ &lt;a href="#33-configure-ssh-key-optional" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;如果你懒得每次用ssh连接板卡的时候都要输入密码，可以配置一下密钥，这样就不用每次都输入密码了。具体步骤如下：&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;If you don&amp;rsquo;t want to enter a password every time you SSH into the board, you can configure an SSH key so you don&amp;rsquo;t need to enter the password each time. Steps:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;在windows终端内输入指令：
+&lt;li&gt;Enter the command in Windows terminal:
 &lt;code&gt;ssh-keygen -t ed25519 -C &amp;quot;your_email@example.com&amp;quot;&lt;/code&gt;
-注意，更改一下&lt;code&gt;your_email@example.com&lt;/code&gt;的内容，尽量改成你熟悉的，我个人比较喜欢用&lt;code&gt;long753-win&lt;/code&gt;这种命名&lt;/li&gt;
-&lt;li&gt;将你生成的密钥对中的公钥（有.pub后缀）的内容复制下来，粘贴到edgeboard的&lt;code&gt;.ssh/authorized_keys&lt;/code&gt;中&lt;/li&gt;
-&lt;li&gt;在windows中的./ssh/config里面输入，跟我视频里面的那个格式一样
+Note: Change &lt;code&gt;your_email@example.com&lt;/code&gt; to something you recognize. I personally prefer naming like &lt;code&gt;long753-win&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Copy the content of the public key (the one with .pub suffix) and paste it into edgeboard&amp;rsquo;s &lt;code&gt;.ssh/authorized_keys&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Enter in Windows&amp;rsquo; ./ssh/config file, in the same format as in my video:
 &lt;code&gt;IdentityFile C:\Users\cl284\.ssh/id_ed25519&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;h3 class="heading-element" id="4打开vnc图形化界面"&gt;&lt;span&gt;4.打开VNC图形化界面&lt;/span&gt;
- &lt;a href="#4%e6%89%93%e5%bc%80vnc%e5%9b%be%e5%bd%a2%e5%8c%96%e7%95%8c%e9%9d%a2" class="heading-mark"&gt;
+&lt;h3 class="heading-element" id="4-open-vnc-graphical-interface"&gt;&lt;span&gt;4. Open VNC Graphical Interface&lt;/span&gt;
+ &lt;a href="#4-open-vnc-graphical-interface" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;如果你还没有安装VNC，请打开网址&lt;code&gt;https://www.realvnc.com/en/connect/download/viewer/&lt;/code&gt;，安装windows版本的VNC客户端，并按照安装提示安装好。&lt;/p&gt;
-&lt;p&gt;进入edgeboard终端后，输入指令：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中：&lt;code&gt;:1&lt;/code&gt;表示图形化界面端口号，可以自行设置。优先使用1号端口，当端口被占用时，可以尝试其他端口,只使用1~4号端口。&lt;/p&gt;
-&lt;p&gt;当出现下面的提示则说明启动成功：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;If you haven&amp;rsquo;t installed VNC yet, open the URL &lt;code&gt;https://www.realvnc.com/en/connect/download/viewer/&lt;/code&gt;, install the Windows version of the VNC client, and follow the installation instructions.&lt;/p&gt;
+&lt;p&gt;After logging into the EdgeBoard terminal, enter the command:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Here, &lt;code&gt;:1&lt;/code&gt; represents the graphical interface port number, which can be set as needed. Prioritize using port 1. When occupied, try other ports—only use ports 1~4.&lt;/p&gt;
+&lt;p&gt;When you see the following message, it indicates successful startup:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;New &amp;#39;paddlepi:1 (edgeboard)&amp;#39; desktop at :1 on machine paddlepi
 
 Starting applications specified in /etc/X11/Xvnc-session
 Log file is /home/edgeboard/.vnc/paddlepi:1.log
 
-Use xtigervncviewer -SecurityTypes VncAuth,TLSVnc -passwd /home/edgeboard/.vnc/passwd paddlepi:1 to connect to the VNC server.&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后打开VNC,建立新的连接：（如果连接过，直接点你原来建立的就ok）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vncserver：paddlepi:5901
-name: edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;同时，如果使用的不是1端口，例如是2端口，对应的用户名应该为：
-&lt;code&gt;vncserver：paddlepi:5901&lt;/code&gt;&lt;/p&gt;
-&lt;h3 class="heading-element" id="5配置算力版环境"&gt;&lt;span&gt;5.配置算力版环境&lt;/span&gt;
- &lt;a href="#5%e9%85%8d%e7%bd%ae%e7%ae%97%e5%8a%9b%e7%89%88%e7%8e%af%e5%a2%83" class="heading-mark"&gt;
+Use xtigervncviewer -SecurityTypes VncAuth,TLSVnc -passwd /home/edgeboard/.vnc/passwd paddlepi:1 to connect to the VNC server.&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then open VNC and establish a new connection (if you&amp;rsquo;ve connected before, just click the one you created):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vncserver: paddlepi:5901
+name: edgeboard&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Also, if you&amp;rsquo;re not using port 1, for example port 2, the corresponding address should be:
+&lt;code&gt;vncserver: paddlepi:5901&lt;/code&gt;&lt;/p&gt;
+&lt;h3 class="heading-element" id="5-configure-computing-board-environment"&gt;&lt;span&gt;5. Configure Computing Board Environment&lt;/span&gt;
+ &lt;a href="#5-configure-computing-board-environment" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;因为代码中用到了C++20新特性，以及一些其他的依赖，这里我们需要先更新一下依赖&lt;/p&gt;
-&lt;h4 class="heading-element" id="51-g112-gcc112请预留一个下午的时间安装"&gt;&lt;span&gt;5.1 g++11.2 gcc11.2（请预留一个下午的时间安装！！！！）&lt;/span&gt;
- &lt;a href="#51-g112-gcc112%e8%af%b7%e9%a2%84%e7%95%99%e4%b8%80%e4%b8%aa%e4%b8%8b%e5%8d%88%e7%9a%84%e6%97%b6%e9%97%b4%e5%ae%89%e8%a3%85" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;p&gt;Since the code uses C++20 features and some other dependencies, we need to update the dependencies first.&lt;/p&gt;
+&lt;h4 class="heading-element" id="51-g112-gcc112-please-reserve-an-afternoon-for-this-installation"&gt;&lt;span&gt;5.1 g++11.2 gcc11.2 (Please reserve an afternoon for this installation!!!!)&lt;/span&gt;
+ &lt;a href="#51-g112-gcc112-please-reserve-an-afternoon-for-this-installation" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;原本的仓库消失了，现在使用wget来拉取：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#修复环境
+&lt;/h4&gt;&lt;p&gt;The original repository is no longer available, so we use wget to fetch it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Fix environment
 sudo apt --fix-broken install -y
 sudo apt update
 sudo apt install -y build-essential xz-utils bison flex wget
 
-#拉取源码
+# Download source code
 cd /home/edgeboard/Download
 wget https://mirrors.nju.edu.cn/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
 sha256sum gcc-11.2.0.tar.xz
 tar -xf gcc-11.2.0.tar.xz
 
-#拉取依赖并编译
+# Download dependencies and compile
 cd gcc-11.2.0
 ./contrib/download_prerequisites
 cd ..
@@ -116,70 +1229,71 @@ mkdir -p gcc-11.2.0-build &amp;amp;&amp;amp; cd gcc-11.2.0-build
  --enable-languages=c,c&amp;#43;&amp;#43; \
  --disable-multilib \
  --enable-bootstrap
-make -j&amp;#34;$(nproc)&amp;#34; #需要很长一段时间，大概一坤时，请准备预留好时间，后续将很快
+make -j&amp;#34;$(nproc)&amp;#34; # This takes a long time, approximately 1.5 hours, please reserve enough time; subsequent steps will be faster
 sudo make install
 
-#修改PATH
+# Modify PATH
 echo &amp;#39;export PATH=/opt/gcc-11.2/bin:$PATH&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
 echo &amp;#39;export LD_LIBRARY_PATH=/opt/gcc-11.2/lib64:${LD_LIBRARY_PATH}&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
 source ~/.bashrc
 
-#验证
+# Verify
 which gcc
 gcc --version
 g&amp;#43;&amp;#43; --version&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="52-libavdevice-dev"&gt;&lt;span&gt;5.2 libavdevice-dev&lt;/span&gt;
  &lt;a href="#52-libavdevice-dev" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;sudo apt-get install libavdevice-dev&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="6编译文件"&gt;&lt;span&gt;6.编译文件&lt;/span&gt;
- &lt;a href="#6%e7%bc%96%e8%af%91%e6%96%87%e4%bb%b6" class="heading-mark"&gt;
+&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;sudo apt-get install libavdevice-dev&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="6-build-the-project"&gt;&lt;span&gt;6. Build the Project&lt;/span&gt;
+ &lt;a href="#6-build-the-project" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;在VNC界面中，打开终端，切换到工程目录，输入指令：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; cd /home/edgeboard/car-work #切换到自己的那个工作空间里面
- rm -rf build
- mkdir build
- cd build
- cmake .. #如果你修改了整个代码框架，可能需要修改一下CMakeList文件，如何修改可以去问AI
- make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;完全配置完全之后，保存你修改的代码后，进入build目录输入指令即可完成编译：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;其中，“icar”表示编译的目标文件，“-j3”表示使用三个线程编译，可以加快编译时间。这里的编译时间会根据你的修改程度而变化。&lt;/p&gt;
-&lt;h3 class="heading-element" id="7运行程序"&gt;&lt;span&gt;7.运行程序&lt;/span&gt;
- &lt;a href="#7%e8%bf%90%e8%a1%8c%e7%a8%8b%e5%ba%8f" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;p&gt;In the VNC interface, open the terminal, navigate to the project directory, and enter the commands:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; cd /home/edgeboard/car-work # Navigate to your workspace
+ rm -rf build
+ mkdir build
+ cd build
+ cmake .. # If you modified the entire code framework, you may need to modify the CMakeList file—ask AI how to do this
+ make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After complete configuration, to build after saving your modified code, enter the command in the build directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Here, &amp;ldquo;icar&amp;rdquo; is the target file to compile, and &amp;ldquo;-j3&amp;rdquo; means use three threads for compilation to speed up the build time. The build time varies depending on your changes.&lt;/p&gt;
+&lt;h3 class="heading-element" id="7-run-the-program"&gt;&lt;span&gt;7. Run the Program&lt;/span&gt;
+ &lt;a href="#7-run-the-program" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;在终端中，切换到工程目录，输入指令：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; ./icar&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时小车便成功启动，结束小车的运动只需在终端中输入指令&lt;code&gt;Ctrl+C&lt;/code&gt;即可。&lt;/p&gt;
-&lt;h3 class="heading-element" id="问题汇总"&gt;&lt;span&gt;问题汇总：&lt;/span&gt;
- &lt;a href="#%e9%97%ae%e9%a2%98%e6%b1%87%e6%80%bb" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;p&gt;In the terminal, navigate to the project directory and enter:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ./icar&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;At this point, the car starts successfully. To stop the car&amp;rsquo;s movement, simply enter &lt;code&gt;Ctrl+C&lt;/code&gt; in the terminal.&lt;/p&gt;
+&lt;h3 class="heading-element" id="troubleshooting"&gt;&lt;span&gt;Troubleshooting&lt;/span&gt;
+ &lt;a href="#troubleshooting" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="一登录vnc时需要root的密码可是输入edgeboard也没用"&gt;&lt;span&gt;一、登录VNC时，需要root的密码，可是输入edgeboard也没用。&lt;/span&gt;
- &lt;a href="#%e4%b8%80%e7%99%bb%e5%bd%95vnc%e6%97%b6%e9%9c%80%e8%a6%81root%e7%9a%84%e5%af%86%e7%a0%81%e5%8f%af%e6%98%af%e8%be%93%e5%85%a5edgeboard%e4%b9%9f%e6%b2%a1%e7%94%a8" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="1-when-logging-into-vnc-it-requires-root-password-but-entering-edgeboard-doesnt-work"&gt;&lt;span&gt;1. When logging into VNC, it requires root password, but entering edgeboard doesn&amp;rsquo;t work.&lt;/span&gt;
+ &lt;a href="#1-when-logging-into-vnc-it-requires-root-password-but-entering-edgeboard-doesnt-work" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;pre&gt;&lt;code&gt;cd /root/.vnc
 touch xstartup
-vim xtartup&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在里面复制：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;unset SESSION_MANAGER #将此行的注释去掉
-exec /usr/bin/startxfce4 #将此行的注释去掉
-#exec /etc/X11/xinit/xinitrc #将此行的注释去掉
+vim xtartup&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Copy the following into it:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;unset SESSION_MANAGER # Uncomment this line
+exec /usr/bin/startxfce4 # Uncomment this line
+#exec /etc/X11/xinit/xinitrc # Uncomment this line
 
 [ -x /etc/vnc/xstartup ] &amp;amp;&amp;amp; exec /etc/vnc/xstartup
 [ -r $HOME/.Xresources ] &amp;amp;&amp;amp; xrdb $HOME/.Xresources
 xsetroot -solid grey
 vncconfig -iconic &amp;amp;
-xterm -geometry 80×24&amp;#43;10&amp;#43;10 -ls -title “$VNCDESKTOP Desktop” &amp;amp;
-gnome-session gnome #添加这一句是连接时使用gnome 桌面环境
-twm &amp;amp;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;重新启动vnc：&lt;/p&gt;
+xterm -geometry 80x24&amp;#43;10&amp;#43;10 -ls -title &amp;#34;$VNCDESKTOP Desktop&amp;#34; &amp;amp;
+gnome-session gnome # Add this line to use GNOME desktop environment
+twm &amp;amp;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Restart VNC:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vncserver -kill :1
-sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="二edgeboard环境已经坏掉了需要刷系统"&gt;&lt;span&gt;二、edgeboard环境已经坏掉了，需要刷系统&lt;/span&gt;
- &lt;a href="#%e4%ba%8cedgeboard%e7%8e%af%e5%a2%83%e5%b7%b2%e7%bb%8f%e5%9d%8f%e6%8e%89%e4%ba%86%e9%9c%80%e8%a6%81%e5%88%b7%e7%b3%bb%e7%bb%9f" class="heading-mark"&gt;
+sudo vncserver :1 -localhost no&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="2-edgeboard-environment-is-corrupted-and-needs-system-reflash"&gt;&lt;span&gt;2. EdgeBoard environment is corrupted and needs system reflash&lt;/span&gt;
+ &lt;a href="#2-edgeboard-environment-is-corrupted-and-needs-system-reflash" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;打开百度网盘：
-通过网盘分享的文件：赛事专用卡-镜像开源资料
-链接: &lt;a href="https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111" target="_blank" rel="external nofollow noopener noreferrer"&gt;https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111&lt;/a&gt; 提取码: 1111
-烧录EMMC镜像，其他的按照压缩包里面的“EdgeBoard赛事专用卡-镜像烧写说明”操作即可&lt;/p&gt;</description></item><item><title>First training session for SmartCar – basic Git and Linux operations</title><link>https://long753.github.io/en/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun1/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;p&gt;This document covers only the fundamental aspects of Git and Linux systems, which should be sufficient for most scenarios encountered in the Smart Car Competition. Beyond these basics, there are many advanced topics not covered here. Based on my experience, these advanced features are less frequently used in the competition, so I recommend learning them only when you encounter a specific need.&lt;/p&gt;
+&lt;/h4&gt;&lt;p&gt;Open Baidu Cloud Drive:
+Files shared via cloud: 赛事专用卡-镜像开源资料
+Link: &lt;a href="https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111" target="_blank" rel="external nofollow noopener noreferrer"&gt;https://pan.baidu.com/s/1j32EjYg4vMcMBbzc1kMviA?pwd=1111&lt;/a&gt;
+Extraction code: 1111
+Flash the EMMC image, and follow the &amp;ldquo;EdgeBoard赛事专用卡-镜像烧写说明&amp;rdquo; (EdgeBoard Competition Card Image Flashing Instructions) in the compressed file&lt;/p&gt;</description></item><item><title>First training session for SmartCar – basic Git and Linux operations</title><link>https://long753.github.io/en/smartcar_peixun1/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/smartcar_peixun1/</guid><category domain="https://long753.github.io/en/categories/smartcar/">SmartCar</category><description>&lt;p&gt;This document covers only the fundamental aspects of Git and Linux systems, which should be sufficient for most scenarios encountered in the Smart Car Competition. Beyond these basics, there are many advanced topics not covered here. Based on my experience, these advanced features are less frequently used in the competition, so I recommend learning them only when you encounter a specific need.&lt;/p&gt;
 &lt;p&gt;Furthermore, there is no need to study Git and Linux &amp;ldquo;systematically&amp;rdquo; from scratch; doing so will consume a significant amount of your time with minimal return for the competition itself. I encourage everyone to learn through practice and application rather than blindly pursuing theoretical mastery. Given my own limitations, please be understanding if there are any errors or inaccuracies in this guide!&lt;/p&gt;
 &lt;hr&gt;
 &lt;h3 class="heading-element" id="1-git-essentials"&gt;&lt;span&gt;1. Git Essentials&lt;/span&gt;

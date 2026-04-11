@@ -1,21 +1,1125 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.160.0 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Mon, 06 Apr 2026 17:01:18 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h3 class="heading-element" id="1-结构设计"&gt;&lt;span&gt;1. 结构设计&lt;/span&gt;
- &lt;a href="#1-%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" class="heading-mark"&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 02:53:05 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-项目概述"&gt;&lt;span&gt;1. 项目概述&lt;/span&gt;
+ &lt;a href="#1-%e9%a1%b9%e7%9b%ae%e6%a6%82%e8%bf%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h4 class="heading-element" id="11-推进器分布"&gt;&lt;span&gt;1.1 推进器分布&lt;/span&gt;
- &lt;a href="#11-%e6%8e%a8%e8%bf%9b%e5%99%a8%e5%88%86%e5%b8%83" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;p&gt;本项目设计了一款6-DOF（自由度）全驱动水下机器人，旨在完成水下抓取任务。与传统欠驱动水下机器人相比，6-DOF全驱动方案能够在紧凑设计的基础上实现更高水平的运动控制能力，完成复杂的水下作业任务。&lt;/p&gt;
+&lt;h3 class="heading-element" id="11-设计目标"&gt;&lt;span&gt;1.1 设计目标&lt;/span&gt;
+ &lt;a href="#11-%e8%ae%be%e8%ae%a1%e7%9b%ae%e6%a0%87" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;传统推进器分布分为欠驱动、全驱动、过余驱动三类。考虑到机器人需要在紧凑设计的基础上实现高水平的抓取任务，因此选用6-DOF全驱动方案。常规全驱动方案即使用6个固定推进器或4个矢量推进器，由于矢量推荐器由一个旋转（这里写为什么不用四个矢量推进器与六个固定推荐器）。针对上诉问题，本文设计了一种4推进器+2舵机的推进方案，旨在紧凑设计的基础上实现机器人的高水平抓取任务。该推进方案具体结构如图（）所示。&lt;/p&gt;
-&lt;h3 class="heading-element" id="2-基于drl的控制策略"&gt;&lt;span&gt;2. 基于DRL的控制策略&lt;/span&gt;
- &lt;a href="#2-%e5%9f%ba%e4%ba%8edrl%e7%9a%84%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;实现6个自由度的独立运动控制&lt;/li&gt;
+&lt;li&gt;紧凑的机械结构设计&lt;/li&gt;
+&lt;li&gt;精确的目标抓取能力&lt;/li&gt;
+&lt;li&gt;稳定的水下运动性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="2-结构设计"&gt;&lt;span&gt;2. 结构设计&lt;/span&gt;
+ &lt;a href="#2-%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;h3 class="heading-element" id="3-仿真结果展示"&gt;&lt;span&gt;3. 仿真结果展示&lt;/span&gt;
- &lt;a href="#3-%e4%bb%bf%e7%9c%9f%e7%bb%93%e6%9e%9c%e5%b1%95%e7%a4%ba" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-推进器分布方案"&gt;&lt;span&gt;2.1 推进器分布方案&lt;/span&gt;
+ &lt;a href="#21-%e6%8e%a8%e8%bf%9b%e5%99%a8%e5%88%86%e5%b8%83%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;</description></item><item><title>第20届全国大学生智能汽车竞赛(完全模型组)</title><link>https://long753.github.io/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;p&gt;在这里开始撰写正文&amp;hellip;&lt;/p&gt;</description></item><item><title>2024年全国大学生数学建模竞赛（A题）</title><link>https://long753.github.io/cumcm/</link><pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cumcm/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;p&gt;在这里开始撰写正文&amp;hellip;&lt;/p&gt;</description></item><item><title>样条曲线总结</title><link>https://long753.github.io/spline/</link><pubDate>Fri, 03 Apr 2026 00:41:30 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/spline/</guid><description>&lt;p&gt;在这里开始撰写正文&amp;hellip;&lt;/p&gt;</description></item><item><title>考虑级联毁伤的毁伤概率模型推导</title><link>https://long753.github.io/cf_dwta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cf_dwta/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description/></item><item><title>人工智能模型组第二次培训——edgeboard连接</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
+&lt;/h3&gt;&lt;p&gt;传统推进器分布分为三类：欠驱动、全驱动和过余驱动。&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;类型&lt;/th&gt;
+ &lt;th&gt;特点&lt;/th&gt;
+ &lt;th&gt;适用场景&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;欠驱动&lt;/td&gt;
+ &lt;td&gt;推进器数量少于自由度数&lt;/td&gt;
+ &lt;td&gt;简单观测任务&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;全驱动&lt;/td&gt;
+ &lt;td&gt;推进器数量等于自由度数&lt;/td&gt;
+ &lt;td&gt;精细作业任务&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;过余驱动&lt;/td&gt;
+ &lt;td&gt;推进器数量多于自由度数&lt;/td&gt;
+ &lt;td&gt;高冗余任务&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;考虑到机器人需要在紧凑设计的基础上实现高水平的抓取任务，本设计选用&lt;strong&gt;6-DOF全驱动方案&lt;/strong&gt;。&lt;/p&gt;
+&lt;p&gt;常规全驱动方案使用6个固定推进器或4个矢量推进器。矢量推进器虽然机动性好，但结构复杂、可靠性较低。因此，本设计提出了一种&lt;strong&gt;4推进器+2舵机&lt;/strong&gt;的混合推进方案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;4个主推进器提供主要推力&lt;/li&gt;
+&lt;li&gt;2个舵机控制机械臂角度&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="22-机械结构"&gt;&lt;span&gt;2.2 机械结构&lt;/span&gt;
+ &lt;a href="#22-%e6%9c%ba%e6%a2%b0%e7%bb%93%e6%9e%84" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;机器人主体采用框架式结构，主要包含：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;机器人系统
+├── 主体框架
+│ ├── 密封舱（电子设备）
+│ ├── 电池仓
+│ └── 浮力材料
+├── 推进系统
+│ ├── 主推进器×4
+│ └── 舵机×2
+├── 机械臂
+│ ├── 肩部关节
+│ ├── 肘部关节
+│ └── 爪子
+└── 传感器系统
+ ├── 深度传感器
+ ├── 惯性测量单元(IMU)
+ └── 摄像头&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="23-材料选择"&gt;&lt;span&gt;2.3 材料选择&lt;/span&gt;
+ &lt;a href="#23-%e6%9d%90%e6%96%99%e9%80%89%e6%8b%a9" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;主体&lt;/strong&gt;：铝合金（轻量化和耐腐蚀）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;密封件&lt;/strong&gt;：O型圈（氟橡胶）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;紧固件&lt;/strong&gt;：不锈钢（耐海水腐蚀）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;浮力材料&lt;/strong&gt;：EPP泡沫&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="3-控制方案"&gt;&lt;span&gt;3. 控制方案&lt;/span&gt;
+ &lt;a href="#3-%e6%8e%a7%e5%88%b6%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-运动学建模"&gt;&lt;span&gt;3.1 运动学建模&lt;/span&gt;
+ &lt;a href="#31-%e8%bf%90%e5%8a%a8%e5%ad%a6%e5%bb%ba%e6%a8%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;建立机器人坐标系，使用DH参数法进行运动学建模：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;关节&lt;/th&gt;
+ &lt;th&gt;$\theta$&lt;/th&gt;
+ &lt;th&gt;$d$&lt;/th&gt;
+ &lt;th&gt;$a$&lt;/th&gt;
+ &lt;th&gt;$\alpha$&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;1&lt;/td&gt;
+ &lt;td&gt;$\theta_1$&lt;/td&gt;
+ &lt;td&gt;$d_1$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;td&gt;$\theta_2$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$a_2$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;td&gt;$\theta_3$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$a_3$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;td&gt;$\theta_4$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;5&lt;/td&gt;
+ &lt;td&gt;$\theta_5$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;$-90°$&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;6&lt;/td&gt;
+ &lt;td&gt;$\theta_6$&lt;/td&gt;
+ &lt;td&gt;$d_6$&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;正运动学方程：
+$$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &amp;amp; \sin\theta_i\sin\alpha_i &amp;amp; a_i\cos\theta_i \ \sin\theta_i &amp;amp; \cos\theta_i\cos\alpha_i &amp;amp; -\cos\theta_i\sin\alpha_i &amp;amp; a_i\sin\theta_i \ 0 &amp;amp; \sin\alpha_i &amp;amp; \cos\alpha_i &amp;amp; d_i \ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-基于深度强化学习的控制策略"&gt;&lt;span&gt;3.2 基于深度强化学习的控制策略&lt;/span&gt;
+ &lt;a href="#32-%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;为了实现复杂的抓取任务，采用深度强化学习（DRL）进行控制策略训练。&lt;/p&gt;
+&lt;h4 class="heading-element" id="321-网络架构"&gt;&lt;span&gt;3.2.1 网络架构&lt;/span&gt;
+ &lt;a href="#321-%e7%bd%91%e7%bb%9c%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;采用Actor-Critic架构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Actor网络&lt;/strong&gt;：策略网络$\pi(a|s)$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Critic网络&lt;/strong&gt;：价值网络$V(s)$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="322-状态空间"&gt;&lt;span&gt;3.2.2 状态空间&lt;/span&gt;
+ &lt;a href="#322-%e7%8a%b6%e6%80%81%e7%a9%ba%e9%97%b4" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;$$s = [p_{pos}, p_{vel}, q, \dot{q}, target_{pos}, image]$$&lt;/p&gt;
+&lt;p&gt;其中：位置、速度、关节角度、目标位置、图像&lt;/p&gt;
+&lt;h4 class="heading-element" id="323-奖励函数"&gt;&lt;span&gt;3.2.3 奖励函数&lt;/span&gt;
+ &lt;a href="#323-%e5%a5%96%e5%8a%b1%e5%87%bd%e6%95%b0" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;$$r = r_{target} + r_{smooth} + r_{collision}$$&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$r_{target}$：目标达成奖励&lt;/li&gt;
+&lt;li&gt;$r_{smooth}$：运动平滑奖励&lt;/li&gt;
+&lt;li&gt;$r_{collision}$：碰撞惩罚&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="324-训练算法"&gt;&lt;span&gt;3.2.4 训练算法&lt;/span&gt;
+ &lt;a href="#324-%e8%ae%ad%e7%bb%83%e7%ae%97%e6%b3%95" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;使用PPO（Proximal Policy Optimization）算法进行训练：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class RobotAgent:
+ def __init__(self):
+ self.actor = ActorNetwork()
+ self.critic = CriticNetwork()
+ 
+ def select_action(self, state):
+ mean, std = self.actor(state)
+ action = torch.distributions.Normal(mean, std).sample()
+ return action
+ 
+ def update(self, trajectories):
+ # 计算优势函数
+ advantages = compute_gae(trajectories)
+ # 更新策略
+ self.actor.optimize(trajectories, advantages)
+ # 更新价值函数
+ self.critic.optimize(trajectories)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="33-pid控制"&gt;&lt;span&gt;3.3 PID控制&lt;/span&gt;
+ &lt;a href="#33-pid%e6%8e%a7%e5%88%b6" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;底层运动控制采用PID控制器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class PIDController {
+public:
+ double kp, ki, kd;
+ double setpoint, current_value;
+ double integral = 0;
+ 
+ double compute(double feedback) {
+ double error = setpoint - feedback;
+ integral &amp;#43;= error;
+ double derivative = error - last_error;
+ last_error = error;
+ return kp * error &amp;#43; ki * integral &amp;#43; kd * derivative;
+ }
+};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-视觉方案"&gt;&lt;span&gt;4. 视觉方案&lt;/span&gt;
+ &lt;a href="#4-%e8%a7%86%e8%a7%89%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-目标检测"&gt;&lt;span&gt;4.1 目标检测&lt;/span&gt;
+ &lt;a href="#41-%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;使用YOLOv8进行水下目标检测：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;model = YOLOv8(&amp;#39;yolov8n.pt&amp;#39;)
+results = model.predict(image, classes=[&amp;#39;target_object&amp;#39;])&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-深度估计"&gt;&lt;span&gt;4.2 深度估计&lt;/span&gt;
+ &lt;a href="#42-%e6%b7%b1%e5%ba%a6%e4%bc%b0%e8%ae%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;采用单目深度估计网络：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;depth_model = MiDaS()
+depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-抓取点检测"&gt;&lt;span&gt;4.3 抓取点检测&lt;/span&gt;
+ &lt;a href="#43-%e6%8a%93%e5%8f%96%e7%82%b9%e6%a3%80%e6%b5%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;使用GraspNet进行抓取点预测：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grasp_poses = graspnet.predict(point_cloud)&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-仿真结果"&gt;&lt;span&gt;5. 仿真结果&lt;/span&gt;
+ &lt;a href="#5-%e4%bb%bf%e7%9c%9f%e7%bb%93%e6%9e%9c" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-运动学仿真"&gt;&lt;span&gt;5.1 运动学仿真&lt;/span&gt;
+ &lt;a href="#51-%e8%bf%90%e5%8a%a8%e5%ad%a6%e4%bb%bf%e7%9c%9f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;在Gazebo中进行运动学验证：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;指标&lt;/th&gt;
+ &lt;th&gt;仿真值&lt;/th&gt;
+ &lt;th&gt;理论值&lt;/th&gt;
+ &lt;th&gt;误差&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;最大深度&lt;/td&gt;
+ &lt;td&gt;50m&lt;/td&gt;
+ &lt;td&gt;50m&lt;/td&gt;
+ &lt;td&gt;0&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;最大速度&lt;/td&gt;
+ &lt;td&gt;1.5 m/s&lt;/td&gt;
+ &lt;td&gt;1.6 m/s&lt;/td&gt;
+ &lt;td&gt;6.25%&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;定位精度&lt;/td&gt;
+ &lt;td&gt;±5cm&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;td&gt;-&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 class="heading-element" id="52-控制策略训练"&gt;&lt;span&gt;5.2 控制策略训练&lt;/span&gt;
+ &lt;a href="#52-%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5%e8%ae%ad%e7%bb%83" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;DRL训练曲线表明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;训练500轮后，成功率达到85%&lt;/li&gt;
+&lt;li&gt;训练1000轮后，成功率达到95%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="53-实物测试"&gt;&lt;span&gt;5.3 实物测试&lt;/span&gt;
+ &lt;a href="#53-%e5%ae%9e%e7%89%a9%e6%b5%8b%e8%af%95" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;水下实验结果表明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器人可实现6个自由度的独立控制&lt;/li&gt;
+&lt;li&gt;抓取成功率达到90%以上&lt;/li&gt;
+&lt;li&gt;续航时间约2小时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="6-总结"&gt;&lt;span&gt;6. 总结&lt;/span&gt;
+ &lt;a href="#6-%e6%80%bb%e7%bb%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;本文设计了一款6-DOF全驱动水下机器人，主要贡献包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;推进方案创新&lt;/strong&gt;：提出4推进器+2舵机的混合推进方案&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;控制策略优化&lt;/strong&gt;：引入深度强化学习实现自主抓取&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;紧凑结构设计&lt;/strong&gt;：在有限空间内实现全驱动配置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;该机器人可应用于水下探测、文物打捞、海洋生物研究等领域。&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-改进方向"&gt;&lt;span&gt;6.1 改进方向&lt;/span&gt;
+ &lt;a href="#61-%e6%94%b9%e8%bf%9b%e6%96%b9%e5%90%91" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;进一步优化机械臂末端精度&lt;/li&gt;
+&lt;li&gt;增强视觉算法在浑水环境下的鲁棒性&lt;/li&gt;
+&lt;li&gt;延长水下续航时间&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>第20届全国大学生智能汽车竞赛(完全模型组)</title><link>https://long753.github.io/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h2 class="heading-element" id="1-赛事简介"&gt;&lt;span&gt;1. 赛事简介&lt;/span&gt;
+ &lt;a href="#1-%e8%b5%9b%e4%ba%8b%e7%ae%80%e4%bb%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;全国大学生智能汽车竞赛是教育部倡导的大学生科技竞赛之一，面向全国大学生开展，旨在培养学生的创新实践能力和团队协作精神。第二十届竞赛设有完全模型组、视觉组、气垫船组等多个组别，其中完全模型组要求参赛队伍设计制作能够自主完成赛道识别、元素处理和路径规划任务的智能小车。&lt;/p&gt;
+&lt;p&gt;本项目基于EdgeBoard嵌入式平台，采用YOLOv3-Mobilenet目标检测算法，结合传统图像处理方法，实现了完整的智能车控制系统。&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-硬件平台"&gt;&lt;span&gt;2. 硬件平台&lt;/span&gt;
+ &lt;a href="#2-%e7%a1%ac%e4%bb%b6%e5%b9%b3%e5%8f%b0" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-主控平台"&gt;&lt;span&gt;2.1 主控平台&lt;/span&gt;
+ &lt;a href="#21-%e4%b8%bb%e6%8e%a7%e5%b9%b3%e5%8f%b0" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;本项目采用百度EdgeBoard作为主控平台，其主要参数如下：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;参数&lt;/th&gt;
+ &lt;th&gt;规格&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;CPU&lt;/td&gt;
+ &lt;td&gt;ARM Cortex-A53/A72&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;GPU&lt;/td&gt;
+ &lt;td&gt;Mali-T860&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;算力&lt;/td&gt;
+ &lt;td&gt;3.0 TOPS&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;内存&lt;/td&gt;
+ &lt;td&gt;4GB LPDDR4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;系统&lt;/td&gt;
+ &lt;td&gt;Ubuntu 18.04&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;EdgeBoard内置了PaddlePaddle推理引擎，支持多种深度学习模型的部署，同时具备较强的实时图像处理能力，非常适合智能车竞赛的应用场景。&lt;/p&gt;
+&lt;h3 class="heading-element" id="22-传感器配置"&gt;&lt;span&gt;2.2 传感器配置&lt;/span&gt;
+ &lt;a href="#22-%e4%bc%a0%e6%84%9f%e5%99%a8%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;摄像头&lt;/strong&gt;：工业相机，负责赛道图像采集&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;串口&lt;/strong&gt;：USB转串口，连接主控与电机驱动板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电池&lt;/strong&gt;：12V锂电池，为全车提供动力&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="3-软件架构"&gt;&lt;span&gt;3. 软件架构&lt;/span&gt;
+ &lt;a href="#3-%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-系统架构"&gt;&lt;span&gt;3.1 系统架构&lt;/span&gt;
+ &lt;a href="#31-%e7%b3%bb%e7%bb%9f%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;系统采用模块化设计，主要包含以下核心模块：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SmartCar
+├── driver/ # 硬件驱动层
+│ ├── camera_driver.h # 摄像头驱动
+│ └── uart.hpp # 串口通信
+├── vision/ # 视觉处理层
+│ ├── ImageCapture.h # 图像采集
+│ └── ImageProcess.h # 图像处理
+├── detection/ # AI检测层
+│ └── detection.hpp # YOLOv3目标检测
+├── element/ # 元素识别层
+│ ├── Findline.h # 路径提取
+│ ├── RingElement.h # 圆环处理
+│ └── CrossElement.h # 十字路口处理
+└── control/ # 运动控制层
+ └── Control.h # PID控制与速度规划&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="32-核心代码结构"&gt;&lt;span&gt;3.2 核心代码结构&lt;/span&gt;
+ &lt;a href="#32-%e6%a0%b8%e5%bf%83%e4%bb%a3%e7%a0%81%e7%bb%93%e6%9e%84" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;主程序入口位于&lt;code&gt;src/icar.cpp&lt;/code&gt;，核心类&lt;code&gt;SmartCar&lt;/code&gt;（定义于&lt;code&gt;src/SmartCar.hpp&lt;/code&gt;）负责协调各个模块的工作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class SmartCar : public SingletonHolder&amp;lt;SmartCar&amp;gt; {
+public:
+ ImageCapture imagecapture; // 图像采集
+ std::shared_ptr&amp;lt;Detection&amp;gt; detection; // AI检测
+ Findline findline; // 路径规划
+ Control control; // 运动控制
+ std::shared_ptr&amp;lt;Uart&amp;gt; uart; // 串口通信
+ 
+ // 赛道元素处理
+ std::unique_ptr&amp;lt;Ring&amp;gt; ring;
+ std::unique_ptr&amp;lt;Cross&amp;gt; cross;
+ std::unique_ptr&amp;lt;Bridge&amp;gt; bridge;
+ std::unique_ptr&amp;lt;Restaurant&amp;gt; restaurant;
+ // ...
+};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-关键技术实现"&gt;&lt;span&gt;4. 关键技术实现&lt;/span&gt;
+ &lt;a href="#4-%e5%85%b3%e9%94%ae%e6%8a%80%e6%9c%af%e5%ae%9e%e7%8e%b0" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-目标检测"&gt;&lt;span&gt;4.1 目标检测&lt;/span&gt;
+ &lt;a href="#41-%e7%9b%ae%e6%a0%87%e6%a3%80%e6%b5%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;采用YOLOv3-Mobilenet模型进行赛道元素检测，支持以下元素的识别：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;充电区标志 (BATTERY)&lt;/li&gt;
+&lt;li&gt;黑盒子路障 (BLOCK)&lt;/li&gt;
+&lt;li&gt;坡道 (BRIDGE)&lt;/li&gt;
+&lt;li&gt;汉堡障碍物 (BURGER)&lt;/li&gt;
+&lt;li&gt;锥桶 (CONE)&lt;/li&gt;
+&lt;li&gt;斑马线 (CROSSWALK)&lt;/li&gt;
+&lt;li&gt;行人 (PEDESTRIAN)&lt;/li&gt;
+&lt;li&gt;虚线 (LINE)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;模型推理采用多线程处理，确保检测速度与图像采集的实时性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void SmartCar::ai_process_mul() {
+ auto ai_process_task{
+ [](std::shared_ptr&amp;lt;Detection&amp;gt; detection){
+ cv::Mat m;
+ while(smartcar.ai_runable){
+ if(!smartcar.ai_picture_update.load()) continue;
+ m = std::move(smartcar.image_for_predict);
+ detection-&amp;gt;inference(m); // 模型推理
+ smartcar.predict_result = detection-&amp;gt;results;
+ smartcar.ai_picture_update = false;
+ }
+ }
+ };
+ predict_thread = std::jthread(ai_process_task, this-&amp;gt;detection);
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-赛道元素处理"&gt;&lt;span&gt;4.2 赛道元素处理&lt;/span&gt;
+ &lt;a href="#42-%e8%b5%9b%e9%81%93%e5%85%83%e7%b4%a0%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;系统支持多种赛道元素的识别与处理：&lt;/p&gt;
+&lt;h4 class="heading-element" id="圆环处理"&gt;&lt;span&gt;圆环处理&lt;/span&gt;
+ &lt;a href="#%e5%9c%86%e7%8e%af%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;圆环是智能车竞赛中的难点元素，系统通过AI检测与图像处理相结合的方式实现入环与出环：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;else if(scene == Scene::RingScene){ 
+ control.motorSpeed = ring_params-&amp;gt;ring_speed; 
+ control.turnP = CarParams-&amp;gt;ring_p;
+ control.turnD = CarParams-&amp;gt;ring_d;
+ findline.line_type = LineType::STRAIGHT;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="充电区处理"&gt;&lt;span&gt;充电区处理&lt;/span&gt;
+ &lt;a href="#%e5%85%85%e7%94%b5%e5%8c%ba%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;充电区需要完成入库、充电、出库三个阶段：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (scene == Scene::ChargeScene ){
+ if(charge-&amp;gt;flag_down){
+ control.motorSpeed = ai_params-&amp;gt;charge_speedHigh;
+ }
+ if(charge-&amp;gt;step == Charge::Step::Enter){
+ control.motorSpeed = std::max(ai_params-&amp;gt;charge_speedLow - ((float)charge-&amp;gt;enter_count/(float)50), (float)1);
+ }
+ if(charge-&amp;gt;carStoping){
+ control.motorSpeed = 0; // 充电停止
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-运动控制"&gt;&lt;span&gt;4.3 运动控制&lt;/span&gt;
+ &lt;a href="#43-%e8%bf%90%e5%8a%a8%e6%8e%a7%e5%88%b6" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;运动控制采用PID控制器，结合动态前瞻策略：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void SmartCar::motion_control() {
+ // 动态前瞻调整
+ if(CarParams-&amp;gt;qianzhan_change &amp;amp;&amp;amp; control.motorSpeed &amp;lt;= CarParams-&amp;gt;speedHigh &amp;amp;&amp;amp; control.motorSpeed &amp;gt;= CarParams-&amp;gt;speedLow){
+ control.qianzhan = CarParams-&amp;gt;qianzhan_low &amp;#43; 
+ static_cast&amp;lt;int&amp;gt;(static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - control.motorSpeed) / 
+ static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - CarParams-&amp;gt;speedLow)) * 
+ (CarParams-&amp;gt;qianzhan_high - CarParams-&amp;gt;qianzhan_low);
+ }
+ 
+ // 串口发送控制指令
+ uart-&amp;gt;carControl(control.motorSpeed, control.servoPwm);
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="44-串口通信"&gt;&lt;span&gt;4.4 串口通信&lt;/span&gt;
+ &lt;a href="#44-%e4%b8%b2%e5%8f%a3%e9%80%9a%e4%bf%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;通过串口实现主控与电机驱动板的数据交互：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bool SmartCar::uart_connect() {
+ uart = std::make_shared&amp;lt;Uart&amp;gt;(&amp;#34;/dev/ttyUSB0&amp;#34;);
+ int ret = uart-&amp;gt;open();
+ if (ret != 0) {
+ std::cerr &amp;lt;&amp;lt; &amp;#34;Uart Open failed!&amp;#34; &amp;lt;&amp;lt; std::endl;
+ return false;
+ }
+ uart-&amp;gt;startReceive();
+ return true;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-编译与运行"&gt;&lt;span&gt;5. 编译与运行&lt;/span&gt;
+ &lt;a href="#5-%e7%bc%96%e8%af%91%e4%b8%8e%e8%bf%90%e8%a1%8c" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-环境配置"&gt;&lt;span&gt;5.1 环境配置&lt;/span&gt;
+ &lt;a href="#51-%e7%8e%af%e5%a2%83%e9%85%8d%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;由于代码使用C++20新特性，需要安装gcc 11.2：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 编译安装gcc 11.2
+cd ~/Downloads
+wget https://mirrors.nju.edu.cn/gnu/gcc/gcc-11.2.0/gcc-11.2.0.tar.xz
+tar -xf gcc-11.2.0.tar.xz
+cd gcc-11.2.0
+./contrib/download_prerequisites
+mkdir -p gcc-11.2.0-build &amp;amp;&amp;amp; cd gcc-11.2.0-build
+../gcc-11.2.0/configure --prefix=/opt/gcc-11.2 --enable-languages=c,c&amp;#43;&amp;#43; --disable-multilib
+make -j&amp;#34;$(nproc)&amp;#34;
+sudo make install
+
+# 配置环境变量
+echo &amp;#39;export PATH=/opt/gcc-11.2/bin:$PATH&amp;#39; &amp;gt;&amp;gt; ~/.bashrc
+source ~/.bashrc&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="52-编译项目"&gt;&lt;span&gt;5.2 编译项目&lt;/span&gt;
+ &lt;a href="#52-%e7%bc%96%e8%af%91%e9%a1%b9%e7%9b%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;cd ~/car-work
+rm -rf build &amp;amp;&amp;amp; mkdir build &amp;amp;&amp;amp; cd build
+cmake .. 
+make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="53-运行程序"&gt;&lt;span&gt;5.3 运行程序&lt;/span&gt;
+ &lt;a href="#53-%e8%bf%90%e8%a1%8c%e7%a8%8b%e5%ba%8f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;./icar&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="6-总结"&gt;&lt;span&gt;6. 总结&lt;/span&gt;
+ &lt;a href="#6-%e6%80%bb%e7%bb%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;本项目实现了基于EdgeBoard的智能车控制系统，完成了以下工作：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;硬件集成&lt;/strong&gt;：完成了EdgeBoard与传感器、执行器的硬件连接与调试&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;软件架构&lt;/strong&gt;：设计并实现了模块化的软件架构，便于维护和扩展&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标检测&lt;/strong&gt;：部署了YOLOv3-Mobilenet模型，实现了多元素检测&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运动控制&lt;/strong&gt;：实现了PID控制与动态前瞻相结合的路径跟踪算法&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;元素处理&lt;/strong&gt;：完成了圆环、十字、坡道、充电区等多种元素的识别与处理&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;该项目获得了第20届全国大学生智能汽车竞赛完全模型组华南赛区二等奖。&lt;/p&gt;</description></item><item><title>2024年全国大学生数学建模竞赛（A题）</title><link>https://long753.github.io/cumcm/</link><pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cumcm/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;h2 class="heading-element" id="1-问题背景"&gt;&lt;span&gt;1. 问题背景&lt;/span&gt;
+ &lt;a href="#1-%e9%97%ae%e9%a2%98%e8%83%8c%e6%99%af" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;&amp;ldquo;板凳龙&amp;quot;是浙东地区的传统民俗活动，通常由一条条木板凳连接而成，每条板凳上固定若干灯笼，舞龙时龙头引领龙身整体移动。由于板凳之间通过活扣连接，在舞动过程中会产生复杂的空间运动。本题要求建立数学模型，分析板凳龙的运动规律，并进行优化设计。&lt;/p&gt;
+&lt;h3 class="heading-element" id="11-问题描述"&gt;&lt;span&gt;1.1 问题描述&lt;/span&gt;
+ &lt;a href="#11-%e9%97%ae%e9%a2%98%e6%8f%8f%e8%bf%b0" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;给定一条由N条板凳组成的板凳龙，每条板凳长度为L，宽度为W，板凳之间通过活扣连接。龙头固定在一个给定的运动轨迹上，要求确定：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;各节板凳的位姿（位置和姿态）&lt;/li&gt;
+&lt;li&gt;最小转弯半径&lt;/li&gt;
+&lt;li&gt;最优速度规划&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="2-模型假设"&gt;&lt;span&gt;2. 模型假设&lt;/span&gt;
+ &lt;a href="#2-%e6%a8%a1%e5%9e%8b%e5%81%87%e8%ae%be" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;为简化问题，我们做出以下假设：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;刚性假设&lt;/strong&gt;：每条板凳视为刚体，不考虑其弹性变形&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;连接约束&lt;/strong&gt;：相邻板凳通过活扣连接，活扣处可视为球铰约束&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;无滑动假设&lt;/strong&gt;：龙身各点沿轨迹切向运动，无侧向滑动&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;匀速假设&lt;/strong&gt;：龙头以恒定速度V沿轨迹运动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-数学建模"&gt;&lt;span&gt;3. 数学建模&lt;/span&gt;
+ &lt;a href="#3-%e6%95%b0%e5%ad%a6%e5%bb%ba%e6%a8%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-坐标系统建立"&gt;&lt;span&gt;3.1 坐标系统建立&lt;/span&gt;
+ &lt;a href="#31-%e5%9d%90%e6%a0%87%e7%b3%bb%e7%bb%9f%e5%bb%ba%e7%ab%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;建立跟随坐标系：以龙头为基准，沿轨迹切向为x轴，垂直向上为z轴，右侧为y轴。&lt;/p&gt;
+&lt;p&gt;设龙头轨迹参数方程为：
+$$\vec{r}(s) = (x(s), y(s), z(s))$$&lt;/p&gt;
+&lt;p&gt;其中s为弧长参数。&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-运动学模型"&gt;&lt;span&gt;3.2 运动学模型&lt;/span&gt;
+ &lt;a href="#32-%e8%bf%90%e5%8a%a8%e5%ad%a6%e6%a8%a1%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;对于第i节板凳（i=1表示龙头之后的第1节），其位置可由以下递推关系得到：&lt;/p&gt;
+&lt;p&gt;$$\vec{r}_{i+1} = \vec{r}_i + L \cdot \vec{t}(s_i) + \vec{d}_i$$&lt;/p&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$\vec{t}(s)$ 为轨迹切向量&lt;/li&gt;
+&lt;li&gt;$\vec{d}_i$ 为由于活扣间隙产生的偏移向量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;姿态计算采用Frenet-Serret框架：&lt;/p&gt;
+&lt;p&gt;$$\vec{t} = \frac{d\vec{r}}{ds}, \quad \vec{n} = \frac{d\vec{t}}{ds} / |\frac{d\vec{t}}{ds}|, \quad \vec{b} = \vec{t} \times \vec{n}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="33-约束条件"&gt;&lt;span&gt;3.3 约束条件&lt;/span&gt;
+ &lt;a href="#33-%e7%ba%a6%e6%9d%9f%e6%9d%a1%e4%bb%b6" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="331-几何约束"&gt;&lt;span&gt;3.3.1 几何约束&lt;/span&gt;
+ &lt;a href="#331-%e5%87%a0%e4%bd%95%e7%ba%a6%e6%9d%9f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;相邻板凳之间的夹角需满足：
+$$\theta_{i,i+1} \leq \theta_{max}$$&lt;/p&gt;
+&lt;p&gt;其中$\theta_{max}$由活扣活动范围决定。&lt;/p&gt;
+&lt;h4 class="heading-element" id="332-运动约束"&gt;&lt;span&gt;3.3.2 运动约束&lt;/span&gt;
+ &lt;a href="#332-%e8%bf%90%e5%8a%a8%e7%ba%a6%e6%9d%9f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;速度约束：
+$$v_i = v_{i-1} \cos(\theta_{i,i+1})$$&lt;/p&gt;
+&lt;p&gt;角速度约束：
+$$\omega_i \leq \omega_{max}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="34-最小转弯半径求解"&gt;&lt;span&gt;3.4 最小转弯半径求解&lt;/span&gt;
+ &lt;a href="#34-%e6%9c%80%e5%b0%8f%e8%bd%ac%e5%bc%af%e5%8d%8a%e5%be%84%e6%b1%82%e8%a7%a3" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;最小转弯半径可通过以下优化问题求解：&lt;/p&gt;
+&lt;p&gt;$$\min R$$
+$$s.t. \quad \theta_{i,i+1} \leq \theta_{max}, \quad \forall i$$&lt;/p&gt;
+&lt;p&gt;采用数值迭代方法求解，算法流程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;初始化轨迹曲率$\kappa = 1/R$&lt;/li&gt;
+&lt;li&gt;迭代更新曲率值直到满足约束&lt;/li&gt;
+&lt;li&gt;输出最小可行半径R&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="4-优化设计"&gt;&lt;span&gt;4. 优化设计&lt;/span&gt;
+ &lt;a href="#4-%e4%bc%98%e5%8c%96%e8%ae%be%e8%ae%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-速度规划"&gt;&lt;span&gt;4.1 速度规划&lt;/span&gt;
+ &lt;a href="#41-%e9%80%9f%e5%ba%a6%e8%a7%84%e5%88%92" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;基于运动学约束，建立速度优化模型：&lt;/p&gt;
+&lt;p&gt;$$\min T = \int_0^L \frac{ds}{v(s)}$$
+$$s.t. \quad a_{max} \geq |\vec{a}(t)|, \quad v_{max} \geq |\vec{v}(t)|$$&lt;/p&gt;
+&lt;p&gt;采用梯形速度曲线进行规划：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v(s) = 
+ v_0 &amp;#43; (v_max - v_0) * s / s_1, s &amp;lt; s_1
+ v_max, s_1 ≤ s &amp;lt; L - s_1
+ v_max - (v_max - v_0) * (s - L &amp;#43; s_1) / s_1, s ≥ L - s_1&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-板凳间距优化"&gt;&lt;span&gt;4.2 板凳间距优化&lt;/span&gt;
+ &lt;a href="#42-%e6%9d%bf%e5%87%b3%e9%97%b4%e8%b7%9d%e4%bc%98%e5%8c%96" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;考虑舞动效果和运动灵活性，板凳间距可优化为：&lt;/p&gt;
+&lt;p&gt;$$d_i = d_0 + k \cdot \kappa(s_i)$$&lt;/p&gt;
+&lt;p&gt;其中$\kappa$为轨迹曲率，k为调节系数。&lt;/p&gt;
+&lt;h2 class="heading-element" id="5-仿真验证"&gt;&lt;span&gt;5. 仿真验证&lt;/span&gt;
+ &lt;a href="#5-%e4%bb%bf%e7%9c%9f%e9%aa%8c%e8%af%81" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;使用MATLAB进行仿真验证，参数设置如下：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;参数&lt;/th&gt;
+ &lt;th&gt;数值&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;板凳数量N&lt;/td&gt;
+ &lt;td&gt;33&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;板凳长度L&lt;/td&gt;
+ &lt;td&gt;1.2m&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;活扣最大夹角$\theta_{max}$&lt;/td&gt;
+ &lt;td&gt;30°&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;龙头速度V&lt;/td&gt;
+ &lt;td&gt;1m/s&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;仿真结果表明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;最小可行转弯半径约为2.5m&lt;/li&gt;
+&lt;li&gt;优化后的速度曲线可减少30%的运动时间&lt;/li&gt;
+&lt;li&gt;动态间距策略可有效减少应力集中&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="6-结论"&gt;&lt;span&gt;6. 结论&lt;/span&gt;
+ &lt;a href="#6-%e7%bb%93%e8%ae%ba" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;本文建立了板凳龙的运动学模型，通过约束分析求解了最小转弯半径，并提出了速度规划和间距优化方案。模型可为实际舞龙表演提供理论指导。&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-创新点"&gt;&lt;span&gt;6.1 创新点&lt;/span&gt;
+ &lt;a href="#61-%e5%88%9b%e6%96%b0%e7%82%b9" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;建立了基于Frenet框架的递推位姿模型&lt;/li&gt;
+&lt;li&gt;提出了考虑曲率的自适应间距策略&lt;/li&gt;
+&lt;li&gt;实现了基于约束的速度优化算法&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="heading-element" id="62-局限性"&gt;&lt;span&gt;6.2 局限性&lt;/span&gt;
+ &lt;a href="#62-%e5%b1%80%e9%99%90%e6%80%a7" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;未考虑活扣间隙的随机性&lt;/li&gt;
+&lt;li&gt;未考虑动态风阻影响&lt;/li&gt;
+&lt;li&gt;模型假设过于理想化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;后续研究可引入概率约束和动力学模型进行改进。&lt;/p&gt;</description></item><item><title>样条曲线总结</title><link>https://long753.github.io/spline/</link><pubDate>Fri, 03 Apr 2026 00:41:30 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/spline/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;h2 class="heading-element" id="1-引言"&gt;&lt;span&gt;1. 引言&lt;/span&gt;
+ &lt;a href="#1-%e5%bc%95%e8%a8%80" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;样条曲线（Spline）是计算机图形学、机器人路径规划、曲线拟合等领域的重要工具。相比于高次多项式，样条曲线具有更好的局部控制性和数值稳定性，能够在保证曲线光滑性的同时降低计算复杂度。&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-样条曲线基础"&gt;&lt;span&gt;2. 样条曲线基础&lt;/span&gt;
+ &lt;a href="#2-%e6%a0%b7%e6%9d%a1%e6%9b%b2%e7%ba%bf%e5%9f%ba%e7%a1%80" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="21-定义"&gt;&lt;span&gt;2.1 定义&lt;/span&gt;
+ &lt;a href="#21-%e5%ae%9a%e4%b9%89" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;样条曲线是由多项式片段拼接而成的平滑曲线，每两个节点之间的曲线段可以用一个多项式表示。设节点序列为$t_0 &amp;lt; t_1 &amp;lt; &amp;hellip; &amp;lt; t_n$，则k次样条曲线满足：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在每个区间$[t_i, t_{i+1}]$上为k次多项式&lt;/li&gt;
+&lt;li&gt;在整个定义域上具有k-1阶连续导数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="22-优势"&gt;&lt;span&gt;2.2 优势&lt;/span&gt;
+ &lt;a href="#22-%e4%bc%98%e5%8a%bf" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;局部性&lt;/strong&gt;：修改一个控制点只会影响局部区域&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;稳定性&lt;/strong&gt;：低次多项式数值稳定性好&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活性&lt;/strong&gt;：可通过调整控制点改变曲线形状&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;光滑性&lt;/strong&gt;：自动保证连接点的导数连续&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-常见样条类型"&gt;&lt;span&gt;3. 常见样条类型&lt;/span&gt;
+ &lt;a href="#3-%e5%b8%b8%e8%a7%81%e6%a0%b7%e6%9d%a1%e7%b1%bb%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-b样条"&gt;&lt;span&gt;3.1 B样条&lt;/span&gt;
+ &lt;a href="#31-b%e6%a0%b7%e6%9d%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;B样条（Basis Spline）是最常用的样条曲线，其基函数定义为：&lt;/p&gt;
+&lt;p&gt;$$B_{i,p}(t) = \frac{t - t_i}{t_{i+p} - t_i} B_{i,p-1}(t) + \frac{t_{i+p+1} - t}{t_{i+p+1} - t_{i+1}} B_{i+1,p-1}(t)$$&lt;/p&gt;
+&lt;p&gt;其中p为样条次数。&lt;/p&gt;
+&lt;p&gt;B样条曲线的计算公式：
+$$C(t) = \sum_{i=0}^n N_{i,p}(t) P_i$$&lt;/p&gt;
+&lt;p&gt;其中$N_{i,p}(t)$为p次B样条基函数，$P_i$为控制点。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特性&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;凸包性：曲线位于控制多边形的凸包内&lt;/li&gt;
+&lt;li&gt;局部性：第i个控制点只影响区间$[t_i, t_{i+p+1}]$&lt;/li&gt;
+&lt;li&gt;变差减少性：与任意直线的交点数目不超过与控制多边形的交点数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="32-nurbs"&gt;&lt;span&gt;3.2 NURBS&lt;/span&gt;
+ &lt;a href="#32-nurbs" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;NURBS（Non-Uniform Rational B-Spline）是非均匀有理B样条，是工业界的标准曲线表示方法：&lt;/p&gt;
+&lt;p&gt;$$C(t) = \frac{\sum_{i=0}^n R_{i,p}(t) w_i P_i}{\sum_{i=0}^n R_{i,p}(t) w_i}$$&lt;/p&gt;
+&lt;p&gt;其中有理基函数：
+$$R_{i,p}(t) = \frac{N_{i,p}(t) w_i}{\sum_{j=0}^n N_{j,p}(t) w_j}$$&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;优势&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;支持精确的圆锥曲线表示&lt;/li&gt;
+&lt;li&gt;可通过权重调整曲线形状&lt;/li&gt;
+&lt;li&gt;统一表示自由曲线和解析曲线&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="33-catmull-rom样条"&gt;&lt;span&gt;3.3 Catmull-Rom样条&lt;/span&gt;
+ &lt;a href="#33-catmull-rom%e6%a0%b7%e6%9d%a1" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Catmull-Rom样条是一种插值型样条，曲线通过所有控制点：&lt;/p&gt;
+&lt;p&gt;$$P(t) = [t^3 \quad t^2 \quad t \quad 1] M P$$&lt;/p&gt;
+&lt;p&gt;其中$M$为Catmull-Rom矩阵。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;特点&lt;/strong&gt;：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;插值通过所有控制点&lt;/li&gt;
+&lt;li&gt;切线自动计算，$C&amp;rsquo;(t_i) = \frac{P_{i+1} - P_{i-1}}{2}$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="34-bézier曲线"&gt;&lt;span&gt;3.4 Bézier曲线&lt;/span&gt;
+ &lt;a href="#34-b%c3%a9zier%e6%9b%b2%e7%ba%bf" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;Bézier曲线是B样条的特殊形式，由 Bernstein 基函数定义：&lt;/p&gt;
+&lt;p&gt;$$B(t) = \sum_{i=0}^n B_{i,n}(t) P_i$$&lt;/p&gt;
+&lt;p&gt;其中Bernstein基函数：
+$$B_{i,n}(t) = \binom{n}{i} t^i (1-t)^{n-i}$$&lt;/p&gt;
+&lt;h2 class="heading-element" id="4-路径规划应用"&gt;&lt;span&gt;4. 路径规划应用&lt;/span&gt;
+ &lt;a href="#4-%e8%b7%af%e5%be%84%e8%a7%84%e5%88%92%e5%ba%94%e7%94%a8" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-机器人轨迹生成"&gt;&lt;span&gt;4.1 机器人轨迹生成&lt;/span&gt;
+ &lt;a href="#41-%e6%9c%ba%e5%99%a8%e4%ba%ba%e8%bd%a8%e8%bf%b9%e7%94%9f%e6%88%90" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;在机器人路径规划中，样条曲线用于生成光滑的运动轨迹：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 三次B样条轨迹规划
+class SplineTrajectory {
+public:
+ std::vector&amp;lt;Eigen::Vector3d&amp;gt; control_points;
+ std::vector&amp;lt;double&amp;gt; times;
+ 
+ Eigen::Vector3d position(double t) {
+ // 计算B样条曲线上的位置
+ return evaluateSpline(t);
+ }
+ 
+ Eigen::Vector3d velocity(double t) {
+ // 计算速度（一阶导数）
+ return evaluateDerivative(t, 1);
+ }
+ 
+ Eigen::Vector3d acceleration(double t) {
+ // 计算加速度（二阶导数）
+ return evaluateDerivative(t, 2);
+ }
+};&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-时间最优规划"&gt;&lt;span&gt;4.2 时间最优规划&lt;/span&gt;
+ &lt;a href="#42-%e6%97%b6%e9%97%b4%e6%9c%80%e4%bc%98%e8%a7%84%e5%88%92" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;结合速度/加速度约束，进行时间最优规划：&lt;/p&gt;
+&lt;p&gt;$$\min T$$
+$$s.t. \quad |v(t)| \leq v_{max}, \quad |a(t)| \leq a_{max}$$&lt;/p&gt;
+&lt;p&gt;采用梯形速度曲线或S型速度曲线进行规划。&lt;/p&gt;
+&lt;h3 class="heading-element" id="43-连续性要求"&gt;&lt;span&gt;4.3 连续性要求&lt;/span&gt;
+ &lt;a href="#43-%e8%bf%9e%e7%bb%ad%e6%80%a7%e8%a6%81%e6%b1%82" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;机器人运动需要满足$G^2$连续（位置、速度、加速度连续）：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;连续性级别&lt;/th&gt;
+ &lt;th&gt;要求&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^0$&lt;/td&gt;
+ &lt;td&gt;位置连续&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^1$&lt;/td&gt;
+ &lt;td&gt;切线连续&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;$G^2$&lt;/td&gt;
+ &lt;td&gt;曲率连续&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 class="heading-element" id="5-数值计算"&gt;&lt;span&gt;5. 数值计算&lt;/span&gt;
+ &lt;a href="#5-%e6%95%b0%e5%80%bc%e8%ae%a1%e7%ae%97" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-参数化方法"&gt;&lt;span&gt;5.1 参数化方法&lt;/span&gt;
+ &lt;a href="#51-%e5%8f%82%e6%95%b0%e5%8c%96%e6%96%b9%e6%b3%95" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;曲线参数化方式影响曲线形状：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;均匀参数化&lt;/strong&gt;：$t_i = i / n$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;弦长参数化&lt;/strong&gt;：$t_i = \sum_{j=1}^{i} |P_j - P_{j-1}| / L$&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向心参数化&lt;/strong&gt;：$t_i = \sum_{j=1}^{i} \sqrt{|P_j - P_{j-1}|} / L$&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 class="heading-element" id="52-曲线求导"&gt;&lt;span&gt;5.2 曲线求导&lt;/span&gt;
+ &lt;a href="#52-%e6%9b%b2%e7%ba%bf%e6%b1%82%e5%af%bc" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;样条曲线的导数可通过求导基函数得到：&lt;/p&gt;
+&lt;p&gt;对于B样条，p次样条的导数仍然是p-1次B样条：
+$$\frac{d}{dt}C(t) = \sum_{i=0}^{n-1} N_{i,p-1}(t) \cdot \frac{p}{t_{i+p+1} - t_i}(P_{i+1} - P_i)$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="53-曲率计算"&gt;&lt;span&gt;5.3 曲率计算&lt;/span&gt;
+ &lt;a href="#53-%e6%9b%b2%e7%8e%87%e8%ae%a1%e7%ae%97" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;曲线曲率定义为：
+$$\kappa(t) = \frac{|x&amp;rsquo;y&amp;rsquo;&amp;rsquo; - y&amp;rsquo;x&amp;rsquo;&amp;rsquo;|}{(x&amp;rsquo;^2 + y&amp;rsquo;^2)^{3/2}}$$&lt;/p&gt;
+&lt;h2 class="heading-element" id="6-仿真示例"&gt;&lt;span&gt;6. 仿真示例&lt;/span&gt;
+ &lt;a href="#6-%e4%bb%bf%e7%9c%9f%e7%a4%ba%e4%be%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;使用MATLAB进行样条曲线仿真：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;% B样条曲线绘制
+control_points = [0 0; 1 2; 2 1; 3 3; 4 0];
+t = 0:0.01:1;
+points = zeros(length(t), 2);
+
+for i = 1:length(t)
+ points(i,:) = bspval(t(i), control_points);
+end
+
+plot(control_points(:,1), control_points(:,2), &amp;#39;o-&amp;#39;);
+hold on;
+plot(points(:,1), points(:,2), &amp;#39;r-&amp;#39;);&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="7-总结"&gt;&lt;span&gt;7. 总结&lt;/span&gt;
+ &lt;a href="#7-%e6%80%bb%e7%bb%93" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;样条曲线是机器人路径规划的核心工具，本文总结了：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;理论基础&lt;/strong&gt;：样条曲线的数学定义与性质&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常见类型&lt;/strong&gt;：B样条、NURBS、Catmull-Rom、Bézier&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工程应用&lt;/strong&gt;：轨迹生成与时间最优规划&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数值方法&lt;/strong&gt;：参数化与求导计算&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;选择合适的样条类型需要根据具体应用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;轨迹插值：优先选择Catmull-Rom&lt;/li&gt;
+&lt;li&gt;自由曲线：B样条或NURBS&lt;/li&gt;
+&lt;li&gt;精确表示：NURBS（圆锥曲线）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="71-扩展阅读"&gt;&lt;span&gt;7.1 扩展阅读&lt;/span&gt;
+ &lt;a href="#71-%e6%89%a9%e5%b1%95%e9%98%85%e8%af%bb" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;De Boor, C. - A Practical Guide to Splines&lt;/li&gt;
+&lt;li&gt;Piegl, L. - The NURBS Book&lt;/li&gt;
+&lt;li&gt;Choi, J. - Robot Path Planning&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>考虑级联毁伤的毁伤概率模型推导</title><link>https://long753.github.io/cf_dwta/</link><pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cf_dwta/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;h2 class="heading-element" id="1-研究背景"&gt;&lt;span&gt;1. 研究背景&lt;/span&gt;
+ &lt;a href="#1-%e7%a0%94%e7%a9%b6%e8%83%8c%e6%99%af" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;在现代战争体系中，打击重点目标往往需要考虑毁伤的级联效应。当某一关键节点被摧毁后，可能会导致与之相连的其他节点功能下降或失效，这种现象称为&amp;quot;级联毁伤&amp;quot;（Cascading Damage）。例如，摧毁一个通信基站可能导致周边雷达站失去信息支撑，进而影响防空系统的整体效能。&lt;/p&gt;
+&lt;p&gt;传统的毁伤概率模型通常只考虑单次打击的直接毁伤效果，忽略了目标之间的关联关系。因此，建立考虑级联效应的毁伤概率模型具有重要的理论意义和实际价值。&lt;/p&gt;
+&lt;h2 class="heading-element" id="2-问题定义"&gt;&lt;span&gt;2. 问题定义&lt;/span&gt;
+ &lt;a href="#2-%e9%97%ae%e9%a2%98%e5%ae%9a%e4%b9%89" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;设有N个相互关联的目标节点，组成一个网络系统$G=(V,E)$，其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$V = {v_1, v_2, &amp;hellip;, v_N}$ 表示节点集合&lt;/li&gt;
+&lt;li&gt;$E \subseteq V \times V$ 表示边集合，表示节点间的关联关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="21-基本假设"&gt;&lt;span&gt;2.1 基本假设&lt;/span&gt;
+ &lt;a href="#21-%e5%9f%ba%e6%9c%ac%e5%81%87%e8%ae%be" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;每个节点$v_i$具有初始功能值$F_i \in [0, 1]$，1表示完全正常，0表示完全失效&lt;/li&gt;
+&lt;li&gt;节点的失效阈值$\theta$，当功能值低于阈值时视为失效&lt;/li&gt;
+&lt;li&gt;边$(v_i, v_j)$具有权重$w_{ij} \in [0, 1]$，表示节点间的依赖程度&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="3-数学模型"&gt;&lt;span&gt;3. 数学模型&lt;/span&gt;
+ &lt;a href="#3-%e6%95%b0%e5%ad%a6%e6%a8%a1%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="31-直接毁伤模型"&gt;&lt;span&gt;3.1 直接毁伤模型&lt;/span&gt;
+ &lt;a href="#31-%e7%9b%b4%e6%8e%a5%e6%af%81%e4%bc%a4%e6%a8%a1%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;假设对目标$v_i$实施打击后，其功能值下降为：
+$$F_i&amp;rsquo; = F_i \cdot (1 - d_i)$$&lt;/p&gt;
+&lt;p&gt;其中$d_i$为打击对该目标的毁伤程度，$d_i \in [0, 1]$。&lt;/p&gt;
+&lt;p&gt;毁伤程度$d_i$服从概率分布，通常可采用指数分布或正态分布描述：
+$$P(d_i \leq x) = 1 - e^{-\lambda x}$$
+或
+$$P(d_i \leq x) = \Phi\left(\frac{x - \mu}{\sigma}\right)$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-级联毁伤模型"&gt;&lt;span&gt;3.2 级联毁伤模型&lt;/span&gt;
+ &lt;a href="#32-%e7%ba%a7%e8%81%94%e6%af%81%e4%bc%a4%e6%a8%a1%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;考虑节点间的依赖关系，定义节点$v_i$的功能值为：
+$$F_i = f({F_j}&lt;em&gt;{j \in N(i)}, {w&lt;/em&gt;{ij}})$$&lt;/p&gt;
+&lt;p&gt;其中$N(i)$为节点$v_i$的邻居节点集合。&lt;/p&gt;
+&lt;p&gt;采用加权平均模型：
+$$F_i = \sum_{j \in N(i)} w_{ij} \cdot F_j$$&lt;/p&gt;
+&lt;p&gt;当某个节点被打击后，其功能值下降，通过上述关系影响邻居节点，进而产生级联效应。&lt;/p&gt;
+&lt;h3 class="heading-element" id="33-毁伤概率计算"&gt;&lt;span&gt;3.3 毁伤概率计算&lt;/span&gt;
+ &lt;a href="#33-%e6%af%81%e4%bc%a4%e6%a6%82%e7%8e%87%e8%ae%a1%e7%ae%97" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;定义系统毁伤概率为系统功能降至低于阈值的概率：
+$$P_{damage} = P\left(\sum_{i=1}^N F_i &amp;lt; \theta \cdot \sum_{i=1}^N F_i^0\right)$$&lt;/p&gt;
+&lt;p&gt;其中$F_i^0$为节点初始功能值。&lt;/p&gt;
+&lt;h3 class="heading-element" id="34-dwta模型"&gt;&lt;span&gt;3.4 DWTA模型&lt;/span&gt;
+ &lt;a href="#34-dwta%e6%a8%a1%e5%9e%8b" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;DWTA（Damage Weapons Target Assignment）问题可表述为：&lt;/p&gt;
+&lt;p&gt;$$\max \sum_{i=1}^N P_i(x_i)$$
+$$s.t. \sum_{i=1}^N c_i x_i \leq C$$
+$$x_i \in {0, 1}$$&lt;/p&gt;
+&lt;p&gt;其中：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$P_i(x_i)$为打击后节点i的毁伤概率&lt;/li&gt;
+&lt;li&gt;$c_i$为打击节点i所需的资源消耗&lt;/li&gt;
+&lt;li&gt;$C$为总资源约束&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="4-模型求解"&gt;&lt;span&gt;4. 模型求解&lt;/span&gt;
+ &lt;a href="#4-%e6%a8%a1%e5%9e%8b%e6%b1%82%e8%a7%a3" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="41-蒙特卡洛仿真"&gt;&lt;span&gt;4.1 蒙特卡洛仿真&lt;/span&gt;
+ &lt;a href="#41-%e8%92%99%e7%89%b9%e5%8d%a1%e6%b4%9b%e4%bb%bf%e7%9c%9f" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;由于级联效应的非线性特征，解析求解较为困难。采用蒙特卡洛方法进行仿真：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Algorithm: Monte Carlo Simulation
+Input: Network G,打击方案 S
+Output: 毁伤概率估计 P_damage
+
+for k = 1 to M:
+ for each node i in V:
+ if i in S:
+ d_i = Random(distribution)
+ F_i = F_i^0 * (1 - d_i)
+ else:
+ F_i = F_i^0
+ 
+ repeat:
+ changed = false
+ for each node i in V:
+ F_i_new = sum(w_ij * F_j for j in N(i))
+ if |F_i_new - F_i| &amp;gt; epsilon:
+ F_i = F_i_new
+ changed = true
+ until not changed
+ 
+ if sum(F_i) &amp;lt; theta * sum(F_i^0):
+ count&amp;#43;&amp;#43;
+ 
+P_damage = count / M&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-近似解析解"&gt;&lt;span&gt;4.2 近似解析解&lt;/span&gt;
+ &lt;a href="#42-%e8%bf%91%e4%bc%bc%e8%a7%a3%e6%9e%90%e8%a7%a3" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;对于大规模网络，可采用均值场近似：&lt;/p&gt;
+&lt;p&gt;假设节点功能值服从正态分布$F_i \sim N(\mu_i, \sigma_i^2)$，则系统功能值：
+$$\sum_{i=1}^N F_i \sim N\left(\sum_{i=1}^N \mu_i, \sum_{i=1}^N \sigma_i^2 + 2\sum_{(i,j)\in E} \rho_{ij}\sigma_i\sigma_j\right)$$&lt;/p&gt;
+&lt;p&gt;其中$\rho_{ij}$为节点间的相关系数。&lt;/p&gt;
+&lt;h2 class="heading-element" id="5-仿真分析"&gt;&lt;span&gt;5. 仿真分析&lt;/span&gt;
+ &lt;a href="#5-%e4%bb%bf%e7%9c%9f%e5%88%86%e6%9e%90" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-参数设置"&gt;&lt;span&gt;5.1 参数设置&lt;/span&gt;
+ &lt;a href="#51-%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;参数&lt;/th&gt;
+ &lt;th&gt;取值&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;网络规模&lt;/td&gt;
+ &lt;td&gt;50个节点&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;平均度&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;依赖权重&lt;/td&gt;
+ &lt;td&gt;0.3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;毁伤阈值&lt;/td&gt;
+ &lt;td&gt;0.4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;仿真次数&lt;/td&gt;
+ &lt;td&gt;10000&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3 class="heading-element" id="52-结果分析"&gt;&lt;span&gt;5.2 结果分析&lt;/span&gt;
+ &lt;a href="#52-%e7%bb%93%e6%9e%9c%e5%88%86%e6%9e%90" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;仿真结果表明：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;级联效应可使总毁伤概率提升约20-40%&lt;/li&gt;
+&lt;li&gt;网络鲁棒性与节点度分布密切相关&lt;/li&gt;
+&lt;li&gt;关键节点的识别对毁伤效率有显著影响&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 class="heading-element" id="6-结论"&gt;&lt;span&gt;6. 结论&lt;/span&gt;
+ &lt;a href="#6-%e7%bb%93%e8%ae%ba" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h2&gt;&lt;p&gt;本文建立了考虑级联效应的毁伤概率模型，主要贡献包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;提出了基于功能依赖的级联毁伤传播机制&lt;/li&gt;
+&lt;li&gt;给出了毁伤概率的蒙特卡洛计算方法&lt;/li&gt;
+&lt;li&gt;分析了网络拓扑结构对毁伤效果的影响&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;该模型可为武器目标分配提供决策支持，也可用于评估重点目标的抗毁伤能力。&lt;/p&gt;
+&lt;h3 class="heading-element" id="61-应用场景"&gt;&lt;span&gt;6.1 应用场景&lt;/span&gt;
+ &lt;a href="#61-%e5%ba%94%e7%94%a8%e5%9c%ba%e6%99%af" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;作战指挥：选择最优打击目标组合&lt;/li&gt;
+&lt;li&gt;防御评估：评估关键基础设施的抗毁伤能力&lt;/li&gt;
+&lt;li&gt;预案制定：制定针对性的防御策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="62-局限性"&gt;&lt;span&gt;6.2 局限性&lt;/span&gt;
+ &lt;a href="#62-%e5%b1%80%e9%99%90%e6%80%a7" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;依赖关系假设过于简化&lt;/li&gt;
+&lt;li&gt;未考虑时间动态性&lt;/li&gt;
+&lt;li&gt;模型参数难以精确获取&lt;/li&gt;
+&lt;/ol&gt;</description></item><item><title>人工智能模型组第二次培训——edgeboard连接</title><link>https://long753.github.io/smartcar_peixun2/</link><pubDate>Mon, 02 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar_peixun2/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h3 class="heading-element" id="1打开小车"&gt;&lt;span&gt;1.打开小车&lt;/span&gt;
  &lt;a href="#1%e6%89%93%e5%bc%80%e5%b0%8f%e8%bd%a6" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
