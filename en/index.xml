@@ -1,17 +1,18 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 02:53:05 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF Robot Development</title><link>https://long753.github.io/en/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/6dof_robot/</guid><category domain="https://long753.github.io/en/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-project-overview"&gt;&lt;span&gt;1. Project Overview&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/en/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>en</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 23:43:49 +0800</lastBuildDate><atom:link href="https://long753.github.io/en/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF Robot Development</title><link>https://long753.github.io/en/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/en/6dof_robot/</guid><category domain="https://long753.github.io/en/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-project-overview"&gt;&lt;span&gt;1. Project Overview&lt;/span&gt;
  &lt;a href="#1-project-overview" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h2&gt;&lt;p&gt;This project designs a 6-DOF (Degree of Freedom) fully-actuated underwater robot for underwater grasping tasks. Compared with traditional under-actuated underwater robots, the 6-DOF fully-actuated scheme can achieve higher-level motion control capability on a compact design basis, completing complex underwater operation tasks.&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;This project designs a 6-DOF (Degree of Freedom) fully-actuated underwater robot (AUV) for underwater grasping tasks and high-performance motion control. Compared with traditional under-actuated or over-actuated AUVs, the 6-DOF fully-actuated scheme can achieve higher-level motion control capability on a compact design basis, completing complex underwater operation tasks. Additionally, to simultaneously satisfy high-precision underwater grasping and high-performance motion control, this paper designs two motion modes for the AUV: grasping mode and cruising mode. The grasping mode uses traditional control schemes to improve precision, while the cruising mode uses DRL-driven control to achieve complex motion decoupling.&lt;/p&gt;
 &lt;h3 class="heading-element" id="11-design-objectives"&gt;&lt;span&gt;1.1 Design Objectives&lt;/span&gt;
  &lt;a href="#11-design-objectives" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;Achieve independent motion control of 6 degrees of freedom&lt;/li&gt;
-&lt;li&gt;Compact mechanical structure design&lt;/li&gt;
-&lt;li&gt;Precise target grasping capability&lt;/li&gt;
-&lt;li&gt;Stable underwater motion performance&lt;/li&gt;
+&lt;li data-task="x" title="Checked"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;High-performance mechanical structure design&lt;/li&gt;
+&lt;li data-task="x" title="Checked"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;Traditional control scheme design&lt;/li&gt;
+&lt;li data-task="x" title="Checked"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;DRL control scheme design&lt;/li&gt;
+&lt;li data-task=" " title="Unchecked"&gt;&lt;i class="checkbox-icon fa-regular fa-square" aria-hidden="true"&gt;&lt;/i&gt;Target recognition and grasping&lt;/li&gt;
+&lt;li data-task=" " title="Unchecked"&gt;&lt;i class="checkbox-icon fa-regular fa-square" aria-hidden="true"&gt;&lt;/i&gt;Autonomous path navigation&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 class="heading-element" id="2-mechanical-design"&gt;&lt;span&gt;2. Mechanical Design&lt;/span&gt;
  &lt;a href="#2-mechanical-design" class="heading-mark"&gt;
@@ -150,13 +151,37 @@
 &lt;/table&gt;
 &lt;p&gt;Forward kinematics equation:
 $$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &amp;amp; \sin\theta_i\sin\alpha_i &amp;amp; a_i\cos\theta_i \ \sin\theta_i &amp;amp; \cos\theta_i\cos\alpha_i &amp;amp; -\cos\theta_i\sin\alpha_i &amp;amp; a_i\sin\theta_i \ 0 &amp;amp; \sin\alpha_i &amp;amp; \cos\alpha_i &amp;amp; d_i \ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$&lt;/p&gt;
-&lt;h3 class="heading-element" id="32-deep-reinforcement-learning-based-control-strategy"&gt;&lt;span&gt;3.2 Deep Reinforcement Learning Based Control Strategy&lt;/span&gt;
- &lt;a href="#32-deep-reinforcement-learning-based-control-strategy" class="heading-mark"&gt;
+&lt;h3 class="heading-element" id="32-traditional-control-scheme"&gt;&lt;span&gt;3.2 Traditional Control Scheme&lt;/span&gt;
+ &lt;a href="#32-traditional-control-scheme" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;For grasping mode, PID controller is used for low-level motion control:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class PIDController {
+public:
+ double kp, ki, kd;
+ double setpoint, current_value;
+ double integral = 0;
+ double last_error = 0;
+ 
+ double compute(double feedback) {
+ double error = setpoint - feedback;
+ integral &amp;#43;= error;
+ double derivative = error - last_error;
+ last_error = error;
+ return kp * error &amp;#43; ki * integral &amp;#43; kd * derivative;
+ }
+};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;PID controller parameter tuning:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Position control: $K_p = 1.5$, $K_i = 0.2$, $K_d = 0.5$&lt;/li&gt;
+&lt;li&gt;Attitude control: $K_p = 2.0$, $K_i = 0.3$, $K_d = 0.8$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="33-deep-reinforcement-learning-based-control-strategy"&gt;&lt;span&gt;3.3 Deep Reinforcement Learning Based Control Strategy&lt;/span&gt;
+ &lt;a href="#33-deep-reinforcement-learning-based-control-strategy" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;To achieve complex grasping tasks, Deep Reinforcement Learning (DRL) is used for control strategy training.&lt;/p&gt;
-&lt;h4 class="heading-element" id="321-network-architecture"&gt;&lt;span&gt;3.2.1 Network Architecture&lt;/span&gt;
- &lt;a href="#321-network-architecture" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="331-network-architecture"&gt;&lt;span&gt;3.3.1 Network Architecture&lt;/span&gt;
+ &lt;a href="#331-network-architecture" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;p&gt;Using Actor-Critic architecture:&lt;/p&gt;
@@ -164,14 +189,14 @@ $$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &
 &lt;li&gt;&lt;strong&gt;Actor Network&lt;/strong&gt;: Policy network $\pi(a|s)$&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Critic Network&lt;/strong&gt;: Value network $V(s)$&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 class="heading-element" id="322-state-space"&gt;&lt;span&gt;3.2.2 State Space&lt;/span&gt;
- &lt;a href="#322-state-space" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="332-state-space"&gt;&lt;span&gt;3.3.2 State Space&lt;/span&gt;
+ &lt;a href="#332-state-space" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;p&gt;$$s = [p_{pos}, p_{vel}, q, \dot{q}, target_{pos}, image]$$&lt;/p&gt;
 &lt;p&gt;Where: position, velocity, joint angle, target position, image&lt;/p&gt;
-&lt;h4 class="heading-element" id="323-reward-function"&gt;&lt;span&gt;3.2.3 Reward Function&lt;/span&gt;
- &lt;a href="#323-reward-function" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="333-reward-function"&gt;&lt;span&gt;3.3.3 Reward Function&lt;/span&gt;
+ &lt;a href="#333-reward-function" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;p&gt;$$r = r_{target} + r_{smooth} + r_{collision}$$&lt;/p&gt;
@@ -180,8 +205,8 @@ $$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &
 &lt;li&gt;$r_{smooth}$: Motion smoothness reward&lt;/li&gt;
 &lt;li&gt;$r_{collision}$: Collision penalty&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 class="heading-element" id="324-training-algorithm"&gt;&lt;span&gt;3.2.4 Training Algorithm&lt;/span&gt;
- &lt;a href="#324-training-algorithm" class="heading-mark"&gt;
+&lt;h4 class="heading-element" id="334-training-algorithm"&gt;&lt;span&gt;3.3.4 Training Algorithm&lt;/span&gt;
+ &lt;a href="#334-training-algorithm" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h4&gt;&lt;p&gt;Using PPO (Proximal Policy Optimization) algorithm for training:&lt;/p&gt;
@@ -201,25 +226,7 @@ $$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &
  # Update policy
  self.actor.optimize(trajectories, advantages)
  # Update value function
- self.critic.optimize(trajectories)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="33-pid-control"&gt;&lt;span&gt;3.3 PID Control&lt;/span&gt;
- &lt;a href="#33-pid-control" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;Low-level motion control uses PID controller:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;class PIDController {
-public:
- double kp, ki, kd;
- double setpoint, current_value;
- double integral = 0;
- 
- double compute(double feedback) {
- double error = setpoint - feedback;
- integral &amp;#43;= error;
- double derivative = error - last_error;
- last_error = error;
- return kp * error &amp;#43; ki * integral &amp;#43; kd * derivative;
- }
-};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-vision-system"&gt;&lt;span&gt;4. Vision System&lt;/span&gt;
+ self.critic.optimize(trajectories)&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-vision-system"&gt;&lt;span&gt;4. Vision System&lt;/span&gt;
  &lt;a href="#4-vision-system" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;

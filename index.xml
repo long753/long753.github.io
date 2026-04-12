@@ -1,17 +1,28 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 02:53:05 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-项目概述"&gt;&lt;span&gt;1. 项目概述&lt;/span&gt;
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>LONG</title><link>https://long753.github.io/</link><description>LONG</description><generator>Hugo 0.160.1 &amp; FixIt v0.4.5</generator><language>zh-CN</language><managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor><webMaster>cl2848077709@outlook.com (Chen Long)</webMaster><lastBuildDate>Sun, 12 Apr 2026 23:43:49 +0800</lastBuildDate><atom:link href="https://long753.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>6-DOF机器人设计</title><link>https://long753.github.io/6dof_robot/</link><pubDate>Sun, 08 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/6dof_robot/</guid><category domain="https://long753.github.io/categories/robot/">Robot</category><description>&lt;img src="https://long753.github.io/6dof_robot/featured-image.png" alt="featured image" referrerpolicy="no-referrer"&gt;&lt;h2 class="heading-element" id="1-项目概述"&gt;&lt;span&gt;1. 项目概述&lt;/span&gt;
  &lt;a href="#1-%e9%a1%b9%e7%9b%ae%e6%a6%82%e8%bf%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h2&gt;&lt;p&gt;本项目设计了一款6-DOF（自由度）全驱动水下机器人，旨在完成水下抓取任务。与传统欠驱动水下机器人相比，6-DOF全驱动方案能够在紧凑设计的基础上实现更高水平的运动控制能力，完成复杂的水下作业任务。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;本项目设计了一款6-DOF全驱动水下机器人（AUV），旨在完成水下抓取任务与高性能运动控制。与传统欠驱动或冗余驱动的AUV相比，6-DOF全驱动方案能够在紧凑设计的基础上实现更高水平的运动控制能力，完成复杂的水下作业任务。此外，为同时满足高精度水下抓取与高性能运动控制，本文设计了AUV的两种运动模式：抓取模式与巡航模式。抓取模式使用传统控制方案以提升其精度，巡航模式使用DRL驱动以实现其复杂的运动解耦。&lt;/p&gt;
 &lt;h3 class="heading-element" id="11-设计目标"&gt;&lt;span&gt;1.1 设计目标&lt;/span&gt;
  &lt;a href="#11-%e8%ae%be%e8%ae%a1%e7%9b%ae%e6%a0%87" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;实现6个自由度的独立运动控制&lt;/li&gt;
-&lt;li&gt;紧凑的机械结构设计&lt;/li&gt;
-&lt;li&gt;精确的目标抓取能力&lt;/li&gt;
-&lt;li&gt;稳定的水下运动性能&lt;/li&gt;
+&lt;li data-task="x" title="已完成"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;高性能的机械结构设计&lt;/li&gt;
+&lt;li data-task="x" title="已完成"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;传统控制方案设计&lt;/li&gt;
+&lt;li data-task="x" title="已完成"&gt;&lt;i class="checkbox-icon fa-solid fa-check-square" aria-hidden="true"&gt;&lt;/i&gt;DRL控制方案设计&lt;/li&gt;
+&lt;li data-task=" " title="未完成"&gt;&lt;i class="checkbox-icon fa-regular fa-square" aria-hidden="true"&gt;&lt;/i&gt;目标识别与抓取&lt;/li&gt;
+&lt;li data-task=" " title="未完成"&gt;&lt;i class="checkbox-icon fa-regular fa-square" aria-hidden="true"&gt;&lt;/i&gt;自主路径导航&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="12-技术支持"&gt;&lt;span&gt;1.2 技术支持&lt;/span&gt;
+ &lt;a href="#12-%e6%8a%80%e6%9c%af%e6%94%af%e6%8c%81" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;mjlab &amp;amp; mojoco&lt;/li&gt;
+&lt;li&gt;ROS2&lt;/li&gt;
+&lt;li&gt;SSH &amp;amp; Git&lt;/li&gt;
+&lt;li&gt;python &amp;amp; C++&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 class="heading-element" id="2-结构设计"&gt;&lt;span&gt;2. 结构设计&lt;/span&gt;
  &lt;a href="#2-%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" class="heading-mark"&gt;
@@ -148,69 +159,19 @@
  &lt;/tr&gt;
  &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;正运动学方程：
-$$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &amp;amp; \sin\theta_i\sin\alpha_i &amp;amp; a_i\cos\theta_i \ \sin\theta_i &amp;amp; \cos\theta_i\cos\alpha_i &amp;amp; -\cos\theta_i\sin\alpha_i &amp;amp; a_i\sin\theta_i \ 0 &amp;amp; \sin\alpha_i &amp;amp; \cos\alpha_i &amp;amp; d_i \ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$&lt;/p&gt;
-&lt;h3 class="heading-element" id="32-基于深度强化学习的控制策略"&gt;&lt;span&gt;3.2 基于深度强化学习的控制策略&lt;/span&gt;
- &lt;a href="#32-%e5%9f%ba%e4%ba%8e%e6%b7%b1%e5%ba%a6%e5%bc%ba%e5%8c%96%e5%ad%a6%e4%b9%a0%e7%9a%84%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5" class="heading-mark"&gt;
+&lt;p&gt;正运动学方程：&lt;/p&gt;
+&lt;p&gt;$$T_i^{i-1} = \begin{pmatrix} \cos\theta_i &amp;amp; -\sin\theta_i\cos\alpha_i &amp;amp; \sin\theta_i\sin\alpha_i &amp;amp; a_i\cos\theta_i \ \sin\theta_i &amp;amp; \cos\theta_i\cos\alpha_i &amp;amp; -\cos\theta_i\sin\alpha_i &amp;amp; a_i\sin\theta_i \ 0 &amp;amp; \sin\alpha_i &amp;amp; \cos\alpha_i &amp;amp; d_i \ 0 &amp;amp; 0 &amp;amp; 0 &amp;amp; 1 \end{pmatrix}$$&lt;/p&gt;
+&lt;h3 class="heading-element" id="32-传统控制方案"&gt;&lt;span&gt;3.2 传统控制方案&lt;/span&gt;
+ &lt;a href="#32-%e4%bc%a0%e7%bb%9f%e6%8e%a7%e5%88%b6%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;为了实现复杂的抓取任务，采用深度强化学习（DRL）进行控制策略训练。&lt;/p&gt;
-&lt;h4 class="heading-element" id="321-网络架构"&gt;&lt;span&gt;3.2.1 网络架构&lt;/span&gt;
- &lt;a href="#321-%e7%bd%91%e7%bb%9c%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;采用Actor-Critic架构：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Actor网络&lt;/strong&gt;：策略网络$\pi(a|s)$&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Critic网络&lt;/strong&gt;：价值网络$V(s)$&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 class="heading-element" id="322-状态空间"&gt;&lt;span&gt;3.2.2 状态空间&lt;/span&gt;
- &lt;a href="#322-%e7%8a%b6%e6%80%81%e7%a9%ba%e9%97%b4" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;$$s = [p_{pos}, p_{vel}, q, \dot{q}, target_{pos}, image]$$&lt;/p&gt;
-&lt;p&gt;其中：位置、速度、关节角度、目标位置、图像&lt;/p&gt;
-&lt;h4 class="heading-element" id="323-奖励函数"&gt;&lt;span&gt;3.2.3 奖励函数&lt;/span&gt;
- &lt;a href="#323-%e5%a5%96%e5%8a%b1%e5%87%bd%e6%95%b0" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;$$r = r_{target} + r_{smooth} + r_{collision}$$&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;$r_{target}$：目标达成奖励&lt;/li&gt;
-&lt;li&gt;$r_{smooth}$：运动平滑奖励&lt;/li&gt;
-&lt;li&gt;$r_{collision}$：碰撞惩罚&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 class="heading-element" id="324-训练算法"&gt;&lt;span&gt;3.2.4 训练算法&lt;/span&gt;
- &lt;a href="#324-%e8%ae%ad%e7%bb%83%e7%ae%97%e6%b3%95" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;使用PPO（Proximal Policy Optimization）算法进行训练：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;class RobotAgent:
- def __init__(self):
- self.actor = ActorNetwork()
- self.critic = CriticNetwork()
- 
- def select_action(self, state):
- mean, std = self.actor(state)
- action = torch.distributions.Normal(mean, std).sample()
- return action
- 
- def update(self, trajectories):
- # 计算优势函数
- advantages = compute_gae(trajectories)
- # 更新策略
- self.actor.optimize(trajectories, advantages)
- # 更新价值函数
- self.critic.optimize(trajectories)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="33-pid控制"&gt;&lt;span&gt;3.3 PID控制&lt;/span&gt;
- &lt;a href="#33-pid%e6%8e%a7%e5%88%b6" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;底层运动控制采用PID控制器：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;对于抓取模式，采用PID控制器进行底层运动控制：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class PIDController {
 public:
  double kp, ki, kd;
  double setpoint, current_value;
  double integral = 0;
+ double last_error = 0;
  
  double compute(double feedback) {
  double error = setpoint - feedback;
@@ -219,7 +180,180 @@ public:
  last_error = error;
  return kp * error &amp;#43; ki * integral &amp;#43; kd * derivative;
  }
-};&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="4-视觉方案"&gt;&lt;span&gt;4. 视觉方案&lt;/span&gt;
+};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;PID控制器参数整定：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;位置控制：$K_p = 1.5$, $K_i = 0.2$, $K_d = 0.5$&lt;/li&gt;
+&lt;li&gt;姿态控制：$K_p = 2.0$, $K_i = 0.3$, $K_d = 0.8$&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 class="heading-element" id="33-基于drl的控制策略"&gt;&lt;span&gt;3.3 基于DRL的控制策略&lt;/span&gt;
+ &lt;a href="#33-%e5%9f%ba%e4%ba%8edrl%e7%9a%84%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;p&gt;针对巡航任务，本文采用DRL进行控制策略训练，并使用mjlab完成模型训练。代码框架如下：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;auv_mjlab/
+├── src/
+│ ├── tasks/
+│ │ └── velocity/ # Velocity 速度控制任务
+│ │ ├── config/
+│ │ │ └── auv/
+│ │ │ ├── env_cfgs.py # 环境配置
+│ │ │ └── rl_cfg.py # RL 算法配置
+│ │ ├── mdp/
+│ │ │ ├── observations.py # 观测函数
+│ │ │ ├── rewards.py # 奖励函数
+│ │ │ ├── terminations.py # 终止条件
+│ │ │ └── velocity_command.py # 速度指令生成器
+│ │ └── rl/
+│ │ └── runner.py # 训练运行器
+│ └── assets/
+│ └── robots/ # 机器人模型配置
+├── scripts/
+│ ├── train.py # 训练脚本
+│ ├── play.py # 回放脚本
+│ └── list_envs.py # 环境列表
+└── README.md&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="331-场景配置scene"&gt;&lt;span&gt;3.3.1 场景配置（Scene）&lt;/span&gt;
+ &lt;a href="#331-%e5%9c%ba%e6%99%af%e9%85%8d%e7%bd%aescene" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;环境数量&lt;/strong&gt;: 支持大规模并行训练&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;地形类型&lt;/strong&gt;: 平地（plane）水下环境&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;机器人&lt;/strong&gt;: AUV 无人水下航行器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="332-动作空间actions"&gt;&lt;span&gt;3.3.2 动作空间（Actions）&lt;/span&gt;
+ &lt;a href="#332-%e5%8a%a8%e4%bd%9c%e7%a9%ba%e9%97%b4actions" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;AUV 具有两类执行器：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;执行器类型&lt;/th&gt;
+ &lt;th&gt;关节名称&lt;/th&gt;
+ &lt;th&gt;作用&lt;/th&gt;
+ &lt;th&gt;动作尺度&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;舵机&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;joint_servo_up&lt;/code&gt;, &lt;code&gt;joint_servo_left&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;控制方向舵角度&lt;/td&gt;
+ &lt;td&gt;±1.5 rad&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;推进器&lt;/td&gt;
+ &lt;td&gt;&lt;code&gt;joint_prop_up&lt;/code&gt;, &lt;code&gt;joint_prop_down&lt;/code&gt;, &lt;code&gt;joint_prop_left&lt;/code&gt;, &lt;code&gt;joint_prop_right&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;提供推进力&lt;/td&gt;
+ &lt;td&gt;±200 N&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 class="heading-element" id="333-指令空间commands"&gt;&lt;span&gt;3.3.3 指令空间（Commands）&lt;/span&gt;
+ &lt;a href="#333-%e6%8c%87%e4%bb%a4%e7%a9%ba%e9%97%b4commands" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;速度指令生成器使用 &lt;code&gt;UniformVelocityCommandCfg&lt;/code&gt;，生成的指令包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;线速度指令&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;X轴（前后）: -1.0 ~ 2.0 m/s&lt;/li&gt;
+&lt;li&gt;Y轴（侧向）: -1.0 ~ 1.0 m/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;角速度指令&lt;/strong&gt;:
+&lt;ul&gt;
+&lt;li&gt;Z轴（偏航）: -1.0 ~ 1.0 rad/s&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;指令重采样时间&lt;/strong&gt;: 3~8秒&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="334-观测空间observations"&gt;&lt;span&gt;3.3.4 观测空间（Observations）&lt;/span&gt;
+ &lt;a href="#334-%e8%a7%82%e6%b5%8b%e7%a9%ba%e9%97%b4observations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;Agent 接收的观测信息包括：&lt;/p&gt;
+&lt;table&gt;
+ &lt;thead&gt;
+ &lt;tr&gt;
+ &lt;th&gt;观测项&lt;/th&gt;
+ &lt;th&gt;描述&lt;/th&gt;
+ &lt;th&gt;维度&lt;/th&gt;
+ &lt;/tr&gt;
+ &lt;/thead&gt;
+ &lt;tbody&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;command&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;目标速度指令&lt;/td&gt;
+ &lt;td&gt;4&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;base_lin_vel&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;机身线速度&lt;/td&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;base_ang_vel&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;机身角速度&lt;/td&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;projected_gravity&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;重力投影向量&lt;/td&gt;
+ &lt;td&gt;3&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;joint_pos&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;舵机角度&lt;/td&gt;
+ &lt;td&gt;2&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;joint_vel&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;关节速度&lt;/td&gt;
+ &lt;td&gt;6&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+ &lt;td&gt;&lt;code&gt;last_action&lt;/code&gt;&lt;/td&gt;
+ &lt;td&gt;上一帧动作&lt;/td&gt;
+ &lt;td&gt;8&lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4 class="heading-element" id="335-奖励函数rewards"&gt;&lt;span&gt;3.3.5 奖励函数（Rewards）&lt;/span&gt;
+ &lt;a href="#335-%e5%a5%96%e5%8a%b1%e5%87%bd%e6%95%b0rewards" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;奖励设计分为核心目标奖励和惩罚项：&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;核心奖励&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;track_linear_velocity&lt;/code&gt;: 跟踪目标线速度（权重 1.0）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;track_angular_velocity&lt;/code&gt;: 跟踪目标角速度（权重 1.0）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;惩罚项&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;body_orientation_l2&lt;/code&gt;: 惩罚非水平姿态，保持平稳（权重 -1.0）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;body_ang_vel&lt;/code&gt;: 惩罚 Roll/Pitch 轴角速度，防止晃动（权重 -0.05）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;action_rate_l2&lt;/code&gt;: 惩罚动作变化率，防止电机抖动（权重 -0.01）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;action_l2&lt;/code&gt;: 惩罚动作幅值，鼓励节能（权重 -0.005）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dof_vel_z&lt;/code&gt;: 惩罚 Z 轴线速度，防止上下窜动（权重 -0.05）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="336-事件系统events"&gt;&lt;span&gt;3.3.6 事件系统（Events）&lt;/span&gt;
+ &lt;a href="#336-%e4%ba%8b%e4%bb%b6%e7%b3%bb%e7%bb%9fevents" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;关节重置&lt;/strong&gt;: 训练开始时重置机器人关节状态&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;水流扰动&lt;/strong&gt;: 每隔 5-10 秒随机施加外部推力，增强鲁棒性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 class="heading-element" id="337-终止条件terminations"&gt;&lt;span&gt;3.3.7 终止条件（Terminations）&lt;/span&gt;
+ &lt;a href="#337-%e7%bb%88%e6%ad%a2%e6%9d%a1%e4%bb%b6terminations" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;time_out&lt;/code&gt;: episode 时间超时（默认 20 秒）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fell_over&lt;/code&gt;: 机身姿态超过 70° 倾斜&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 class="heading-element" id="4-视觉方案"&gt;&lt;span&gt;4. 视觉方案&lt;/span&gt;
  &lt;a href="#4-%e8%a7%86%e8%a7%89%e6%96%b9%e6%a1%88" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
@@ -240,64 +374,32 @@ depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="hea
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;使用GraspNet进行抓取点预测：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;grasp_poses = graspnet.predict(point_cloud)&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-仿真结果"&gt;&lt;span&gt;5. 仿真结果&lt;/span&gt;
- &lt;a href="#5-%e4%bb%bf%e7%9c%9f%e7%bb%93%e6%9e%9c" class="heading-mark"&gt;
+&lt;pre&gt;&lt;code&gt;grasp_poses = graspnet.predict(point_cloud)&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-项目复现"&gt;&lt;span&gt;5. 项目复现&lt;/span&gt;
+ &lt;a href="#5-%e9%a1%b9%e7%9b%ae%e5%a4%8d%e7%8e%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h2&gt;&lt;h3 class="heading-element" id="51-运动学仿真"&gt;&lt;span&gt;5.1 运动学仿真&lt;/span&gt;
- &lt;a href="#51-%e8%bf%90%e5%8a%a8%e5%ad%a6%e4%bb%bf%e7%9c%9f" class="heading-mark"&gt;
+&lt;/h2&gt;&lt;h3 class="heading-element" id="51-环境要求"&gt;&lt;span&gt;5.1 环境要求&lt;/span&gt;
+ &lt;a href="#51-%e7%8e%af%e5%a2%83%e8%a6%81%e6%b1%82" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;在Gazebo中进行运动学验证：&lt;/p&gt;
-&lt;table&gt;
- &lt;thead&gt;
- &lt;tr&gt;
- &lt;th&gt;指标&lt;/th&gt;
- &lt;th&gt;仿真值&lt;/th&gt;
- &lt;th&gt;理论值&lt;/th&gt;
- &lt;th&gt;误差&lt;/th&gt;
- &lt;/tr&gt;
- &lt;/thead&gt;
- &lt;tbody&gt;
- &lt;tr&gt;
- &lt;td&gt;最大深度&lt;/td&gt;
- &lt;td&gt;50m&lt;/td&gt;
- &lt;td&gt;50m&lt;/td&gt;
- &lt;td&gt;0&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;最大速度&lt;/td&gt;
- &lt;td&gt;1.5 m/s&lt;/td&gt;
- &lt;td&gt;1.6 m/s&lt;/td&gt;
- &lt;td&gt;6.25%&lt;/td&gt;
- &lt;/tr&gt;
- &lt;tr&gt;
- &lt;td&gt;定位精度&lt;/td&gt;
- &lt;td&gt;±5cm&lt;/td&gt;
- &lt;td&gt;-&lt;/td&gt;
- &lt;td&gt;-&lt;/td&gt;
- &lt;/tr&gt;
- &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 class="heading-element" id="52-控制策略训练"&gt;&lt;span&gt;5.2 控制策略训练&lt;/span&gt;
- &lt;a href="#52-%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5%e8%ae%ad%e7%bb%83" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;DRL训练曲线表明：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;训练500轮后，成功率达到85%&lt;/li&gt;
-&lt;li&gt;训练1000轮后，成功率达到95%&lt;/li&gt;
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Python 3.10+&lt;/li&gt;
+&lt;li&gt;CUDA 11.8+（GPU 训练）&lt;/li&gt;
+&lt;li&gt;Mujoco 物理引擎&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 class="heading-element" id="53-实物测试"&gt;&lt;span&gt;5.3 实物测试&lt;/span&gt;
- &lt;a href="#53-%e5%ae%9e%e7%89%a9%e6%b5%8b%e8%af%95" class="heading-mark"&gt;
+&lt;h3 class="heading-element" id="52-训练"&gt;&lt;span&gt;5.2 训练&lt;/span&gt;
+ &lt;a href="#52-%e8%ae%ad%e7%bb%83" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;水下实验结果表明：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;机器人可实现6个自由度的独立控制&lt;/li&gt;
-&lt;li&gt;抓取成功率达到90%以上&lt;/li&gt;
-&lt;li&gt;续航时间约2小时&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;python scripts/train.py Mjlab-Velocity-Flat-CQU-AUV --env.scene.num-envs=并行数量 --agent.max-iterations=回合数量&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="53-回放"&gt;&lt;span&gt;5.3 回放&lt;/span&gt;
+ &lt;a href="#53-%e5%9b%9e%e6%94%be" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;python scripts/play.py Mjlab-Velocity-Flat-CQU-AUV \
+ --checkpoint-file logs/rsl_rl/auv_velocity/时间戳/model_第几个回合.pt \
+ --num-envs 1 \
+ --viewer viser \
+ --no-terminations True&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;回放后会返回一个 Viser 可视化网址，可在浏览器中查看训练效果。&lt;/p&gt;
 &lt;h2 class="heading-element" id="6-总结"&gt;&lt;span&gt;6. 总结&lt;/span&gt;
  &lt;a href="#6-%e6%80%bb%e7%bb%93" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -317,12 +419,12 @@ depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="hea
 &lt;li&gt;进一步优化机械臂末端精度&lt;/li&gt;
 &lt;li&gt;增强视觉算法在浑水环境下的鲁棒性&lt;/li&gt;
 &lt;li&gt;延长水下续航时间&lt;/li&gt;
-&lt;/ul&gt;</description></item><item><title>第20届全国大学生智能汽车竞赛(完全模型组)</title><link>https://long753.github.io/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h2 class="heading-element" id="1-赛事简介"&gt;&lt;span&gt;1. 赛事简介&lt;/span&gt;
- &lt;a href="#1-%e8%b5%9b%e4%ba%8b%e7%ae%80%e4%bb%8b" class="heading-mark"&gt;
+&lt;/ul&gt;</description></item><item><title>第20届全国大学生智能汽车竞赛(完全模型组)</title><link>https://long753.github.io/smartcar/</link><pubDate>Sun, 01 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/smartcar/</guid><category domain="https://long753.github.io/categories/smartcar/">SmartCar</category><description>&lt;h2 class="heading-element" id="1-项目简介"&gt;&lt;span&gt;1. 项目简介&lt;/span&gt;
+ &lt;a href="#1-%e9%a1%b9%e7%9b%ae%e7%ae%80%e4%bb%8b" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h2&gt;&lt;p&gt;全国大学生智能汽车竞赛是教育部倡导的大学生科技竞赛之一，面向全国大学生开展，旨在培养学生的创新实践能力和团队协作精神。第二十届竞赛设有完全模型组、视觉组、气垫船组等多个组别，其中完全模型组要求参赛队伍设计制作能够自主完成赛道识别、元素处理和路径规划任务的智能小车。&lt;/p&gt;
-&lt;p&gt;本项目基于EdgeBoard嵌入式平台，采用YOLOv3-Mobilenet目标检测算法，结合传统图像处理方法，实现了完整的智能车控制系统。&lt;/p&gt;
+&lt;/h2&gt;&lt;p&gt;第二十届全国大学生智能汽车竞赛（完全模型组）要求参赛队伍设计制作能够自主完成赛道识别、元素处理和路径规划任务的智能小车。赛道元素包含：直到、弯道、十字、圆环。AI元素包含：充电区、临时停车区、餐饮区、路障。该项目获得本次比赛的&lt;strong&gt;全国一等奖&lt;/strong&gt;！&lt;/p&gt;
+&lt;p&gt;本项目基于EdgeBoard嵌入式平台，采用YOLOv3目标检测算法，结合传统图像处理方法，实现了完整的智能车控制系统。完整代码见：&lt;a href="https://github.com/long753/SmartCar" target="_blank" rel="external nofollow noopener noreferrer"&gt;https://github.com/long753/SmartCar&lt;/a&gt;&lt;/p&gt;
 &lt;h2 class="heading-element" id="2-硬件平台"&gt;&lt;span&gt;2. 硬件平台&lt;/span&gt;
  &lt;a href="#2-%e7%a1%ac%e4%bb%b6%e5%b9%b3%e5%8f%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -368,9 +470,11 @@ depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="hea
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;摄像头&lt;/strong&gt;：工业相机，负责赛道图像采集&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;串口&lt;/strong&gt;：USB转串口，连接主控与电机驱动板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;摄像头&lt;/strong&gt;：无畸变110度，300帧工业相机（杰瑞微通）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;串口&lt;/strong&gt;：USB转TTL串口，连接主控与edgeboard（上位机）&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;电池&lt;/strong&gt;：12V锂电池，为全车提供动力&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TC264&lt;/strong&gt;：主控芯片&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IMU&lt;/strong&gt;：提供小车的姿态信息&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 class="heading-element" id="3-软件架构"&gt;&lt;span&gt;3. 软件架构&lt;/span&gt;
  &lt;a href="#3-%e8%bd%af%e4%bb%b6%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
@@ -380,22 +484,29 @@ depth_map = depth_model.predict(image)&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="hea
  &lt;a href="#31-%e7%b3%bb%e7%bb%9f%e6%9e%b6%e6%9e%84" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;系统采用模块化设计，主要包含以下核心模块：&lt;/p&gt;
+&lt;/h3&gt;&lt;p&gt;系统采用C++面对对象编程，主要类的定义如下：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;SmartCar
 ├── driver/ # 硬件驱动层
-│ ├── camera_driver.h # 摄像头驱动
+│ ├── camera_driver.cpp # 摄像头驱动
 │ └── uart.hpp # 串口通信
 ├── vision/ # 视觉处理层
-│ ├── ImageCapture.h # 图像采集
-│ └── ImageProcess.h # 图像处理
+│ ├── ImageCapture.cpp # 图像采集
+│ └── ImageProcess.cpp # 图像处理
 ├── detection/ # AI检测层
 │ └── detection.hpp # YOLOv3目标检测
-├── element/ # 元素识别层
-│ ├── Findline.h # 路径提取
-│ ├── RingElement.h # 圆环处理
-│ └── CrossElement.h # 十字路口处理
+├── element/ # 赛道元素识别层
+│ ├── Findline.cpp # 路径提取
+│ ├── RingElement.cpp # 圆环处理
+│ └── CrossElement.cpp # 十字路口处理
+├── detection/ # AI元素识别层
+│ ├── BridageDetection.cpp # 坡道处理
+│ ├── ChargeDetection.cpp # 充电区处理
+│ ├── ParkingDetection.cpp # 斑马线处理
+│ ├── RestaurantDetection.cpp # 餐饮区处理
+│ ├── RoadwayDetection.cpp # 路障处理
+│ └── TemporaryDetection.cpp # 临时停车区处理
 └── control/ # 运动控制层
- └── Control.h # PID控制与速度规划&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="32-核心代码结构"&gt;&lt;span&gt;3.2 核心代码结构&lt;/span&gt;
+ └── Control.cpp # PID控制与速度规划&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="32-核心代码结构"&gt;&lt;span&gt;3.2 核心代码结构&lt;/span&gt;
  &lt;a href="#32-%e6%a0%b8%e5%bf%83%e4%bb%a3%e7%a0%81%e7%bb%93%e6%9e%84" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
@@ -448,38 +559,169 @@ public:
  }
  };
  predict_thread = std::jthread(ai_process_task, this-&amp;gt;detection);
-}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-赛道元素处理"&gt;&lt;span&gt;4.2 赛道元素处理&lt;/span&gt;
- &lt;a href="#42-%e8%b5%9b%e9%81%93%e5%85%83%e7%b4%a0%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="42-赛道边线提取findlinecpp"&gt;&lt;span&gt;4.2 赛道边线提取(Findline.cpp)&lt;/span&gt;
+ &lt;a href="#42-%e8%b5%9b%e9%81%93%e8%be%b9%e7%ba%bf%e6%8f%90%e5%8f%96findlinecpp" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;系统支持多种赛道元素的识别与处理：&lt;/p&gt;
-&lt;h4 class="heading-element" id="圆环处理"&gt;&lt;span&gt;圆环处理&lt;/span&gt;
- &lt;a href="#%e5%9c%86%e7%8e%af%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="功能描述"&gt;&lt;span&gt;功能描述&lt;/span&gt;
+ &lt;a href="#%e5%8a%9f%e8%83%bd%e6%8f%8f%e8%bf%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;圆环是智能车竞赛中的难点元素，系统通过AI检测与图像处理相结合的方式实现入环与出环：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;else if(scene == Scene::RingScene){ 
- control.motorSpeed = ring_params-&amp;gt;ring_speed; 
- control.turnP = CarParams-&amp;gt;ring_p;
- control.turnD = CarParams-&amp;gt;ring_d;
- findline.line_type = LineType::STRAIGHT;
-}&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="充电区处理"&gt;&lt;span&gt;充电区处理&lt;/span&gt;
- &lt;a href="#%e5%85%85%e7%94%b5%e5%8c%ba%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+&lt;/h4&gt;&lt;p&gt;赛道边线提取是智能车视觉导航的核心功能，负责从二值化图像中精确提取左右赛道边界，为运动控制提供准确的路径信息。该系统基于八邻域算法实现自适应路径追踪，具有高精度和强鲁棒性的特点。&lt;/p&gt;
+&lt;h4 class="heading-element" id="技术实现"&gt;&lt;span&gt;技术实现&lt;/span&gt;
+ &lt;a href="#%e6%8a%80%e6%9c%af%e5%ae%9e%e7%8e%b0" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
-&lt;/h4&gt;&lt;p&gt;充电区需要完成入库、充电、出库三个阶段：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;if (scene == Scene::ChargeScene ){
- if(charge-&amp;gt;flag_down){
- control.motorSpeed = ai_params-&amp;gt;charge_speedHigh;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;1. 八邻域搜线算法&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;算法采用改进的八邻域算法，定义了两个方向的邻域模板进行赛道边缘追踪：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 左赛道邻域搜索模板
+std::vector&amp;lt;cv::Point&amp;gt; seeds_l{{0, 1}, {-1, 1}, {-1, 0}, {-1, -1},
+ {0, -1}, {1, -1}, {1, 0}, {1, 1}};
+
+// 右赛道邻域搜索模板 
+std::vector&amp;lt;cv::Point&amp;gt; seeds_r{{0, 1}, {1, 1}, {1, 0}, {1, -1},
+ {0, -1}, {-1, -1}, {-1, 0}, {-1, 1}};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;算法通过预处理消除噪点，然后从底部开始寻找起始点，逐步向上追踪赛道边缘。系统还具备智能噪声处理和卡死点跳出机制。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;伪代码实现&lt;/strong&gt;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function search_line(binary_image):
+ processed_image = morphologyEx(binary_image, MORPH_OPEN) // 开运算去噪
+ left_start = find_start_point(processed_image, &amp;#39;left&amp;#39;)
+ right_start = find_start_point(processed_image, &amp;#39;right&amp;#39;)
+ 
+ while not (left_stop and right_stop):
+ next_left = find_next_point(left_current, seeds_l, processed_image)
+ next_right = find_next_point(right_current, seeds_r, processed_image)
+ 
+ if point_stuck(left_current): jump_to_new_point(left_current, processed_image)
+ if point_stuck(right_current): jump_to_new_point(right_current, processed_image)
+ 
+ left_current = next_left
+ right_current = next_right
+ left_points.add(left_current)
+ right_points.add(right_current)
+ 
+ calculate_edge_points()
+ determine_line_type()&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;2. 赛道类型识别&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;系统能够识别三种赛道类型：直道、左弯道、右弯道。识别基于生长方向统计和赛道宽度变化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;int Findline::find_zuodanbian() {
+ for(int i=0; i&amp;lt;index_endline_right*5/6; i&amp;#43;&amp;#43;) {
+ if(dir_r[i]==5 || dir_r[i]==6) num_you&amp;#43;&amp;#43;;
  }
- if(charge-&amp;gt;step == Charge::Step::Enter){
- control.motorSpeed = std::max(ai_params-&amp;gt;charge_speedLow - ((float)charge-&amp;gt;enter_count/(float)50), (float)1);
+ 
+ for(int i=index_endline_left/6; i&amp;lt;index_endline_left; i&amp;#43;&amp;#43;) {
+ if(dir_l[i]==4 || left_point[i].x &amp;lt; 10) num_zuo&amp;#43;&amp;#43;;
  }
- if(charge-&amp;gt;carStoping){
- control.motorSpeed = 0; // 充电停止
+ 
+ return (num_you &amp;gt;= threshold1 &amp;amp;&amp;amp; num_zuo &amp;gt;= threshold2 &amp;amp;&amp;amp; endline_eight &amp;lt; 240*0.2);
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;3. 中线计算与动态前瞻&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;中线计算融合了赛道宽度、弯道类型和速度信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void Findline::midline_calculate() {
+ if(line_type == LineType::STRAIGHT) {
+ midline[i] = (leftpoint[i] &amp;#43; rightpoint[i])/2;
+ } else if(line_type == LineType::LEFTTURN) {
+ midline[i] = (5 &amp;#43; rightpoint[i] - left_stdio * (238 - i)) * 0.5;
+ } else if(line_type == LineType::RIGHTTURN) {
+ midline[i] = (leftpoint[i] &amp;#43; 315 &amp;#43; right_stdio*(238-i)) * 0.5;
  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-运动控制"&gt;&lt;span&gt;4.3 运动控制&lt;/span&gt;
- &lt;a href="#43-%e8%bf%90%e5%8a%a8%e6%8e%a7%e5%88%b6" class="heading-mark"&gt;
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;动态前瞻机制根据速度自适应调整：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if(CarParams-&amp;gt;qianzhan_change &amp;amp;&amp;amp; control.motorSpeed &amp;lt;= CarParams-&amp;gt;speedHigh 
+ &amp;amp;&amp;amp; control.motorSpeed &amp;gt;= CarParams-&amp;gt;speedLow) {
+ control.qianzhan = CarParams-&amp;gt;qianzhan_low &amp;#43; 
+ static_cast&amp;lt;int&amp;gt;(static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - control.motorSpeed)/
+ static_cast&amp;lt;float&amp;gt;(CarParams-&amp;gt;speedHigh - CarParams::speedLow)) * 
+ (CarParams-&amp;gt;qianzhan_high - CarParams-&amp;gt;qianzhan_low);
+}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="43-赛道元素处理"&gt;&lt;span&gt;4.3 赛道元素处理&lt;/span&gt;
+ &lt;a href="#43-%e8%b5%9b%e9%81%93%e5%85%83%e7%b4%a0%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h3&gt;&lt;h4 class="heading-element" id="圆环处理ringelementcpp"&gt;&lt;span&gt;圆环处理(RingElement.cpp)&lt;/span&gt;
+ &lt;a href="#%e5%9c%86%e7%8e%af%e5%a4%84%e7%90%86ringelementcpp" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;功能描述&lt;/strong&gt;
+圆环是智能车竞赛中的复杂元素，需要精确识别入口、环内行驶和出口三个阶段。系统通过多拐点检测和陀螺仪融合实现全自动圆环处理。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技术实现&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 圆环状态机&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enum class RingStep {
+ None, // 未检测到圆环
+ PreEntering, // 预入环阶段
+ Entering, // 正在入环
+ Inside, // 环内行驶
+ Exiting, // 正在出环
+ Finish // 圆环完成
+};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;2. 多拐点检测算法&lt;/strong&gt;
+系统检测5个关键拐点来确定圆环位置和方向：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function detect_ring(Findline findline, angle):
+ corner_up = check_far_corner(findline) // 上拐点
+ corner_mid = check_mid_corner(findline) // 中拐点 
+ corner_down = check_near_corner(findline) // 下拐点
+ 
+ if ringType == RingRight:
+ repair_line_enter(findline, angle_diff) // 右侧补线
+ else:
+ repair_line_enter(findline, angle_diff) // 左侧补线
+ 
+ corner_exit = check_exit_corner(findline) // 出口拐点
+ 
+ if corner_down detected and angle_diff &amp;gt; threshold:
+ transition to Entering state
+ if inside_flag and corner_exit detected:
+ transition to Exiting state&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;3. 陀螺仪融合导航&lt;/strong&gt;
+结合IMU数据提高圆环处理的准确性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;float angle_diff = calAnglediff(current_angle, start_angle);
+if(ring_params-&amp;gt;ring_use_gyro &amp;amp;&amp;amp; angle_diff &amp;gt; ring_params-&amp;gt;ring_enterAngle) {
+ ringStep = RingStep::Inside;
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="十字处理crosselementcpp"&gt;&lt;span&gt;十字处理(CrossElement.cpp)&lt;/span&gt;
+ &lt;a href="#%e5%8d%81%e5%ad%97%e5%a4%84%e7%90%86crosselementcpp" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;功能描述&lt;/strong&gt;
+十字路口需要处理斜入十字的特殊情况，系统通过特征点匹配和几何约束实现精准识别。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;技术实现&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;1. 十字特征点检测&lt;/strong&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function CrossDecide(str_point, turn_point, dir_str, dir_turn):
+ cross_end_line = find_termination_point(str_point, dir_str) // 特征点1
+ cross_back = find_return_point(str_point, dir_str) // 特征点2 
+ cross_down_point = find_down_point(turn_point, dir_turn) // 特征点3
+ 
+ if validate_geometry_constraints(cross_end_line, cross_back, cross_down_point):
+ return true
+ else:
+ return false&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;2. 多条件验证机制&lt;/strong&gt;
+系统使用6个几何约束条件来减少误检：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bool flag1 = (cross_back.y - cross_end_line.y &amp;gt; 0); // y值顺序约束
+bool flag2 = (cross_end_line.y &amp;lt; cross_endline_limit); // 高度约束
+bool flag3 = validate_growth_direction(dir_str); // 生长方向约束
+bool flag4 = abs(cross_back.x - cross_down_point.x) &amp;lt; 120; // 同侧约束
+bool flag5 = validate_direction_constraints(cross_end_line); // 方向约束
+bool flag6 = validate_area_constraints(cross_down_point); // 面积约束&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;strong&gt;3. 赛道修复策略&lt;/strong&gt;
+对于斜入十字的特殊情况，系统会自动修复赛道线：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;void Cross::Cross_repair_right(Findline &amp;amp;findline) {
+ while(!findline.pointsEdgeLeft.empty() &amp;amp;&amp;amp; findline.pointsEdgeLeft.back().col &amp;gt;10) {
+ findline.pointsEdgeRight.emplace_back(findline.pointsEdgeLeft.back());
+ findline.pointsEdgeLeft.pop_back();
+ }
+ 
+ if(cross_back != cv::Point{0,0} &amp;amp;&amp;amp; cross_down_point != cv::Point{0,0}) {
+ for rowCur from down_point to back_point:
+ colInterp = colStart &amp;#43; t * (colEnd - colStart)
+ findline.pointsEdgeRight.add(mpoint(rowCur, colInterp))
+ }
+}&lt;/code&gt;&lt;/pre&gt;&lt;h4 class="heading-element" id="其他元素处理"&gt;&lt;span&gt;其他元素处理&lt;/span&gt;
+ &lt;a href="#%e5%85%b6%e4%bb%96%e5%85%83%e7%b4%a0%e5%a4%84%e7%90%86" class="heading-mark"&gt;
+ &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
+ &lt;/a&gt;
+&lt;/h4&gt;&lt;p&gt;系统还支持多种AI元素的处理：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;充电区&lt;/strong&gt; (ChargeDetection.cpp)：识别电池标志并执行充电流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;餐饮区&lt;/strong&gt; (RestaurantDetection.cpp)：处理汉堡障碍物的避让&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;坡道&lt;/strong&gt; (BridageDetection.cpp)：上下坡道的运动控制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;斑马线&lt;/strong&gt; (ParkingDetection.cpp)：行人通过识别和处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;临时停车区&lt;/strong&gt; (TemporaryDetection.cpp)：行人避让和停车逻辑&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路障&lt;/strong&gt; (RoadwayDetection.cpp)：锥桶和黑盒子的绕行策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;每个元素都采用专门的状态机和处理逻辑，确保在各种赛道环境下都能稳定运行。&lt;/p&gt;
+&lt;h3 class="heading-element" id="44-运动控制"&gt;&lt;span&gt;4.4 运动控制&lt;/span&gt;
+ &lt;a href="#44-%e8%bf%90%e5%8a%a8%e6%8e%a7%e5%88%b6" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
 &lt;/h3&gt;&lt;p&gt;运动控制采用PID控制器，结合动态前瞻策略：&lt;/p&gt;
@@ -494,20 +736,6 @@ public:
  
  // 串口发送控制指令
  uart-&amp;gt;carControl(control.motorSpeed, control.servoPwm);
-}&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="44-串口通信"&gt;&lt;span&gt;4.4 串口通信&lt;/span&gt;
- &lt;a href="#44-%e4%b8%b2%e5%8f%a3%e9%80%9a%e4%bf%a1" class="heading-mark"&gt;
- &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
- &lt;/a&gt;
-&lt;/h3&gt;&lt;p&gt;通过串口实现主控与电机驱动板的数据交互：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;bool SmartCar::uart_connect() {
- uart = std::make_shared&amp;lt;Uart&amp;gt;(&amp;#34;/dev/ttyUSB0&amp;#34;);
- int ret = uart-&amp;gt;open();
- if (ret != 0) {
- std::cerr &amp;lt;&amp;lt; &amp;#34;Uart Open failed!&amp;#34; &amp;lt;&amp;lt; std::endl;
- return false;
- }
- uart-&amp;gt;startReceive();
- return true;
 }&lt;/code&gt;&lt;/pre&gt;&lt;h2 class="heading-element" id="5-编译与运行"&gt;&lt;span&gt;5. 编译与运行&lt;/span&gt;
  &lt;a href="#5-%e7%bc%96%e8%af%91%e4%b8%8e%e8%bf%90%e8%a1%8c" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
@@ -553,7 +781,7 @@ make icar -j3&lt;/code&gt;&lt;/pre&gt;&lt;h3 class="heading-element" id="53-运�
 &lt;li&gt;&lt;strong&gt;运动控制&lt;/strong&gt;：实现了PID控制与动态前瞻相结合的路径跟踪算法&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;元素处理&lt;/strong&gt;：完成了圆环、十字、坡道、充电区等多种元素的识别与处理&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;该项目获得了第20届全国大学生智能汽车竞赛完全模型组华南赛区二等奖。&lt;/p&gt;</description></item><item><title>2024年全国大学生数学建模竞赛（A题）</title><link>https://long753.github.io/cumcm/</link><pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cumcm/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;h2 class="heading-element" id="1-问题背景"&gt;&lt;span&gt;1. 问题背景&lt;/span&gt;
+&lt;p&gt;该项目获得了第20届全国大学生智能汽车竞赛完全模型组&lt;strong&gt;全国一等奖&lt;/strong&gt;。&lt;/p&gt;</description></item><item><title>2024年全国大学生数学建模竞赛（A题）</title><link>https://long753.github.io/cumcm/</link><pubDate>Fri, 03 Apr 2026 00:29:22 +0800</pubDate><author>cl2848077709@outlook.com (Chen Long)</author><guid>https://long753.github.io/cumcm/</guid><category domain="https://long753.github.io/categories/%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/">数理基础</category><description>&lt;h2 class="heading-element" id="1-问题背景"&gt;&lt;span&gt;1. 问题背景&lt;/span&gt;
  &lt;a href="#1-%e9%97%ae%e9%a2%98%e8%83%8c%e6%99%af" class="heading-mark"&gt;
  &lt;svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"&gt;&lt;path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"&gt;&lt;/path&gt;&lt;/svg&gt;
  &lt;/a&gt;
