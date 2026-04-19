@@ -1,0 +1,715 @@
+\documentclass[lettersize,journal]{IEEEtran}
+\usepackage{amsmath,amsfonts}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{array}
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\usepackage{textcomp}
+\usepackage{stfloats}
+\usepackage{url}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage[UTF8, scheme=plain]{ctex}
+
+% 引入表格的宏包
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{multirow}   % 跨行单元格
+\usepackage{mathtools}
+
+% 将表头和图标题改为英文
+\renewcommand{\tablename}{Table}
+\renewcommand{\figurename}{Figure}
+
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+
+\begin{document}
+\title{\textbf{Dynamic Weapon-Target Assignment with Cascading Failures via EPL-AT and GS-MOPSO}}
+\author{\text{Long Chen*}, \text{Lun Zhou*}, \text{Fuqiang Liu}, and \text{Jun Luo}}
+\date{\today}
+\maketitle 
+
+\begin{abstract}
+Weapon Target Assignment (WTA) aims to maximize combat effectiveness by optimizing allocation strategies under the constraints of limited defense resources. Existing studies often ignore the cascading failure effect in dense formation scenarios, leading to significant deviations in calculating the damage probability of incoming targets. To tackle this problem, this paper proposes a cascading-failure dynamic weapon target assignment (CF-DWTA) model, utilizing an effective path length adaptive truncation (EPL-AT) strategy to improve the accuracy and efficiency of damage probability calculations. Furthermore, an improved multi-objective particle swarm optimization (GS-MOPSO) algorithm is proposed to solve the CF-DWTA problem. The GS-MOPSO algorithm incorporates a graph segmentation-based non-dominated sorting strategy to reduce redundant sorting operations and a cascade-guided adaptive evolutionary mechanism to enhance computational efficiency. Additionally, a chaotic-reflective elite mean learning initialization strategy and a crowding distance-sigmoid
+variant mapping for archive maintenance strategy are designed to improve the diversity of the particle swarm population. Experimental results on various scenarios demonstrate that the CF-DWTA model and EPL-AT strategy effectively capture the cascading failure effects in dense formations. Moreover, the proposed GS-MOPSO algorithm outperforms ANMPSO and TC-MOPSO in terms of solution quality and computational efficiency.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Cascading Failure, Dynamic Weapon Target Assignment, EPL-AT, GS-MOPSO
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+As a core problem in military operations research, WTA focuses on optimizing allocation strategies to maximize combat effectiveness under the constraints of limited defense resources\cite{manne1958target}. With the rapid development of modern weaponry, WTA has emerged as a prominent research focus within military operations and intelligent decision-making\cite{Li2024Weapon, bi2025weapon}. To effectively address this problem, it is necessary to establish a robust WTA model and develop efficient solution algorithms.
+
+Current research on WTA models primarily enhances practical applicability and decision-making value through the diverse design of optimization objectives and constraints. Regarding optimization objectives, beyond the traditional goals of maximizing expected damage effectiveness \cite{manne1958target} and minimizing resource consumption \cite{ma2021two}, modern models incorporate complex criteria such as weapon-target collaborative fitness \cite{xu2024dynamic} and computational time \cite{wu2023dynamic}. Furthermore, constraints have evolved from simple quantitative limits such as ammunition inventory boundaries \cite{lamba2025low} and discrete resource distributions \cite{tashakori2024dynamic} to complex spatiotemporal logical constraints. For example, Tashakori et al. \cite{tashakori2024dynamic} integrated communication topology and heterogeneous capabilities for UAV routing; Si et al. \cite{si2023online} integrated data loss constraints to ensure temporal consistency in collaborative strikes.
+
+Although these methods have enhanced the practical applicability and decision-making value of WTA models, traditional static models neglect temporal evolution, rendering them myopic in dynamic battlefield environments. To address this, Dynamic Weapon-Target Assignment (DWTA) models have been developed to incorporate temporal dynamics. Recent DWTA frameworks continuously update decisions in real-time to accommodate emerging threats \cite{arslan2025solution} and utilize time-phase partitioning to improve operational adaptability \cite{peng2024multi}.
+
+While DWTA models address temporal dynamics, they ignore the spatial damage propagation and sympathetic detonations within dense formations, leading to significant deviations in calculated threat destruction probabilities. Although cascading failure effects are increasingly recognized in dense formation modeling \cite{yuan2025cascading}, existing methods struggle to balance speed and accuracy. Monte Carlo (MC) simulations are highly accurate but computationally prohibitive for real-time DWTA demands. Conversely, probabilistic graphical models such as Noisy-OR and Loopy Belief Propagation (LBP) \cite{burkholz2021cascade} offer superior efficiency but fail to isolate redundant probabilities within feedback loops, causing severe overestimation biases in cyclic graphs. Therefore, developing a novel probabilistic computation strategy that reconciles efficiency and accuracy is a key challenge in current research.
+
+In terms of algorithmic solvers, current solutions are predominantly classified into three categories: exact algorithms, deep reinforcement learning (DRL), and heuristic algorithms \cite{liu2025current}. Exact algorithms, utilizing techniques such as branch-price-and-cut \cite{bertsimas2025solving} and integer linear programming (ILP) reformulations \cite{lu2021new}, offer robust interpretability and high-quality solutions in small-scale scenarios. Although recent advancements have compressed search spaces to handle larger instances \cite{lu2021new}, the WTA problem is still proven to be NP-Complete \cite{day1966allocating}. Consequently, they lack the computational agility and robustness required for dynamic, uncertain combat environments.
+
+Recently, the Deep Reinforcement Learning (DRL) technology has been deployed to address various engineering problems \cite{shao2025deep, li2024double, shen2025deep}. Owing to its rapid execution speed, DRL is highly applicable to DWTA problems \cite{oh2025artificial}. For instance, the RL-DMOA framework introduced by Shen et al. \cite{shen2025reinforcement} leverages transfer learning to tackle inter-stage optimization issues, while the MOMDAM developed by Li et al. \cite{li2023deep} enhances solution set diversity by refining the attention model architecture. Although DRL demonstrates excellent real-time performance in resolving WTA problems, these algorithms inherently suffer from high training costs, poor decision interpretability, and a susceptibility to local optima, rendering them challenging to implement in data-scarce real-world combat scenarios.
+
+By contrast, heuristic algorithms are independent of training data, feature structural flexibility, demonstrate robust performance, and are highly amenable to parallelization, making them an effective alternative for resolving WTA problems. Common heuristic algorithms include Particle Swarm Optimization (PSO) \cite{li2022multi}, Genetic Algorithms (GA) \cite{li2018improved}, and Artificial Bee Colony (ABC) optimization \cite{chang2018solving}. Despite considerable advancements, heuristic algorithms still face significant challenges, particularly struggling with high-dimensional WTA instances. They frequently suffer from premature convergence and deteriorating efficiency when navigating irregular feasible regions. To mitigate these issues, researchers have introduced various ameliorative strategies, including reference-point mechanisms for adaptive weight adjustments \cite{yi2024solving} and priority-based encoding coupled with simulated annealing to broaden exploration \cite{chang2023adaptive}. While these refinements improve specific metrics, they fail to fundamentally eradicate two persistent bottlenecks: diminished computational efficiency caused by search redundancy, and inadequate population diversity resulting from monotonous solution distributions.
+
+Compared to other swarm intelligence algorithms, Multi-Objective Particle Swarm Optimization (MOPSO) is extensively utilized due to its rapid convergence and robust scalability \cite{chen2025correlation}. By leveraging velocity and positional updates, MOPSO swiftly converges toward the Pareto frontier. However, when applied to DWTA problems involving cascading failures in dense formations, the highly irregular feasible region exposes critical limitations in conventional MOPSO. First, redundant non-dominated sorting mechanisms and a failure to exploit problem-specific characteristics severely degrade computational efficiency. Second, the rigid elimination of particles with small crowding distances during external archive maintenance substantially diminishes population diversity. Consequently, developing a strategy that simultaneously mitigates computational redundancy and enhances population diversity remains a formidable challenge.
+
+To address the limitations of existing WTA models and algorithms, this paper proposes a Cascade Failure-Dynamic Weapon Target Assignment (CF-DWTA) model and an enhanced Multi-Objective Particle Swarm Optimization algorithm (GS-MOPSO). The primary contributions are summarized as follows:
+
+1) Constructs a CF-DWTA model that incorporates cascading failure effects and temporal evolution, while demonstrating its high applicability to dense formation scenarios.
+
+2) Develops an Effective Path Length Adaptive Truncation (EPL-AT) strategy to reduce the computational complexity of damage probability calculations while strictly maintaining high accuracy.
+
+3) Designs a Group Segmentation with Non-hierarchical Non-dominated Sorting (GS-NNS) strategy and the Cascaded Guided Adaptive Evolutionary Mechanism (CG-AEM) strategy. These mechanisms significantly enhance computational efficiency, thereby satisfying the real-time requirements of dynamic combat scenarios.
+
+4) Introduces the Crowding Distance-Sigmoid Variant Mapping
+for Archive Maintenance (CD-SVAM) strategy to systematically enhance population diversity. Furthermore, this paper designs a Chaotic Quasi-Reflective Elite Mean Learning (CQREML) strategy to balance population diversity with algorithm convergence efficiency.
+
+The remainder of this paper is organized as follows: Section 2 details the CF-DWTA model formulation and the EPL-AT theoretical framework. Section 3 elaborates on the proposed GS-MOPSO algorithm. Section 4 presents the experimental procedures and performance validation. Finally, Section 5 concludes the study and outlines future research directions.
+
+
+
+\section{Model}
+
+By neglecting the temporal dimension in the decision-making process, traditional SWTA models exhibit severe myopia in dynamic combat scenarios. While current DWTA models account for temporal dynamics, they fail to consider the sympathetic detonation and damage propagation effects, which causes significant deviations in damage probability calculations within dense formation scenarios. To more accurately reflect actual combat environments, this paper proposes the CF-DWTA model. Specifically, the EPL-AT strategy is introduced within this framework to efficiently calculate the damage probability of incoming targets. The schematic diagram of the proposed model is illustrated in Fig. \ref{model}.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=6in]{figures/CF-DWTA model.png}
+\caption{CF-DWTA Model and EPL-AT Strategy Diagram}
+\label{model}
+\end{figure*}
+
+
+\subsection{CF-DWTA Model}
+
+In dense formation scenarios, the destruction of an incoming target by a defensive weapon can trigger sympathetic detonations, which may cause damage to neighboring targets and lead to cascading failures. Therefore, incoming targets are subject to both direct damage from defensive weapons and indirect damage from neighboring targets in the CF-DWTA model. Unlike traditional static WTA models, the CF-DWTA model dynamically adjusts weapon-target assignment schemes at different time stages to adapt to the dynamic combat environment. To describe this model and calculate the damage probability of incoming targets, the following definitions and assumptions are made:
+
+Regarding the direct damage caused by defensive weapons, the direct damage probability matrix is defined as $\mathbf{P}_{\text{wea}} = [p_{ij}^{\text{wea}}]_{m \times n}$, where $p_{ij}^{\text{wea}}$ represents the damage probability of the $j$-th incoming target caused by the $i$-th defensive weapon. Considering that defensive weapons may be area-damage weapons, this paper assumes that a single defensive weapon can simultaneously cause damage to multiple incoming targets.
+
+Regarding the indirect damage caused by neighboring targets, the cascading failure adjacency matrix is defined as $\mathbf{M}_{\text{cas}} = [m_{kj}^{\text{cas}}]_{n \times n}$, where $m_{kj}^{\text{cas}}$ represents the conditional probability that target $j$ suffers indirect damage given that target $k$ is destroyed. Given that indirect damage only occurs between specific neighboring targets, $\mathbf{M}_{\text{cas}}$ is mathematically modeled as a sparse matrix. Meanwhile, since cascading failures are influenced by factors such as the type, spatial position, and threat level of incoming targets, $\mathbf{M}_{\text{cas}}$ serves as a macroscopic representation of these multidimensional spatial and tactical coupling effects. Finally, to maintain a rigorous focus on optimizing the target assignment and decision-making mechanisms, $\mathbf{M}_{\text{cas}}$ is treated as a predetermined parameter in this study.
+
+This study establishes the following assumptions: First, all incoming targets within a single operational stage are assumed to be hit simultaneously. Second, the post-interception status of any given target is strictly modeled as a binary state. Finally, the interception events executed by individual defensive weapons are considered to be statistically independent.
+
+The known parameters for defensive weapons include the defensive weapons set $\mathcal{W}$, the quantity of ammunition $\boldsymbol{e}$, the direct damage probability matrix of defensive weapons $\mathbf{P}_{\text{wea}}$, and the operational cost vector $\boldsymbol{c}$. The known parameters for incoming targets include the incoming targets set $\mathcal{H}$, the spatial coordinate matrix $\mathbf{A}$, the threat level vector $\boldsymbol{v}$, and the cascading failure adjacency matrix $\mathbf{M}_{\text{cas}}$. The parameter to be solved is the WTA decision matrix $\mathbf{X}$. The descriptions of the model notations are shown in Table \ref{tab:notations}.
+    
+\begin{table*}[htbp]
+\centering
+\caption{Parameters Representation and Description of CF-DWTA Model}
+\label{tab:notations}
+\begin{tabular}{lllc}
+\toprule
+\text{Parameters} & \text{Description} & \text{Dimension} \\ \midrule
+$\mathcal{H}, n$ & The set of incoming targets and its total number & Set / Scalar \\
+$\mathcal{W}, m$ & The set of defensive weapons and its total number & Set / Scalar \\
+$T$ & The total number of interception stages in the dynamic scenario & Scalar \\
+$\mathbf{P}_{\text{wea}}$ & The direct damage probability matrix of defensive weapons & $m \times n$ \\
+$\mathbf{M}_{\text{cas}}$ & The single-stage cascade failure probability adjacency matrix & $n \times n$ \\
+$\boldsymbol{p}^{\text{DDP}}$ & The direct damage probability vector of targets (direct attack) & $n \times 1$ \\
+$\boldsymbol{p}^{\text{IDP}}$ & The indirect damage probability vector of targets (cascade effect) & $n \times 1$ \\
+$\boldsymbol{p}^{\mathcal{H}}$ & The final comprehensive damage probability vector of targets in incoming targets $\mathcal{H}$ & $n \times 1$ \\
+$p_k^{\mathcal{H}-\{j\}}$ & The cavity probability (probability of target $k$ being damaged when target $j$ is removed) & Scalar \\
+$\boldsymbol{c}$ & The operational cost vector of defensive weapons & $m \times 1$ \\
+$\boldsymbol{e}$ & The available ammunition quantity vector of defensive weapons & $m \times 1$ \\
+$\boldsymbol{\lambda}$ & The average flight speed vector of defensive weapons & $m \times 1$ \\
+$\boldsymbol{r}$ & The preparation time vector of defensive weapons & $m \times 1$ \\
+$\mathbf{A}$ & The matrix of 3D spatial coordinates of incoming targets $(x, y, z)$ & $n \times 3$ \\
+$\boldsymbol{v}$ & The tactical threat value vector of incoming targets & $n \times 1$ \\
+$O_{\text{max}}$ & The maximum truncation order (EMCF-PL threshold) & Scalar \\
+$\tau$ & The probability truncation threshold for the EPL-AT strategy & Scalar \\
+$P_{j}^{\min}, P_{j}^{\max}$ & The lower and upper bounds of expected damage probability for target $j$ & Scalar \\
+$\mathbf{X}$ & The Weapon-target assignment decision matrix ($x_{ij}=1$ if weapon $i$ is assigned to target $j$) & $m \times n$ \\ \bottomrule
+\end{tabular}
+\end{table*}
+
+\subsection{Target Damage Probability Calculation}
+The damage probability of an incoming target consists of two parts: the direct damage probability (DDP) caused by the defensive weapons, and the indirect damage probability (IDP) caused by the adjacent incoming targets. Therefore, the calculation formula for the total damage probability of the incoming target $j$ is as follows:
+\begin{equation}
+    p_j = 1 -  (1 - p_j^{\text{DDP}}) \cdot (1 - p_j^{\text{IDP}})
+    \label{eq:total_calculation}
+\end{equation}
+where $p_j^{\text{DDP}}$ represents the direct damage probability of target $j$, and $p_j^{\text{IDP}}$ represents the indirect damage probability of target $j$.
+
+Since the attack events of each defensive weapon are independent, the DDP can be calculated using the standard Noisy-OR model, as follows:
+\begin{equation}
+    p_j^{\text{DDP}} = 1 - \prod_{i=1}^{m} (1 - p_{ij}^{\text{wea}})
+    \label{eq:DDP_calculation}
+\end{equation}
+where $m$ is the number of defensive weapons, and $p_{ij}^{\text{wea}}$ is the direct damage probability of defensive weapon $i$ against incoming target $j$.
+
+In traditional damage probability calculation models, the indirect damage probability $p_j^{\text{IDP}}$ is often simplified to the standard Noisy-OR model, as follows:
+\begin{equation}
+    p_j^{\text{IDP}} = 1 - \prod_{\substack{k = 1 \\ k \ne j}}^{n} (1 - m_{kj}^{\text{cas}} \cdot p_k)
+    \label{eq:standard_noisy_or}
+\end{equation}
+where $m_{kj}^{\text{cas}}$ is the indirect damage probability of target $k$ against target $j$, and $p_k$ is the total damage probability of target $k$.
+
+Since equation (\ref{eq:standard_noisy_or}) fails to isolate the cyclic damage contributions from target $j$ itself, directly employing the marginal probability $p_k$ will lead to an overestimation of $p_j^{\text{IDP}}$. To eliminate this phenomenon, this paper introduces the concept of "cavity probability" from statistical physics. It modifies the $p_k$ in equation (\ref{eq:standard_noisy_or}) to a cavity probability $p_k^{\mathcal{H}-\{j\}}$, whose physical meaning is: the damage probability of target $k$ after removing target $j$ from the current incoming target set $\mathcal{H}$. Substituting the modified equation (\ref{eq:standard_noisy_or}) into equation (\ref{eq:total_calculation}) yields:
+\begin{equation}
+    p_j^{\mathcal{H}}=1-(1-p_j^{\text{DDP}}) \cdot \prod_{\substack{k = 1 \\ k \ne j}}^{n}(1-m_{kj}^{\text{cas}} \cdot p_k^{\mathcal{H}-\{j\}})
+    \label{eq:fixed_noisy_or}
+\end{equation}
+where $p_j^{\mathcal{H}}$ represents the total damage probability of target $j$, and $p_k^{\mathcal{H}-\{j\}}$ represents the cavity probability of target $k$.
+
+To precisely solve for $p_k^{\mathcal{H}-\{j\}}$, it is necessary to continue tracking and eliminating deeper causal propagation paths, thereby forming the following recursive equation system:
+\begin{equation}
+\left\{
+\begin{aligned}
+p_j^{\mathcal{H}} &= 1 - (1-p_j^{\text{DDP}}) \prod_{\substack{k = 1 \\ k \ne j}}^{n} (1-m_{kj}^{\text{cas}} \cdot p_k^{\mathcal{H}-\{j\}}) \\[1ex]
+p_k^{\mathcal{H}-\{j\}} &= 1 - (1-p_k^{\text{DDP}}) \prod_{\substack{a = 1 \\ a \ne j,k}}^{n} (1-m_{ak}^{\text{cas}} \cdot p_a^{\mathcal{H}-\{j,k\}}) \\[1ex]
+p_a^{\mathcal{H}-\{j,k\}} &= 1 - (1-p_a^{\text{DDP}}) \prod_{\substack{b = 1 \\ b \ne j,k,a}}^{n} (1-m_{ba}^{\text{cas}} \cdot p_b^{\mathcal{H}-\{j,k,a\}}) \\[1ex]
+&\quad \vdots \\[1ex]
+p_r^{\{r,n\}} &= 1 - (1-p_r^{\text{DDP}}) (1-m_{rn}^{\text{cas}} \cdot p_n^{\{n\}}) \\[1ex]
+p_n^{\{n\}} &= p_n^{\text{DDP}}
+\end{aligned}
+\right.
+\label{eq:cascade_equations}
+\end{equation}
+
+The final damage probability of each incoming target can be accurately solved by iteratively calculating the system of equations (\ref{eq:cascade_equations}). Since the computational complexity of the equation system (\ref{eq:cascade_equations}) is $\mathcal{O}(n!)$, the computational cost increases factorially. Thus, it is necessary to design a simplified calculation method to improve computational efficiency.
+
+
+\subsection{Effective Path-Length Adaptive Truncation Strategy}
+
+In real combat environments, the impact of cascading failures attenuates as the propagation path length increases, and cascading effects with longer propagation paths can usually be ignored. Moreover, since a single incoming target only has an indirect damage effect on its neighboring targets, the cascading failure adjacency matrix $\mathbf{M}_{\text{cas}}$ exhibits sparsity characteristics. Based on the above features, the system of equations (\ref{eq:cascade_equations}) can be approximately solved by limiting the maximum propagation path length, thereby reducing computational complexity.
+
+Taking the 2nd-order truncation as an example, which means a maximum of two cascading impacts are considered with the propagation path of $j \rightarrow k \rightarrow a$. Therefore, the equations (\ref{eq:cascade_equations}) can be approximated as:
+\begin{equation}
+\left\{
+\begin{aligned}
+p_j^{\mathcal{H}} &= 1 - (1-p_j^{\text{DDP}}) \prod_{\substack{k = 1 \\ k \ne j}}^{n} (1-m_{kj}^{\text{cas}} \cdot p_k^{\mathcal{H}-\{j\}}) \\[1ex]
+p_k^{\mathcal{H}-\{j\}} &= 1 - (1-p_k^{\text{DDP}}) \prod_{\substack{a = 1 \\ a \ne j,k}}^{n} (1-m_{ak}^{\text{cas}} \cdot p_a^{\mathcal{H}-\{j,k\}}) \\[1ex]
+p_a^{\mathcal{H}-\{j,k\}} &\approx 1 - (1-p_a^{\text{DDP}}) \prod_{\substack{b = 1 \\ b \ne j,k,a}}^{n} (1-m_{ba}^{\text{cas}} \cdot p_b^{\mathcal{H}-\{j,k\}})
+\end{aligned}
+\right.
+\label{eq:truncation_example}
+\end{equation}
+
+This strategy automatically disregards cascading propagation effects beyond three nodes by approximating the deep cavity probability $p_b^{\mathcal{H}-\{j,k,a\}}$ as $p_b^{\mathcal{H}-\{j,k\}}$ in the equation system (\ref{eq:cascade_equations}). Capturing cascading effects that extend beyond three nodes necessitates the implementation of higher-order truncation strategies. Moreover, since the degree of cascading failure propagation effects varies among different targets, applying a high-order truncation across all targets would lead to a computational redundancy. Therefore, it is an important issue to adaptively select the truncation order for different targets.
+
+To balance computational complexity with computational accuracy, we propose the EPL-AT strategy. This strategy utilizes the cascading failure adjacency matrix $\mathbf{M}_{\text{cas}}$ to calculate the Effective Maximum Cascading Failure Path Length (EMCF-PL) between different targets, automatically selecting the truncation order for the target. The detailed calculation process is as follows: 
+First, set basic parameters such as the EMCF-PL threshold $O_{\text{max}}$ and probability truncation threshold $\tau$.
+Second, search for cascading failure paths between targets using the breadth-first search (BFS) algorithm, with stop conditions: the propagation probability of the path falls below $\tau$, the path length exceeds $O_{\text{max}}$, or the target is reached.
+Third, set the truncation order based on the length of the longest cascading failure propagation path.
+Fourth, repeat the above process until the truncation orders of all targets are determined.
+Finally, adjust the calculation model according to the truncation order and compute the damage probabilities. 
+The pseudocode for this strategy is as follows:
+
+\begin{algorithm}[H]
+\caption{EPL-AT Strategy}\label{alg:EPL_AT_Strategy}
+\begin{algorithmic}[1]
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\REQUIRE Direct damage probability $\boldsymbol{p}^{\text{DDP}}$, Adjacency matrix $\mathbf{M}_{\text{cas}}$, Probability threshold $\tau$, Max truncation order $O_{\text{max}}$, Iteration error $\epsilon$
+\ENSURE Final comprehensive damage probability $\boldsymbol{p}^{\mathcal{H}}$
+
+\STATE Initialize truncation order matrix $\boldsymbol{\mathcal{O}} \gets \boldsymbol{I}$
+\FOR{each target $j \in \{1, \dots, n\}$}
+    \STATE $\mathcal{P}_{j} \gets \text{BFS}(\mathbf{M}_{\text{cas}}, j, O_{\text{max}}, \tau)$ // Extract valid cascading paths
+    \FOR{each path $p \in \mathcal{P}_{j}$ ending at target $k$}
+        \STATE $\boldsymbol{\mathcal{O}}[j,k] \gets \max(\boldsymbol{\mathcal{O}}[j,k], \text{length}(p))$  // Update truncation order
+    \ENDFOR
+\ENDFOR
+
+\STATE Initialize cavity probability matrix $\boldsymbol{C} \gets \boldsymbol{p}^{\text{DDP}}$
+\REPEAT
+    \STATE $\boldsymbol{C}_{\text{prev}} \gets \boldsymbol{C}$ // store previous cavity probabilities
+    \FOR{each target $k$ and cavity node $j \neq k$}
+        \STATE Compute truncated message $msg_{ak}$ using $\boldsymbol{C}_{\text{prev}}$ and $\boldsymbol{\mathcal{O}}
+        $\STATE $\boldsymbol{C}[k,j] \gets $ \\
+        $1 - (1 - \boldsymbol{p}^{\text{DDP}}[k]) \prod_{a} \left(1 - \mathbf{M}_{\text{cas}}[a,k] \cdot msg_{ak} \right)$
+    \ENDFOR
+\UNTIL{$\max|\boldsymbol{C} - \boldsymbol{C}_{\text{prev}}| < \epsilon$}
+
+\FOR{$j = 1$ \TO $n$}
+    \STATE $\boldsymbol{p}^{\mathcal{H}}[j] = 1 - (1 - \boldsymbol{p}^{\text{DDP}}[j]) \prod_{k} \left(1 - \mathbf{M}_{\text{cas}}[k,j] \cdot \boldsymbol{C}[k,j]\right)$
+\ENDFOR
+
+\RETURN $\boldsymbol{p}^{\mathcal{H}}$
+\end{algorithmic}
+\end{algorithm}
+
+
+\subsection{EPL-AT Computational Complexity}
+
+Assuming the number of incoming targets is $n$, the logarithmic average truncation order is $h$, the average number of adjacent targets is $D$, and the average number of iterations is $I$, the computational complexity of the EPL-AT strategy mainly consists of two parts: the complexity of BFS search and the complexity of iterative calculation. For BFS search, it is necessary to traverse all the truncated paths between targets, and the complexity is $\mathcal{O}(n \cdot D^h)$; for iterative calculation, each iteration requires updating the cavity probability of $n$ targets, and each target needs to consider its adjacent targets, so the complexity is $\mathcal{O}(I \cdot n^2 \cdot D^h)$. Therefore, the total complexity of the EPL-AT strategy is $\mathcal{O}(n \cdot D^h + I \cdot n^2 \cdot D^h) = \mathcal{O}(I \cdot n^2 \cdot D^h)$, which significantly reduces the computational cost compared to the exact algorithm's $\mathcal{O}(n!)$.
+
+
+\subsection{CF-DWTA Optimization Model} 
+
+By dividing the overall interception process into multi-stage scenarios, the CF-DWTA dynamically adjusts the assignment scheme at each stage based on preceding outcomes, thereby effectively adapting to the evolving battlefield environment and incoming threat states. Specifically, after the completion of the attack in stage $t$, the system observes the remaining set of incoming targets and uses it as the incoming target set $\mathcal{H}$ for stage $t+1$, followed by similar damage probability calculations. For the CF-DWTA model, this paper establishes the following multi-objective optimization model.
+
+In the DWTA scenario, the effectiveness of weapon attacks is represented by the sum of the remaining threat levels of incoming targets at each stage. The specific solving formula is as follows:
+\begin{equation}
+\label{eq:obj1}
+    f_1(\boldsymbol{p}^{\mathcal{H}}) = \sum_{t=1}^{T}{\sum_{j=1}^{n}{v_j(1 - p_j^{\mathcal{H}}(t))}}
+\end{equation}
+where $p_j^{\mathcal{H}}(t)$ represents the comprehensive damage probability of incoming target $j$ at stage $t$; $v_j$ is the threat level of target $j$; and $T$ is the total number of stages for final weapon target allocation.
+
+To enhance the continuous combat capability of the interception system, it is necessary to minimize the total cost of defensive resources consumed. The specific solving formula is as follows:
+\begin{equation}
+\label{eq:obj2}
+    f_2(\mathbf{X}) =  \sum_{t=1}^{T}{\sum_{i=1}^{m} \sum_{j=1}^{n} c_i \cdot x_{ij}(t)}
+\end{equation}
+where $c_i$ represents the cost of executing one interception task by the $i$-th defensive weapon; $x_{ij}(t) \in \{0,1\}$ is a binary decision variable indicating whether weapon $i$ is assigned to target $j$ at stage $t$.
+
+For this multi-objective optimization model, considering the physical and tactical constraints of the actual battlefield, this paper designs the following three types of constraints:
+
+(1) Coverage Constraint: To ensure the basic defensive baseline, each incoming target must be assigned at least one defensive weapon's firepower unit for interception:
+\begin{equation}
+\label{eq:cons1}
+    \sum_{i=1}^{m} x_{ij} \geq 1, \quad \forall j \in \{1, 2, \dots, n\}
+\end{equation}
+
+(2) Ammo Capacity Constraint: The number of attacks that each defensive weapon system can execute should not exceed the available ammunition limit at the current stage:
+\begin{equation}
+\label{eq:cons2}
+    \sum_{j=1}^{n} x_{ij} \leq e_i, \quad \forall i \in \{1, 2, \dots, m\}
+\end{equation}
+where $e_i$ is the available ammunition quantity of the $i$-th defensive weapon.
+
+(3) Damage Probability Threshold Constraint: To avoid excessive destruction of high-value targets or insufficient destruction of low-value targets, the expected damage probability of target $j$ should be limited within a reasonable tactical threshold range:
+\begin{equation}
+\label{eq:cons3}
+    P_{j}^{\min} \leq p_j^{\mathcal{H}} \leq P_{j}^{\max}, \quad \forall j \in \{1, 2, \dots, n\}
+\end{equation}
+where $P_{j}^{\min}$ and $P_{j}^{\max}$ are the lower and upper bounds of the damage probability for incoming target $j$, respectively.
+
+In summary, the CF-DWTA model considering cascaded failures can be uniformly defined as the following mathematical programming form:
+\begin{equation}
+\left\{
+\begin{aligned}
+    & \min_{\mathbf{X}} \boldsymbol{F}(\mathbf{X}) = [f_1(\boldsymbol{p}^{\mathcal{H}}), f_2(\mathbf{X})]^{\text{T}} \\
+    & \text{s.t.} \quad \text{Eq.} \ \eqref{eq:cons1}, \eqref{eq:cons2}, \eqref{eq:cons3} \\
+\end{aligned}
+\right.
+\label{eq:final_optimization_model}
+\end{equation}
+
+This weapon-target assignment model falls into the category of nonlinear mixed-integer multi-objective optimization problems, which are multi-parameter and multi-constraint NP-Complete problems \cite{day1966allocating}. As the types and quantities of weapons and targets increase, the number of solutions in the search space grows exponentially, necessitating the design of efficient heuristic algorithms to solve this problem.
+
+\begin{figure*}[htbp]
+\centering
+\includegraphics[width=6in]{figures/GS-MOPSO示意图.png}
+\caption{GS-MOPSO Algorithm Diagram}
+\label{GS-MOPSO}
+\end{figure*}
+
+
+
+\section{Methodology}
+
+Due to the advantages of fast convergence speed and strong global search capability \cite{li2023recognition}, the MOPSO algorithm is often applied to solve engineering optimization problems. However, when solving DWTA problems, traditional MOPSO algorithms often use multi-layer Pareto solution set partitioning and exhaustive comparison of full-population dominance relations, resulting in high computational costs in large-scale decision spaces. In addition, existing archive maintenance mechanisms often mechanically eliminate particles with small crowding distance, ignoring the potential evolutionary value of some crowded particles, which limits the algorithm's ability to explore solution set diversity. To address the above issues, this paper designs the GS-MOPSO algorithm, whose computational principle diagram is shown in Fig. \ref{GS-MOPSO}. The algorithm introduces a Group Segmentation with Non-hierarchical Non-dominated Sorting (GS-NNS) strategy to improve the computational efficiency of the algorithm. In addition, to enhance population diversity, this paper also designs a Chaotic Quasi-Reflective Elite Mean Learning (CQREML) initialization strategy and a Crowding Distance-Sigmoid Variant Mapping for Archive Maintenance (CD-SVAM) strategy. For the cascaded characteristics of the CF-DWTA model, a Cascade Guided - Adaptive Evolutionary Mechanism (CG-AEM) is designed to further improve the solving efficiency and convergence ability for CF-DWTA problems. The detailed computational procedures of these strategies are described in the following subsections.
+
+\subsection{CQREML Initialization Strategy}
+In MOPSO, the initialization of the population significantly influences the algorithm's global search ability and overall convergence performance. Current research often utilizes pseudo-random or chaotic mapping methods to generate the initial population. However, the former yields unevenly distributed particles and weak initial diversity, whereas the latter lacks the guidance of evolutionary information, resulting in suboptimal convergence efficiency. Therefore, this paper proposes the CQREML initialization strategy, which integrates the Bernoulli chaotic map with a quasi-reflection elite mean learning mechanism, aiming to balance convergence speed and initial diversity. The detailed computational procedure is as follows:
+
+First, the Bernoulli map is used to generate an initial population with high uniform distribution characteristics. The mathematical expression of this chaotic map function is as follows:
+\begin{equation} 
+    \beta_{t+1}=\begin{cases}
+        \frac{\beta_t}{1-\alpha},&0<\beta_t\leq1-\alpha\\
+        \frac{\beta_t-(1-\alpha)}\alpha,&1-\alpha<\beta_t<1
+    \end{cases} 
+    \label{eq:bernoulli_calculation} 
+\end{equation}
+where $\beta_t$ denotes the chaotic variable produced at the $t$-th iteration, and $\alpha \in (0,1)$ is the parameter governing the mapping dynamics. The particle swarm generated by the Bernoulli mapping within the decision space is designated as the exploratory population $pop_1$.
+
+Subsequently, to mitigate the inherent randomness of chaotic initialization, a quasi-reflection elite mean learning mechanism is introduced. This mechanism constructs a guided opposition-based learning framework by calculating the position mean of the elite particles in $pop_1$. Compared with traditional opposition-based learning, the solutions generated by the quasi-reflection mechanism tend to gravitate toward the elite-dense regions of the solution space, thus possessing stronger exploitation capability.
+
+Specifically, the position mean of the elite particles in $pop_1$, denoted as $\boldsymbol{x}^{\mathrm{po}}$, is calculated as follows:
+\begin{equation}
+    \boldsymbol{x}^{\mathrm{po}}=\frac{\sum_{v=1}^{V} \boldsymbol{x}_{v}^{p}}{V}
+\end{equation}
+where $\boldsymbol{x}_{v}^{p}$ denotes the position vector of the $v$-th best particle in $pop_1$, and $V$ represents the size of the elite set. Subsequently, opposition-based solutions are generated based on this mean center:
+\begin{equation}
+    \boldsymbol{x}_\nu^* = \begin{cases} 
+        \boldsymbol{x}^\mathrm{po} + (\boldsymbol{x}_\nu - \boldsymbol{x}^\mathrm{po}) \cdot r, & \boldsymbol{x}_\nu > \boldsymbol{x}^\mathrm{po} \\
+        \boldsymbol{x}_\nu + (\boldsymbol{x}^\mathrm{po} - \boldsymbol{x}_\nu) \cdot r, & \boldsymbol{x}_\nu < \boldsymbol{x}^\mathrm{po} 
+    \end{cases}
+    \label{eq:Quasi-reflective_elite_mean_learning_mechanism}
+\end{equation}
+where $\boldsymbol{x}_\nu$ denotes the original position vector of a particle in $pop_1$, $\boldsymbol{x}_\nu^*$ represents the newly generated position vector, and $r \in (0,1)$ is a uniformly distributed random number. The set composed of all $\boldsymbol{x}_\nu^*$ is defined as the guiding population $pop_2$.
+
+Ultimately, the final initial swarm is formed by fusing the exploratory population $pop_1$ and the guiding population $pop_2$. This initialization strategy not only ensures the diversity distribution of the initial population by employing chaotic mapping, but also accelerates the convergence speed of the algorithm through the directional guidance of the elite mean.
+
+
+\subsection{GS-NNS}
+Fast non-dominated sorting methods are common approaches for optimization algorithms to handle multi-objective problems.
+However, this method suffers from computational redundancy when applied to DWTA problems characterized by strong constraints and irregular feasible regions. 
+This redundancy primarily stems from the exhaustive pairwise comparison of dominance relationships across the entire population and the subsequent generation of multi-layered Pareto fronts.
+To address these limitations, this paper proposes a Group Segmentation (GS) strategy and a Non-hierarchical Non-dominated Sorting (NNS) method, aiming to reduce the computational redundancy by simplifying the sorting logic. The detailed computational procedure is as follows:
+
+Initially, the fitness values corresponding to the two objective function values are individually normalized using the following formula:
+\begin{equation}
+    {f_{\text{nor}}}=\frac{f - {f_{\text{min}}}}{{f_{\text{max}}}-{f_{\text{min}}}}
+\end{equation}
+where $f_{\text{nor}}$ denotes the normalized fitness of the objective function value, whose value range is $[0, 1]$; $f$ signifies the pre-normalized fitness derived from the CF-DWTA model; $f_{\text{max}}$ and $f_{\text{min}}$ represent the maximum and minimum fitness values within the current solution set. Subsequently, the Euclidean distance of each solution relative to the origin is defined as:
+\begin{equation}
+    d_i=\sqrt{(f_{1\text{nor}}^i)^2+(f_{2\text{nor}}^i)^2}
+\end{equation}
+where $d_i$ indicates the Euclidean distance of the $i$-th solution, while $f_{1\text{nor}}^i$ and $f_{2\text{nor}}^i$ denote the normalized fitness values of the two objective function values of the $i$-th solution. Following this, using $d=1$ as the demarcation line, the area satisfying $d \leq 1$ is designated as the Candidate Region (CR). Finally, the NNS method is applied exclusively to the solution set situated within the CR.
+
+The NNS method calculates only the first Pareto frontier instead of multiple Pareto fronts. This method reduces repeat particle comparisons and redundant dominance checks, which ultimately decreases the algorithm's computational overhead. The pseudocode for this strategy is shown as follows:
+\begin{algorithm}[H]
+\caption{GS-NNS Strategy}\label{alg:GS_Strategy}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\begin{algorithmic}[1] % [1] 表示显示行号
+\REQUIRE Population $P$, Number of individuals $NP$, Number of objective function values $M$
+\ENSURE External archive $REP$
+
+\FOR{$i = 0$ \TO $NP-1$}
+    \FOR{$k = 0$ \TO $M-1$}
+        \STATE $f_{i,k}^{norm} \gets \text{Normalize}(f_{i,k})$
+    \ENDFOR
+\ENDFOR
+
+\STATE $D_{norm} \gets \text{initial distance}$
+\STATE $P_{\text{GS}} \gets P$ 
+
+\FOR{$i = 0$ \TO $NP-1$}
+    \IF{$f_{i} \text{ is out of target range}$}
+        \STATE $P_{\text{GS}} \gets P_{\text{GS}} \setminus \{i\}$ // Delete from GS population
+    \ENDIF
+\ENDFOR
+
+\FOR{$i = 0$ \TO $|P_{\text{GS}}|-1$}
+    \FOR{$k = 0$ \TO $|P_{\text{GS}}|-1$}
+        \IF{$i \neq k$ \AND $P_{\text{GS}}[i]$ is dominated by $P_{\text{GS}}[k]$}
+            \STATE \textbf{break}
+        \ENDIF
+    \ENDFOR
+    \IF{$P_{\text{GS}}[i]$ is not dominated}
+        \STATE $REP \gets REP \cup \{P_{\text{GS}}[i]\}$ // Add to Pareto set
+    \ENDIF
+\ENDFOR
+
+\RETURN $REP$
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\subsection{CD-SVAM}
+The external repository (REP) stores the current Pareto frontier to provide the global best particle $g_{\text{best}}$, for subsequent iterations. As the iteration progresses, the Pareto fronts continuously deposit in the REP. It will have a negative impact on population updates when the size of the REP exceeds its threshold. Thus, it is necessary to design a REP maintenance strategy to constrain its size and preserve algorithm efficiency. Conventional crowding-distance-based maintenance schemes exhibit two primary flaws: first, they fail to eliminate redundant particles, causing local optima to be repeatedly archived and inflating computational overhead; second, their strict preference for particles with large crowding distances inevitably degrades population diversity. To address these limitations, this paper proposes the CD-SVAM REP updating strategy, which integrates two key mechanisms. It employs a module to systematically delete repeating particles, thereby reducing computational expense, alongside a Sigmoid-variant mapping probability mechanism that strategically retains a fraction of particles with smaller crowding distances to enhance swarm diversity. The specific computational workflow for the CD-SVAM strategy is detailed below:
+
+Once the particle count within the external REP surpasses its maximum capacity, the crowding distance for each particle in the REP is computed using the following formula:
+\begin{equation}
+    dist(i)=\sum_{i=1}^{M}{\frac{f_m[i+1]-f_m[i-1]}{{f_m^{\text{max}}}-{f_m^{\text{min}}}}}
+\end{equation}
+where $M$ denotes the total number of objective functions; $i$ signifies the objective function identifier; $f_m^{\text{max}}$ and $f_m^{\text{min}}$ stand for the maximum and minimum values of the $m$-th objective function, respectively. Subsequently, a Sigmoid-variant function is employed to map the crowding degree of all archived particles into $map(i)$, thereby narrowing the selection probability discrepancy between particles possessing an infinite (INF) crowding distance and the others:
+\begin{equation}
+    map(i)=\tan \left ({\frac{1}{1+{e^{- dist(i)}}}}\right )
+\end{equation}
+
+Following this, the weight ratio of the mapped particles is evaluated and subsequently designated as the selection probability of the particle:
+\begin{equation}
+    {P_{\text{rep}}}(i+1)=\left \{{\begin{array}{ll}0, & i=1\\1-\frac{map(i)}{\sum_{i=1}^{k}map(i)}, & i>1\end{array}}\right .
+\end{equation}
+
+The candidate particle $S_{\text{rep}}(i)$ slated for updating is chosen, and a corresponding probabilistic selection weight interval is constructed according to its selection probability:
+\begin{equation}
+    S_{\text{rep}}(i)=\sum_{j=1}^{i}P_{\text{rep}}(j)
+\end{equation}
+
+By generating a random number uniformly distributed in $[0,1]$, the particle corresponding to the probability selection interval into which the number falls is marked for deletion, a procedure that is iterated until the residual particle count matches the REP's maximum capacity.
+
+
+\subsection{Cascade Guided Adaptive Evolutionary Mechanism}
+Aiming to improve the algorithm's convergence rate and local exploitation capabilities, this study proposes a CG-AEM strategy by incorporating a cascade-guided component and adaptive inertia weights into the conventional MOPSO velocity updating strategy. Thus, its iterative formula is expressed as:
+\begin{equation}
+    \begin{aligned}
+        v_{i}^{t+1} = \omega(i) v_{i}^t &+ c_1r_1(pbest-x_i^t) \\
+        &+ c_2r_2(gbest-x_i^t) + c_3r_3(cbest-x_i^t)
+    \end{aligned}
+    \label{eq:tradition_MOPSO_calculation}
+\end{equation}
+where $\omega(i)$ denotes the adaptive inertia weight; $pbest$ represents the individual optimal position; $gbest$ signifies the global optimal position; $cbest$ indicates the cascade optimal position; and $c_1$, $c_2$, and $c_3$ are random variables uniformly distributed in $[0,1]$.
+
+In order to characterize the collateral effects exerted on adjacent incoming threats when a specific target is destroyed, this study formulates the cascaded failure potential $CP$, computed via the following equation:
+\begin{equation}
+    CP_i=\sum_{k=1,k\neq i}^NP_{i\to k}\cdot v_i
+    \label{eq:Cascaded potential vector}
+\end{equation}
+where $P_{i\to k}$ indicates the probability of passive destruction inflicted upon target $k$ due to the neutralization of target $i$, derived from the pseudocode in Algorithm \ref{alg:EPL_AT_Strategy}; $v_i$ denotes the threat level of target $i$. Upon evaluating the $CP$ values of a given particle and its neighboring entities, the spatial coordinate of the particle exhibiting the maximum $CP$ value is designated as the cascade optimal position, given by:
+\begin{equation}
+    cbest=\arg\max_{i\in\text{Neighbors}}\{CP_i\}
+    \label{eq:cbest_calculation}
+\end{equation}
+
+In addition, an adaptive inertia weight operator is devised to further enhance the convergence efficiency and local search capability, mathematically articulated as:
+\begin{equation}
+    \omega(i)=\frac{1}{\text{exp}(-\frac{i}{I_{\text{max}}}+\sigma)-\kappa}
+    \label{eq:Improved Adaptive Inertia Weights}
+\end{equation}
+where $i$ denotes the current iteration counter; $I_{\text{max}}$ stands for the maximum number of iterations; $\sigma$ represents the inertia weight decay adaptation factor responsible for governing the decay slope across iterations; and $\kappa$ acts as the inertia weight offset adaptation factor to modulate the overall scale of the weight.
+
+Ultimately, the definitive velocity updating formulation is derived by integrating Eq. (\ref{eq:cbest_calculation}) and Eq. (\ref{eq:Improved Adaptive Inertia Weights}) into Eq. (\ref{eq:tradition_MOPSO_calculation}).
+
+
+
+\section{Experimental Results}
+
+The simulation experiments are designed to comprehensively validate the effectiveness of the proposed EPL-AT strategy and the GS-MOPSO algorithm in addressing the CF-DWTA problem. The experimental framework unfolds in three primary phases: First, eight scenarios are configured to compare the EPL-AT strategy against the LBP and Noisy-OR models, thereby validating its computational accuracy and efficiency. Second, the runtime performance of various non-dominated sorting strategies is compared to verify the computational efficiency improvements introduced by the GS-NNS method. Finally, based on the Hypervolume (HV) and Seven-Point Average Distance (SPAD) metrics, statistical analyses—specifically the Wilcoxon rank-sum test and the Friedman test—are conducted to comprehensively evaluate the convergence and robustness of the algorithms. All numerical experiments were conducted on a workstation equipped with a 13th Gen Intel Core i9-13900HX processor and 16 GB of RAM. All algorithms were implemented and evaluated using MATLAB R2025b.
+
+
+\subsection{Model Calculation Accuracy Comparison}
+
+\begin{figure*}[htbp]
+\centering
+% 第一排
+\subfloat[$N=15$, Low Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_1_Combined_N15_Low.pdf}%
+\label{fig:scenario_15_low}}
+\hfil
+\subfloat[$N=15$, High Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_2_Combined_N15_High.pdf}%
+\label{fig:scenario_15_high}}
+\\ % 建议每放两个换一行，以保证 4 行 2 列的排版非常整齐
+% 第二排
+\subfloat[$N=20$, Low Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_3_Combined_N20_Low.pdf}%
+\label{fig:scenario_20_low}}
+\hfil
+\subfloat[$N=20$, High Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_4_Combined_N20_High.pdf}%
+\label{fig:scenario_20_high}}
+\\
+% 第三排
+\subfloat[$N=35$, Low Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_5_Combined_N35_Low.pdf}%
+\label{fig:scenario_35_low}}
+\hfil
+\subfloat[$N=35$, High Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_6_Combined_N35_High.pdf}%
+\label{fig:scenario_35_high}}
+\\
+% 第四排
+\subfloat[$N=40$, Low Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_7_Combined_N40_Low.pdf}%
+\label{fig:scenario_40_low}}
+\hfil
+\subfloat[$N=40$, High Density]{\includegraphics[width=3.5in]{figures/effictive/Scenario_8_Combined_N40_High.pdf}%
+\label{fig:scenario_40_high}}
+
+\caption{Comprehensive evaluation of damage probability estimations and calculation errors under varying target quantities ($N$) and network densities. Each subfigure presents the estimated damage probabilities of individual targets (left) and the absolute errors relative to the Monte Carlo ground truth (right). The proposed EPL-AT is compared with LBP and standard Noisy-OR, using 50,000 Monte Carlo simulations as the baseline.}
+\label{fig:accuracy_comparison_8scenarios} 
+\end{figure*}
+
+To comprehensively evaluate the computational accuracy of the EPL-AT strategy across varying target quantities and network densities, eight distinct simulation scenarios are designed. These scenarios comprise parameter combinations across two dimensions: the number of targets, $n \in \{15, 20, 35, 40\}$, and the network density (low and high). Within each scenario, the proposed EPL-AT strategy is compared against the Loopy Belief Propagation (LBP) algorithm and the standard Noisy-OR model. The results of 50,000 Monte Carlo (MC) simulations serve as the exact baseline to evaluate the accuracy and computational error of each method. The specific evaluation metrics include the estimated damage probability for individual targets and the absolute error relative to the MC baseline.
+
+Fig. \ref{fig:accuracy_comparison_8scenarios} illustrates the comparative results regarding computational accuracy. The results demonstrate that, in the majority of cases, the absolute errors of the EPL-AT strategy are strictly lower than those of the LBP and Noisy-OR models. This advantage is particularly pronounced in high-density network scenarios, indicating that the EPL-AT strategy more accurately captures inter-target dependencies when processing complex network structures and larger target scales, thereby yielding highly precise damage probability estimates. Conversely, in scenarios characterized by a small number of targets and low network density, the error margins among the three methods are minimal. This parity occurs because inter-target dependencies are inherently weak in such configurations, allowing the LBP and Noisy-OR models to achieve estimation results comparable to those of EPL-AT. Overall, the EPL-AT strategy exhibits robust computational accuracy across a diverse array of scenarios, demonstrating significant superiority, especially in complex network topologies with large target scales.
+
+
+\subsection{Model Computation Efficiency Comparison}
+
+To evaluate the computation efficiency of the EPL-AT strategy, eight distinct simulation scenarios are designed, covering the two dimensions of target quantity $n$ (15, 20, 35, 40) and network density (low density, high density). For each scenario, the EPL-AT strategy is compared with the Loopy Belief Propagation (LBP) algorithm, the standard Noisy-OR model, and 20,000 Monte Carlo simulations to assess their computation efficiency in estimating target damage probabilities. The specific evaluation metric is the average computation time for each algorithm under different scenarios.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=3in]{figures/EPL-AT效率.png}
+\caption{Comparison of computation time for various algorithms \textbf{(the average computation time of Monte Carlo is 0.2 s)}.}
+\label{EPL-AT效率对比}
+\end{figure}
+
+Fig. \ref{EPL-AT效率对比} presents the comparative results regarding computational efficiency. The findings indicate that in high-density network scenarios, the computational time of the EPL-AT strategy exhibits a moderate increase compared to the LBP and Noisy-OR models. This increment is primarily attributed to the additional iterative computations required by the EPL-AT strategy to accurately resolve cascading damage relationships within complex network topologies. However, when compared to Monte Carlo (MC) simulations operating under equivalent accuracy conditions, the EPL-AT strategy demonstrates a substantial advantage in computational efficiency. Consequently, while delivering highly precise damage probability estimates, the EPL-AT strategy maintains robust computational agility, thereby satisfying the rigorous real-time decision-making requirements of practical operational environments.
+
+
+\subsection{Computational Efficiency Analysis of GS-MOPSO}
+
+\begin{table*}[htbp]
+  \centering
+  \caption{Parameter settings for different defense scenarios}
+  \label{tab:Defence scenario parameter settings}
+  \small % Reduced font size to fit page width
+  \begin{tabular}{cccccc}
+    \hline
+    \begin{tabular}[c]{@{}c@{}}Defensive\\ Scenario\end{tabular} & \begin{tabular}[c]{@{}c@{}}No. of Weapons\\ ($m$)\end{tabular} & \begin{tabular}[c]{@{}c@{}}No. of Targets\\ ($n$)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Weapon System\\ Cost Vector ($\mathbf{C}$)\end{tabular} & \begin{tabular}[c]{@{}c@{}}Target Position\\ Matrix\end{tabular} & \begin{tabular}[c]{@{}c@{}}Weapon Damage\\ Radius Matrix\end{tabular} \\ \hline
+    1 & 10 & 15 & \begin{tabular}[c]{@{}l@{}}$[300, 250, 268, \dots,$\\ $310, 350, 310]$\end{tabular} & $\begin{bmatrix} 1.3 & 1.4 & \cdots & 5.1 \\ 2.1 & 2.6 & \cdots & 3.5 \\ 3.2 & 5.1 & \cdots & 5.0 \end{bmatrix}$ & $\begin{bmatrix} 0.3 & 0.4 & \cdots & 0.1 \\ \vdots & \vdots & & \vdots \\ 0.2 & 0.3 & \cdots & 0.3 \end{bmatrix}$ \\ \hline
+    2 & 18 & 20 & \begin{tabular}[c]{@{}l@{}}$[300, 250, 268, \dots,$\\ $310, 350, 310]$\end{tabular} & $\begin{bmatrix} 1.2 & 1.3 & \cdots & 2.5 \\ 1.6 & 1.3 & \cdots & 3.3 \\ 2.2 & 5.3 & \cdots & 3.1 \end{bmatrix}$ & $\begin{bmatrix} 0.2 & 0.3 & \cdots & 0.3 \\ \vdots & \vdots & & \vdots \\ 0.1 & 0.5 & \cdots & 0.3 \end{bmatrix}$ \\ \hline
+    3 & 30 & 35 & \begin{tabular}[c]{@{}l@{}}$[600, 550, 200, \dots,$\\ $470, 410, 380]$\end{tabular} & $\begin{bmatrix} 2.2 & 1.1 & \cdots & 1.6 \\ 3.2 & 1.2 & \cdots & 3.3 \\ 1.6 & 3.5 & \cdots & 3.7 \end{bmatrix}$ & $\begin{bmatrix} 0.2 & 0.5 & \cdots & 0.2 \\ \vdots & \vdots & & \vdots \\ 0.4 & 0.2 & \cdots & 0.3 \end{bmatrix}$ \\ \hline
+    4 & 36 & 40 & \begin{tabular}[c]{@{}l@{}}$[450, 350, 300, \dots,$\\ $470, 410, 380]$\end{tabular} & $\begin{bmatrix} 2.3 & 1.7 & \cdots & 3.5 \\ 2.6 & 1.9 & \cdots & 1.8 \\ 1.6 & 2.7 & \cdots & 2.7 \end{bmatrix}$ & $\begin{bmatrix} 0.1 & 0.3 & \cdots & 0.3 \\ \vdots & \vdots & & \vdots \\ 0.5 & 0.2 & \cdots & 0.2 \end{bmatrix}$ \\ \hline
+  \end{tabular}
+\end{table*}
+
+
+To comprehensively evaluate algorithmic efficiency, four defense scenarios of varying scales are formulated. The detailed parameter configurations for these scenarios are summarized in Table~\ref{tab:Defence scenario parameter settings}. Specifically, the cost vectors for defensive weapons are randomly generated within the interval $[250, 450]$, the distances of incoming targets are distributed within $[1, 6]$, and the weapon damage radii are randomly assigned within $[0.1, 0.6]$. The fundamental experimental parameters are uniformly set across all algorithms, with a population size of $N_p=100$ and a maximum iteration count of $I_{\text{max}}=100$. The comparative algorithms are primarily differentiated by their respective non-dominated sorting strategies: MOPSO represents the baseline algorithm; MNDS utilizes Merge Non-dominated Sorting; CS \cite{wang2013corner} employs Corner Sort; NNS denotes the proposed Non-hierarchical Non-dominated Sorting; GS-NNS integrates the Group Segmentation strategy with NNS; and GS-MOPSO serves as the fully comprehensive algorithm, incorporating GS-NNS alongside all other proposed improvement mechanisms.
+
+\begin{figure}[htbp]
+\centering
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/A场景1.pdf}%
+\label{fig_first_case}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/A场景2.pdf}%
+\label{fig_second_case}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/A场景3.pdf}%
+\label{fig_third_case}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/A场景4.pdf}%
+\label{fig_fourth_case}}
+\caption{Time comparison of multiple non dominated sorting methods}
+\label{fig_simulation_A} 
+\end{figure}
+
+Fig. \ref{fig_simulation_A} shows the solution time of each algorithm in different scenarios. The results demonstrate that the proposed GS-NNS strategy significantly outperforms traditional sorting methods (MOPSO, MNDS, and CS) in computational efficiency. Furthermore, the runtime boxplots reveal that the fully integrated GS-MOPSO algorithm not only maintains this rapid solving speed in small- and medium-scale scenarios but also exhibits superior runtime stability across multiple independent evaluations.
+
+
+\subsection{Algorithm Convergence Analysis}
+
+Convergence serves as a critical performance indicator in solving the WTA problem, directly dictating the efficacy of the final assignment and interception outcomes. To rigorously analyze algorithmic convergence, this study employs the Seven-Point Average Distance (SPAD) metric alongside comparative analyses of the generated Pareto frontiers. The SPAD metric provides a robust numerical evaluation of convergence for two-dimensional multi-objective optimization scenarios, specifically addressing the inherent absence of a true reference Pareto front in practical WTA applications. Complementarily, plotting the obtained Pareto frontiers facilitates an intuitive, graphical comparison of algorithmic convergence based on the final optimized solution sets.
+
+\subsubsection{SPAD index convergence analysis}
+
+\begin{table*}[htbp]
+  \centering
+  \caption{SPAD indicator results of solution sets obtained by the four algorithms}
+  \label{tab:SP_index_results}
+  \small 
+  \begin{tabular}{llcccc}
+    \toprule
+    \textbf{Scenario} & \textbf{Metric} & \textbf{MOPSO} & \textbf{TC-MOPSO} & \textbf{ANMPSO} & \textbf{GS-MOPSO} \\
+    \midrule
+    \multirow{4}{*}{Scenario 1} 
+    & Max & 4.8714E-02 & 4.8714E-02 & 4.2714E-02 & \textbf{4.1428E-02} \\
+    & Min & 3.8785E-02 & 3.8785E-02 & 3.8785E-02 & 3.8785E-02 \\
+    & Mean & 4.1785E-02 & 4.0300E-02 & 4.0054E-02 & \textbf{3.9900E-02} \\
+    & Std. Dev. & 5.9301E-06 & 2.3209E-06 & 1.7985E-06 & \textbf{1.1211E-06} \\
+    \midrule
+    \multirow{4}{*}{Scenario 2} 
+    & Max & 5.2575E+02 & 4.3432E+02 & 5.6003E+02 & \textbf{3.8433E+02} \\
+    & Min & 7.1462E+01 & 7.4319E+01 & 1.3432E+02 & \textbf{2.5750E+01} \\
+    & Mean & 2.5011E+02 & 2.3104E+02 & 2.4489E+02 & \textbf{2.2689E+02} \\
+    & Std. Dev. & 1.3587E+04 & 9.0812E+03 & \textbf{8.216E+03}  & 8.9444E+03 \\
+    \midrule
+    \multirow{4}{*}{Scenario 3} 
+    & Max & 4.6569E-02 & 4.4288E-02 & \textbf{4.1226E-02} & 4.2243E-02 \\
+    & Min & 3.3721E-02 & \textbf{3.3341E-02} & 3.3905E-02 & 3.3530E-02 \\
+    & Mean & 3.8591E-02 & 3.8479E-02 & 3.7846E-02 & \textbf{3.7616E-02} \\
+    & Std. Dev. & \textbf{1.0684E-05} & 9.4143E-06 & 5.2502E-06 & 4.6647E-06 \\
+    \midrule
+    \multirow{4}{*}{Scenario 4} 
+    & Max & 6.7862E+02 & 6.9147E+02 & 7.7004E+02 & \textbf{6.3861E+02} \\
+    & Min & 1.7433E+02 & 1.2147E+02 & 1.4004E+02 & \textbf{1.1432E+02} \\
+    & Mean & 3.8826E+02 & 3.6790E+02 & 3.4840E+02 & \textbf{3.2433E+02} \\
+    & Std. Dev. & 2.7704E+04 & \textbf{2.0645E+04} & 2.7215E+04 & 2.5659E+04 \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+The SPAD metric evaluates the convergence of algorithms by calculating the Euclidean distances between a reference set $R$ and the obtained Pareto frontier $S$, as defined below:
+\begin{equation}
+    SPAD\left(R,S\right)=\frac{\sum_{i=1}^{|R|}d_{i}}{|R|}
+\end{equation}
+where $d_{i}=\operatorname*{min}\|F(r^{i})-F(x)\|,r^{i}\in R$; the seven points of the reference set are: (0,$\frac{1}{3}f_2^{\text{max}}$), (0,$\frac{2}{3}f_2^{\text{max}}$), (0,$f_2^{\text{max}}$), (0,0), (0,$\frac{1}{3}f_1^{\text{max}}$), (0,$\frac{2}{3}f_1^{\text{max}}$), (0,$f_1^{\text{max}}$). Here, $f_1^{\text{max}}$ and $f_2^{\text{max}}$ represent the maximum values of the Pareto front solutions in the two objectives, and a smaller SPAD index value indicates better algorithmic convergence.
+
+Table \ref{tab:SP_index_results} presents the SPAD indices for the four algorithms. The statistical results indicate that GS-MOPSO achieves the best performance in 11 out of 16 evaluation metrics across the four scenarios, with the remaining metrics ranking second. Notably, GS-MOPSO's SPAD mean is significantly lower than that of the comparison algorithms, demonstrating its ability to approach the ideal frontier more closely. Additionally, the smaller standard deviation further confirms that this algorithm maintains stable convergence performance under different execution orders.
+
+\subsubsection{Pareto Frontier Analysis}
+
+\begin{figure}[htbp]
+\centering
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/C场景1.pdf}%
+\label{fig_first_case_c}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/C场景2.pdf}%
+\label{fig_second_case_c}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/C场景3.pdf}%
+\label{fig_third_case_c}}
+\hfil
+\subfloat[]{\includegraphics[width=1.7in]{figures/simulation/C场景4.pdf}%
+\label{fig_fourth_case_c}}
+\caption{The pareto front of the four algorithms in different scenarios}
+\label{fig_simulation_C} 
+\end{figure}
+
+Fig. \ref{fig_simulation_C} illustrates the Pareto front scatter plots generated by the four algorithms across defense scenarios of varying scales. Each data point within the figure represents a specific weapon-target assignment scheme. Within a unified coordinate system, solution sets positioned closer to the origin indicate superior algorithmic convergence, signifying the capability to achieve enhanced defensive efficacy at a reduced operational cost. A visual comparison reveals that the Pareto front generated by the GS-MOPSO algorithm is situated significantly closer to the lower-left origin relative to the comparative algorithms, while also maintaining a more uniform distribution of solutions. This graphical evidence further verifies that the proposed GS-MOPSO algorithm achieves optimal convergence accuracy and solution set quality when addressing the CF-DWTA problem.
+
+
+\subsection{Comprehensive Performance Evaluation}
+
+\begin{table*}[htbp]
+  \centering
+  \caption{Algorithm Parameter Settings for Comparison}
+  \label{tab:algorithm_parameters}
+  \small % Adjusted font size for better fit
+  \begin{tabular}{lcccc}
+    \toprule
+    \textbf{Parameter} & \textbf{MOPSO} & \textbf{TC-MOPSO} & \textbf{ANMPSO} & \textbf{GS-MOPSO} \\
+    \midrule
+    Population size $N_p$ & 100 & 100 & 100 & 100 \\
+    Maximum iterations $T_{max}$ & 100 & 100 & 100 & 100 \\
+    Personal learning factor $c_1$ & 1 & --- & --- & 1 \\
+    Social learning factor $c_2$ & 2 & --- & --- & 2 \\
+    Upper velocity limit $v_{max}$ & 0.51 & 0.51 & 0.51 & 0.51 \\
+    \begin{tabular}[l]{@{}l@{}}Lower velocity limit $v_{min}$ \\ ($m$: number of weapons)\end{tabular} & $0.49+m$ & $0.49+m$ & $0.49+m$ & $0.49+m$ \\
+    External archive size $n_{rep}$ & 50 & 50 & 50 & 50 \\
+    Bernoulli chaotic parameter $\lambda_B$ & --- & --- & --- & 0.479 \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+\begin{table*}[htbp]
+  \centering
+  \caption{HV indicator results of solution sets obtained by the four algorithms}
+  \label{tab:HV_index_results}
+  \small 
+  \begin{tabular}{llcccc}
+    \toprule
+    \textbf{Scenario} & \textbf{Metric} & \textbf{MOPSO} & \textbf{TC-MOPSO} & \textbf{ANMPSO} & \textbf{GS-MOPSO} \\
+    \midrule
+    \multirow{4}{*}{Scenario 1} 
+    & Max & 4.9958E-01 & 5.0101E-01 & 5.0003E-01 & \textbf{5.0101E-01} \\
+    & Min & 4.9069E-01 & 4.9120E-01 & 4.8993E-01 & \textbf{4.9365E-01} \\
+    & Mean & 4.9625E-01 & 4.9784E-01 & 4.9731E-01 & \textbf{4.9831E-01} \\
+    & Std. Dev. & 5.3198E-06 & 9.6694E-06 & \textbf{3.9780E-06} & 4.8599E-06 \\
+    \midrule
+    \multirow{4}{*}{Scenario 2} 
+    & Max & 3.9015E-01 & 3.9228E-01 & 3.9067E-01 & \textbf{3.9229E-01} \\
+    & Min & 3.6595E-01 & \textbf{3.7296E-01} & 3.6743E-01 & 3.7129E-01 \\
+    & Mean & 3.7704E-01 & 3.8294E-01 & 3.8336E-01 & \textbf{3.8384E-01} \\
+    & Std. Dev. & 3.9984E-05 & 2.9802E-05 & 3.1112E-05 & \textbf{2.2551E-05} \\
+    \midrule
+    \multirow{4}{*}{Scenario 3} 
+    & Max & 5.9701E-01 & 6.0627E-01 & 6.0739E-01 & \textbf{6.1235E-01} \\
+    & Min & 5.6401E-01 & 5.7118E-01 & 5.6867E-01 & \textbf{5.7327E-01} \\
+    & Mean & 5.7898E-01 & 5.9222E-01 & 5.8942E-01 & \textbf{5.9256E-01} \\
+    & Std. Dev. & 9.9544E-05 & 9.2149E-05 & 9.8665E-05 & \textbf{8.1679E-05} \\
+    \midrule
+    \multirow{4}{*}{Scenario 4} 
+    & Max & 4.8504E-01 & 4.8961E-01 & 4.9108E-01 & \textbf{4.9410E-01} \\
+    & Min & 4.4255E-01 & \textbf{4.5172E-01} & 4.4687E-01 & 4.5151E-01 \\
+    & Mean & 4.6511E-01 & 4.6836E-01 & 4.6932E-01 & \textbf{4.7219E-01} \\
+    & Std. Dev. & 1.2138E-04 & 1.1272E-04 & 1.7373E-04 & \textbf{1.1714E-04} \\
+    \bottomrule
+  \end{tabular}
+\end{table*}
+
+Given the inherent absence of a true Pareto front in practical WTA problems, the Hypervolume (HV) metric \cite{guerreiro2021hypervolume} is adopted as the comprehensive evaluation standard. The HV metric simultaneously quantifies both the convergence and diversity of the obtained solution set without requiring a true reference front, formulated as follows:
+\begin{equation}
+HV\big(S,z^{\text{ref}}\big)=volume\bigg(\bigcup_{i=1}^{|S|}c^i\bigg)
+\end{equation}
+where $z^{\text{ref}}$ is the reference point; $S$ is the non-dominated solution set obtained by the algorithm; and $c^i$ is the hypercube formed by the solution element and the reference point. The experimental reference points are set as follows: for scenarios 1 and 2, $z^{\text{ref}}_1= (1.2, 12000)$; for scenarios 3 and 4, $z^{\text{ref}}_2= (1.2, 30000)$. A larger HV value indicates better approximation of the solution set to the true Pareto front, reflecting superior overall performance.
+
+To verify the performance of GS-MOPSO in solving the CF-DWTA problem, this paper compares it with three representative improved algorithms: MOPSO, TC-MOPSO \cite{han2022improved}, and ANMPSO \cite{gu2021multi}. The general parameters of each algorithm are shown in Table \ref{tab:algorithm_parameters}, while the specific parameters are set according to the original references. Each algorithm is independently run 20 times under the four scenarios, and the HV index statistics are presented in Table \ref{tab:HV_index_results}.
+
+From Table \ref{tab:HV_index_results}, it can be seen that in Scenarios 1 and 3, GS-MOPSO achieves the best mean and minimum HV values, indicating its strong search ability and convergence. In Scenarios 2 and 4, GS-MOPSO performs best in terms of maximum HV value, mean HV value, and standard deviation. Overall, GS-MOPSO demonstrates excellent comprehensive performance across the four medium-scale scenarios, with a smaller standard deviation confirming its high robustness across multiple runs.
+
+\subsection{Experimental Results Analysis and Discussion}
+The experimental results collectively demonstrate that the proposed CF-DWTA model and GS-MOPSO algorithm achieve a favorable balance between modeling accuracy, computational efficiency, and solution quality.
+
+At the modeling level (Sections 4.1 and 4.2), the EPL-AT strategy effectively addresses the computational bottleneck inherent to dense formation scenarios. By adaptively truncating redundant probability propagation paths, it avoids the overestimation bias commonly observed in probabilistic graphical models (e.g., LBP and Noisy-OR), while achieving computational speeds orders of magnitude higher than Monte Carlo simulations. This trade-off between fidelity and real-time performance is critical for dynamic battlefield environments.
+
+At the algorithmic level (Sections 4.3–4.5), GS-MOPSO demonstrates clear advantages in both computational agility and convergence quality. The significant runtime reduction (Fig.~\ref{fig_simulation_A}) validates the efficacy of the GS-NNS mechanism, which effectively eliminates redundant dominance comparisons in high-dimensional discrete spaces. Meanwhile, the improved SPAD and HV metrics indicate that the CQREML and CD-SVAM strategies collectively enhance population diversity, enabling the algorithm to escape local optima and achieve a more uniformly distributed Pareto frontier. Together, these mechanisms ensure that high-quality weapon-target assignment solutions can be generated reliably and rapidly, meeting the stringent decision-making requirements of modern combat operations.
+
+\section{Conclusion}
+This paper addresses a critical gap in dynamic weapon-target assignment by explicitly incorporating cascading failure effects in dense formation scenarios. A CF-DWTA model is proposed alongside an efficient EPL-AT strategy for damage probability calculation, and a customized optimization algorithm, GS-MOPSO, is developed to solve the resulting problem.
+
+Within the GS-MOPSO framework, four key mechanisms are introduced: the CQREML initialization strategy to enhance population diversity, the GS-NNS strategy to significantly improve computational efficiency, the CD-SVAM archive maintenance strategy to preserve solution diversity, and the CG-AEM velocity update strategy to accelerate convergence.
+
+Simulation results across various defense scenarios demonstrate that the proposed model and algorithm outperform traditional methods in terms of solving speed, convergence, and solution diversity. This study provides an effective heuristic approach for addressing complex WTA problems in dense formation environments. Future work will focus on integrating heuristic algorithms with deep reinforcement learning methods and validating the proposed model under more dynamic or partially observable battlefield conditions.
+
+
+% 参考文献
+\bibliographystyle{IEEEtran} 
+\bibliography{references}         
+
+\end{document}

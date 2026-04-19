@@ -1,0 +1,1187 @@
+%! Mode:: "TeX:UTF-8"
+%! TEX program = xelatex
+\PassOptionsToPackage{quiet}{xeCJK}
+\documentclass[withoutpreface,bwprint]{cumcmthesis}
+\usepackage{etoolbox}
+\BeforeBeginEnvironment{tabular}{\zihao{-5}}
+\usepackage[numbers,sort&compress]{natbib}  % 文献管理宏包
+\usepackage[framemethod=TikZ]{mdframed}  % 框架宏包
+\usepackage{url}  % 网页链接宏包
+\usepackage{subcaption}  % 子图宏包
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\title{不同情况下“板凳龙”的运动分析}  % 论文标题
+\tihao{}  % 题号
+\baominghao{}  % 报名号
+\schoolname{}  % 学校
+\membera{}  % 队员a
+\memberb{}  % 队员b
+\memberc{}  % 队员c
+\supervisor{}  % 指导老师
+\yearinput{}
+\monthinput{}
+\dayinput{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 正文
+\begin{document}
+
+\maketitle
+\begin{abstract}
+
+本文主要研究了“板凳龙”的运动问题，建立了“板凳龙”各个把手的运动关系模型和板凳间的运动碰撞模型，同时考虑到“板凳龙”的调头情景，解出了不同情况下“板凳龙”的运动状态。
+
+\textbf{对于问题一,}建立了把手的\textbf{运动关系模型}。首先建立极坐标系，通过\textbf{等距螺线方程}求解出了把手的运动距离与角度变化的关系。接着根据运动距离与角度变化的关系，求出了任意时刻的龙头位置。其次，考虑到板凳的\textbf{刚性假设}，利用\textbf{余弦定理}得到了相邻板凳的位置递推关系，并利用数值求解的方式，求出了任意时刻所有把手的位置。由于板凳的刚性假设，任意两相邻把手在板凳方向的分速度相同，并以此求解出了把手在等距螺线运动的条件下，各个把手的速度的递推关系。最终求出的结果如\cref{问题一位置结果}和\cref{问题一速度结果}所示。
+
+\textbf{对于问题二}，建立了板凳间的\textbf{碰撞模型}。本研究采用了\textbf{OBB与SAT结合算法}进行碰撞检测，并探讨了“板凳龙”哪些部分会发生碰撞，以及如何搜索相邻板凳。完成碰撞模型的建立后，结合运动模型，以0.1秒为步长，每隔0.1秒检测是否发生碰撞。最终，检测到的碰撞发生时间为\textbf{413秒}，此时“板凳龙”部分把手的位置和速度如图\cref{第二问求解结果}所示。
+
+\textbf{对于问题三,}建立了基于\textbf{拟合分析}和\textbf{二分法}的优化模型。首先在任意螺距$\delta$的条件下，结合问题一、二建立的把手运动关系模型和板凳的碰撞模型，计算出最终碰撞时龙头的位置$l$，将$l$和$\delta$进行拟合处理，发现当$\delta$位于$[0.42,0.5]$时,$l$是单调函数，因此在这个范围内利用二分法求解龙头的位置$l$。基于上诉优化策略，求出了龙头恰好能够调头区域的最小螺距$\delta$：\textbf{0.44972m}
+
+\textbf{对于问题四,}建立了“板凳龙”的\textbf{调头模型}。在调头区域内，“板凳龙”的调头曲线分为盘入螺线部分、圆弧部分、盘出螺线部分。由于大圆弧、小圆弧、盘入螺线、盘出螺线之间存在许多约束，根据这些约束可以计算出\textbf{调头路径的长度与调头路径起始点AB的关系}。由于问题四中的调头曲线是由多种不同的曲线拼接而成的，本问修正了把手的运动模型，同时还综合考虑了\textbf{盘出路径堵塞、龙头卡死、板凳碰撞}等约束条件，进一步检验调头路径的合理性。最后利用\textbf{贝叶斯优化}得到最短调头曲线长度为:\textbf{10.11m}
+
+\textbf{对于问题五,}首先设定龙头的初始速度，利用问题四最终的优化结果和修正后的把手运动模型，求解出各个时刻把手的位置和速度，检验其最大速度是否超过$2m/s$。对于该最大最小化问题，本问利用\textbf{等步长迭代算法}，得到了龙头的最大运动速度为：\textbf{1.6m/s}
+
+
+
+\keywords{等距螺线方程\quad  OBB与SAT结合算法\quad 二分法 \quad 贝叶斯优化\quad  等步长迭代算法 \quad }
+\end{abstract}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% \tableofcontents  % 目录
+% \newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\section{问题重述}
+\subsection{问题背景}
+千米长龙“舞动”六百年，在这项非遗传统“板凳龙”表演中，队员们通过控制连接成一串的板凳，模拟龙的盘旋、翻滚等动作，为观众呈现一场视觉盛宴。为了提高表演的观赏性和安全性，同时也便于更好地将这项优秀的非物质文化遗产传承，对舞龙队的运动进行数学建模和优化分析显得尤为重要。
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\subsection{问题要求}
+
+\textbf{问题1}  考虑在给定舞龙队的盘入路径，龙头前把手行进速度固定，龙头初始时刻时位置已知的情况下，求解到指定时刻为止，每秒钟整个队列的位置和速度，记录并保存结果。
+
+\textbf{问题2}  要求在沿着问题一给定的路径盘入，并保证舞龙队列间板凳不发生碰撞的情况下，确定不能再继续盘入的临界时刻，同时求解出此刻舞龙队位置和速度。
+
+\textbf{问题3} 给定了圆形调头空间的直径，要求在保证龙头把手能够进入掉头空间的情况下，尽可能减小运行轨迹的螺距。
+
+\textbf{问题4}  本题需要队列在问题 3 的给定的调头空间内，按照本题指定 S 形曲线路径完成调头，要求分析并确定是否可以通过调整圆弧半径，使得调头路径在保持与盘入、盘出螺线相切的条件下变得更短。同时考虑在龙头前把手行进速度给定的情况下，在特定时间区间内求解每秒舞龙队的位置和速度。
+
+\textbf{问题5}  在遵循问题 4 设定的调头路径和速度的前提下，确定龙头的最大行进速度，以保证舞龙队各把手的速度不超过 2 m/s。
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{问题分析}
+\subsection{问题一分析}
+对于问题一，要求我们计算任意时刻所有把手的位置和速度。首先，为了描述把手的运动状态，本文采用极坐标系来构建等距螺旋线模型，并在极坐标系下描述各个把手的位置。为了后续计算，还需要先计算出每个时刻把手的位置，利用积分公式计算等距螺线运动距离和角度变化的关系，并以此得到了每个时刻龙头的位置。其次，利用余弦定理表示任意两个把手之间的距离，而这个距离为已知的定值，这样就得到了相邻把手位置的递推关系，利用龙头位置这个初始值，即可得到任意时刻所有把手的位置。每个把手的速度方向、大小均不相同，但由于板凳的刚性假设，各个把手的在板凳的分速度均相同，这样就该得到了相邻把手的速度递推公式，利用龙头速度这个初始值，即可得到任意时刻所有把手的速度。
+
+\subsection{问题二分析}
+对于问题二，要求我们在考虑板凳碰撞的情况下，计算“板凳龙”的最大运动时间。为了解决这个问题，首先需要描述什么情况下会发生碰撞，本文采用分离轴定理（SAT）和方向包围盒算法（OBB）的结合算法来检测板凳是否碰撞：将两个矩形的短边作为分离轴，检查两个板凳在分离轴上的投影是否发生重叠。其次，根据等距螺线的结构可以知道，如果发生碰撞，一定是靠内的相邻两层板凳之间发生碰撞，特别是最内层，因此只需要判定最内圈板凳是否会与外圈发生碰撞。然后，设计一个角度最邻近算法，筛选得到每一个待检测板凳可能发生碰撞的板凳。最后，使用SAT和OBB的结合算法检测这两个板凳是否发生碰撞，一旦在某一时刻检测到碰撞，该时刻即为龙队的盘入终止时刻。再利用与问题一类似的算法，即可给出该时刻所有把手的位置与运动速度。
+
+\subsection{问题三分析}
+对于问题三，要求我们计算出一个最小螺距，能够使龙头前把手恰好可以进入调头空间。针对这个问题，首先需要综合考虑把手的运动模型和板凳碰撞检测模型，计算出“板凳龙”最终停止时龙头距离圆心的位置，然后判断龙头是否进入调头空间。最后可以利用二分法的优化策略，调节不同的螺距，寻找符合题目要求的最小螺距。
+
+\subsection{问题四分析}
+对于问题四，要求我们计算“板凳龙”的最短调头曲线。首先需要讨论调头曲线的几何关系，利用大圆弧、小圆弧、盘出螺线、盘入螺线的相切关系，通过一些列的数学运算可以知道，只要确定了调头曲线的起始点AB，且该调头曲线是合理的，即可将该曲线确定，利用数学关系，可以算出调头曲线的长度。针对什么样的调头曲线是合理的，认为满足这三个判定条件的调头曲线是合理的：盘出路径是否堵塞、龙头是否卡死、板凳是否碰撞。利用这三个判定条件，可以得到一系列合理的调头曲线起始点AB，并利用前面推导的公式，计算这条调头曲线的长度。其次，考虑到本问的运动路径是由多端曲线组成的，还需要修正把手的运动模型来计算所有把手的位置和速度。最后，考虑到单次求解时间过长，使用常规优化算法的效率地下，这里可以使用贝叶斯优化，寻找最短的调头曲线，并利用修正后的把手运动模型计算其中某些时刻把手的位置和速度。
+
+\subsection{问题五分析}
+对于问题五，“板凳龙”在问题4设定的路径上运动，要求计算龙头的最大速度，使得任意时刻所有把手的速度均不超过$2m/s$。这里可以利用等步长迭代算法来寻找龙头的最大速度，首先假定一个龙头的初始速度，然后利用问题四中修正过的把手运动模型计算整个调头过程的最大把手速度$V_{max}$，如果$V_{max} > 2m/s$则减小龙头的速度，再次重复上诉过程，直到符合题意，计算出龙头的最大速度。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{模型假设}
+
+为简化问题，本文做出以下假设：
+
+\begin{itemize}[itemindent=2em]
+\item 假设1：板凳为一刚体，不考虑它的形变。
+\item 假设2：不考虑板凳的厚度和高度变化，仅考虑其在二维平面的干涉情况。
+
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{符号说明}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{CLC}
+\toprule
+符号    & 说明    & 单位 \\
+\midrule
+$\lambda     $& 螺线常数 &  \\
+$\delta     $& 螺距 & $m$ \\
+$l_{min}     $& 碰撞时龙头位置 & $m$ \\
+$l_d     $& 龙头卡死距离 & $m$ \\
+$  R     $& 调头空间小圆半径 & $m$ \\
+$\varphi     $& 螺旋的切线和位矢的夹角 & $rad$ \\
+$D     $& 调头区域的直径 & $m$ \\
+$R     $& 小圆弧半径 & $m$ \\
+$S     $& 调头曲线长度 & $m$ \\
+$\xi_{big}     $& 大圆弧的弧长 & $m$ \\
+$\xi_{small}     $& 小圆弧的弧长 & $m$\\
+$\overrightarrow{n_{1} }     $& 调头开始点的法向量 & $~$ \\
+$\overrightarrow{n_{2} }    $& 调头结束点的法向量 & $~$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:符号说明}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{问题一模型的建立和求解}
+\subsection{模型建立}
+
+为了计算各个时刻所有把手的位置和速度，首先需要计算各个时刻龙头的位置，然后利用每个板凳的刚性假设来计算相邻把手的位置关系和速率关系递推式，利用龙头的位置和速度这个边界条件即可得出答案。
+
+
+\subsubsection{等距螺旋线模型}
+
+任意一条通过原点的直线与螺旋线的交点之间的距离均相等，且间距称为螺距（记为$\delta$），因此给出等距螺旋线在极坐标下的方程：
+
+\begin{equation}
+\label{eq:公式1}
+r=\lambda \theta
+\end{equation}
+
+螺距即是每当$\theta$变化$2 \pi$时，r的变化量，因此：
+
+$$
+\delta = \lambda \times 2\pi
+$$
+
+解得：
+
+$$
+\lambda = \frac{\delta}{2 \pi} 
+$$
+
+因此得到本问的等距螺旋线方程为：
+
+\begin{equation}
+\label{eq:公式2}
+r=\frac{\delta}{2 \pi}\theta
+\end{equation}
+
+可视化图像如下：
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/螺线方程示意图.png}
+\caption{螺线方程示意图}
+\label{fig:螺线方程示意图}
+\end{figure}
+
+\subsubsection{计算龙头位置}
+
+得到把手的运动轨迹后，便可计算每个时刻的龙头位置了。
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/极坐标ds微元示意图.png}
+\caption{极坐标ds微元示意图}
+\label{fig:极坐标ds微元示意图}
+\end{figure}
+
+如图，可以计算该等距螺旋线的弧长的微元为：
+
+\begin{equation}
+\label{eq:公式3}
+\mathrm{d}s=\sqrt{(\mathrm{d}r)^{2}+\left (  r\mathrm{d}\theta \right ) ^{2}  } =\sqrt{r^{2}+\lambda^{2} } \mathrm{d}\theta =\lambda\sqrt{1+\theta ^{2} }\mathrm{d}\theta   
+\end{equation}
+
+两边同时积分，即可计算当龙头沿螺线移动1m（亦即运动1秒）后变化的角度，具体的计算公式如下：
+
+\begin{equation}
+\label{eq:公式4}
+\int_{\theta_{i}  }^{\theta_{i+1}  } \lambda\sqrt{\theta ^{2}+1 } \mathrm{d}\theta=\int_{0}^{1}\mathrm{d}s =1 
+\end{equation}
+
+求解这个方程，可以得到一个关于$\theta_i$和$\theta_{i+1}$的隐函数，即：
+
+\begin{equation}
+\label{eq:公式5}
+\frac{1}{2} \lambda \left ( \ln_{}{(\theta +\sqrt{1+\theta^{2}})} +\theta \sqrt{1+\theta ^{2} }   \right )\Big| _{\theta_i  }^{\theta_{i+1}  } =1
+\end{equation}
+
+对于该隐函数而言，显式递推式难以写出，但可以进行数值求解，得出每个时刻的龙头角度。
+
+得到了每个时刻的龙头角度之后，代入\cref{eq:公式2}即可得到对应的极坐标。
+
+\subsubsection{相邻把手位置关系}
+
+得到了龙头每个时刻的位置之后，便可计算相邻把手之间的位置关系。
+
+考虑到板凳是一个不可形变的刚体，而且知道任意两相邻把手之间的距离$l$,因此可以利用余弦定理计算相邻把手的角度关系：
+
+\begin{equation}
+\label{eq:公式6}
+l^{2} =r_{i} ^{2} +r^{2} _{i+1} -2r_{i} r_{i+1} \cos \left ( \theta _{i}-\theta _{i+1}   \right ) 
+\end{equation}
+
+对于该隐函数，难以写出显式递推式，但是可以进行数值求解，因此仅需要利用公式\cref{eq:公式5},即可得到其余把手的角度位置。
+
+\subsubsection{相邻把手速度关系}
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/相邻把手速度关系示意图.png}
+\caption{相邻把手速度关系示意图}
+\label{fig:相邻把手速度关系示意图}
+\end{figure}
+
+如图所示，考虑到板凳是一个不可形变的刚体，因此任意两相邻把手在板凳上的分速度相同，利用该关系即可计算出相邻把手的速度关系，下面求解其具体关系。
+
+首先给出边界条件，即龙头的速度表达式：
+
+$$
+v_{1}=\lambda\dot{\theta_1 }  \sqrt{1+\theta_{1} ^{2}  } =1
+$$
+
+将把手位置从极坐标系转到直角坐标系，有：
+
+\begin{equation}
+\label{eq:公式7}
+\begin{cases}x_{i}=r_{i} \cos \theta _{i}  \\y_{i}=r_{i} \sin \theta _{i} \end{cases}\Rightarrow \overrightarrow{r_{i} } =\begin{bmatrix}r_{i} \cos \theta _{i} \\ r_{i} \sin \theta _{i}\end{bmatrix} 
+\end{equation}
+
+\begin{equation}
+\label{eq:公式8}
+\begin{cases}x_{i}=r_{i+1} \cos \theta _{i+1}  \\y_{i}=r_{i+1} \sin \theta _{i+1} \end{cases}\Rightarrow \overrightarrow{r }_{i+1} =\begin{bmatrix}r_{i+1} \cos \theta _{i+1}  \\ r_{i+1} \sin \theta _{i+1}\end{bmatrix} 
+\end{equation}
+
+利用两个把手的位置，计算板凳的方向向量，即：
+
+\begin{equation}
+\label{eq:公式9}
+{\overrightarrow{{r_{i}}}}'=\begin{bmatrix}r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1} \\r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}\end{bmatrix}
+\end{equation}
+
+对第i个把手的位置求导，即可得到它的速度矢量：
+
+\begin{equation}
+\label{eq:公式10}
+\left\{\begin{matrix}v_{ix}=\dot{r_{i }}\cos \theta _{i} -r_{i }\sin \theta _{i}\dot{\theta _{i} }  \\v_{iy}=\dot{r_{i }}\sin \theta _{i} -r_{i }\cos\theta _{i}\dot{\theta _{i} }\end{matrix}\right.\Rightarrow \overrightarrow{v_{i} } =\begin{bmatrix}\dot{r_{i }}\cos \theta _{i} -r_{i }\sin \theta _{i}\dot{\theta _{i} }  \\ \dot{r_{i }}\sin \theta _{i} -r_{i }\cos\theta _{i}\dot{\theta _{i} }\end{bmatrix}
+\end{equation}
+
+同理可得第i+1个把手的速度矢量为：
+\begin{equation}
+\label{eq:公式11}
+\overrightarrow{v }_{i+1} =\begin{bmatrix}\dot{r}_{i+1}\cos \theta _{i+1} -r_{i +1}\sin \theta _{i+1}\dot{\theta  }_{i+1}  \\ \dot{r}_{i+1}\sin \theta _{i+1} -r_{i+1 }\cos\theta _{i+1}\dot{\theta  }_{i+1}\end{bmatrix} 
+\end{equation}
+
+两个把手在板凳方向的分速度相同，可以利用点乘来实现，即：
+
+\begin{equation}
+\label{eq:公式12}
+\overrightarrow{v_{i} }\cdot \overrightarrow{r_{i} }'=\overrightarrow{v }_{i+1}\cdot \overrightarrow{r_{i} }'
+\end{equation}
+
+将\cref{eq:公式8}、\cref{eq:公式9}、\cref{eq:公式10}带入\cref{eq:公式11}，有：
+
+$$
+\begin{bmatrix}\dot{r_{i }}\cos \theta _{i} -r_{i }\sin \theta _{i}\dot{\theta _{i} }  \\ \dot{r_{i }}\sin \theta _{i} -r_{i }\cos\theta _{i}\dot{\theta _{i} }\end{bmatrix}\cdot \begin{bmatrix}r_{i} \cos \theta _{i} \\ r_{i} \sin \theta _{i}\end{bmatrix} =\begin{bmatrix}\dot{r}_{i +1}\cos \theta _{i+1} -r_{i +1}\sin \theta _{i+1}\dot{\theta  }_{i+1}  \\ \dot{r}_{i+1 }\sin \theta _{i+1} -r_{i+1 }\cos\theta _{i+1}\dot{\theta  }_{i+1}\end{bmatrix}\cdot \begin{bmatrix}r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1} \\r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}\end{bmatrix}
+$$
+
+化简得到：
+
+\begin{equation}
+\label{eq:公式13}
+\dot{\theta } _{i+1} =      \frac{\begin{vmatrix}  r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1}   & \lambda \cos \theta _{i} - r_{i}\sin\theta _{i} \\r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}  &-r_{i} \cos \theta _{i}-\lambda \sin \theta _{i}\end{vmatrix}  }{\begin{vmatrix}r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}  &\lambda  \sin \theta _{i+1}+r _{i+1} \cos \theta _{i+1} \\r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1}  &r _{i+1} \sin \theta _{i+1}+ \lambda \cos \theta _{i+1}\end{vmatrix}}      \dot{\theta }_{i}
+\end{equation}
+
+至此，得到了任意两相邻把手的角速度递推关系，将龙头速度这个边界条件和任意时刻所有把手的位置带入，即可求解得到所有把手在任意时刻的角速度。
+
+在螺线部分，把手的速度可以表示为：
+
+$$
+v=\lambda\dot{\theta }  \sqrt{1+\theta ^{2}  } 
+$$
+
+\subsection{模型求解}
+
+\textbf{Step1：计算各个时刻的龙头位置}
+
+利用公式\cref{eq:公式5}，并带入龙头的初始位置，即可计算每个时刻的龙头位置角度。将龙头位置角度带入公式\cref{eq:公式2},即可得到龙头的完整位置。
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/龙头位置.png}
+\caption{龙头位置}
+\label{fig:龙头位置}
+\end{figure}
+
+
+\cref{fig:龙头位置}是在300s内每一秒的龙头位置的可视图。其中，红色圆点为龙头在各个时刻的位置，蓝色曲线为龙头的运动轨迹线。
+
+\textbf{Step2：计算所有把手位置} 
+
+相邻把手的位置关系由公式\cref{eq:公式5}给出，但是这个函数是关于$\theta_i$和$\theta_{i+1}$的隐函数，无法求出其对应的解析解，因此需要利用matlab求解这个隐函数，对应代码见附录。利用该递推方程和每个时刻的龙头位置，即可求出每个时刻的所有把手的位置。
+
+\textbf{Step3：计算所有把手速度} 
+
+此时，我们已经得到了每个时刻所有把手的位置，再利用公式\cref{eq:公式11}，带入初始条件龙头速度，即可求解出每一时刻所有把手的速度。
+
+\subsection{求解结果}
+
+问题一位置结果和速度结果如\cref{问题一位置结果}和\cref{问题一速度结果}所示
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+        \textbf{} & \textbf{0 s} & \textbf{60 s} & \textbf{120 s} & \textbf{180 s} & \textbf{240 s} & \textbf{300 s } \\ \hline
+        \textbf{龙头 x (m)} & 8.800000  & 5.799209  & -4.084887  & -2.963609  & 2.594494  & 4.420274   \\ \hline
+        \textbf{龙头 y (m)} & 0.000000  & -5.771092  & -6.304479  & 6.094780  & -5.356743  & 2.320429   \\ \hline
+        \textbf{第 1 节龙身 x (m)} & 8.363824  & 7.456758  & -1.445473  & -5.237118  & 4.821221  & 2.459489   \\ \hline
+        \textbf{第 1 节龙身 y (m)} & 2.826544  & -3.440399  & -7.405883  & 4.359627  & -3.561949  & 4.402476   \\ \hline
+        \textbf{第 51 节龙身 x (m)} & -9.518732  & -8.686317  & -5.543149  & 2.890456  & 5.980011  & -6.301346   \\ \hline
+        \textbf{第 51 节龙身 y (m)} & 1.341137  & 2.540108  & 6.377946  & 7.249289  & -3.827759  & 0.465830   \\ \hline
+        \textbf{第 101 节龙身 x (m)} & 2.913983  & 5.687115  & 5.361939  & 1.898794  & -4.917372  & -6.237721   \\ \hline
+        \textbf{第 101 节龙身 y (m)} & -9.918311  & -8.001384  & -7.557638  & -8.471614  & -6.379874  & 3.936009   \\ \hline
+        \textbf{第 151 节龙身 x (m)} & 10.861726  & 6.682312  & 2.388757  & 1.005154  & 2.965379  & 7.040741   \\ \hline
+        \textbf{第 151 节龙身 y (m)} & 1.828753  & 8.134544  & 9.727411  & 9.424751  & 8.399720  & 4.393012   \\ \hline
+        \textbf{第 201 节龙身 x (m)} & 4.555102  & -6.619663  & -10.627210  & -9.287720  & -7.457152  & -7.458663   \\ \hline
+        \textbf{第 201 节龙身 y (m)} & 10.725118  & 9.025570  & 1.359847  & -4.246672  & -6.180725  & -5.263383   \\ \hline
+        \textbf{龙尾（后）x (m)} & -5.305444  & 7.364557  & 10.974348  & 7.383896  & 3.241052  & 1.785035   \\ \hline
+        \textbf{龙尾（后）y (m)} & -10.676584  & -8.797992  & 0.843473  & 7.492370  & 9.469336  & 9.301164   \\ \hline
+    \end{tabular}
+    \caption{问题一位置结果}
+    \label{问题一位置结果}
+\end{table}
+
+
+\newpage
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+        \textbf{} & \textbf{0 s} & \textbf{60 s} & \textbf{120 s} & \textbf{180 s} & \textbf{240 s} & \textbf{300 s } \\ \hline
+        \textbf{龙头 (m/s)} & 1.000000  & 1.000000  & 1.000000  & 1.000000  & 1.000000  & 1.000000   \\ \hline
+        \textbf{第 1 节龙身 (m/s)} & 0.999971  & 0.999961  & 0.999945  & 0.999917  & 0.999859  & 0.999709   \\ \hline
+        \textbf{第 51 节龙身 (m/s)} & 0.999742  & 0.999662  & 0.999538  & 0.999331  & 0.998941  & 0.998065   \\ \hline
+        \textbf{第 101 节龙身 (m/s)} & 0.999575  & 0.999453  & 0.999269  & 0.998971  & 0.998435  & 0.997302   \\ \hline
+        \textbf{第 151 节龙身 (m/s)} & 0.999448  & 0.999299  & 0.999078  & 0.998727  & 0.998115  & 0.996861   \\ \hline
+        \textbf{第 201 节龙身 (m/s)} & 0.999348  & 0.999180  & 0.998935  & 0.998551  & 0.997894  & 0.996574   \\ \hline
+    \end{tabular}
+    \caption{问题一速度结果						}
+    \label{问题一速度结果}
+\end{table}
+
+
+将龙头运动了300s后的把手位置在图上画出，可以得到60s时，板凳龙速度的可视化图像：
+
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/300s时板凳龙的位置示意图.png}
+\caption{300s时板凳龙的位置示意图}
+\label{fig:300s时板凳龙的位置示意图}
+\end{figure}
+
+如\cref{fig:300s时板凳龙的位置示意图}，红色的线条是板凳，红色线条交点是各个把手.
+
+
+\subsection{结果分析}
+如\cref{问题一速度结果}所示，可以发现当“板凳龙”沿着等距螺线盘入时，最内层龙头把手的速度是最大的，随着层数的外推，各个把手的速度逐渐减小，这个结论对第五的求解有一定的作用。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{问题二模型的建立和求解}
+\subsection{模型建立}
+
+问题二要求考虑板凳之间的碰撞，计算什么时候   不能进一步盘入，同时计算出此时刻舞龙队位置和速度。因此首先需要建立碰撞检查模型，然后再讨论可能产生碰撞的区域来减少运算量，接下来将分别讨论这两个模型。
+
+\subsubsection{碰撞区域讨论}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{某时刻“板凳龙”示意图.png}
+\caption{某时刻“板凳龙”示意图：图中红点为把手位置}
+\label{fig:某时刻“板凳龙”示意图}
+\end{figure}
+
+如\cref{fig:某时刻“板凳龙”示意图}所示，给出了某一时刻板凳龙的可视化图像，可以发现越往中间走，板凳越出螺旋线的距离越大，越可能与外环的板凳发生干涉。因此，首先发生干涉的板凳应该是最靠近原点的一环上的板凳。于是，只需要检测最内环板凳上是否与外环板凳发生干涉即可。
+
+其次，再讨论哪些相邻板凳会发生碰撞。
+
+由上述讨论可知，发生碰撞的情况肯定是内环与外环的板凳发生碰撞，碰撞的部位是内环的顶角和外环的边。考虑到板凳位置的特殊结构，这里假设需要检验的板凳的前把手的位置是$\theta$，则只需检测距离$\theta+2\pi$最近的两个把手组成的板凳与该板凳是否发生碰撞即可。
+
+\subsubsection{碰撞检测模型}
+
+由文献\cite{刘娜2012分离轴定理}可知，对于碰撞检查而言，目前有多种方法，包括：像素检测算法、包围球算法、沿坐标轴包围算法（AABB）和方向包围盒算法（OBB）等等。考虑到计算量和本文的精确度，这里选择OBB算法和分离轴定理（SAT）的结合算法。
+\newpage
+
+\textbf{分离轴定理SAT} 
+
+首先介绍什么是分离轴定理：如果能找到一条轴，使得两个物体在该轴上的投影不重叠，那么这两个物体就是不相交的。如下图所示：
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{SAT分离情况\label{SAT分离情况}}
+{\includegraphics[width=.4\textwidth]{figures/SAT分离情况.png}}
+\subcaptionbox{SAT碰撞情况\label{fig:SAT碰撞情况}}
+{\includegraphics[width=.3\textwidth]{figures/SAT碰撞情况.png}}
+\caption{SAT示意图}\label{SAT示意图}
+\end{figure} 
+
+可是分离轴定理有一个明显的缺点：可行的分离轴很难找到。如果任意做一条直线然后360度旋转求解的话，计算量又过大。
+
+\textbf{方向包围盒算法OBB}
+
+现在介绍一下方向包围盒算法：若两个矩形不碰撞，那么必然存在一条与两个矩阵的某一边平行的分割线，这条分割线可以将两个举行分开。如\cref{OBB示意图}所示：
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{OBB分离情况\label{OBB分离情况}}
+{\includegraphics[width=.4\textwidth]{figures/OBB分离情况.png}}
+\subcaptionbox{OBB碰撞情况\label{fig:OBB碰撞情况}}
+{\includegraphics[width=.3\textwidth]{figures/OBB碰撞情况.png}}
+\caption{OBB示意图}\label{OBB示意图}
+\end{figure} 
+
+由于计算分割线是需要先把每一个边向外平移一定距离，而且还需要判定方向，最后还要计算两个矩阵是否位于分割线的两侧，因此OBB算法也有一个明显的缺点：这个分割线的具体位置的求解需要消耗一定的算力。
+
+\newpage
+
+\textbf{OBB与SAT的结合算法}
+
+为了消除OBB算法和SAT算法的缺点，本文采用OBB和STA的结合算法。OBB算法和分离轴定理结合起来可以很好的判断任意两个矩形是否相交，具体的算法原理如下：
+
+由OBB算法可以知道，若两矩形不碰撞，则一定存在某一条与矩形边平行的分割线，因此分割线的垂线与矩形对应的边的垂线是平行的，而考虑到矩形的两边是相互垂直的，因此分割线的垂线也与矩形某一条边平行。此外，如\cref{fig:OBB和STA的结合算法示意图}所示，分割线的垂线即是SAT算法中的分离轴，因此在两个不相碰撞的矩形中，一定存在一个与矩形边平行的分离轴。
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.35\textwidth]{figures/OBB和STA的结合算法示意图.png}
+\caption{OBB和STA的结合算法示意图}
+\label{fig:OBB和STA的结合算法示意图}
+\end{figure}
+
+根据上诉算法原理，可以利用下面的步骤来判断两个矩形是否碰撞：
+
+step1：
+选择可能发生碰撞的两个板凳，并且提取它们的四个顶角的位置。
+
+step2：
+任意选择一个矩阵，计算宽方向的方向向量。
+
+step3：
+将它们的四个顶角投影到这个方向向量上。
+
+step4：
+判断四个投影点是否发生重叠现象。如果没有重叠现象，则证明这两个板凳没有发生碰撞；如果发生重叠现象，则证明这两个板凳发生了碰撞。
+
+
+
+\subsection{模型求解}
+
+\textbf{Step1：选取合适的开始时刻}
+
+初始时以0时刻为开始时刻，检测代码层面是否存在数组越界错误。出现这种错误的原因是：在较小的开始时刻，龙队相邻两层邻近点之间间隔的把手数目过多，并且难以通过简单的计算来预测这种间隔的变化。由于此时龙队位于非常外层的位置，因此产生数组越界错误时认为整个龙队不存在碰撞。
+
+在检测到数组越界错误后，可以直接将开始时刻增大50s，然后再进行检测，如此往复直到数组越界错误消失为止。此时的开始时刻即为合适的开始时刻。
+
+\textbf{Step2：细分搜索碰撞时刻}
+
+利用问题一建立的模型，从合适的开始时刻开始，以1s为步长，逐步求解所有时刻的把手的位置并通过检测算法检测内层前50个点与其对应外层之间是否发生碰撞。
+
+\textbf{Step3：结果判断} 
+
+如果龙头卡死（极限终止时刻）之前就检测出了碰撞，则该时刻则为大致的终止时刻，代码层面表现为终止时刻为一个较大的正数（大于1）。如果代码层面终止时刻等于1，则说明在龙头卡死之前都没有发生碰撞，也就是说不会发生碰撞。
+
+\textbf{Step4：更精细的结果求解}
+
+在原精确度的基础上，选用更加精细的时间搜索步长，重复上述流程即可。
+
+上述求解过程的流程图如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.6\textwidth]{figures/问题二流程图.png}
+\caption{问题二流程图}
+\label{fig:问题二流程图}
+\end{figure}
+
+
+\subsection{求解结果}
+
+最终结果如\cref{第二问求解结果}所示
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+        \textbf{} & \textbf{横坐标x (m)} & \textbf{纵坐标y (m)} & \textbf{速度 (m/s) } \\ \hline
+        \textbf{龙头 } & 0.793016 & 2.166186 &  1 \\ \hline
+        \textbf{第 1 节龙身 } & -1.965804& 1.412191 &  0.991858 \\ \hline
+        \textbf{第 51 节龙身 } & 0.833481 & ~4.443781 &  0.977434 \\ \hline
+        \textbf{第 101 节龙身 } & -0.075475 & -5.910900 &  0.975140 \\ \hline
+        \textbf{第 151 节龙身} & 1.424424 & -6.884545 &  0.974201 \\ \hline
+        \textbf{第 201 节龙身 } & -7.813964 & -1.685074& 0.973698  \\ \hline
+        \textbf{龙尾（后）} & 0.497306 & 8.367538 & 0.973532  \\ \hline
+    \end{tabular}
+    \caption{第二问求解结果}
+    \label{第二问求解结果}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{问题三模型的建立和求解}
+\subsection{模型建立}
+
+本问要求在保证“板凳龙”能够顺利进入掉头空间的情况下使得螺距最小化。针对这个问题，需要综合利用问题一二中建立的把手运动模型和板凳碰撞检测模型，计算某一螺距下对应的最终停止时的龙头位置，然后判断龙头是否进入调头空间即可。
+
+因此建立如下的优化模型
+
+\textbf{目标函数：} 
+$$
+min\left \{ \delta  \right \} 
+$$
+
+\textbf{约束条件：} 
+
+$$
+s.t.
+\left\{\begin{matrix} l_{min}\le \frac{D}{2}  \\\\D=9 \\\\l^{2} =r_{i} ^{2} +r^{2} _{i+1} -2r_{i} r_{i+1} \cos \left ( \theta _{i}-\theta _{i+1}   \right )  \\ \\\dot{\theta } _{i+1} =      \frac{\begin{vmatrix}  r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1}   & \lambda \cos \theta _{i} - r_{i}\sin\theta _{i} \\r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}  &-r_{i} \cos \theta _{i}-\lambda \sin \theta _{i}\end{vmatrix}  }{\begin{vmatrix}r_{i} \sin \theta _{i}-r_{i+1} \sin \theta _{i+1}  &\lambda  \sin \theta _{i+1}+r _{i+1} \cos \theta _{i+1} \\r_{i} \cos \theta _{i}-r_{i+1} \cos \theta _{i+1}  &r _{i+1} \sin \theta _{i+1}+ \lambda \cos \theta _{i+1}\end{vmatrix}}      \dot{\theta }_{i}\end{matrix}\right.
+$$
+
+其中$l_{min}$为板凳之间无碰撞的极限时刻，$D$为题目所给掉头区域的直径,由于“板凳龙”是在等距螺线上运动，因此相邻把手的速度和位置满足那两个递推式。
+
+\textbf{决策变量：} 
+
+本问的决策变量只有一个，即螺距$\delta$，同时也是待优化的目标函数。考虑到问题的特殊性（单变量和单调性，后文有具体说明），该优化问题可以退化为函数零点的求解问题，利用拟合算法和二分法即可求出最终答案。
+
+\subsection{模型求解}
+
+\textbf{Step1：初步筛选合适的范围}
+
+
+\begin{table}[!ht]
+    \centering
+    \caption{采样范围}
+    \begin{tabular}{ccccc}
+     
+    \hline
+         $\delta$ & 0.4 & 0.5 \\ \hline
+         $l_{min}$ &$ 6.2997$ & $3.0944$  \\ \hline
+    \end{tabular}
+    \label{a}
+\end{table}
+
+这一步可以随机选取2个的螺距数据，例如\cref{a}所示：
+
+考虑\cref{a}中$l_{min}$与$\frac{D}{2}$的关系，不妨将$\delta$的取值范围限定在区间：$\left [ 0.4,0.5 \right ]$ ,并在这个小区间内进行细分采样，更细致地研究$\delta$与$l_{min}$之间的函数关系。
+
+\textbf{Step2：密集采样验证预测}
+
+在区间$\left [ 0.4,0.5 \right ]$ 中，等距取采样30个采样点并计算目标函数即$l_{min}$的值，然后利用这些值进行多项式的拟合。拟合过程中需要注意多项式的次数选择，经过测试可以发现5次多项式既描述了原点列的细节变化趋势，又不至于过度拟合。最终拟合图形如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/拟合曲线5.jpg}
+\caption{问题三拟合结果}
+\label{fig:问题三拟合结果}
+\end{figure}
+
+通过\cref{fig:问题三拟合结果}可以得出结论：在区间$\left [ 0.42,0.5 \right ]$上，函数$g(\delta )=l_{min}(\delta )-\frac{D}{2} $有唯一零点。因此本问中的优化问题退化为函数零点的求解问题。
+
+\textbf{Step3：求根算法}
+
+考虑到本问的相关函数$g(x)$无法得到其解析式，只能访问其函数值，但是能够确定其零点唯一，简单起见，本问直接利用二分法求解相关函数的零点。
+
+\subsection{求解结果}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/龙头恰好进入调头空间的示意图.png}
+\caption{龙头恰好进入调头空间的示意图}
+\label{fig:龙头恰好进入调头空间的示意图}
+\end{figure}
+
+龙头恰好进入掉头空间的情况如\cref{fig:龙头恰好进入调头空间的示意图}所示，其中，该等距螺线对应的螺距$\delta_{min}=0.449720$。
+
+\subsection{结果分析}
+从拟合结果来看，$l_{min}$关于$\delta$的函数在区间$\left [ 0.42,0.5 \right ]$ 中呈现单调递减，符合直观上的逻辑：螺距越小，板凳之间碰撞的可能性越大，龙头停止时离圆心距离越远。但是，同时也发现其在区间$\left [ 0.4,0.42\right ]$有个峰值，在这个峰值左边，$l_{min}$关于$\delta$单调递增，这是由于，当螺距变小时，龙头的初始位置也是越靠近圆心的，龙头卡死的位置也会离与圆心越近。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{问题四模型的建立和求解}
+\subsection{模型建立}
+
+问题四要求计算最短的调头曲线，因此需要建立“板凳龙”的调头模型。为了描述调头模型，需要先讨论调头路径的计算方法。同时，还需要考虑调头过程中的约束关系，包括龙头卡死、盘出路径堵塞和板凳碰撞。此外，考虑到调头部分“板凳龙”是做的圆周运动，还需要对他的运动模型进行修正。最后根据得到的调头模型再确立相应的优化模型。接下来将分别讨论这些内容。
+
+\subsubsection{计算调头路径}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/调头路径示意图.png}
+\caption{调头路径示意图}
+\label{fig:调头路径示意图}
+\end{figure}
+
+如\cref{fig:调头路径示意图}所示，蓝色螺线为盘入螺线，红色螺线为盘出螺线，黑色圆环为调头空间边界，紫色圆弧为调头路径，A点为龙头开始调头的位置，B点为龙头结束调头的位置，$O_1$为大圆弧圆心，$O_2$为小圆弧圆心，$O$为调头空间圆心。
+
+本问对内部调头曲线、盘出螺线、盘入螺线有着许多约束，具体的约束如下：
+
+1.大圆弧半径是小圆弧的两倍
+ 
+2.小圆弧和大圆弧相切
+ 
+3.大圆弧与盘入螺线相切
+ 
+4.小圆弧与盘出螺线相切
+ 
+5.盘出螺线与盘入螺线关于原点$O$中心对称
+
+利用上诉的约束，并给定开始调头的点$A$和结束调头的点$B$，可以计算出整个调头轨迹，具体的计算方式如下：
+
+\textbf{计算A,B点的法向方向}
+
+由于大圆弧和盘入螺线相切，小圆弧和盘出螺线相切，因此大圆弧和小圆弧的圆心分别在A,B点的法线方向，所以求解A,B点的法向量是十分重要的。下面推导其法向量的计算公式
+
+该等距螺线的切向量可以表示为：
+
+$$
+\overrightarrow{T} =\begin{bmatrix}\cos \theta -\theta \sin \theta  \\\sin \theta +\theta \cos \theta \end{bmatrix}
+$$
+
+根据该切向量可以求出对应的两个方向的法向量，如$N_1$和$N_2$所示：
+
+$$
+\overrightarrow{N_{1} } =\begin{bmatrix}-\sin \theta -\theta \cos \theta  \\\cos \theta -\theta \sin \theta \end{bmatrix}
+$$
+
+$$
+\overrightarrow{N_{2} } =\begin{bmatrix}\theta \cos \theta +\sin \theta  \\\theta \sin \theta - \cos \theta \end{bmatrix}
+$$
+
+由于：
+
+$$
+N_{1} \cdot \overrightarrow{r} =-\lambda \theta \cos \theta \left ( \sin \theta +\theta \cos \theta  \right )+\lambda \theta \sin \theta \left ( \cos \theta -\theta \sin \theta  \right ) =-\lambda \theta ^{2}< 0  
+$$
+
+因此，等距螺线的内法向量为：
+
+$$
+\overrightarrow{N} =\overrightarrow{N_{1} } =\begin{bmatrix}-\sin \theta -\theta \cos \theta  \\\cos \theta -\theta \sin \theta \end{bmatrix}
+$$
+\textbf{计算两个圆弧的半径}
+
+利用向量加法计算大圆弧和小圆弧的圆心$\overrightarrow{O } _{1}$、$\overrightarrow{O } _{2}$：
+
+$$
+\overrightarrow{O } _{1}= 2R\frac{\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }+\overrightarrow{r} _{1} 
+$$
+$$
+\overrightarrow{O } _{2}= R\frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | }+\overrightarrow{r} _{2} 
+$$
+由于大圆弧和小圆弧相切，而且调头曲线是一个“S”型曲线，因此两个圆心的间距为3R，因此：
+$$
+\left |\overrightarrow{O } _{1}-\overrightarrow{O } _{2}\right |=3R= \left |\overrightarrow{r} _{1}-\overrightarrow{r} _{2}+ R\left ( \frac{2\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }-\frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | } \right )   \right | 
+$$
+化简得：
+$$
+aR^{2} +bR+c=0
+$$
+其中：
+
+$$
+\left\{\begin{matrix}a=\left ( \frac{2\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }-\frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | } \right ) ^{2} -9\\ \\b=2\left ( \frac{2\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }-\frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | } \right ) \left ( \overrightarrow{r} _{1}-\overrightarrow{r} _{2} \right )\\  \\c=\left ( \overrightarrow{r} _{1}-\overrightarrow{r} _{2} \right )^{2}  \end{matrix}\right.
+$$
+考虑到：
+$$
+\left\{\begin{matrix}R_{1} R_{2}=\frac{c}{a}  < 0 \\ \\b^{2} -4ac-b^{2}=-4ac\ge 0 \end{matrix}\right.
+$$
+计算得到小圆弧的半径为：
+$$
+R=\frac{b+\sqrt{b^{2} -4ac} }{-2a} 
+$$
+\textbf{计算调头曲线长度}
+
+知道了两个圆心的位置后便可以计算调头曲线的长度了，首先根据点乘的定义有：
+
+$$
+\frac{\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }\cdot \frac{\overrightarrow{O_{1}O_{2}  } }{\left | \overrightarrow{O_{1}O_{2}  }  \right | } =\cos \varphi _{1} 
+$$
+化简得：
+$$
+\varphi _{1} =\arccos \left ( \frac{\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }\cdot \frac{\overrightarrow{O_{1}O_{2}  } }{\left | \overrightarrow{O_{1}O_{2}  }  \right | } \right ) 
+$$
+同理得到$\varphi_2$
+$$
+\varphi _{2} =\arccos \left ( \frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | }\cdot \frac{\overrightarrow{O_{1}O_{2}  } }{\left | \overrightarrow{O_{1}O_{2}  }  \right | } \right ) 
+$$
+由于调头曲线可以表示为：
+$$
+S=2R\left ( \pi+\varphi _{1}  \right ) +R\left ( \pi +\varphi _{2}  \right ) 
+$$
+带入$\varphi_1$、$\varphi_2$有：
+$$
+S=3 \pi R+R\left [  2\arccos \left ( \frac{\overrightarrow{n} _{1} }{\left | \overrightarrow{n} _{1} \right | }\cdot \frac{\overrightarrow{O_{1}O_{2}  } }{\left | \overrightarrow{O_{1}O_{2}  }  \right | } \right )  +\arccos \left ( \frac{\overrightarrow{n} _{2} }{\left | \overrightarrow{n} _{2} \right | }\cdot \frac{\overrightarrow{O_{1}O_{2}  } }{\left | \overrightarrow{O_{1}O_{2}  }  \right | } \right ) \right ] 
+$$
+\subsubsection{把手运动模型修正}
+
+在问题四中，“板凳龙”的运动轨迹发生了变化，现在的运动轨迹难以使用极坐标进行描述，因此本小节将利用自然坐标对运动模型进行修正。
+
+\textbf{建立自然坐标与直角坐标的映射关系$\Gamma (s)$}
+
+我们选取开始掉头的位置，即$t=0$的时刻龙头所在的位置为自然坐标系的零点，龙头沿调头曲线行进的方向记为坐标$s$的正方向。考虑到题目所给轨迹是分段函数，因此映射关系也应分段求解：
+1）当$s<0$时，自然坐标实际表示的点位于盘入螺旋线上，可以由公式\cref{eq:公式5}简单求得；
+2）当$0<s<\xi _{big}$时，$\xi _{big}$为大圆总弧长，此时的弧坐标$s$即表示在大圆上行进的弧长，可以由圆的弧长公式简单求解；
+3）当$\xi _{big}<s<\xi _{big}+\xi _{small}$时，与上一种情况类似，实际坐标可以由圆的弧长公式简单求解；
+4）当$\xi _{big}+\xi _{small}<s$时，实际表示点位于盘出螺旋线上，同样可由公式\cref{eq:公式5}简单求得；
+
+因此，龙头在直角坐标系中的位置可以表示为，其中$\Gamma (s)$输出为一列向量：
+$$
+\Gamma (s)=\left\{\begin{matrix}
+  f_1(s)&s<0\\
+  & \\
+  f_2(s)&0<s<\xi _{big}\\
+  & \\
+  f_3(s)& \xi _{big}<s<\xi _{big}+\xi _{small}\\
+  & \\
+  f_4(s)&\xi _{big}+\xi _{small}<s\\
+\end{matrix}\right. ,\quad s=v_0t
+$$
+
+\textbf{相邻把手位置关系修正}
+
+鉴于曲线的复杂性，直接用直角坐标系中的曲线方程联立求解将会难以判断增根，因此利用自然坐标系来标定曲线上的点尤为重要。考虑第$i$号点的自然坐标$s_i$和第$i+1$号点的自然坐标$s_{i+1}$亦即它们之间的固定长度$L_i$，我们可以认为$s_{i+1}=solve(\Gamma(s)-L_i=0)$距离$s_i$最近的零点。
+
+\textbf{相邻把手速度关系修正}
+
+与问题一相同，这里同样是利用了板凳的刚性假设，两个把手在板凳方向的分速度相同。与问题一不同是，为了求解把手的速度方向，需要先判定把手所处位置，在根据对应的曲线来计算他的速度方向。与$\Gamma(s)$的求解类似，我们可以建立自然坐标$s$和单位切向量$\tau(s)$之间的映射关系。
+
+
+\subsubsection{调头路径约束条件}
+
+根据上面的讨论，只需要知道调头曲线的起始点AB即可求解出整个调头曲线，但是它们并不是可以随机取得的，它们是符合某种要求的，本小节将综合讨论盘出路径堵塞、龙头卡死、板凳碰撞的情况以及它们的判定方法，通过这三个约束条件即可得到合理的调头路径。
+
+\textbf{盘出路径堵塞}
+
+根据题目中给出的约束和前面的讨论，在只考虑三条曲线的相切关系的情况下，可以找到许多满足题意的螺线，但是其中相当一部分会出现盘出路径堵塞的情况。如\cref{fig:盘出螺线堵塞}所示，龙头从B点结束调头后，进入盘出曲线，但是盘出曲线被调头曲线堵住了，因此该调头路径走不通。
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{盘出螺线堵塞\label{fig:盘出螺线堵塞}}
+{\includegraphics[width=.4\textwidth]{figures/盘出螺线堵塞.png}}
+\subcaptionbox{盘出螺线无堵塞\label{fig:盘出螺线无堵塞}}
+{\includegraphics[width=.4\textwidth]{figures/盘出螺线无堵塞.png}}
+\caption{盘出螺线是否堵塞示意图}\label{fig:盘出螺线是否堵塞示意图}
+\end{figure} 
+
+现在来研究什么地方不会出现盘出路径堵塞。
+
+
+如\cref{fig:盘出螺线堵塞}所示，可以发现，当调头结束点是位于$D_1$、$D_2$、$D_3$点内，由于“板凳龙”要到达调头结束点，必然会跨过它下面的那条盘出曲线，而这些调头结束点都是在堵塞点后方，因此都会出现路径堵塞的情况。
+
+如\cref{fig:盘出螺线无堵塞}，可以发现，对于处在这个区域内的调头结束点B，都不会出现盘出路径堵塞的情况。
+
+
+综上所示，在盘出螺线中，若调头结束点B，是在以A的中心对称点为中心，上下调节角度小于$\pi$的区域内，都不会出现盘出路径堵塞的情况，该区域如\cref{fig:不会出现堵塞的区域}中的绿色画线部分。
+
+\newpage
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.4\textwidth]{figures/不会出现堵塞的区域.png}
+\caption{不会出现堵塞的区域}
+\label{fig:不会出现堵塞的区域}
+\end{figure}
+
+\textbf{龙头卡死}
+
+对于板凳龙而言，任意位置都是不允许倒退的，考虑到板凳的刚性假设，当龙头沿板凳的分速度是负数时，下一个把手的运动必然是倒退的如\cref{龙头卡死判定图}所示。这与前面的条件发生矛盾，称这种情况为龙头卡死。在“板凳龙”调头的过程中，由于调头曲线的曲率未知，因此可能出现龙头恰好卡死的情况。
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{龙头未卡死\label{龙头未卡死}}
+{\includegraphics[width=.3\textwidth]{figures/龙头未卡死.png}}
+\subcaptionbox{龙头卡死\label{龙头卡死}}
+{\includegraphics[width=.3\textwidth]{figures/龙头卡死.png}}
+\caption{龙头卡死判定图}\label{龙头卡死判定图}
+\end{figure} 
+
+如果在调头过程中出现龙头卡死的情况，则该AB两点不可作为调头曲线的起始点。
+
+
+\textbf{板凳碰撞讨论}
+
+由问题二可知，对于盘出螺线和盘入螺线部分只需讨论其对应的最内环是否发生碰撞即可。但是考虑到调头区域的复杂性，还需要讨论圆弧曲线部分是否发生碰撞。这里同样使用SAT和OBB的结合算法来判断板凳是否发生碰撞。
+
+\subsection{模型求解}
+
+\textbf{Step1：} 
+
+在调头空间内，分别在盘出曲线和盘入曲线随机取一个点，作为调头曲线的起始点AB。同时设定贝叶斯优化的相关参数。
+
+\textbf{Step2：} 
+
+判断盘出路径是否被调头曲线卡死，如果被卡死，则重新取点，否则进入Step3。
+
+\textbf{Step3：} 
+
+根据前面建立的调头模型，计算调头路径的两个圆心位置，并画出调头曲线，用于Step4的判断。
+
+\textbf{Step4：} 
+
+利用修正后的把手运动模型和Step3计算处的调头曲线，计算每个时刻把手的速度和位置，并利用龙头卡死的判定条件来判定该过程是否会卡死，同时利用OBB和SAT的结合算法检测特定区域的板凳是否发生碰撞。上述的两个约束必须全部满足才能进入Step5，否则重新取点。
+
+\textbf{Step5：} 
+
+根据Step3求解出的调头曲线，计算调头曲线长度$S$，并于之前得到的最短长度$S_{min}$比较，如果$S<S_{min}$则更新$S_{min}$为$S$，否则重新取点，重复Step2$\sim $4
+
+\textbf{Step6：} 
+
+当循环次数达到设定值时，退出循环，并输出最短调头曲线长度$S_{min}$
+
+上述求解过程的流程图如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/问题四流程图.png}
+\caption{问题四流程图}
+\label{问题四流程图}
+\end{figure}
+
+\subsection{求解结果}
+
+\cref{问题四板凳龙位置示意图}是“板凳龙”沿着问题四求解出的调头曲线运动7s后的位置，其中黄色折线是“板凳龙”，A点是调头曲线的开始位置，B点是调头曲线的结束位置，黑色曲线为调头曲线。
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/问题四板凳龙位置示意图.png}
+\caption{问题四板凳龙位置示意图}
+\label{问题四板凳龙位置示意图}
+\end{figure}
+
+问题四的部分求解结果如\cref{问题四位置结果}和\cref{问题一速度结果}所示
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+        \textbf{} & \textbf{-100s} & \textbf{-50 s} & \textbf{0 s} & \textbf{50 s} & \textbf{-100 s} \\ \hline
+        \textbf{龙头 x (m)}        & -9.182805  & -3.693572  & -2.187391  & -6.117602  & -7.350366     \\ \hline
+        \textbf{龙头 y (m)}        & 1.508829  & -4.982710  & 6.087257  & 5.608246  & -4.560588    \\ \hline
+        \textbf{第 1 节龙身 x (m)}  & -9.291378  & -1.111632  & 0.671932  & -3.795057  & -8.350618    \\ \hline
+        \textbf{第 1 节龙身 y (m)}  & -1.350853  & -6.228799  & 6.310628  & 7.274694  & -1.881516    \\ \hline
+        \textbf{第 51 节龙身 x (m)} & 1.671405  & -8.098666  & -7.615837  & -1.349522  & -3.611495     \\ \hline
+        \textbf{第 51 节龙身 y (m)} & -11.392459  & 4.397216  & 0.500291  & 4.014887  & -3.910778    \\ \hline
+        \textbf{第 101 节龙身 x (m)} & 6.133503  & -4.177267  & 9.938307  & 5.795482  & 7.452219    \\ \hline
+        \textbf{第 101 节龙身 y (m)} & -11.806500  & -10.578331  & -2.038700  & 6.526853  & -3.815040    \\ \hline
+        \textbf{第 151 节龙身 x (m)} & 0.335685  & 0.372208  & 7.703145  & -10.667271  & -3.178934     \\ \hline
+        \textbf{第 151 节龙身 y (m)} & -14.877317  & -13.177385  & 9.381728  & 2.622004  & 10.223742     \\ \hline
+        \textbf{第 201 节龙身 x (m)} & -13.672760  & -5.4821200  & 8.396855  & -11.998747  & -11.005016    \\ \hline
+        \textbf{第 201 节龙身 y (m)} & -8.884725  & -13.717222  & 11.012747  & -4.596338  & 6.160382     \\ \hline
+        \textbf{龙尾（后）x (m)}     & 15.634020  & 13.935066  & -13.783962  & 13.576156  & 8.615248     \\ \hline
+        \textbf{龙尾（后）y (m)}     & -6.404068  & 6.601604  & -4.619649  & -0.578537  & -10.217068     \\ \hline
+    \end{tabular}
+    \caption{问题四位置结果}
+    \label{问题四位置结果}
+\end{table}
+
+\newpage
+
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+        \textbf{} & \textbf{-100s} & \textbf{-50 s} & \textbf{0 s} & \textbf{50 s} & \textbf{100 s}  \\ \hline
+        \textbf{龙头 (m/s)} & 1.000000  & 1.000000  & 1.000000  & 1.000000  & 1.000000     \\ \hline
+        \textbf{第 1 节龙身 (m/s)} & 0.999929  & 0.999851  & 0.999494  & 1.000247  & 1.000099    \\ \hline
+        \textbf{第 51 节龙身 (m/s)} & 0.999500  & 0.999060  & 0.997576  & 1.161020  & 1.002619    \\ \hline
+        \textbf{第 101 节龙身 (m/s)} & 0.999287  & 0.998745  & 0.997053  & 1.159838  & 0.862447     \\ \hline
+        \textbf{第 151 节龙身 (m/s)} & 0.999159  & 0.998574  & 0.996809  & 1.159413  & 0.861903     \\ \hline
+        \textbf{第 201 节龙身 (m/s)} & 0.999075  & 0.998466  & 0.996667  & 1.159192  & 0.861667 \\ \hline
+        \textbf{龙尾（后） (m/s)} & 0.999045  & 0.998431  & 0.996620  & 1.159125  & 0.861600 \\ \hline
+    \end{tabular}
+    \caption{问题四速度结果}
+    \label{问题四速度结果}
+\end{table}
+
+\subsection{结果分析}
+
+这里随机生成了50组符合约束的调头曲线起始点AB，并且根据问题四建立的调头模型，计算出了对应的调头曲线的长度，将其与问题四的求解结果比较，最终做出的针状图如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/调头曲线针状图.png}
+\caption{调头曲线针状图}
+\label{fig:调头曲线针状图}
+\end{figure}
+
+如图所示，对于这50组AB点，其对应的调头曲线的长度均大于问题四的求解结果，这进一步证明了模型的正确性和优化策略的合理性。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{问题五模型的建立和求解}
+\subsection{模型建立}
+
+根据问题四修正过后的把手运动模型和其求解出的运动路径，可以计算出任意时刻所有把手的速度。针对这个最大最小化问题，利用等步长迭代算法即可求出最大的龙头速度。
+
+
+\subsubsection{优化模型}
+
+\textbf{目标函数：} min $V_{max}$ 
+
+\textbf{约束条件：} 
+$$
+s.t.
+\left\{\begin{matrix}
+V_{max}< 2m/s
+ \\
+\Gamma =constant
+\end{matrix}\right.
+$$
+
+其中$V_0$是龙头的速度，即龙头速度不变；$\Gamma$是“板凳龙”的运动轨迹，即“板凳龙”的运动路径确定。
+
+\textbf{决策变量：}
+
+该优化模型只有一个决策变量，即龙头速度$V_0$。
+
+\subsection{模型求解}
+
+优化流程图如下：
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\textwidth]{figures/问题五流程图.png}
+\caption{问题五流程图}
+\label{问题五流程图}
+\end{figure}
+
+\textbf{Step1：} 
+以龙头开始调头设为时间零点，以1s为时间步长,$V_{max}$为把手速度最大值。
+
+\textbf{Step2：} 
+时间前进一个步长，求解调头区域内所有把手的速度。
+
+\textbf{Step3：} 
+将本次测试的所有把手的速度的最大值记为$V_{inital}$
+
+\textbf{Step4：} 
+若$V_{inital}<  V_{max} $则$V_{max}=V_{max}$,否则$V_{max}=V_{inital}$
+
+\textbf{Step5：} 
+当龙头离开调头空间后，结束循环，判定此时得到的$V_{max}$是否小于$2m/s$
+
+\textbf{Step6：} 
+若Step5输出为True，则龙头的最大速度即为当前速度；若Step5输出为Flase，则将龙头速度减小$0.1m/s$，重复Step1$ \sim$ 5
+
+
+\subsection{求解结果}
+
+根据上述求解步骤，求出了最终的结果：当龙头速度为$1.6m/s$，恰好“板凳龙”个把手速度均不会超过2m/s。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{灵敏度分析}
+
+考虑到实际过程中，板凳龙的尺寸大小并不是严格等于给定尺寸，因此讨论板凳龙的尺寸大小对模型的灵敏度是十分必要的。这里假设板凳宽大小在 [0.25, 0.35] m 的范围内变化，取 0.001m 为步长，龙身长度在 [2.15, 2.25] m 的范围内变化，取 0.01m 为步长。计算问题二中的碰撞时间，结果如下：
+
+\begin{figure}[ht]
+\centering
+\subcaptionbox{长度灵敏度分析\label{长度灵敏度分析}}
+{\includegraphics[width=.45\textwidth]{figures/长度灵敏度分析.jpg}}
+\subcaptionbox{宽度灵敏度分析\label{宽度灵敏度分析}}
+{\includegraphics[width=.45\textwidth]{figures/宽度灵敏度分析.jpg}}
+\caption{灵敏度分析图}\label{宽度灵敏度分析}
+\end{figure} 
+
+可以发现当板凳的长度和宽度分别变化0.1m时，长度改变对终止时刻的影响更小，宽度改变对终止时刻的影响更大。所以板凳龙终止时间对板凳宽度更敏感。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{模型的评价与推广}
+
+\subsection{模型的优点}
+\begin{itemize}[itemindent=2em]
+\item 优点1：本文对于速度的求解给出了递推公式，而不是使用差分法，这减小了我们模型的误差。
+\item 优点2：本文在第三问使用二分法、第四问使用贝叶斯优化算法、第五问使用变步长迭代算法，针对不同的情况采用不同的优化策略，这极大程度上提高了我们的优化效率。
+\end{itemize}
+
+\subsection{模型的缺点}
+\begin{itemize}[itemindent=2em]
+\item 缺点1：本文采用的时间步长是1s，得到的第二问的结果精度不高。同时这也对后面的优化的精度产生了一定的影响。
+\end{itemize}
+
+\subsection{模型的推广}
+
+实际生活中，对于板凳龙的优化情况绝对不可能像题中给出的情况怎么简单，往往是多个决策变量同时对结果产生影响，而问题四中的贝叶斯优化对于这种多决策变量、观测函数计算代价极大的情况下的优势非常明显，可以利用极少的探测点得到较为精确的结果。面对多决策变量的情况，只需要在本文建立的优化模型的基础上添加决策变量即可，在这种情况下，贝叶斯优化的效率是远远高于一般的启发式算法的。
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 参考文献
+\nocite{*}
+\bibliographystyle{gbt7714-numerical}  % 引用格式
+\bibliography{ref.bib}  % bib源
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 附录
+\begin{appendices}
+\section{文件列表}
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{LL}
+\toprule
+文件名   & 功能描述 \\
+\midrule
+q1 getPosition.m & 问题一求解所有时刻所有把手位置坐标 \\
+q1 getVelosity.m & 问题一计算所有时间点所有把手速度 \\
+q1 getXY.m & 问题一计算所有时间点所有把手位置 \\
+q1 nextTheta.m & 问题一运动一秒后的角度更新 \\
+
+q2 checkStatue.m & 问题二检测碰撞函数 \\
+q2 findClosestAngles.m & 问题二求解邻近层临近点 \\
+q2 getPosition.m & 问题二求解所有时刻所有把手位置坐标 \\
+q2 getRmin.m & 问题二计算碰撞时各参数 \\
+q2 getStopTime.m & 问题二卡死时间 \\
+q2 getVelosity.m & 问题二求解结果速度 \\
+q2 getXY.m & 问题二求解结果坐标 \\
+q2 isCollision.m & 问题二碰撞检测 \\
+q2 nextTheta.m & 问题二一秒后角度 \\
+q2 plotEnd.m & 问题二绘制龙头卡死状态 \\
+
+
+q3 checkStatue.m & 问题三路径检测 \\
+q3 findClosestAngles.m & 问题三求解最近的角度 \\
+q3 getDelta.m & 问题三得到螺距 \\
+q3 getRmin.m & 问题三得到龙头离中心的位置 \\
+q3 getStopTime.m & 问题三结束时间 \\
+q3 isCollision.m & 问题三程序代码 \\
+q3 nextTheta.m & 问题三计算下一个角度 \\
+q3 plotResult.m & 问题三结果画图程序 \\
+q3 solveBlackBox.m & 问题三黑盒函数求救程序 \\
+q3 solveFunc.m & 问题三程序代码 \\
+q3 test.m & 问题三测试代码 \\
+
+q4 getVelocity.m & 问题四程序代码 \\
+q4 getXY.m & 问题四程序代码 \\
+q4 testGetAllPosition.m & 问题四程序代码 \\
+q4 optBo.m & 问题四程序代码 \\
+q4 checkHead.m & 问题四程序代码 \\
+q4 getAllPosition.m & 问题四程序代码 \\
+
+\bottomrule
+\end{tabularx}
+\label{tab:文件列表}
+\end{table}
+
+\newpage
+
+\begin{table}[H]
+\centering
+\begin{tabularx}{\textwidth}{LL}
+\toprule
+文件名   & 功能描述 \\
+\midrule
+
+q4 testGetAllVelocity.m & 问题四程序代码 \\
+q4 getAllVelocity.m & 问题四程序代码 \\
+q4 StoTau.m & 问题四程序代码 \\
+q4 StoXY.m & 问题四程序代码 \\
+q4 nextS.m & 问题四程序代码 \\
+q4 getR.m & 问题四程序代码 \\
+q4 testS2xy.m & 问题四程序代码 \\
+q4 getHeadPosition.m & 问题四程序代码 \\
+q4 plotTrail.m & 问题四程序代码 \\
+
+
+q5 getAllPosition.m & 问题五计算所有点自然坐标 \\
+q5 getAllVelocity.m & 问题五速度获取程序 \\
+q5 getR.m & 问题五计算圆弧轨迹半径 \\
+q5 nextS.m & 问题五求解自然坐标方程 \\
+q5 objFunc.m & 问题五目标函数 \\
+q5 OP5.m & 问题五优化代码 \\
+q5 StoTau.m & 问题五自然坐标到切向量的映射 \\
+q5 StoXY.m & 问题五求解结果位置 \\
+
+\bottomrule
+\end{tabularx}
+\label{tab:文件列表}
+\end{table}
+
+\newpage
+
+% \section{代码}
+% \noindent q1 getPosition.m
+% \lstinputlisting[language=matlab]{code/问题一/getPosition.m}
+% q1 getVelosity.m
+% \lstinputlisting[language=matlab]{code/问题一/getVelosity.m}
+% q1 getXY.m
+% \lstinputlisting[language=matlab]{code/问题一/getXY.m}
+% q1 nextTheta.m
+% \lstinputlisting[language=matlab]{code/问题一/nextTheta.m}
+
+% q2 checkStatue.m
+% \lstinputlisting[language=matlab]{code/问题二/checkStatue.m}
+% q2 findClosestAngles.m
+% \lstinputlisting[language=matlab]{code/问题二/findClosestAngles.m}
+% q2 getPosition.m
+% \lstinputlisting[language=matlab]{code/问题二/getPosition.m}
+% q2 getRmin.m
+% \lstinputlisting[language=matlab]{code/问题二/getRmin.m}
+% q2 getStopTime.m
+% \lstinputlisting[language=matlab]{code/问题二/getStopTime.m}
+% q2 getVelosity.m
+% \lstinputlisting[language=matlab]{code/问题二/getVelosity.m}
+% q2 getXY.m
+% \lstinputlisting[language=matlab]{code/问题二/getXY.m}
+% q2 isCollision.m
+% \lstinputlisting[language=matlab]{code/问题二/isCollision.m}
+% q2 nextTheta.m
+% \lstinputlisting[language=matlab]{code/问题二/nextTheta.m}
+% q2 plotEnd.m
+% \lstinputlisting[language=matlab]{code/问题二/plotEnd.m}
+
+% q3 checkStatue.m
+% \lstinputlisting[language=matlab]{code/问题三/checkStatue.m}
+% q3 findClosestAngles.m
+% \lstinputlisting[language=matlab]{code/问题三/findClosestAngles.m}
+% q3 getDelta.m
+% \lstinputlisting[language=matlab]{code/问题三/getDelta.m}
+% q3 getRmin.m
+% \lstinputlisting[language=matlab]{code/问题三/getRmin.m}
+% q3 getStopTime.m
+% \lstinputlisting[language=matlab]{code/问题三/getStopTime.m}
+% q3 isCollision.m
+% \lstinputlisting[language=matlab]{code/问题三/isCollision.m}
+% q3 nextTheta.m
+% \lstinputlisting[language=matlab]{code/问题三/nextTheta.m}
+% q3 plotResult.m
+% \lstinputlisting[language=matlab]{code/问题三/plotResult.m}
+% q3 solveBlackBox.m
+% \lstinputlisting[language=matlab]{code/问题三/solveBlackBox.m}
+% q3 solveFunc.m
+% \lstinputlisting[language=matlab]{code/问题三/solveFunc.m}
+% q3 test.m
+% \lstinputlisting[language=matlab]{code/问题三/test.m}
+
+% q5 getAllPosition.m
+% \lstinputlisting[language=matlab]{code/问题五/getAllPosition.m}
+% q5 getAllVelocity.m
+% \lstinputlisting[language=matlab]{code/问题五/getAllVelocity.m}
+% q5 getR.m
+% \lstinputlisting[language=matlab]{code/问题五/getR.m}
+%  q5 nextS.m
+%  \lstinputlisting[language=matlab]{code/问题五/nextS.m}
+%  q5 objFunc.m
+%  \lstinputlisting[language=matlab]{code/问题五/objFunc.m}
+%  q5 OP5.m
+%  \lstinputlisting[language=matlab]{code/问题五/OP5.m}
+%  q5 StoTau.m
+%  \lstinputlisting[language=matlab]{code/问题五/StoTau.m}
+%  q5 StoXY.m
+%  \lstinputlisting[language=matlab]{code/问题五/StoXY.m}
+\end{appendices}
+\end{document}
+
+
+
+
+
