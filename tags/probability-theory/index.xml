@@ -6,14 +6,14 @@
     <description>LONG</description>
     <generator>Hugo 0.156.0 &amp; FixIt v0.4.3</generator>
     <language>en</language>
-    <managingEditor>cl2848077709@outlook.com (Chen Long)</managingEditor>
-    <webMaster>cl2848077709@outlook.com (Chen Long)</webMaster>
+    <managingEditor>cl2848077709@outlook.com (Long Chen)</managingEditor>
+    <webMaster>cl2848077709@outlook.com (Long Chen)</webMaster>
     <lastBuildDate>Tue, 02 Jun 2026 23:37:34 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/probability-theory/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CF-DWTA Model: Damage Probability Calculation for Weapon-Target Assignment Considering Cascading Failures</title>
       <link>http://localhost:1313/cf_dwta/</link>
-      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate><author>cl2848077709@outlook.com (Chen Long)</author>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/cf_dwta/</guid>
       <category domain="http://localhost:1313/blog/research-notes/">Research Notes</category>
       <description>CF-DWTA Model: Damage Probability Calculation for Weapon-Target Assignment Considering Cascading Failures</description>
