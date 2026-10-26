@@ -1,0 +1,810 @@
+<!doctype html>
+<html
+	lang="zh-Hans"
+	dir="ltr"
+	data-theme="minimal"
+	data-toc-pinned="false"
+>
+	<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+		<meta charset="utf-8" />
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>图库 |
+		Long Chen</title>
+
+<meta
+	name="description"
+	content="A modern, clean, and minimal Hugo theme built with Tailwind CSS 4.0. Support custom themes, dark mode, and responsive design."
+/>
+<meta
+	name="keywords"
+	content="Hugo, Blog, Theme, Technology, Programming"
+/><meta name="author" content="Long Chen" />
+<meta name="language" content="zh-Hans" />
+
+<meta
+	name="robots"
+	content="index, follow"
+/>
+<link rel="canonical" href="http://localhost:1313/zh-hans/tags/%E5%9B%BE%E5%BA%93/" />
+
+
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="theme-color" content="#09090b" media="(prefers-color-scheme: light)" />
+<meta
+	name="theme-color"
+	content="#09090b"
+	media="(prefers-color-scheme: dark)"
+/><link rel="manifest" href="/site.webmanifest" />
+<meta property="og:url" content="http://localhost:1313/zh-hans/tags/%E5%9B%BE%E5%BA%93/">
+	<meta property="og:site_name" content="Long Chen">
+	<meta property="og:title" content="图库">
+	<meta property="og:description" content="A modern, clean, and minimal Hugo theme built with Tailwind CSS 4.0. Support custom themes, dark mode, and responsive design.">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="website">
+		<meta property="og:image" content="http://localhost:1313/images/og-default.avif">
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/images/og-default.avif">
+	<meta name="twitter:title" content="图库">
+	<meta name="twitter:description" content="A modern, clean, and minimal Hugo theme built with Tailwind CSS 4.0. Support custom themes, dark mode, and responsive design.">
+
+
+	<meta itemprop="name" content="图库">
+	<meta itemprop="description" content="A modern, clean, and minimal Hugo theme built with Tailwind CSS 4.0. Support custom themes, dark mode, and responsive design.">
+	<meta itemprop="datePublished" content="2024-01-16T22:30:00+08:00">
+	<meta itemprop="dateModified" content="2024-01-16T22:30:00+08:00">
+	<meta itemprop="image" content="http://localhost:1313/images/og-default.avif">
+
+
+
+	<link
+		rel="alternate"
+		type="application/rss+xml"
+		title="Long Chen"
+		href="http://localhost:1313/zh-hans/tags/%E5%9B%BE%E5%BA%93/index.xml"
+	/>
+
+
+
+
+	<script id="search-config" type="application/json">"{\"enabled\":true,\"indexContentLength\":2000,\"searchIndexURL\":\"/zh-hans/index.json\"}"</script>
+
+
+
+
+
+	
+		<link rel="stylesheet" href="/css/compiled.css" />
+	
+
+
+
+	<link rel="stylesheet" href="/css/chroma.css" />
+
+
+
+
+	
+		<link rel="stylesheet" href="/css/custom/publications.css" />
+	
+
+	
+		<link rel="stylesheet" href="/css/custom/terminal.css" />
+	
+
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="/js/search.js" defer></script>
+
+
+
+	<script src="/js/custom//js/custom/terminal.js" defer></script>
+
+
+
+
+
+<script>(() => {
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/core.js
+  var STORAGE_KEYS = {
+    theme: "theme",
+    colorScheme: "colorScheme",
+    contentWidth: "contentWidth",
+    backdropBlur: "backdropBlur",
+    grainSize: "grainSize",
+    tocPinned: "tocPinned"
+  };
+  function readStorage(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/appearance.js
+  var MODES = ["light", "dark", "system"];
+  function applyThemeMode(root, mode) {
+    const theme = MODES.includes(mode) ? mode : "system";
+    const isDark = theme === "dark" || theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", isDark);
+    return theme;
+  }
+
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/viewport.js
+  function surfaceAlphaFor(blur, max = 24) {
+    return blur > 0 ? Math.max(68, 92 - Math.round(blur / max * 20)) : 100;
+  }
+  function grainTokensFor(value, max = 100) {
+    return {
+      size: Math.round(64 + value * 2.5),
+      opacity: value > 0 ? (0.04 + value / max * 0.2).toFixed(3) : "0"
+    };
+  }
+
+  // <stdin>
+  (function() {
+    const root = document.documentElement;
+    const colorSchemes = { "abyss": { "name": "Abyss", "order": 7 }, "amethyst": { "name": "Amethyst", "order": 9 }, "bumblebee": { "name": "Bumblebee", "order": 3 }, "claude": { "name": "Claude", "order": 2 }, "default": { "name": "Default", "order": 1 }, "dracula": { "name": "Dracula", "order": 8 }, "emerald": { "name": "Emerald", "order": 4 }, "minimal": { "name": "Minimal", "order": 12 }, "nord": { "name": "Nord", "order": 5 }, "slate": { "name": "Slate", "order": 10 }, "sunset": { "name": "Sunset", "order": 6 }, "x": { "name": "X", "order": 11 } };
+    const configuredScheme = "minimal";
+    const storedScheme = readStorage(STORAGE_KEYS.colorScheme);
+    const colorScheme = Object.prototype.hasOwnProperty.call(colorSchemes || {}, storedScheme) ? storedScheme : configuredScheme;
+    root.setAttribute("data-theme", colorScheme);
+    const contentWidth = Number.parseInt(readStorage(STORAGE_KEYS.contentWidth), 10);
+    if (Number.isInteger(contentWidth) && contentWidth >= 40 && contentWidth <= 90) {
+      root.style.setProperty("--content-width", `${contentWidth}rem`);
+    }
+    const configuredBlur = Number.parseInt("12", 10);
+    const defaultBlur = Number.isInteger(configuredBlur) && configuredBlur >= 0 && configuredBlur <= 24 ? configuredBlur : 12;
+    const storedBlur = Number.parseInt(readStorage(STORAGE_KEYS.backdropBlur), 10);
+    const blur = Number.isInteger(storedBlur) && storedBlur >= 0 && storedBlur <= 24 ? storedBlur : defaultBlur;
+    root.style.setProperty("--backdrop-blur", `${blur}px`);
+    root.style.setProperty("--surface-alpha", `${surfaceAlphaFor(blur)}%`);
+    const configuredGrain = Number.parseInt("0", 10);
+    const defaultGrain = Number.isInteger(configuredGrain) && configuredGrain >= 0 && configuredGrain <= 100 ? configuredGrain : 0;
+    const storedGrain = Number.parseInt(readStorage(STORAGE_KEYS.grainSize), 10);
+    const grain = Number.isInteger(storedGrain) && storedGrain >= 0 && storedGrain <= 100 ? storedGrain : defaultGrain;
+    const grainTokens = grainTokensFor(grain);
+    root.style.setProperty("--grain-size", `${grainTokens.size}px`);
+    root.style.setProperty("--grain-opacity", grainTokens.opacity);
+    const storedPin = readStorage(STORAGE_KEYS.tocPinned);
+    if (storedPin === "true" || storedPin === "false") {
+      root.setAttribute("data-toc-pinned", storedPin);
+    }
+    const currentTheme = () => {
+      const stored = readStorage(STORAGE_KEYS.theme);
+      return ["light", "dark", "system"].includes(stored) ? stored : "system";
+    };
+    applyThemeMode(root, currentTheme());
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => applyThemeMode(root, currentTheme()));
+  })();
+})();
+</script>
+	</head><body class="min-h-screen">
+		<div id="bg-grain" aria-hidden="true"></div>
+		<a class="skip-link" href="#main-content">跳到正文</a>
+		<div id="reading-progress" aria-hidden="true"><span></span></div>
+
+
+		<div id="page-container" style="--content-width-base: 70rem; --backdrop-blur-base: 12px; --grain-size-base: 0;">
+			<header
+		id="context-bar"
+		data-collapsed="false"
+		data-visible="true"
+		
+	>
+		<div class="context-top">
+			<nav aria-label="面包屑导航" class="context-crumbs">
+				<ol class="crumb-trail"><li class="crumb-node"><a
+									href="/zh-hans/"
+									class="crumb"
+									title="首页"
+									aria-label="首页"
+								><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-home"></use></svg>
+										<span class="hidden max-w-32 truncate sm:inline">首页</span></a></li><li class="crumb-sep" aria-hidden="true"><svg class="h-4 w-4 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-right"></use></svg></li><li class="crumb-node"><a
+									href="/zh-hans/tags/"
+									class="crumb"
+									title="Tags"
+									
+								><span class="max-w-40 truncate sm:max-w-56">Tags</span></a></li><li class="crumb-sep" aria-hidden="true"><svg class="h-4 w-4 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-right"></use></svg></li><li class="crumb-node"><span class="crumb crumb-current" aria-current="page" title="图库">
+									<span class="max-w-56 truncate sm:max-w-96">图库</span>
+								</span></li></ol>
+			</nav>
+		</div></header><main id="main-content" tabindex="-1" class="page-main">
+				<div class="page-content">
+					<header class="border-border mb-8 border-b pb-6">
+	<h1 class="text-foreground text-2xl font-semibold tracking-tight md:text-3xl">
+		图库
+	</h1><p class="text-muted-foreground mt-3 text-xs">1 个页面</p></header>
+<div class="grid grid-cols-1 gap-4"><article class="group relative h-full" data-card="post">
+	<div
+		class="border-border bg-card hover:bg-accent/20 hover:border-primary/30 
+		gap-3 p-5
+ flex h-full flex-col justify-between rounded-lg border transition-colors"
+	>
+		<div class="flex items-start justify-between gap-3">
+			<h3
+				class="text-foreground 
+				text-base
+ leading-snug font-semibold"
+			>
+				<a href="/zh-hans/blogs/gallery/" class="after:absolute after:inset-0">
+					图库
+				</a>
+			</h3><span
+					class="text-muted-foreground group-hover:text-foreground mt-0.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5"
+					aria-hidden="true"
+				>
+					<svg class="h-4 w-4 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-arrow-right"></use></svg>
+				</span></div><p class="text-muted-foreground line-clamp-2 text-sm leading-relaxed">图库示例，包含两端对其的图库和使用短代码的瀑布流图库</p><div
+				class="text-muted-foreground mt-auto flex flex-wrap items-center gap-x-3 gap-y-1.5 pt-1 text-xs"
+			><time datetime="2024-01-16" class="tabular-nums">
+						24/1/16
+					</time><div class="flex flex-wrap items-center gap-1.5"><span class="border-border bg-muted/40 rounded-sm border px-1.5 py-0.5 text-xs">
+								图库
+							</span></div></div></div>
+</article>
+</div>
+				</div>
+			</main>
+
+			<footer class="site-footer border-border mt-10 border-t py-6">
+	<div
+		class="text-muted-foreground flex flex-col gap-1 text-xs sm:flex-row sm:items-center sm:justify-between"
+	>
+		<p>&copy; 2026 Long Chen</p>
+		<p>
+			由
+			<a
+				href="https://gohugo.io/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:text-foreground transition-colors"
+			>
+				Hugo
+			</a>
+			&amp;
+			<a
+				href="https://github.com/tom2almighty/hugo-narrow"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:text-foreground transition-colors"
+			>
+				Narrow
+			</a>
+		</p>
+	</div>
+</footer>
+
+		</div>
+
+		<div
+	id="nav-menu-popover"
+	popover
+	class="nav-popover text-popover-foreground border-border shadow-popover rounded-lg border p-2"
+	aria-label="菜单"
+>
+	<div class="max-h-[75dvh] overflow-y-auto" data-nav-menu>
+		<nav class="space-y-3" aria-label="菜单"><fieldset>
+			<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+				菜单
+			</legend>
+			<div class="grid grid-cols-2 gap-1"><a
+						href="/zh-hans/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-posts"></use></svg><span class="truncate">文章</span>
+					</a><a
+						href="/zh-hans/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-archive"></use></svg><span class="truncate">归档</span>
+					</a></div>
+		</fieldset><fieldset class="border-border border-t pt-3">
+			<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+				更多
+			</legend>
+			<div class="grid grid-cols-2 gap-1"><a
+						href="/zh-hans/tags/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					bg-accent text-accent-foreground font-medium
+"
+						aria-current="page"
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-tags"></use></svg><span class="truncate">标签</span>
+					</a><a
+						href="/zh-hans/categories/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-categories"></use></svg><span class="truncate">分类</span>
+					</a><a
+						href="/zh-hans/series/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-bookmark"></use></svg><span class="truncate">系列</span>
+					</a><a
+						href="/zh-hans/projects/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-projects"></use></svg><span class="truncate">项目</span>
+					</a></div>
+		</fieldset></nav>
+
+	</div>
+</div>
+
+		<div
+	id="dock"
+	role="toolbar"
+	aria-label="快捷操作工具栏"
+	aria-orientation="horizontal"
+	data-placement="bottom"
+>
+	<div class="dock-shell">
+		<a
+			id="dock-home"
+			href="/zh-hans/"
+			class="dock-item"
+			title="返回首页"
+			aria-label="返回首页"
+			
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-home"></use></svg>
+		</a>
+
+		<button
+			id="dock-menu"
+			type="button"
+			class="dock-item"
+			aria-label="菜单"
+			title="菜单"
+			aria-controls="nav-menu-popover"
+			aria-expanded="false"
+			popovertarget="nav-menu-popover"
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-menu"></use></svg>
+		</button>
+			<button
+				id="dock-search"
+				type="button"
+				class="dock-item"
+				title="搜索"
+				aria-label="搜索"
+			>
+				<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-search"></use></svg>
+			</button><span class="dock-divider" aria-hidden="true"></span>
+
+		<button
+		id="appearance-toggle"
+		type="button"
+		popovertarget="appearance-panel"
+		aria-controls="appearance-panel"
+		aria-expanded="false"
+		aria-label="外观设置"
+		title="外观设置"
+		class="dock-item"
+	>
+		<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-palette"></use></svg>
+	</button>
+
+	<div
+		id="appearance-panel"
+		popover
+		class="dock-popover text-popover-foreground border-border shadow-popover w-80 space-y-3 rounded-lg border p-2"
+	><fieldset>
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					配色方案
+				</legend>
+				<div class="grid grid-cols-2 gap-0.5"><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="default" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Default
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="claude" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Claude
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="bumblebee" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Bumblebee
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="emerald" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Emerald
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="nord" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Nord
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="sunset" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Sunset
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="abyss" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Abyss
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="dracula" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Dracula
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="amethyst" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Amethyst
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="slate" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Slate
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="x" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								X
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="minimal" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Minimal
+							</span>
+						</label></div>
+			</fieldset><fieldset class="border-border border-t pt-3">
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					明暗模式
+				</legend>
+				<div class="bg-muted grid grid-cols-3 gap-0.5 rounded-md p-0.5"><label class="block">
+							<input type="radio" name="theme-mode" value="light" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								亮色
+							</span>
+						</label><label class="block">
+							<input type="radio" name="theme-mode" value="dark" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								暗色
+							</span>
+						</label><label class="block">
+							<input type="radio" name="theme-mode" value="system" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								跟随系统
+							</span>
+						</label></div>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						页面宽度
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="content-width-value"
+							for="content-width-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="content-width-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							恢复默认
+						</button>
+					</div>
+				</div>
+				<input
+					id="content-width-range"
+					class="w-full"
+					type="range"
+					min="40"
+					max="90"
+					step="1"
+					aria-label="页面宽度"
+				/>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						背景磨砂
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="backdrop-blur-value"
+							for="backdrop-blur-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="backdrop-blur-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							恢复默认
+						</button>
+					</div>
+				</div>
+				<input
+					id="backdrop-blur-range"
+					class="w-full"
+					type="range"
+					min="0"
+					max="24"
+					step="1"
+					aria-label="背景磨砂"
+				/>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						背景噪点
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="grain-size-value"
+							for="grain-size-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="grain-size-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							恢复默认
+						</button>
+					</div>
+				</div>
+				<input
+					id="grain-size-range"
+					class="w-full"
+					type="range"
+					min="0"
+					max="100"
+					step="5"
+					aria-label="背景噪点"
+				/>
+			</fieldset><fieldset class="border-border border-t pt-3">
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					语言
+				</legend>
+				<button
+	id="language-toggle"
+	type="button"
+	popovertarget="language-panel"
+	aria-controls="language-panel"
+	aria-expanded="false"
+	class="border-border bg-background text-foreground hover:bg-muted flex h-8 w-full items-center justify-between gap-2 rounded-md border px-2 text-sm transition-colors"
+>
+	<span class="flex min-w-0 items-center gap-1.5">
+		<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-language"></use></svg>
+		<span class="truncate">简体中文</span>
+	</span>
+	<svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-down"></use></svg>
+</button>
+
+<div
+	id="language-panel"
+	popover
+	class="dock-popover text-popover-foreground border-border shadow-popover rounded-lg border p-1"
+	aria-label="语言"
+>
+	<div class="grid grid-cols-1 gap-0.5"><a
+				href="/"
+				hreflang="en"
+				lang="en"
+				class="
+				text-muted-foreground hover:bg-muted hover:text-foreground
+ flex h-8 items-center truncate rounded-md px-2 text-sm transition-colors"
+				
+			>
+				English
+			</a><a
+				href="/zh-hans/tags/%E5%9B%BE%E5%BA%93/"
+				hreflang="zh-hans"
+				lang="zh-hans"
+				class="
+				bg-accent text-accent-foreground font-medium
+ flex h-8 items-center truncate rounded-md px-2 text-sm transition-colors"
+				aria-current="true"
+			>
+				简体中文
+			</a></div>
+</div>
+
+			</fieldset></div>
+
+
+		<button
+			id="dock-top"
+			type="button"
+			class="dock-item"
+			title="返回顶部"
+			aria-label="返回顶部"
+			hidden
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-arrow-up"></use></svg>
+		</button>
+	</div>
+</div>
+
+		
+		
+			
+<dialog
+	id="search-modal"
+	class="text-popover-foreground border-border shadow-popover m-auto max-h-[80dvh] w-11/12 max-w-xl overflow-hidden rounded-lg border p-0"
+	aria-labelledby="search-title"
+	tabindex="-1"
+>
+	
+	<div class="border-border flex items-center gap-3 border-b p-3">
+		
+		<div class="text-muted-foreground h-5 w-5 shrink-0">
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-search"></use></svg>
+		</div>
+		<h2 id="search-title" class="sr-only">搜索</h2>
+
+		
+		<div class="relative flex-1">
+			
+			<button
+				id="search-clear"
+				type="button"
+				class="text-muted-foreground hover:text-foreground hover:bg-muted/50 pointer-events-none absolute top-1/2 left-0 z-10 h-5 w-5 -translate-y-1/2 rounded opacity-0 transition-all duration-200"
+				title="清空"
+				aria-label="清空"
+			>
+				<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-close"></use></svg>
+			</button>
+
+			
+			<input
+				id="search-input"
+				type="text"
+				role="combobox"
+				aria-autocomplete="list"
+				aria-controls="search-items"
+				aria-expanded="false"
+				aria-labelledby="search-title"
+				placeholder="搜索文章..."
+				class="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent pl-8 text-base outline-none"
+				autocomplete="off"
+				autocapitalize="off"
+				spellcheck="false"
+				autofocus
+			/>
+		</div>
+
+		
+		<button
+			id="search-close"
+			type="button"
+			class="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex size-7 items-center justify-center rounded-md transition-colors"
+			title="关闭"
+			aria-label="关闭"
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-close"></use></svg>
+		</button>
+	</div>
+
+	
+	<div id="search-results" class="max-h-96 overflow-y-auto">
+		
+		<div id="search-empty" class="text-muted-foreground px-4 py-10 text-center text-sm">
+			开始搜索
+		</div>
+
+		
+		<div id="search-loading" class="flex items-center justify-center py-8" hidden>
+			<div
+				class="mr-3 h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent"
+			></div>
+			<span class="text-muted-foreground">搜索中...</span>
+		</div>
+
+		
+		<div id="search-no-results" class="text-muted-foreground px-4 py-10 text-center text-sm" hidden>
+			未找到结果
+		</div>
+
+		
+		<div id="search-results-list" hidden>
+			
+			<div
+				id="search-stats"
+				class="text-muted-foreground border-border border-b px-3 py-2 text-xs"
+				data-count-other="找到 %d 个结果"
+				role="status"
+				aria-live="polite"
+			></div>
+
+			
+			<ul id="search-items" class="divide-border divide-y" role="listbox">
+				
+			</ul>
+		</div>
+	</div>
+
+	
+	<div class="border-border bg-muted/30 border-t px-3 py-2"><div class="text-muted-foreground flex items-center justify-between text-xs">
+			<div class="flex items-center gap-2 md:gap-4">
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↑↓</kbd>
+					<span class="hidden sm:inline">导航</span>
+				</div>
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↵</kbd>
+					<span class="hidden sm:inline">选择</span>
+				</div>
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">ESC</kbd>
+					<span class="hidden sm:inline">关闭</span>
+				</div>
+			</div>
+			<div class="search-hint-desktop flex items-center gap-1">
+				<kbd
+					id="search-shortcut"
+					class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs"
+				>Ctrl K</kbd
+				>
+				<span>快捷键</span>
+			</div>
+		</div>
+	</div>
+</dialog>
+
+		
+		
+		
+		
+
+
+	</body>
+</html>

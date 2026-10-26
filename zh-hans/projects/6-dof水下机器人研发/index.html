@@ -1,0 +1,1939 @@
+<!doctype html><html
+  lang="zh-Hans"
+  data-theme="minimal"
+  data-toc-pinned="false"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>6-DOF水下机器人研发 |
+    Long Chen</title>
+
+<meta
+  name="description"
+  content="6-DOF全自由度水下机器人结构设计、控制方案与扩展模块设计"
+/>
+<meta
+  name="keywords"
+  content="Robot, Machine, Control"
+/>
+<meta
+  name="author"
+  content="Chen Long"
+/>
+<meta name="language" content="en" />
+
+<meta
+  name="robots"
+  content="index, follow"
+/>
+<link rel="canonical" href="http://localhost:1313/zh-hans/projects/6-dof%E6%B0%B4%E4%B8%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A0%94%E5%8F%91/" />
+
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:url" content="http://localhost:1313/zh-hans/projects/6-dof%E6%B0%B4%E4%B8%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A0%94%E5%8F%91/">
+	<meta property="og:site_name" content="Long Chen">
+	<meta property="og:title" content="6-DOF水下机器人研发">
+	<meta property="og:description" content="6-DOF全自由度水下机器人结构设计、控制方案与扩展模块设计">
+	<meta property="og:locale" content="zh_Hans">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="projects">
+		<meta property="article:published_time" content="2026-02-08T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-02-08T00:00:00+00:00">
+		<meta property="article:tag" content="Robot">
+		<meta property="article:tag" content="Machine">
+		<meta property="article:tag" content="Control">
+		<meta property="og:image" content="http://localhost:1313/projects/auv/featured-image.png">
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/projects/auv/featured-image.png">
+	<meta name="twitter:title" content="6-DOF水下机器人研发">
+	<meta name="twitter:description" content="6-DOF全自由度水下机器人结构设计、控制方案与扩展模块设计">
+
+
+	<meta itemprop="name" content="6-DOF水下机器人研发">
+	<meta itemprop="description" content="6-DOF全自由度水下机器人结构设计、控制方案与扩展模块设计">
+	<meta itemprop="datePublished" content="2026-02-08T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-02-08T00:00:00+00:00">
+	<meta itemprop="wordCount" content="2580">
+	<meta itemprop="image" content="http://localhost:1313/projects/auv/featured-image.png">
+	<meta itemprop="keywords" content="Robot,Machine,Control">
+
+
+
+
+
+<script id="search-config" type="application/json">"{\"searchIndexURL\":\"/zh-hans/index.json\"}"</script>
+
+
+
+
+  
+    <link rel="stylesheet" href="/css/compiled.css" />
+  
+
+
+
+  <link rel="stylesheet" href="/css/chroma.css" />
+
+
+
+
+  
+    <link rel="stylesheet" href="/css/custom/publications.css" />
+  
+
+  
+    <link rel="stylesheet" href="/css/custom/terminal.css" />
+  
+
+  
+    <link rel="stylesheet" href="/css/custom/toc-tree.css" />
+  
+
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="/js/toc.js" defer></script>
+<script src="/js/search.js" defer></script>
+
+
+<script src="/js/dock.js" defer></script>
+
+
+
+
+
+
+
+  <script src="/js/custom//js/custom/terminal.js" defer></script>
+  <script src="/js/custom//js/custom/toc-tree.js" defer></script>
+
+
+
+
+
+
+    
+    <script>(function(){const e=document.documentElement;function s(e){try{return localStorage.getItem(e)}catch{return null}}function v(){const e=s("theme");return e==="light"||e==="dark"||e==="system"?e:"system"}const g={abyss:{name:"Abyss",order:7},amethyst:{name:"Amethyst",order:9},bumblebee:{name:"Bumblebee",order:3},claude:{name:"Claude",order:2},default:{name:"Default",order:1},dracula:{name:"Dracula",order:8},emerald:{name:"Emerald",order:4},minimal:{name:"Minimal",order:12},nord:{name:"Nord",order:5},slate:{name:"Slate",order:10},sunset:{name:"Sunset",order:6},twitter:{name:"Twitter",order:11}},p="minimal",h=s("colorScheme"),f=Object.prototype.hasOwnProperty.call(g||{},h)?h:p,n=Number.parseInt(s("contentWidth"),10),d=Number.isInteger(n)&&n>=40&&n<=90;d&&e.style.setProperty("--content-width",`${n}rem`),e.setAttribute("data-theme",f);const l=s("tocPinned");(l==="true"||l==="false")&&e.setAttribute("data-toc-pinned",l);const t=Number.parseFloat(getComputedStyle(e).fontSize)||16,u="70rem",c=Number.parseFloat(u);let r=56*t;Number.isFinite(c)&&(r=/r?em\s*$/.test(u)?c*t:c),d&&(r=n*t);const a=e.clientWidth,i=Math.max(0,(a-Math.min(r,a))/2);let o="narrow";a>=64*t&&(i>=13*t?o="wide":i>=2*t&&(o="tight")),e.setAttribute("data-toc-space",o),e.style.setProperty("--toc-gutter",`${Math.round(i)}px`);function m(){const t=v(),n=t==="dark"||t==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;e.classList.toggle("dark",n)}m(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",m)})()</script>
+  </head><body class="bg-background text-foreground min-h-screen antialiased">
+    <main
+      id="page-container"
+      class="mx-auto w-full"
+      style="--content-width-base: 70rem; max-width: var(--content-width, var(--content-width-base))"
+    >
+      <div
+    id="reading-progress-bar"
+    class="from-primary to-primary/80 pointer-events-none fixed top-0 left-0 z-50 h-[3px] w-0 bg-linear-to-r transition-[width] duration-150 ease-out"
+  ></div>
+
+  <script>
+    (function () {
+      const bar = document.getElementById("reading-progress-bar");
+      if (!bar) return;
+
+      function update() {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? (scrolled / total) * 100 + "%" : "0%";
+      }
+
+      let ticking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              update();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+
+      update();
+    })();
+  </script>
+
+      <header class="sticky top-0 z-50 px-4 py-6">
+  <div
+    class="border-border bg-card/80 flex items-center gap-4 rounded-xl border px-4 py-4 shadow-sm backdrop-blur-sm md:px-6"
+  >
+    
+    <div class="flex shrink-0 items-center">
+      
+        
+        <a
+          href="/zh-hans/"
+          class="bg-primary text-primary-foreground hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold transition-transform duration-200 hover:scale-105"
+          aria-label="Long Chen"
+        >
+          L
+        </a>
+      
+    </div>
+
+    
+    <nav
+      class="hidden min-w-0 flex-1 items-center justify-center md:flex"
+      aria-label="菜单"
+    >
+      <div class="flex flex-wrap items-center justify-center gap-1">
+        <a
+      href="/zh-hans/about/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-about"></use></svg></use
+>
+<span>关于我</span>
+    </a><a
+      href="/zh-hans/papers/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+<span>论文</span>
+    </a><a
+      href="/zh-hans/projects/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-projects"></use></svg></use
+>
+<span>项目</span>
+    </a><a
+      href="/zh-hans/blogs/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-posts"></use></svg></use
+>
+<span>文章</span>
+    </a>
+      </div>
+    </nav>
+
+    
+    <div class="ml-auto flex shrink-0 items-center gap-2">
+      
+<button
+  id="mobile-nav-open"
+  type="button"
+  class="border-border bg-background text-muted-foreground hover:bg-accent hover:text-foreground focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-colors duration-200 focus:ring-2 focus:outline-none md:hidden"
+  aria-label="菜单"
+  aria-haspopup="dialog"
+  aria-controls="mobile-nav"
+>
+  <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-menu"></use></svg></use
+>
+
+</button>
+
+      <button
+    id="language-toggle"
+    type="button"
+    popovertarget="language-panel"
+    aria-controls="language-panel"
+    aria-expanded="false"
+    aria-label="切换语言"
+    class="border-border bg-background text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ease-out hover:scale-105 focus:ring-2 focus:outline-none active:scale-95"
+  >
+    <svg class="h-5 w-5 relative z-10" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-language"></use></svg></use
+>
+
+  </button>
+
+  <div
+    id="language-panel"
+    popover
+    class="header-popover bg-popover text-popover-foreground border-border w-44 rounded-lg border p-1 shadow-lg"
+  ><a
+        href="/projects/auv/"
+        class="
+          text-muted-foreground hover:bg-accent hover:text-accent-foreground
+         focus:bg-accent focus:text-accent-foreground flex w-full items-center rounded-md px-4 py-2 text-sm transition-colors duration-200 focus:outline-none"
+        
+      >
+        <span class="font-medium">English</span>
+      </a><a
+        href="/zh-hans/projects/6-dof%E6%B0%B4%E4%B8%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A0%94%E5%8F%91/"
+        class="
+          bg-accent text-accent-foreground
+         focus:bg-accent focus:text-accent-foreground flex w-full items-center rounded-md px-4 py-2 text-sm transition-colors duration-200 focus:outline-none"
+        aria-current="page"
+      >
+        <span class="font-medium">简体中文</span>
+      </a></div>
+      <button
+    id="appearance-toggle"
+    type="button"
+    popovertarget="appearance-panel"
+    aria-controls="appearance-panel"
+    aria-expanded="false"
+    aria-label="外观设置"
+    class="border-border bg-background text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ease-out hover:scale-105 focus:ring-2 focus:outline-none active:scale-95"
+  >
+    <svg class="h-5 w-5 relative z-10" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-palette"></use></svg></use
+>
+
+  </button>
+
+  <div
+    id="appearance-panel"
+    popover
+    class="header-popover bg-popover text-popover-foreground border-border w-80 space-y-3 rounded-lg border p-3 shadow-lg"
+  ><fieldset>
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          配色方案
+        </legend>
+        <div class="grid grid-cols-2 gap-1"><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="default" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Default
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="claude" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Claude
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="bumblebee" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Bumblebee
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="emerald" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Emerald
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="nord" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Nord
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="sunset" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Sunset
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="abyss" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Abyss
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="dracula" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Dracula
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="amethyst" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Amethyst
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="slate" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Slate
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="twitter" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Twitter
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="minimal" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Minimal
+              </span>
+            </label></div>
+      </fieldset><fieldset class="border-border border-t pt-3">
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          明暗模式
+        </legend>
+        <div class="grid grid-cols-3 gap-1"><label class="block">
+              <input type="radio" name="theme-mode" value="light" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                亮色
+              </span>
+            </label><label class="block">
+              <input type="radio" name="theme-mode" value="dark" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                暗色
+              </span>
+            </label><label class="block">
+              <input type="radio" name="theme-mode" value="system" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                跟随系统
+              </span>
+            </label></div>
+      </fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          页面宽度
+        </legend>
+        <div class="flex items-center justify-between gap-4">
+          <output
+            id="content-width-value"
+            for="content-width-range"
+            class="text-muted-foreground min-w-12 text-sm tabular-nums"
+          ></output>
+        </div>
+        <input
+          id="content-width-range"
+          class="accent-primary w-full cursor-pointer"
+          type="range"
+          min="40"
+          max="90"
+          step="1"
+          aria-label="页面宽度"
+        />
+        <button
+          id="content-width-reset"
+          type="button"
+          class="border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:ring-primary/20 w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-2 focus:outline-none"
+        >
+          恢复默认
+        </button>
+      </fieldset></div>
+    </div>
+  </div>
+
+  <dialog id="mobile-nav" class="mobile-nav-dialog" aria-labelledby="mobile-nav-title">
+  <div class="bg-card text-foreground flex max-h-[85dvh] flex-col overflow-hidden">
+    <div class="border-border flex items-center justify-between border-b px-4 py-4">
+      <h2 id="mobile-nav-title" class="text-foreground text-lg font-semibold">
+        菜单
+      </h2>
+      <button
+        id="mobile-nav-close"
+        type="button"
+        class="text-muted-foreground hover:text-foreground hover:bg-accent focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg transition-colors focus:ring-2 focus:outline-none"
+        aria-label="关闭菜单"
+      >
+        <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto" data-mobile-menu>
+      <div data-mobile-main>
+  <nav class="flex flex-col gap-1 p-2" aria-label="菜单"><a
+          href="/zh-hans/about/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-about"></use></svg></use
+>
+<span>关于我</span>
+        </a><a
+          href="/zh-hans/papers/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+<span>论文</span>
+        </a><a
+          href="/zh-hans/projects/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-projects"></use></svg></use
+>
+<span>项目</span>
+        </a><a
+          href="/zh-hans/blogs/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-posts"></use></svg></use
+>
+<span>文章</span>
+        </a></nav>
+</div>
+    </div>
+  </div>
+</dialog>
+
+</header>
+
+
+
+      <div class="px-4 py-6">
+        
+  <nav class="breadcrumb mb-4 py-1 md:mb-6" aria-label="面包屑导航">
+    <ol
+      class="text-muted-foreground scrollbar-hide flex items-center space-x-1 overflow-x-auto py-1 text-sm whitespace-nowrap md:space-x-2"
+    >
+      
+        
+          
+          <li class="shrink-0">
+            <a
+              href="/zh-hans/"
+              class="text-muted-foreground hover:text-primary hover:bg-primary/10 flex items-center gap-1 rounded-lg px-1 py-0.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] md:py-1.5"
+            >
+              <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-home"></use></svg></use
+>
+
+              <span class="max-w-16 truncate md:max-w-none">首页</span>
+            </a>
+          </li>
+        
+      
+        
+          
+          <li class="flex min-w-0 items-center gap-1 md:gap-2">
+            <span class="text-muted-foreground/50 shrink-0"
+              ><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-right"></use></svg></use
+>
+
+            </span>
+            <a
+              href="/zh-hans/projects/"
+              class="text-muted-foreground hover:text-primary hover:bg-primary/10 flex shrink-0 items-center gap-1 rounded-lg px-1 py-0.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] md:px-3 md:py-1.5"
+            >
+              <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-folder"></use></svg></use
+>
+
+              <span class="max-w-16 truncate md:max-w-none">项目</span>
+            </a>
+          </li>
+        
+      
+
+
+      
+      <li class="flex min-w-0 items-center gap-1 md:gap-2">
+        <span class="text-muted-foreground/50 shrink-0"
+          ><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-right"></use></svg></use
+>
+
+        </span>
+        <span class="text-foreground flex min-w-0 items-center gap-1 font-medium">
+          <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+
+          <span class="max-w-32 truncate md:max-w-[16rem] lg:max-w-none">6-DOF水下机器人研发</span>
+        </span>
+      </li>
+    </ol>
+  </nav>
+
+
+        
+  
+  <header class="mb-10">
+    
+
+
+    
+    <h1 class="text-foreground mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+      6-DOF水下机器人研发
+    </h1>
+
+    
+    
+      <div class="text-muted-foreground text-lg leading-relaxed md:text-xl">
+        6-DOF全自由度水下机器人结构设计、控制方案与扩展模块设计
+      </div>
+    
+  </header>
+
+  
+  <div class="mb-12">
+    <div class="flex flex-wrap items-center gap-2.5 text-sm font-medium">
+      
+        <span
+          class="bg-muted/45 text-foreground border-border inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm"
+        >
+          <svg class="h-4 w-4 text-primary shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-calendar"></use></svg></use
+>
+
+          <time datetime="2026-02-08">
+            2026年2月8日
+          </time>
+        </span>
+      
+
+      
+
+      
+        
+          <a
+            href="/zh-hans/tags/robot/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Robot</span>
+          </a>
+        
+          <a
+            href="/zh-hans/tags/machine/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Machine</span>
+          </a>
+        
+          <a
+            href="/zh-hans/tags/control/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Control</span>
+          </a>
+        
+      
+
+      
+    </div>
+  </div>
+
+  
+  <div class="bg-card border-border rounded-xl border p-6 shadow-sm md:p-8 md:px-10">
+    <article class="prose prose-neutral dark:prose-invert max-w-none">
+      <h2 id="1-项目概述">1. 项目概述<a href="#1-%e9%a1%b9%e7%9b%ae%e6%a6%82%e8%bf%b0" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><p>本文设计了一款6-DOF全驱动水下机器人（AUV），旨在完成水下抓取任务与高性能运动控制。与传统欠驱动或冗余驱动的AUV相比，6-DOF全驱动方案能够在紧凑设计的基础上实现更高水平的运动控制能力。为同时满足高精度水下抓取与高性能运动控制，本文设计了AUV的两种运动模式：抓取模式与巡航模式。抓取模式使用传统控制方案以提升其精度，巡航模式使用DRL驱动以实现其平滑运动需求。此外，该AUV还设计了4个扩展模块接口，用于连接不同的扩展模块以满足多样的水下作业任务。</p>
+<h3 id="11-设计目标">1.1 设计目标<a href="#11-%e8%ae%be%e8%ae%a1%e7%9b%ae%e6%a0%87" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li><input checked="" disabled="" type="checkbox"> 高性能的机械结构设计</li>
+<li><input checked="" disabled="" type="checkbox"> 传统控制方案设计</li>
+<li><input checked="" disabled="" type="checkbox"> DRL控制方案设计</li>
+<li><input disabled="" type="checkbox"> 自主路径导航</li>
+<li><input disabled="" type="checkbox"> 目标识别与抓取</li>
+<li><input disabled="" type="checkbox"> 扩展模块开发</li>
+</ul>
+<h3 id="12-技术支持">1.2 技术支持<a href="#12-%e6%8a%80%e6%9c%af%e6%94%af%e6%8c%81" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li>mjlab &amp; mojoco</li>
+<li>ROS2</li>
+<li>SSH &amp; Git</li>
+<li>python &amp; C++</li>
+</ul>
+<h2 id="2-结构设计">2. 结构设计<a href="#2-%e7%bb%93%e6%9e%84%e8%ae%be%e8%ae%a1" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="21-推进器分布方案">2.1 推进器分布方案<a href="#21-%e6%8e%a8%e8%bf%9b%e5%99%a8%e5%88%86%e5%b8%83%e6%96%b9%e6%a1%88" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>推进器分布分为三类：欠驱动、全驱动和冗余驱动。</p>
+<table>
+	<thead>
+			<tr>
+					<th>类型</th>
+					<th>特点</th>
+					<th>适用场景</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>欠驱动</td>
+					<td>推进器数量少于自由度数</td>
+					<td>简单观测任务</td>
+			</tr>
+			<tr>
+					<td>全驱动</td>
+					<td>推进器数量等于自由度数</td>
+					<td>精细作业任务</td>
+			</tr>
+			<tr>
+					<td>冗余驱动</td>
+					<td>推进器数量多于自由度数</td>
+					<td>高冗余任务</td>
+			</tr>
+	</tbody>
+</table>
+<p>考虑到机器人需要在紧凑设计的基础上实现高水平的抓取任务，本文选用<strong>6-DOF全驱动方案</strong>。</p>
+<p>常规全驱动方案使用6个独立固定推进器，该方案控制策略较为成熟，但不利于紧凑设计。因此，本文设计了了一种<strong>4推进器+2舵机</strong>的非对称矢量推进方案：</p>
+<ul>
+<li>4个主推进器控制推力大小</li>
+<li>2个舵机控制4个推进器的推力方向</li>
+<li>4个推进器成十字分布，上下推进器旋转方向相反，左右推进器旋转方向相同</li>
+</ul>
+<h3 id="22-机械结构">2.2 机械结构<a href="#22-%e6%9c%ba%e6%a2%b0%e7%bb%93%e6%9e%84" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>机器人主体采用框架式结构，主要包含：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-0"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-0"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-0">
+    <pre tabindex="0"><code>机器人系统
+├── 电控仓
+│   ├── 密封法兰
+│   ├── 异形外壳
+│   ├── 电子器材
+│   └── 浮力材料
+├── 动力装置
+│   ├── 异形外壳
+│   ├── 动力装置支架
+│   ├── y,z轴传动轴
+│   ├── 主推进器×4
+│   └── 舵机×2
+├── 附加模块
+│   ├── 机械臂
+│   ├── 外部充电
+│   └── 求援装置
+└── 传感器系统
+    ├── 深度传感器
+    ├── 惯性测量单元(IMU)
+    └── 摄像头</code></pre>
+    <div hidden data-code-source>机器人系统
+├── 电控仓
+│   ├── 密封法兰
+│   ├── 异形外壳
+│   ├── 电子器材
+│   └── 浮力材料
+├── 动力装置
+│   ├── 异形外壳
+│   ├── 动力装置支架
+│   ├── y,z轴传动轴
+│   ├── 主推进器×4
+│   └── 舵机×2
+├── 附加模块
+│   ├── 机械臂
+│   ├── 外部充电
+│   └── 求援装置
+└── 传感器系统
+    ├── 深度传感器
+    ├── 惯性测量单元(IMU)
+    └── 摄像头</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h2 id="3-控制方案">3. 控制方案<a href="#3-%e6%8e%a7%e5%88%b6%e6%96%b9%e6%a1%88" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="31-基于pid的控制方案">3.1 基于PID的控制方案<a href="#31-%e5%9f%ba%e4%ba%8epid%e7%9a%84%e6%8e%a7%e5%88%b6%e6%96%b9%e6%a1%88" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>对于抓取模式，为保证运动的精确性，采用PID控制器进行底层运动控制：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-1"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        CPP
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-1"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-1">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PIDController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">kd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">setpoint</span><span class="p">,</span> <span class="n">current_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">integral</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">last_error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">double</span> <span class="n">feedback</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">error</span> <span class="o">=</span> <span class="n">setpoint</span> <span class="o">-</span> <span class="n">feedback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">integral</span> <span class="o">+=</span> <span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">derivative</span> <span class="o">=</span> <span class="n">error</span> <span class="o">-</span> <span class="n">last_error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">last_error</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span> <span class="o">+</span> <span class="n">ki</span> <span class="o">*</span> <span class="n">integral</span> <span class="o">+</span> <span class="n">kd</span> <span class="o">*</span> <span class="n">derivative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></div>
+    <div hidden data-code-source>class PIDController {
+public:
+    double kp, ki, kd;
+    double setpoint, current_value;
+    double integral = 0;
+    double last_error = 0;
+    
+    double compute(double feedback) {
+        double error = setpoint - feedback;
+        integral &#43;= error;
+        double derivative = error - last_error;
+        last_error = error;
+        return kp * error &#43; ki * integral &#43; kd * derivative;
+    }
+};</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="32-基于drl的控制策略">3.2 基于DRL的控制策略<a href="#32-%e5%9f%ba%e4%ba%8edrl%e7%9a%84%e6%8e%a7%e5%88%b6%e7%ad%96%e7%95%a5" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>针对巡航任务，为保证运动的平滑性，采用DRL进行控制策略训练，并使用mjlab完成模型训练。代码框架如下：</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-2"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-2"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-2">
+    <pre tabindex="0"><code>auv_mjlab/
+├── src/
+│   ├── tasks/
+│   │   └── velocity/              # Velocity 速度控制任务
+│   │       ├── config/
+│   │       │   └── auv/
+│   │       │       ├── env_cfgs.py    # 环境配置
+│   │       │       └── rl_cfg.py       # RL 算法配置
+│   │       ├── mdp/
+│   │       │   ├── observations.py    # 观测函数
+│   │       │   ├── rewards.py         # 奖励函数
+│   │       │   ├── terminations.py     # 终止条件
+│   │       │   └── velocity_command.py # 速度指令生成器
+│   │       └── rl/
+│   │           └── runner.py          # 训练运行器
+│   └── assets/
+│       └── robots/                     # 机器人模型配置
+├── scripts/
+│   ├── train.py                        # 训练脚本
+│   ├── play.py                         # 回放脚本
+│   └── list_envs.py                    # 环境列表
+└── README.md</code></pre>
+    <div hidden data-code-source>auv_mjlab/
+├── src/
+│   ├── tasks/
+│   │   └── velocity/              # Velocity 速度控制任务
+│   │       ├── config/
+│   │       │   └── auv/
+│   │       │       ├── env_cfgs.py    # 环境配置
+│   │       │       └── rl_cfg.py       # RL 算法配置
+│   │       ├── mdp/
+│   │       │   ├── observations.py    # 观测函数
+│   │       │   ├── rewards.py         # 奖励函数
+│   │       │   ├── terminations.py     # 终止条件
+│   │       │   └── velocity_command.py # 速度指令生成器
+│   │       └── rl/
+│   │           └── runner.py          # 训练运行器
+│   └── assets/
+│       └── robots/                     # 机器人模型配置
+├── scripts/
+│   ├── train.py                        # 训练脚本
+│   ├── play.py                         # 回放脚本
+│   └── list_envs.py                    # 环境列表
+└── README.md</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h4 id="331-场景配置scene">3.3.1 场景配置（Scene）<a href="#331-%e5%9c%ba%e6%99%af%e9%85%8d%e7%bd%aescene" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><strong>环境数量</strong>: 支持大规模并行训练</li>
+<li><strong>地形类型</strong>: 平地（plane）水下环境</li>
+<li><strong>机器人</strong>: AUV 无人水下航行器</li>
+</ul>
+<h4 id="332-动作空间actions">3.3.2 动作空间（Actions）<a href="#332-%e5%8a%a8%e4%bd%9c%e7%a9%ba%e9%97%b4actions" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>AUV 具有两类执行器：</p>
+<table>
+	<thead>
+			<tr>
+					<th>执行器类型</th>
+					<th>关节名称</th>
+					<th>作用</th>
+					<th>动作尺度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>舵机</td>
+					<td><code>joint_servo_up</code>, <code>joint_servo_left</code></td>
+					<td>控制方向舵角度</td>
+					<td>±1.5 rad</td>
+			</tr>
+			<tr>
+					<td>推进器</td>
+					<td><code>joint_prop_up</code>, <code>joint_prop_down</code>, <code>joint_prop_left</code>, <code>joint_prop_right</code></td>
+					<td>推力大小</td>
+					<td>(-30N,43N)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="333-指令空间commands">3.3.3 指令空间（Commands）<a href="#333-%e6%8c%87%e4%bb%a4%e7%a9%ba%e9%97%b4commands" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>速度指令生成器使用 <code>UniformVelocityCommandCfg</code>，生成的指令包括：</p>
+<ul>
+<li><strong>线速度指令</strong>:
+<ul>
+<li>X轴（前后）: -0.5 ~ 2.0 m/s</li>
+</ul>
+</li>
+<li><strong>角速度指令</strong>:
+<ul>
+<li>X轴（roll）: -1.0 ~ 1.0 rad/s</li>
+<li>Y轴（pitch）: -1.0 ~ 1.0 rad/s</li>
+<li>Z轴（yaw）: -1.0 ~ 1.0 rad/s</li>
+</ul>
+</li>
+</ul>
+<h4 id="334-观测空间observations">3.3.4 观测空间（Observations）<a href="#334-%e8%a7%82%e6%b5%8b%e7%a9%ba%e9%97%b4observations" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>Agent 接收的观测信息包括：</p>
+<table>
+	<thead>
+			<tr>
+					<th>观测项</th>
+					<th>描述</th>
+					<th>维度</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>command</code></td>
+					<td>目标速度指令</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td><code>base_lin_vel</code></td>
+					<td>机身线速度</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>base_ang_vel</code></td>
+					<td>机身角速度</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>projected_gravity</code></td>
+					<td>重力投影向量</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>joint_pos</code></td>
+					<td>舵机角度</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td><code>joint_vel</code></td>
+					<td>关节速度</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td><code>last_action</code></td>
+					<td>上一帧动作</td>
+					<td>8</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="335-奖励函数rewards">3.3.5 奖励函数（Rewards）<a href="#335-%e5%a5%96%e5%8a%b1%e5%87%bd%e6%95%b0rewards" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>奖励设计分为核心目标奖励和惩罚项：</p>
+<p><strong>核心奖励</strong>:</p>
+<ul>
+<li><code>track_linear_velocity</code>: 跟踪目标线速度</li>
+<li><code>track_angular_velocity</code>: 跟踪目标角速度</li>
+<li><code>alive</code>:生存奖励</li>
+</ul>
+<p><strong>惩罚项</strong>:</p>
+<ul>
+<li><code>action_rate_l2</code>: 惩罚动作变化率，防止电机抖动（权重 -0.01）</li>
+<li><code>action_l2</code>: 惩罚动作幅值，鼓励节能（权重 -0.005）</li>
+<li><code>joint_acc_l2</code>：惩罚关节加速度</li>
+</ul>
+<h4 id="336-事件系统events">3.3.6 事件系统（Events）<a href="#336-%e4%ba%8b%e4%bb%b6%e7%b3%bb%e7%bb%9fevents" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><strong>关节重置</strong>: 训练开始时重置机器人关节状态</li>
+<li><strong>水动力学</strong>: 添加水中的阻力与浮力</li>
+</ul>
+<h4 id="337-终止条件terminations">3.3.7 终止条件（Terminations）<a href="#337-%e7%bb%88%e6%ad%a2%e6%9d%a1%e4%bb%b6terminations" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><code>time_out</code>: 超过一定时间</li>
+<li><code>excessive_lin_vel</code>: AUV线速度过快终止</li>
+<li><code>excessive_lin_vel</code>：AUV角速度过快终止</li>
+</ul>
+<h4 id="338-课程学习curriculum">3.3.8 课程学习（Curriculum）<a href="#338-%e8%af%be%e7%a8%8b%e5%ad%a6%e4%b9%a0curriculum" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>为提升训练的收敛效果，本文设置了课程学习，并将AUV的训练划分为3个阶段：</p>
+<ul>
+<li>第一阶段，只训练速度或者角速度的其中一个维度</li>
+<li>第二阶段，训练速度和单一方向的角速度</li>
+<li>第三阶段，训练速度和任意s方向的角速度</li>
+</ul>
+<h2 id="4-正在开发的功能">4. 正在开发的功能<a href="#4-%e6%ad%a3%e5%9c%a8%e5%bc%80%e5%8f%91%e7%9a%84%e5%8a%9f%e8%83%bd" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><ul>
+<li><input disabled="" type="checkbox"> 自主路径导航</li>
+<li><input disabled="" type="checkbox"> 目标识别与抓取</li>
+<li><input disabled="" type="checkbox"> 扩展模块开发</li>
+</ul>
+<h2 id="5-项目复现">5. 项目复现<a href="#5-%e9%a1%b9%e7%9b%ae%e5%a4%8d%e7%8e%b0" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="51-环境要求">5.1 环境要求<a href="#51-%e7%8e%af%e5%a2%83%e8%a6%81%e6%b1%82" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li>Python 3.11</li>
+<li>CUDA 11.8+（GPU 训练）</li>
+<li>Mujoco 物理引擎</li>
+<li>mjlab最新版本</li>
+</ul>
+<h3 id="52-训练">5.2 训练<a href="#52-%e8%ae%ad%e7%bb%83" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-3"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        BASH
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-3"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-3">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uv run scripts/train.py Mjlab-Velocity-Flat-CQU-AUV --env.scene.num-envs<span class="o">=</span>并行数量 --agent.max-iterations<span class="o">=</span>回合数量</span></span></code></pre></div>
+    <div hidden data-code-source>uv run scripts/train.py Mjlab-Velocity-Flat-CQU-AUV --env.scene.num-envs=并行数量 --agent.max-iterations=回合数量</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="53-回放">5.3 回放<a href="#53-%e5%9b%9e%e6%94%be" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-4"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        BASH
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-4"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-4">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uv run scripts/play.py Mjlab-Velocity-Flat-CQU-AUV <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --checkpoint-file logs/rsl_rl/auv_velocity/时间戳/model_第几个回合.pt <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --num-envs <span class="m">1</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --viewer viser <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-terminations True</span></span></code></pre></div>
+    <div hidden data-code-source>uv run scripts/play.py Mjlab-Velocity-Flat-CQU-AUV \
+    --checkpoint-file logs/rsl_rl/auv_velocity/时间戳/model_第几个回合.pt \
+    --num-envs 1 \
+    --viewer viser \
+    --no-terminations True</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="54-tensorboard曲线">5.4 TensorBoard曲线<a href="#54-tensorboard%e6%9b%b2%e7%ba%bf" class="heading-anchor" aria-label="链接到此部分"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-5"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="展开"
+          data-label-collapse="折叠"
+          title="折叠"
+          aria-label="折叠"
+          aria-controls="code-5"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">折叠</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="复制"
+        data-label-copied="已复制"
+        title="复制"
+        aria-label="复制"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">复制</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-5">
+    <pre tabindex="0"><code>bash
+tensorboard --logdir logs/rsl_rl/auv_velocity --port 6006</code></pre>
+    <div hidden data-code-source>bash
+tensorboard --logdir logs/rsl_rl/auv_velocity --port 6006</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="展开"
+        title="展开"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+
+    </article>
+  </div>
+
+  
+  <div class="mt-12">
+    
+  </div>
+
+      </div>
+
+      <footer class="px-4 py-6">
+  
+  
+
+
+  
+  
+
+
+  
+  <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+    
+    <div class="text-muted-foreground text-center text-sm md:text-left">
+      <p class="mb-2">
+        &copy;
+        2026
+        Long Chen
+      </p>
+      <p class="flex flex-wrap items-center justify-center gap-1 md:justify-start">
+        <span>由</span>
+        <a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:text-primary/80 font-medium transition-colors duration-200 hover:underline"
+        >
+          Hugo
+        </a>
+        <span>&</span>
+        <a
+          href="https://github.com/tom2almighty/hugo-narrow"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:text-primary/80 font-medium transition-colors duration-200 hover:underline"
+        >
+          Narrow
+        </a>
+      </p>
+    </div>
+
+    
+    
+
+  </div>
+</footer>
+
+      
+
+
+
+
+
+<div
+  id="dock"
+  class="pointer-events-none fixed bottom-4 left-1/2 z-9999 w-fit -translate-x-1/2 translate-y-24 opacity-0 transition-all duration-300 ease-out sm:right-0 sm:left-0 sm:mx-auto sm:translate-x-0"
+  data-dock-mode="scroll"
+  role="toolbar"
+  aria-label="快捷操作工具栏"
+>
+  <nav
+    class="border-border bg-card/80 scrollbar-hide xs:px-3 xs:py-2 mx-auto flex max-w-[calc(100vw-2rem)] min-w-fit items-center justify-center overflow-x-auto rounded-2xl border px-4 py-3 shadow-lg backdrop-blur-sm sm:px-4 sm:py-3"
+  >
+    
+    
+      <button
+        id="dock-back"
+        class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-2 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-3 sm:py-2"
+        title="返回"
+        aria-label="返回"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-arrow-left"></use></svg></use
+>
+
+        <span class="hidden sm:inline">返回</span>
+      </button>
+
+      
+      <div class="bg-border xs:mx-1 mx-2 h-6 w-px sm:mx-2"></div>
+    
+
+
+    <button
+      id="dock-search"
+      class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-3 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-4 sm:py-2"
+      title="搜索"
+      aria-label="搜索"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+      <span class="hidden md:inline">搜索</span>
+    </button>
+
+    
+    <div class="bg-border xs:mx-1 mx-2 h-6 w-px sm:mx-2"></div>
+
+    
+    
+    
+
+
+    
+    <button
+      id="dock-top"
+      class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-2 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-3 sm:py-2"
+      title="返回顶部"
+      aria-label="返回顶部"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-arrow-up"></use></svg></use
+>
+
+      <span class="hidden sm:inline">顶部</span>
+    </button>
+  </nav>
+</div>
+
+
+
+
+      <aside
+    id="toc-container"
+    class="toc-side"
+    data-position="side"
+  >
+      <div id="toc-layer">
+        <div id="toc-anchor">
+          <div id="toc-side">
+            
+            <div
+              id="toc-rail"
+              class="scrollbar-hide"
+              role="button"
+              tabindex="0"
+              aria-controls="toc-panel"
+              aria-expanded="false"
+              aria-label="目录"
+            ></div>
+
+            
+            <div id="toc-trigger-wrap">
+              <button
+                id="toc-trigger"
+                class="bg-card/80 border-border text-muted-foreground hover:text-primary hover:bg-primary/10 ring-offset-background focus-visible:ring-ring flex cursor-pointer items-center gap-2 rounded-full border px-4 py-1.5 text-sm shadow-sm backdrop-blur-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                aria-controls="toc-panel"
+                aria-expanded="false"
+              >
+                <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-list"></use></svg></use
+>
+
+                <span id="toc-trigger-title" class="max-w-[200px] truncate">目录</span>
+                <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+              </button>
+            </div>
+
+            
+            <div id="toc-panel" class="flex flex-col overflow-hidden">
+              <div
+                class="text-foreground mb-3 flex shrink-0 items-center justify-between gap-2 text-sm font-bold"
+              >
+                <span class="truncate">目录</span>
+                <div class="flex shrink-0 items-center gap-1">
+                  <button
+                    id="toc-pin"
+                    class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus-visible:ring-ring cursor-pointer items-center rounded p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                    aria-pressed="false"
+                    aria-label="固定目录"
+                    title="固定目录"
+                    data-label-pin="固定目录"
+                    data-label-unpin="取消固定目录"
+                  >
+                    <span id="toc-pin-on">
+                      <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-pin"></use></svg></use
+>
+
+                    </span>
+                    <span id="toc-pin-off">
+                      <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-pin-off"></use></svg></use
+>
+
+                    </span>
+                  </button>
+                  <button
+                    id="toc-close"
+                    class="text-muted-foreground hover:text-foreground focus-visible:ring-ring cursor-pointer items-center rounded p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                    aria-label="关闭目录"
+                    title="关闭目录"
+                  >
+                    <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+                  </button>
+                </div>
+              </div>
+              <div
+                id="toc-side-content"
+                class="scrollbar-hide [&_a]:text-muted-foreground [&_a:hover]:bg-primary/10 [&_a:hover]:text-primary [&_a.active]:bg-primary/10 [&_a.active]:text-primary relative min-h-0 flex-1 overflow-y-auto text-sm [&_a]:block [&_a]:rounded-md [&_a]:px-2 [&_a]:py-1 [&_a]:wrap-break-word [&_a]:whitespace-normal [&_a]:transition-colors [&_a.active]:font-medium [&_li]:my-1.5 [&_nav>ul]:pl-0 [&_ul]:list-none [&_ul]:pl-4"
+              >
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-项目概述">1. 项目概述</a>
+      <ul>
+        <li><a href="#11-设计目标">1.1 设计目标</a></li>
+        <li><a href="#12-技术支持">1.2 技术支持</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-结构设计">2. 结构设计</a>
+      <ul>
+        <li><a href="#21-推进器分布方案">2.1 推进器分布方案</a></li>
+        <li><a href="#22-机械结构">2.2 机械结构</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-控制方案">3. 控制方案</a>
+      <ul>
+        <li><a href="#31-基于pid的控制方案">3.1 基于PID的控制方案</a></li>
+        <li><a href="#32-基于drl的控制策略">3.2 基于DRL的控制策略</a>
+          <ul>
+            <li><a href="#331-场景配置scene">3.3.1 场景配置（Scene）</a></li>
+            <li><a href="#332-动作空间actions">3.3.2 动作空间（Actions）</a></li>
+            <li><a href="#333-指令空间commands">3.3.3 指令空间（Commands）</a></li>
+            <li><a href="#334-观测空间observations">3.3.4 观测空间（Observations）</a></li>
+            <li><a href="#335-奖励函数rewards">3.3.5 奖励函数（Rewards）</a></li>
+            <li><a href="#336-事件系统events">3.3.6 事件系统（Events）</a></li>
+            <li><a href="#337-终止条件terminations">3.3.7 终止条件（Terminations）</a></li>
+            <li><a href="#338-课程学习curriculum">3.3.8 课程学习（Curriculum）</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-正在开发的功能">4. 正在开发的功能</a></li>
+    <li><a href="#5-项目复现">5. 项目复现</a>
+      <ul>
+        <li><a href="#51-环境要求">5.1 环境要求</a></li>
+        <li><a href="#52-训练">5.2 训练</a></li>
+        <li><a href="#53-回放">5.3 回放</a></li>
+        <li><a href="#54-tensorboard曲线">5.4 TensorBoard曲线</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></aside>
+      
+<dialog
+  id="search-modal"
+  class="bg-card text-foreground border-border m-auto max-h-[80vh] w-11/12 max-w-2xl overflow-hidden rounded-xl border p-0 shadow-xl"
+  aria-labelledby="search-title"
+  tabindex="-1"
+>
+  
+  <div class="border-border flex items-center gap-3 border-b p-4">
+    
+    <div class="text-muted-foreground h-5 w-5 shrink-0">
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+    </div>
+    <h2 id="search-title" class="sr-only">搜索</h2>
+
+    
+    <div class="relative flex-1">
+      
+      <button
+        id="search-clear"
+        type="button"
+        class="text-muted-foreground hover:text-foreground hover:bg-muted/50 pointer-events-none absolute top-1/2 left-0 z-10 h-5 w-5 -translate-y-1/2 rounded opacity-0 transition-all duration-200"
+        title="清空"
+        aria-label="清空"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+      </button>
+
+      
+      <input
+        id="search-input"
+        type="text"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-controls="search-items"
+        aria-expanded="false"
+        aria-labelledby="search-title"
+        placeholder="搜索文章..."
+        class="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent pl-8 text-lg outline-none"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        autofocus
+      />
+    </div>
+
+    
+    <button
+      id="search-close"
+      class="text-muted-foreground hover:text-foreground hover:bg-muted/50 flex h-6 w-6 items-center justify-center rounded-md p-0.5 transition-all duration-200"
+      title="关闭"
+      aria-label="关闭"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+    </button>
+  </div>
+
+  
+  <div id="search-results" class="max-h-96 overflow-y-auto">
+    
+    <div id="search-empty" class="flex flex-col items-center justify-center py-12 text-center">
+      <div class="bg-muted/50 mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+        <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+      </div>
+      <h3 class="text-foreground mb-2 text-lg font-semibold">
+        开始搜索
+      </h3>
+    </div>
+
+    
+    <div id="search-loading" class="flex items-center justify-center py-8" hidden>
+      <div
+        class="mr-3 h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent"
+      ></div>
+      <span class="text-muted-foreground">搜索中...</span>
+    </div>
+
+    
+    <div
+      id="search-no-results"
+      class="flex flex-col items-center justify-center py-12 text-center"
+      hidden
+    >
+      <div class="bg-muted/50 mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+        <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-text"></use></svg></use
+>
+
+      </div>
+      <h3 class="text-foreground mb-2 text-lg font-semibold">
+        未找到结果
+      </h3>
+    </div>
+
+    
+    <div id="search-results-list" hidden>
+      
+      <div
+        id="search-stats"
+        class="text-muted-foreground border-border border-b px-4 py-3 text-sm"
+        data-count-other="找到 %d 个结果"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+      
+      <ul id="search-items" class="divide-border divide-y" role="listbox">
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="border-border bg-muted/20 border-t px-4 py-3"><div class="text-muted-foreground flex items-center justify-between text-xs">
+      <div class="flex items-center gap-2 md:gap-4">
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↑↓</kbd>
+          <span class="hidden sm:inline">导航</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↵</kbd>
+          <span class="hidden sm:inline">选择</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">ESC</kbd>
+          <span class="hidden sm:inline">关闭</span>
+        </div>
+      </div>
+      <div class="search-hint-desktop flex items-center gap-1">
+        <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">⌘K</kbd>
+        <span>快捷键</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+      
+
+
+      
+
+
+    </main>
+  </body>
+</html>

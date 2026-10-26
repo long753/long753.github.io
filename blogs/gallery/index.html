@@ -1,0 +1,1191 @@
+<!doctype html>
+<html
+	lang="en"
+	dir="ltr"
+	data-theme="minimal"
+	data-toc-pinned="false"
+>
+	<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+		<meta charset="utf-8" />
+<meta
+	name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
+/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>Image Gallery |
+		Long Chen</title>
+
+<meta
+	name="description"
+	content="Image Gallery includes justified layout gallery with markdown and masonry gallery with shortcodes."
+/>
+<meta
+	name="keywords"
+	content="gallery"
+/><meta name="author" content="Long Chen" />
+<meta name="language" content="en" />
+
+<meta
+	name="robots"
+	content="index, follow"
+/>
+<link rel="canonical" href="http://localhost:1313/blogs/gallery/" />
+
+
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="theme-color" content="#09090b" media="(prefers-color-scheme: light)" />
+<meta
+	name="theme-color"
+	content="#09090b"
+	media="(prefers-color-scheme: dark)"
+/><link rel="manifest" href="/site.webmanifest" />
+<meta property="og:url" content="http://localhost:1313/blogs/gallery/">
+	<meta property="og:site_name" content="Long Chen">
+	<meta property="og:title" content="Image Gallery">
+	<meta property="og:description" content="Image Gallery includes justified layout gallery with markdown and masonry gallery with shortcodes.">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="blogs">
+		<meta property="article:published_time" content="2024-01-16T22:30:00+08:00">
+		<meta property="article:modified_time" content="2024-01-16T22:30:00+08:00">
+		<meta property="article:tag" content="Gallery">
+		<meta property="og:image" content="http://localhost:1313/images/og-default.avif">
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/images/og-default.avif">
+	<meta name="twitter:title" content="Image Gallery">
+	<meta name="twitter:description" content="Image Gallery includes justified layout gallery with markdown and masonry gallery with shortcodes.">
+
+
+	<meta itemprop="name" content="Image Gallery">
+	<meta itemprop="description" content="Image Gallery includes justified layout gallery with markdown and masonry gallery with shortcodes.">
+	<meta itemprop="datePublished" content="2024-01-16T22:30:00+08:00">
+	<meta itemprop="dateModified" content="2024-01-16T22:30:00+08:00">
+	<meta itemprop="wordCount" content="62">
+	<meta itemprop="image" content="http://localhost:1313/images/og-default.avif">
+	<meta itemprop="keywords" content="Gallery">
+
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blogs/gallery/" /><link rel="alternate" hreflang="zh-Hans" href="http://localhost:1313/zh-hans/blogs/gallery/" />
+
+
+
+
+	<script id="search-config" type="application/json">"{\"enabled\":true,\"indexContentLength\":2000,\"searchIndexURL\":\"/index.json\"}"</script>
+
+
+
+	<script id="gallery-config" type="application/json">"{\"gallery\":true,\"galleryOptions\":{\"columnWidth\":200,\"columns\":4,\"defaultLayout\":\"justified\",\"gap\":10,\"lastRowBehavior\":\"center\",\"targetRowHeight\":200},\"lightbox\":true}"</script>
+
+
+
+
+	
+		<link rel="stylesheet" href="/css/compiled.css" />
+	
+
+
+
+	<link rel="stylesheet" href="/css/chroma.css" />
+
+
+
+
+	
+		<link rel="stylesheet" href="/css/custom/publications.css" />
+	
+
+	
+		<link rel="stylesheet" href="/css/custom/terminal.css" />
+	
+
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="/js/search.js" defer></script><script src="/js/toc.js" defer></script>
+
+	<script src="/js/gallery.js" defer></script>
+
+
+
+	<script src="/js/custom//js/custom/terminal.js" defer></script>
+
+
+
+
+
+<script>(() => {
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/core.js
+  var STORAGE_KEYS = {
+    theme: "theme",
+    colorScheme: "colorScheme",
+    contentWidth: "contentWidth",
+    backdropBlur: "backdropBlur",
+    grainSize: "grainSize",
+    tocPinned: "tocPinned"
+  };
+  function readStorage(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/appearance.js
+  var MODES = ["light", "dark", "system"];
+  function applyThemeMode(root, mode) {
+    const theme = MODES.includes(mode) ? mode : "system";
+    const isDark = theme === "dark" || theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", isDark);
+    return theme;
+  }
+
+  // ns-hugo-imp:/home/long753/projects/personal/my-site/themes/hugo-narrow/assets/js/viewport.js
+  function surfaceAlphaFor(blur, max = 24) {
+    return blur > 0 ? Math.max(68, 92 - Math.round(blur / max * 20)) : 100;
+  }
+  function grainTokensFor(value, max = 100) {
+    return {
+      size: Math.round(64 + value * 2.5),
+      opacity: value > 0 ? (0.04 + value / max * 0.2).toFixed(3) : "0"
+    };
+  }
+
+  // <stdin>
+  (function() {
+    const root = document.documentElement;
+    const colorSchemes = { "abyss": { "name": "Abyss", "order": 7 }, "amethyst": { "name": "Amethyst", "order": 9 }, "bumblebee": { "name": "Bumblebee", "order": 3 }, "claude": { "name": "Claude", "order": 2 }, "default": { "name": "Default", "order": 1 }, "dracula": { "name": "Dracula", "order": 8 }, "emerald": { "name": "Emerald", "order": 4 }, "minimal": { "name": "Minimal", "order": 12 }, "nord": { "name": "Nord", "order": 5 }, "slate": { "name": "Slate", "order": 10 }, "sunset": { "name": "Sunset", "order": 6 }, "x": { "name": "X", "order": 11 } };
+    const configuredScheme = "minimal";
+    const storedScheme = readStorage(STORAGE_KEYS.colorScheme);
+    const colorScheme = Object.prototype.hasOwnProperty.call(colorSchemes || {}, storedScheme) ? storedScheme : configuredScheme;
+    root.setAttribute("data-theme", colorScheme);
+    const contentWidth = Number.parseInt(readStorage(STORAGE_KEYS.contentWidth), 10);
+    if (Number.isInteger(contentWidth) && contentWidth >= 40 && contentWidth <= 90) {
+      root.style.setProperty("--content-width", `${contentWidth}rem`);
+    }
+    const configuredBlur = Number.parseInt("12", 10);
+    const defaultBlur = Number.isInteger(configuredBlur) && configuredBlur >= 0 && configuredBlur <= 24 ? configuredBlur : 12;
+    const storedBlur = Number.parseInt(readStorage(STORAGE_KEYS.backdropBlur), 10);
+    const blur = Number.isInteger(storedBlur) && storedBlur >= 0 && storedBlur <= 24 ? storedBlur : defaultBlur;
+    root.style.setProperty("--backdrop-blur", `${blur}px`);
+    root.style.setProperty("--surface-alpha", `${surfaceAlphaFor(blur)}%`);
+    const configuredGrain = Number.parseInt("0", 10);
+    const defaultGrain = Number.isInteger(configuredGrain) && configuredGrain >= 0 && configuredGrain <= 100 ? configuredGrain : 0;
+    const storedGrain = Number.parseInt(readStorage(STORAGE_KEYS.grainSize), 10);
+    const grain = Number.isInteger(storedGrain) && storedGrain >= 0 && storedGrain <= 100 ? storedGrain : defaultGrain;
+    const grainTokens = grainTokensFor(grain);
+    root.style.setProperty("--grain-size", `${grainTokens.size}px`);
+    root.style.setProperty("--grain-opacity", grainTokens.opacity);
+    const storedPin = readStorage(STORAGE_KEYS.tocPinned);
+    if (storedPin === "true" || storedPin === "false") {
+      root.setAttribute("data-toc-pinned", storedPin);
+    }
+    const currentTheme = () => {
+      const stored = readStorage(STORAGE_KEYS.theme);
+      return ["light", "dark", "system"].includes(stored) ? stored : "system";
+    };
+    applyThemeMode(root, currentTheme());
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => applyThemeMode(root, currentTheme()));
+  })();
+})();
+</script>
+	</head><body class="min-h-screen">
+		<div id="bg-grain" aria-hidden="true"></div>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<div id="reading-progress" aria-hidden="true"><span></span></div>
+
+
+		<div id="page-container" style="--content-width-base: 70rem; --backdrop-blur-base: 12px; --grain-size-base: 0;">
+			<header
+		id="context-bar"
+		data-collapsed="false"
+		data-visible="true"
+		data-collapsible="true"
+	>
+		<div class="context-top">
+			<nav aria-label="Breadcrumb" class="context-crumbs">
+				<ol class="crumb-trail"><li class="crumb-node"><a
+									href="/"
+									class="crumb"
+									title="Home"
+									aria-label="Home"
+								><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-home"></use></svg>
+										<span class="hidden max-w-32 truncate sm:inline">Home</span></a></li><li class="crumb-sep" aria-hidden="true"><svg class="h-4 w-4 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-right"></use></svg></li><li class="crumb-node"><a
+									href="/blogs/"
+									class="crumb"
+									title="Blogs"
+									
+								><span class="max-w-40 truncate sm:max-w-56">Blogs</span></a></li><li class="crumb-sep" aria-hidden="true"><svg class="h-4 w-4 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-right"></use></svg></li><li class="crumb-node"><span class="crumb crumb-current" aria-current="page" title="Image Gallery">
+									<span class="max-w-56 truncate sm:max-w-96">Image Gallery</span>
+								</span></li></ol>
+			</nav>
+				<button
+					id="context-pill"
+					type="button"
+					class="context-pill"
+					aria-label="Breadcrumb: Image Gallery"
+					title="Image Gallery"
+				>
+					<span class="context-pill-title truncate">Image Gallery</span></button>
+		</div></header><main id="main-content" tabindex="-1" class="page-main">
+				<div class="page-content">
+					<div class="border-border mb-8 overflow-hidden rounded-lg border">
+			<picture>
+				<img
+					src="/blogs/gallery/bundle.avif"
+					srcset="/blogs/gallery/bundle_hu_d34669de27eb6160.avif 560w, /blogs/gallery/bundle_hu_fe1a1b6b713cac46.avif 840w, /blogs/gallery/bundle_hu_c44f558eadba7d91.avif 1120w, /blogs/gallery/bundle.avif 1600w"
+					sizes="(min-width: 70rem) 70rem, 100vw"
+					alt="Image Gallery"
+					width="1600" height="1060"
+					class="aspect-video max-h-96 w-full object-cover"
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+				/>
+			</picture>
+		</div><header class="mb-8">
+	<div class="post-meta mb-8"><h1 class="text-foreground text-2xl leading-tight font-semibold tracking-tight md:text-3xl">
+			Image Gallery
+		</h1><p class="text-muted-foreground mt-3 text-base leading-relaxed">
+			Image Gallery includes justified layout gallery with markdown and masonry gallery with shortcodes.
+		</p><div class="text-muted-foreground mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs"><time datetime="2024-01-16">
+				January 16, 2024
+			</time><span>1 min</span><span>62 words</span><span class="inline-flex items-center gap-1">
+				<span class="text-primary shrink-0">
+					<svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-license"></use></svg>
+				</span>
+				<span>CC BY-NC-SA 4.0</span>
+			</span></div><div class="mt-4 flex flex-wrap items-center gap-1.5"><a
+					href="/tags/gallery/"
+					class="border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground inline-flex h-5 items-center rounded-md border px-1.5 text-xs transition-colors"
+				>
+					Gallery
+				</a></div></div>
+
+</header>
+
+<article class="prose max-w-none">
+	<h1 id="image-rendering-test">Image Rendering Test<a href="#image-rendering-test" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-link"></use></svg></a></h1><p>The Demo comes from <a
+		href="https://www.lightgalleryjs.com/demos/thumbnails/"target="_blank"
+		rel="noopener noreferrer"
+		class="inline-flex items-center gap-1"
+	>LightGallery<svg class="text-muted-foreground h-3 w-3 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-external-link"></use></svg>
+	</a>
+All images are from <a
+		href="https://unsplash.com/"target="_blank"
+		rel="noopener noreferrer"
+		class="inline-flex items-center gap-1"
+	>Unsplash<svg class="text-muted-foreground h-3 w-3 flex-shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-external-link"></use></svg>
+	</a></p>
+<h2 id="single-image">Single Image<a href="#single-image" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-link"></use></svg></a></h2><p>
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1060"
+	data-image-src="/blogs/gallery/bundle.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/blogs/gallery/bundle.avif"
+				alt="https://unsplash.com/@danielleone)"
+				srcset="/blogs/gallery/bundle_hu_d34669de27eb6160.avif 560w, /blogs/gallery/bundle_hu_fe1a1b6b713cac46.avif 840w, /blogs/gallery/bundle_hu_c44f558eadba7d91.avif 1120w, /blogs/gallery/bundle.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Daniel Leone"
+				width="1600" height="1060"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/blogs/gallery/bundle.avif"
+				data-gallery-alt="https://unsplash.com/@danielleone)"
+				data-gallery-title="Photo by - Daniel Leone"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Daniel Leone
+		</figcaption></figure>
+</p>
+<h2 id="justified-gallery">Justified Gallery<a href="#justified-gallery" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-link"></use></svg></a></h2><p>
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1067"
+	data-image-src="/images/01.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/01.avif"
+				alt="https://unsplash.com/@@tobbes_rd"
+				srcset="/images/01_hu_3efdb30d6d0814bb.avif 560w, /images/01_hu_7afdd1d6442383b2.avif 840w, /images/01_hu_9ff46863daefc9f4.avif 1120w, /images/01.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Tobias Rademacher"
+				width="1600" height="1067"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/01.avif"
+				data-gallery-alt="https://unsplash.com/@@tobbes_rd"
+				data-gallery-title="Photo by - Tobias Rademacher"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Tobias Rademacher
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="2400"
+	data-image-src="/images/02.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/02.avif"
+				alt="https://unsplash.com/@therawhunter"
+				srcset="/images/02_hu_6709bcd1379c0a8e.avif 560w, /images/02_hu_8337185a9b5a5da7.avif 840w, /images/02_hu_e9f98e5d089f484a.avif 1120w, /images/02.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Massimiliano Morosinotto"
+				width="1600" height="2400"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/02.avif"
+				data-gallery-alt="https://unsplash.com/@therawhunter"
+				data-gallery-title="Photo by - Massimiliano Morosinotto"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Massimiliano Morosinotto
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="2400"
+	data-image-src="/images/03.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/03.avif"
+				alt="https://unsplash.com/@thesaboo"
+				srcset="/images/03_hu_81c1294eddb11326.avif 560w, /images/03_hu_20dde700598e44e3.avif 840w, /images/03_hu_b9eb34511e938b73.avif 1120w, /images/03.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Sascha Bosshard"
+				width="1600" height="2400"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/03.avif"
+				data-gallery-alt="https://unsplash.com/@thesaboo"
+				data-gallery-title="Photo by - Sascha Bosshard"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Sascha Bosshard
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="2398"
+	data-image-src="/images/04.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/04.avif"
+				alt="https://unsplash.com/@yusufevli"
+				srcset="/images/04_hu_d46a2af8837e3bcd.avif 560w, /images/04_hu_798b1b93bd2f79a8.avif 840w, /images/04_hu_d2b4c34766d1f98d.avif 1120w, /images/04.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Yusuf Evli"
+				width="1600" height="2398"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/04.avif"
+				data-gallery-alt="https://unsplash.com/@yusufevli"
+				data-gallery-title="Photo by - Yusuf Evli"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Yusuf Evli
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1067"
+	data-image-src="/images/05.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/05.avif"
+				alt="https://unsplash.com/@flovayn"
+				srcset="/images/05_hu_b673adc80da15a81.avif 560w, /images/05_hu_b2c7f09f67c17560.avif 840w, /images/05_hu_8b8e6283f8b761d8.avif 1120w, /images/05.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Jay Mantri"
+				width="1600" height="1067"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/05.avif"
+				data-gallery-alt="https://unsplash.com/@flovayn"
+				data-gallery-title="Photo by - Jay Mantri"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Jay Mantri
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1067"
+	data-image-src="/images/06.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/06.avif"
+				alt="https://unsplash.com/@flovayn"
+				srcset="/images/06_hu_96682df362b7eb58.avif 560w, /images/06_hu_8601e9051cec48bc.avif 840w, /images/06_hu_a1b63a58815d712a.avif 1120w, /images/06.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by -  Florian van Duyn"
+				width="1600" height="1067"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/06.avif"
+				data-gallery-alt="https://unsplash.com/@flovayn"
+				data-gallery-title="Photo by -  Florian van Duyn"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by -  Florian van Duyn
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1126"
+	data-image-src="/images/07.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/07.avif"
+				alt="https://unsplash.com/@juanster"
+				srcset="/images/07_hu_947cd934e7a67bd6.avif 560w, /images/07_hu_913e311ae428a9b.avif 840w, /images/07_hu_537581294e192f66.avif 1120w, /images/07.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - Juan Davila"
+				width="1600" height="1126"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/07.avif"
+				data-gallery-alt="https://unsplash.com/@juanster"
+				data-gallery-title="Photo by - Juan Davila"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - Juan Davila
+		</figcaption></figure>
+
+
+<figure
+	class="image-figure not-prose my-8"
+	data-lightbox-enabled="true"
+	data-gallery-type="auto"
+	data-image-width="1600"
+	data-image-height="1063"
+	data-image-src="/images/08.avif"
+>
+	<div class="image-container">
+		<picture>
+			<img
+				src="/images/08.avif"
+				alt="https://unsplash.com/@davidmarcu"
+				srcset="/images/08_hu_697a2165157019d6.avif 560w, /images/08_hu_23eb60c66b85bcec.avif 840w, /images/08_hu_a7655cd52283c78e.avif 1120w, /images/08.avif 1600w"
+				sizes="(min-width: 70rem) 70rem, 100vw"
+				title="Photo by - David Marcu"
+				width="1600" height="1063"
+				loading="lazy"
+				decoding="async"
+				data-gallery-src="/images/08.avif"
+				data-gallery-alt="https://unsplash.com/@davidmarcu"
+				data-gallery-title="Photo by - David Marcu"
+			/>
+		</picture>
+	</div>
+
+	<figcaption class="image-caption">
+			Photo by - David Marcu
+		</figcaption></figure>
+</p>
+
+</article>
+
+<nav
+		class="border-border mt-10 grid grid-cols-1 gap-3 border-t pt-6 sm:grid-cols-2"
+		aria-label="Previous / Next"
+	><a
+				href="/blogs/linuxproblem/"
+				class="border-border bg-card hover:bg-accent/30 hover:border-primary/30 flex flex-col items-end gap-1 rounded-lg border p-4 text-right transition-colors"
+			>
+				<span class="text-muted-foreground flex items-center gap-1 text-xs">
+					Next
+					<svg class="h-3 w-3 icon-directional" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-right"></use></svg>
+				</span>
+				<span class="text-foreground text-sm font-medium">Common Linux Configuration Issues</span>
+			</a></nav>
+
+
+
+				</div>
+			</main>
+
+			<footer class="site-footer border-border mt-10 border-t py-6">
+	<div
+		class="text-muted-foreground flex flex-col gap-1 text-xs sm:flex-row sm:items-center sm:justify-between"
+	>
+		<p>&copy; 2026 Long Chen</p>
+		<p>
+			Powered by
+			<a
+				href="https://gohugo.io/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:text-foreground transition-colors"
+			>
+				Hugo
+			</a>
+			&amp;
+			<a
+				href="https://github.com/tom2almighty/hugo-narrow"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="hover:text-foreground transition-colors"
+			>
+				Narrow
+			</a>
+		</p>
+	</div>
+</footer>
+
+		</div>
+
+		<div
+	id="nav-menu-popover"
+	popover
+	class="nav-popover text-popover-foreground border-border shadow-popover rounded-lg border p-2"
+	aria-label="Menu"
+>
+	<div class="max-h-[75dvh] overflow-y-auto" data-nav-menu>
+		<nav class="space-y-3" aria-label="Menu"><fieldset>
+			<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+				Menu
+			</legend>
+			<div class="grid grid-cols-2 gap-1"><a
+						href="/about/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-about"></use></svg><span class="truncate">About</span>
+					</a><a
+						href="/papers/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-file-text"></use></svg><span class="truncate">Publications</span>
+					</a><a
+						href="/projects/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					text-muted-foreground hover:bg-muted hover:text-foreground
+"
+						
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-projects"></use></svg><span class="truncate">Projects</span>
+					</a><a
+						href="/blogs/"
+						class="nav-panel-link flex h-8 items-center gap-2 rounded-md px-2.5 text-sm transition-colors 
+					bg-accent text-accent-foreground font-medium
+"
+						aria-current="page"
+					><svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-posts"></use></svg><span class="truncate">Blogs</span>
+					</a></div>
+		</fieldset></nav>
+
+	</div>
+</div>
+
+		<div
+	id="dock"
+	role="toolbar"
+	aria-label="Quick actions toolbar"
+	aria-orientation="horizontal"
+	data-placement="bottom"
+>
+	<div class="dock-shell">
+		<a
+			id="dock-home"
+			href="/"
+			class="dock-item"
+			title="Back to home"
+			aria-label="Back to home"
+			
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-home"></use></svg>
+		</a>
+
+		<button
+			id="dock-menu"
+			type="button"
+			class="dock-item"
+			aria-label="Menu"
+			title="Menu"
+			aria-controls="nav-menu-popover"
+			aria-expanded="false"
+			popovertarget="nav-menu-popover"
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-menu"></use></svg>
+		</button>
+			<button
+				id="dock-search"
+				type="button"
+				class="dock-item"
+				title="Search"
+				aria-label="Search"
+			>
+				<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-search"></use></svg>
+			</button>
+			<span class="dock-divider" aria-hidden="true"></span>
+			<button
+				id="dock-toc"
+				type="button"
+				class="dock-item"
+				title="Table of contents"
+				aria-label="Table of contents"
+				aria-controls="toc-panel"
+				aria-expanded="false"
+			>
+				<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-toc"></use></svg>
+			</button><span class="dock-divider" aria-hidden="true"></span>
+
+		<button
+		id="appearance-toggle"
+		type="button"
+		popovertarget="appearance-panel"
+		aria-controls="appearance-panel"
+		aria-expanded="false"
+		aria-label="Appearance settings"
+		title="Appearance settings"
+		class="dock-item"
+	>
+		<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-palette"></use></svg>
+	</button>
+
+	<div
+		id="appearance-panel"
+		popover
+		class="dock-popover text-popover-foreground border-border shadow-popover w-80 space-y-3 rounded-lg border p-2"
+	><fieldset>
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					Color scheme
+				</legend>
+				<div class="grid grid-cols-2 gap-0.5"><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="default" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Default
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="claude" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Claude
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="bumblebee" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Bumblebee
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="emerald" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Emerald
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="nord" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Nord
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="sunset" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Sunset
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="abyss" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Abyss
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="dracula" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Dracula
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="amethyst" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Amethyst
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="slate" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Slate
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="x" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								X
+							</span>
+						</label><label class="block min-w-0">
+							<input type="radio" name="color-scheme" value="minimal" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:bg-muted hover:text-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-ring/50 flex h-8 w-full cursor-pointer items-center truncate rounded-md px-2 text-sm transition-colors peer-checked:font-medium peer-focus-visible:ring-2"
+							>
+								Minimal
+							</span>
+						</label></div>
+			</fieldset><fieldset class="border-border border-t pt-3">
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					Theme mode
+				</legend>
+				<div class="bg-muted grid grid-cols-3 gap-0.5 rounded-md p-0.5"><label class="block">
+							<input type="radio" name="theme-mode" value="light" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								Light
+							</span>
+						</label><label class="block">
+							<input type="radio" name="theme-mode" value="dark" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								Dark
+							</span>
+						</label><label class="block">
+							<input type="radio" name="theme-mode" value="system" class="peer sr-only" />
+							<span
+								class="text-muted-foreground hover:text-foreground peer-checked:bg-background peer-checked:text-foreground peer-focus-visible:ring-ring/50 flex h-7 w-full cursor-pointer items-center justify-center rounded-sm px-2 text-xs font-medium transition-colors peer-focus-visible:ring-2"
+							>
+								System
+							</span>
+						</label></div>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						Page width
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="content-width-value"
+							for="content-width-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="content-width-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							Restore default
+						</button>
+					</div>
+				</div>
+				<input
+					id="content-width-range"
+					class="w-full"
+					type="range"
+					min="40"
+					max="90"
+					step="1"
+					aria-label="Page width"
+				/>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						Backdrop blur
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="backdrop-blur-value"
+							for="backdrop-blur-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="backdrop-blur-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							Restore default
+						</button>
+					</div>
+				</div>
+				<input
+					id="backdrop-blur-range"
+					class="w-full"
+					type="range"
+					min="0"
+					max="24"
+					step="1"
+					aria-label="Backdrop blur"
+				/>
+			</fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+				<div class="flex items-center justify-between px-1">
+					<legend class="text-muted-foreground text-xs font-medium">
+						Grain size
+					</legend>
+					<div class="flex items-center gap-2">
+						<output
+							id="grain-size-value"
+							for="grain-size-range"
+							class="text-muted-foreground font-mono text-xs tabular-nums"
+						></output>
+						<button
+							id="grain-size-reset"
+							type="button"
+							class="text-muted-foreground hover:text-foreground text-xs transition-colors"
+						>
+							Restore default
+						</button>
+					</div>
+				</div>
+				<input
+					id="grain-size-range"
+					class="w-full"
+					type="range"
+					min="0"
+					max="100"
+					step="5"
+					aria-label="Grain size"
+				/>
+			</fieldset><fieldset class="border-border border-t pt-3">
+				<legend class="text-muted-foreground mb-1.5 px-1 text-xs font-medium">
+					Language
+				</legend>
+				<button
+	id="language-toggle"
+	type="button"
+	popovertarget="language-panel"
+	aria-controls="language-panel"
+	aria-expanded="false"
+	class="border-border bg-background text-foreground hover:bg-muted flex h-8 w-full items-center justify-between gap-2 rounded-md border px-2 text-sm transition-colors"
+>
+	<span class="flex min-w-0 items-center gap-1.5">
+		<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-language"></use></svg>
+		<span class="truncate">English</span>
+	</span>
+	<svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-chevron-down"></use></svg>
+</button>
+
+<div
+	id="language-panel"
+	popover
+	class="dock-popover text-popover-foreground border-border shadow-popover rounded-lg border p-1"
+	aria-label="Language"
+>
+	<div class="grid grid-cols-1 gap-0.5"><a
+				href="/blogs/gallery/"
+				hreflang="en"
+				lang="en"
+				class="
+				bg-accent text-accent-foreground font-medium
+ flex h-8 items-center truncate rounded-md px-2 text-sm transition-colors"
+				aria-current="true"
+			>
+				English
+			</a><a
+				href="/zh-hans/blogs/gallery/"
+				hreflang="zh-hans"
+				lang="zh-hans"
+				class="
+				text-muted-foreground hover:bg-muted hover:text-foreground
+ flex h-8 items-center truncate rounded-md px-2 text-sm transition-colors"
+				
+			>
+				简体中文
+			</a></div>
+</div>
+
+			</fieldset></div>
+
+
+		<button
+			id="dock-top"
+			type="button"
+			class="dock-item"
+			title="Back to top"
+			aria-label="Back to top"
+			hidden
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-arrow-up"></use></svg>
+		</button>
+	</div>
+</div>
+
+		<aside
+		id="toc-panel"
+		class="toc-panel"
+		data-open="false"
+		aria-label="Table of contents"
+		aria-hidden="true"
+		inert
+	>
+		<div class="toc-panel-header">
+			<h2 class="text-muted-foreground truncate text-xs font-medium">Table of contents</h2>
+			<div class="flex shrink-0 items-center gap-0.5">
+				<button
+					id="toc-pin"
+					type="button"
+					class="dock-item"
+					aria-pressed="false"
+					aria-label="Pin table of contents"
+					title="Pin table of contents"
+					data-label-pin="Pin table of contents"
+					data-label-unpin="Unpin table of contents"
+				>
+					<span id="toc-pin-on">
+						<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-pin"></use></svg>
+					</span>
+					<span id="toc-pin-off">
+						<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-pin-off"></use></svg>
+					</span>
+				</button>
+				<button
+					id="toc-close"
+					type="button"
+					class="dock-item"
+					aria-label="Close table of contents"
+					title="Close table of contents"
+				>
+					<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-close"></use></svg>
+				</button>
+			</div>
+		</div>
+
+		<div id="toc-content" class="toc-panel-content scrollbar-hide">
+			<nav id="TableOfContents">
+  <ul>
+    <li><a href="#single-image">Single Image</a></li>
+    <li><a href="#justified-gallery">Justified Gallery</a></li>
+  </ul>
+</nav>
+		</div>
+	</aside>
+		
+			
+<dialog
+	id="search-modal"
+	class="text-popover-foreground border-border shadow-popover m-auto max-h-[80dvh] w-11/12 max-w-xl overflow-hidden rounded-lg border p-0"
+	aria-labelledby="search-title"
+	tabindex="-1"
+>
+	
+	<div class="border-border flex items-center gap-3 border-b p-3">
+		
+		<div class="text-muted-foreground h-5 w-5 shrink-0">
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-search"></use></svg>
+		</div>
+		<h2 id="search-title" class="sr-only">Search</h2>
+
+		
+		<div class="relative flex-1">
+			
+			<button
+				id="search-clear"
+				type="button"
+				class="text-muted-foreground hover:text-foreground hover:bg-muted/50 pointer-events-none absolute top-1/2 left-0 z-10 h-5 w-5 -translate-y-1/2 rounded opacity-0 transition-all duration-200"
+				title="Clear"
+				aria-label="Clear"
+			>
+				<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-close"></use></svg>
+			</button>
+
+			
+			<input
+				id="search-input"
+				type="text"
+				role="combobox"
+				aria-autocomplete="list"
+				aria-controls="search-items"
+				aria-expanded="false"
+				aria-labelledby="search-title"
+				placeholder="Search posts..."
+				class="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent pl-8 text-base outline-none"
+				autocomplete="off"
+				autocapitalize="off"
+				spellcheck="false"
+				autofocus
+			/>
+		</div>
+
+		
+		<button
+			id="search-close"
+			type="button"
+			class="text-muted-foreground hover:bg-muted hover:text-foreground inline-flex size-7 items-center justify-center rounded-md transition-colors"
+			title="Close"
+			aria-label="Close"
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-close"></use></svg>
+		</button>
+	</div>
+
+	
+	<div id="search-results" class="max-h-96 overflow-y-auto">
+		
+		<div id="search-empty" class="text-muted-foreground px-4 py-10 text-center text-sm">
+			Start searching
+		</div>
+
+		
+		<div id="search-loading" class="flex items-center justify-center py-8" hidden>
+			<div
+				class="mr-3 h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent"
+			></div>
+			<span class="text-muted-foreground">Searching...</span>
+		</div>
+
+		
+		<div id="search-no-results" class="text-muted-foreground px-4 py-10 text-center text-sm" hidden>
+			No results
+		</div>
+
+		
+		<div id="search-results-list" hidden>
+			
+			<div
+				id="search-stats"
+				class="text-muted-foreground border-border border-b px-3 py-2 text-xs"
+				data-count-other="Found %d results"
+				role="status"
+				aria-live="polite"
+			></div>
+
+			
+			<ul id="search-items" class="divide-border divide-y" role="listbox">
+				
+			</ul>
+		</div>
+	</div>
+
+	
+	<div class="border-border bg-muted/30 border-t px-3 py-2"><div class="text-muted-foreground flex items-center justify-between text-xs">
+			<div class="flex items-center gap-2 md:gap-4">
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↑↓</kbd>
+					<span class="hidden sm:inline">Navigate</span>
+				</div>
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↵</kbd>
+					<span class="hidden sm:inline">Select</span>
+				</div>
+				<div class="flex items-center gap-1">
+					<kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">ESC</kbd>
+					<span class="hidden sm:inline">Close</span>
+				</div>
+			</div>
+			<div class="search-hint-desktop flex items-center gap-1">
+				<kbd
+					id="search-shortcut"
+					class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs"
+				>Ctrl K</kbd
+				>
+				<span>Shortcut</span>
+			</div>
+		</div>
+	</div>
+</dialog>
+
+		
+		
+			
+<template id="gallery-layout-switcher">
+	<div class="gallery-layout-switcher">
+		<button
+			type="button"
+			class="layout-btn"
+			aria-label="Switch gallery layout"
+			title="Switch gallery layout"
+		>
+			<svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.9a62952ab5ac1ade60632ba011ab4bc40e0ad0290caa5ea5e2c16b440c9198f6.svg#icon-layout"></use></svg>
+		</button>
+	</div>
+</template>
+
+		
+		
+		
+
+
+	</body>
+</html>

@@ -1,0 +1,1939 @@
+<!doctype html><html
+  lang="en"
+  data-theme="minimal"
+  data-toc-pinned="false"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+<title>6-DOF Underwater Robot Development |
+    Long Chen</title>
+
+<meta
+  name="description"
+  content="6-DOF Full-Freedom Underwater Robot: Structure Design, Control Scheme and Extension Module Design"
+/>
+<meta
+  name="keywords"
+  content="Robot, Machine, Control"
+/>
+<meta
+  name="author"
+  content="Chen Long"
+/>
+<meta name="language" content="en" />
+
+<meta
+  name="robots"
+  content="index, follow"
+/>
+<link rel="canonical" href="http://localhost:1313/projects/6-dof-underwater-robot-development/" />
+
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta property="og:url" content="http://localhost:1313/projects/6-dof-underwater-robot-development/">
+	<meta property="og:site_name" content="Long Chen">
+	<meta property="og:title" content="6-DOF Underwater Robot Development">
+	<meta property="og:description" content="6-DOF Full-Freedom Underwater Robot: Structure Design, Control Scheme and Extension Module Design">
+	<meta property="og:locale" content="en">
+	<meta property="og:type" content="article">
+		<meta property="article:section" content="projects">
+		<meta property="article:published_time" content="2026-02-08T00:00:00+00:00">
+		<meta property="article:modified_time" content="2026-02-08T00:00:00+00:00">
+		<meta property="article:tag" content="Robot">
+		<meta property="article:tag" content="Machine">
+		<meta property="article:tag" content="Control">
+		<meta property="og:image" content="http://localhost:1313/projects/6-dof-underwater-robot-development/featured-image.png">
+
+
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:image" content="http://localhost:1313/projects/6-dof-underwater-robot-development/featured-image.png">
+	<meta name="twitter:title" content="6-DOF Underwater Robot Development">
+	<meta name="twitter:description" content="6-DOF Full-Freedom Underwater Robot: Structure Design, Control Scheme and Extension Module Design">
+
+
+	<meta itemprop="name" content="6-DOF Underwater Robot Development">
+	<meta itemprop="description" content="6-DOF Full-Freedom Underwater Robot: Structure Design, Control Scheme and Extension Module Design">
+	<meta itemprop="datePublished" content="2026-02-08T00:00:00+00:00">
+	<meta itemprop="dateModified" content="2026-02-08T00:00:00+00:00">
+	<meta itemprop="wordCount" content="1277">
+	<meta itemprop="image" content="http://localhost:1313/projects/6-dof-underwater-robot-development/featured-image.png">
+	<meta itemprop="keywords" content="Robot,Machine,Control">
+
+
+
+
+
+<script id="search-config" type="application/json">"{\"searchIndexURL\":\"/index.json\"}"</script>
+
+
+
+
+  
+    <link rel="stylesheet" href="/css/compiled.css" />
+  
+
+
+
+  <link rel="stylesheet" href="/css/chroma.css" />
+
+
+
+
+  
+    <link rel="stylesheet" href="/css/custom/publications.css" />
+  
+
+  
+    <link rel="stylesheet" href="/css/custom/terminal.css" />
+  
+
+  
+    <link rel="stylesheet" href="/css/custom/toc-tree.css" />
+  
+
+
+
+<script src="/js/main.js" defer></script>
+
+<script src="/js/toc.js" defer></script>
+<script src="/js/search.js" defer></script>
+
+
+<script src="/js/dock.js" defer></script>
+
+
+
+
+
+
+
+  <script src="/js/custom//js/custom/terminal.js" defer></script>
+  <script src="/js/custom//js/custom/toc-tree.js" defer></script>
+
+
+
+
+
+
+    
+    <script>(function(){const e=document.documentElement;function s(e){try{return localStorage.getItem(e)}catch{return null}}function v(){const e=s("theme");return e==="light"||e==="dark"||e==="system"?e:"system"}const g={abyss:{name:"Abyss",order:7},amethyst:{name:"Amethyst",order:9},bumblebee:{name:"Bumblebee",order:3},claude:{name:"Claude",order:2},default:{name:"Default",order:1},dracula:{name:"Dracula",order:8},emerald:{name:"Emerald",order:4},minimal:{name:"Minimal",order:12},nord:{name:"Nord",order:5},slate:{name:"Slate",order:10},sunset:{name:"Sunset",order:6},twitter:{name:"Twitter",order:11}},p="minimal",h=s("colorScheme"),f=Object.prototype.hasOwnProperty.call(g||{},h)?h:p,n=Number.parseInt(s("contentWidth"),10),d=Number.isInteger(n)&&n>=40&&n<=90;d&&e.style.setProperty("--content-width",`${n}rem`),e.setAttribute("data-theme",f);const l=s("tocPinned");(l==="true"||l==="false")&&e.setAttribute("data-toc-pinned",l);const t=Number.parseFloat(getComputedStyle(e).fontSize)||16,u="70rem",c=Number.parseFloat(u);let r=56*t;Number.isFinite(c)&&(r=/r?em\s*$/.test(u)?c*t:c),d&&(r=n*t);const a=e.clientWidth,i=Math.max(0,(a-Math.min(r,a))/2);let o="narrow";a>=64*t&&(i>=13*t?o="wide":i>=2*t&&(o="tight")),e.setAttribute("data-toc-space",o),e.style.setProperty("--toc-gutter",`${Math.round(i)}px`);function m(){const t=v(),n=t==="dark"||t==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;e.classList.toggle("dark",n)}m(),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",m)})()</script>
+  </head><body class="bg-background text-foreground min-h-screen antialiased">
+    <main
+      id="page-container"
+      class="mx-auto w-full"
+      style="--content-width-base: 70rem; max-width: var(--content-width, var(--content-width-base))"
+    >
+      <div
+    id="reading-progress-bar"
+    class="from-primary to-primary/80 pointer-events-none fixed top-0 left-0 z-50 h-[3px] w-0 bg-linear-to-r transition-[width] duration-150 ease-out"
+  ></div>
+
+  <script>
+    (function () {
+      const bar = document.getElementById("reading-progress-bar");
+      if (!bar) return;
+
+      function update() {
+        const scrolled = window.scrollY;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? (scrolled / total) * 100 + "%" : "0%";
+      }
+
+      let ticking = false;
+      window.addEventListener(
+        "scroll",
+        () => {
+          if (!ticking) {
+            requestAnimationFrame(() => {
+              update();
+              ticking = false;
+            });
+            ticking = true;
+          }
+        },
+        { passive: true }
+      );
+
+      update();
+    })();
+  </script>
+
+      <header class="sticky top-0 z-50 px-4 py-6">
+  <div
+    class="border-border bg-card/80 flex items-center gap-4 rounded-xl border px-4 py-4 shadow-sm backdrop-blur-sm md:px-6"
+  >
+    
+    <div class="flex shrink-0 items-center">
+      
+        
+        <a
+          href="/"
+          class="bg-primary text-primary-foreground hover:bg-primary/90 flex h-10 w-10 items-center justify-center rounded-full text-lg font-bold transition-transform duration-200 hover:scale-105"
+          aria-label="Long Chen"
+        >
+          L
+        </a>
+      
+    </div>
+
+    
+    <nav
+      class="hidden min-w-0 flex-1 items-center justify-center md:flex"
+      aria-label="Menu"
+    >
+      <div class="flex flex-wrap items-center justify-center gap-1">
+        <a
+      href="/about/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-about"></use></svg></use
+>
+<span>About</span>
+    </a><a
+      href="/papers/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+<span>Publications</span>
+    </a><a
+      href="/projects/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-projects"></use></svg></use
+>
+<span>Projects</span>
+    </a><a
+      href="/blogs/"
+      class="nav-link relative flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:outline-none 
+        text-muted-foreground hover:text-primary hover:bg-primary/10
+      "
+      
+    ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-posts"></use></svg></use
+>
+<span>Blogs</span>
+    </a>
+      </div>
+    </nav>
+
+    
+    <div class="ml-auto flex shrink-0 items-center gap-2">
+      
+<button
+  id="mobile-nav-open"
+  type="button"
+  class="border-border bg-background text-muted-foreground hover:bg-accent hover:text-foreground focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-colors duration-200 focus:ring-2 focus:outline-none md:hidden"
+  aria-label="Menu"
+  aria-haspopup="dialog"
+  aria-controls="mobile-nav"
+>
+  <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-menu"></use></svg></use
+>
+
+</button>
+
+      <button
+    id="language-toggle"
+    type="button"
+    popovertarget="language-panel"
+    aria-controls="language-panel"
+    aria-expanded="false"
+    aria-label="Switch language"
+    class="border-border bg-background text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ease-out hover:scale-105 focus:ring-2 focus:outline-none active:scale-95"
+  >
+    <svg class="h-5 w-5 relative z-10" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-language"></use></svg></use
+>
+
+  </button>
+
+  <div
+    id="language-panel"
+    popover
+    class="header-popover bg-popover text-popover-foreground border-border w-44 rounded-lg border p-1 shadow-lg"
+  ><a
+        href="/projects/6-dof-underwater-robot-development/"
+        class="
+          bg-accent text-accent-foreground
+         focus:bg-accent focus:text-accent-foreground flex w-full items-center rounded-md px-4 py-2 text-sm transition-colors duration-200 focus:outline-none"
+        aria-current="page"
+      >
+        <span class="font-medium">English</span>
+      </a><a
+        href="/zh-hans/projects/6-dof%E6%B0%B4%E4%B8%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E7%A0%94%E5%8F%91/"
+        class="
+          text-muted-foreground hover:bg-accent hover:text-accent-foreground
+         focus:bg-accent focus:text-accent-foreground flex w-full items-center rounded-md px-4 py-2 text-sm transition-colors duration-200 focus:outline-none"
+        
+      >
+        <span class="font-medium">简体中文</span>
+      </a></div>
+      <button
+    id="appearance-toggle"
+    type="button"
+    popovertarget="appearance-panel"
+    aria-controls="appearance-panel"
+    aria-expanded="false"
+    aria-label="Appearance settings"
+    class="border-border bg-background text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg border transition-all duration-300 ease-out hover:scale-105 focus:ring-2 focus:outline-none active:scale-95"
+  >
+    <svg class="h-5 w-5 relative z-10" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-palette"></use></svg></use
+>
+
+  </button>
+
+  <div
+    id="appearance-panel"
+    popover
+    class="header-popover bg-popover text-popover-foreground border-border w-80 space-y-3 rounded-lg border p-3 shadow-lg"
+  ><fieldset>
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          Color scheme
+        </legend>
+        <div class="grid grid-cols-2 gap-1"><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="default" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Default
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="claude" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Claude
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="bumblebee" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Bumblebee
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="emerald" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Emerald
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="nord" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Nord
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="sunset" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Sunset
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="abyss" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Abyss
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="dracula" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Dracula
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="amethyst" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Amethyst
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="slate" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Slate
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="twitter" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Twitter
+              </span>
+            </label><label class="block min-w-0">
+              <input type="radio" name="color-scheme" value="minimal" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center truncate rounded-md px-2.5 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Minimal
+              </span>
+            </label></div>
+      </fieldset><fieldset class="border-border border-t pt-3">
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          Theme mode
+        </legend>
+        <div class="grid grid-cols-3 gap-1"><label class="block">
+              <input type="radio" name="theme-mode" value="light" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Light
+              </span>
+            </label><label class="block">
+              <input type="radio" name="theme-mode" value="dark" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                Dark
+              </span>
+            </label><label class="block">
+              <input type="radio" name="theme-mode" value="system" class="peer sr-only" />
+              <span
+                class="text-muted-foreground hover:bg-accent hover:text-accent-foreground peer-checked:bg-accent peer-checked:text-accent-foreground peer-focus-visible:ring-primary/20 flex w-full cursor-pointer items-center justify-center rounded-md px-2 py-2 text-sm transition-colors duration-200 peer-focus-visible:ring-2 peer-focus-visible:outline-none"
+              >
+                System
+              </span>
+            </label></div>
+      </fieldset><fieldset class="border-border space-y-2 border-t pt-3">
+        <legend class="text-foreground mb-2 text-sm font-semibold">
+          Page width
+        </legend>
+        <div class="flex items-center justify-between gap-4">
+          <output
+            id="content-width-value"
+            for="content-width-range"
+            class="text-muted-foreground min-w-12 text-sm tabular-nums"
+          ></output>
+        </div>
+        <input
+          id="content-width-range"
+          class="accent-primary w-full cursor-pointer"
+          type="range"
+          min="40"
+          max="90"
+          step="1"
+          aria-label="Page width"
+        />
+        <button
+          id="content-width-reset"
+          type="button"
+          class="border-border text-muted-foreground hover:bg-accent hover:text-accent-foreground focus:ring-primary/20 w-full rounded-md border px-3 py-2 text-sm transition-colors focus:ring-2 focus:outline-none"
+        >
+          Restore default
+        </button>
+      </fieldset></div>
+    </div>
+  </div>
+
+  <dialog id="mobile-nav" class="mobile-nav-dialog" aria-labelledby="mobile-nav-title">
+  <div class="bg-card text-foreground flex max-h-[85dvh] flex-col overflow-hidden">
+    <div class="border-border flex items-center justify-between border-b px-4 py-4">
+      <h2 id="mobile-nav-title" class="text-foreground text-lg font-semibold">
+        Menu
+      </h2>
+      <button
+        id="mobile-nav-close"
+        type="button"
+        class="text-muted-foreground hover:text-foreground hover:bg-accent focus:ring-primary/20 flex h-10 w-10 items-center justify-center rounded-lg transition-colors focus:ring-2 focus:outline-none"
+        aria-label="Close menu"
+      >
+        <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+      </button>
+    </div>
+
+    <div class="flex-1 overflow-y-auto" data-mobile-menu>
+      <div data-mobile-main>
+  <nav class="flex flex-col gap-1 p-2" aria-label="Menu"><a
+          href="/about/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-about"></use></svg></use
+>
+<span>About</span>
+        </a><a
+          href="/papers/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+<span>Publications</span>
+        </a><a
+          href="/projects/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-projects"></use></svg></use
+>
+<span>Projects</span>
+        </a><a
+          href="/blogs/"
+          class="nav-panel-link flex w-full items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-all duration-200 ease-out focus:ring-2 focus:ring-primary/20 focus:outline-none 
+            text-muted-foreground hover:text-primary hover:bg-primary/10
+          "
+          
+        ><svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-posts"></use></svg></use
+>
+<span>Blogs</span>
+        </a></nav>
+</div>
+    </div>
+  </div>
+</dialog>
+
+</header>
+
+
+
+      <div class="px-4 py-6">
+        
+  <nav class="breadcrumb mb-4 py-1 md:mb-6" aria-label="Breadcrumb">
+    <ol
+      class="text-muted-foreground scrollbar-hide flex items-center space-x-1 overflow-x-auto py-1 text-sm whitespace-nowrap md:space-x-2"
+    >
+      
+        
+          
+          <li class="shrink-0">
+            <a
+              href="/"
+              class="text-muted-foreground hover:text-primary hover:bg-primary/10 flex items-center gap-1 rounded-lg px-1 py-0.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] md:py-1.5"
+            >
+              <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-home"></use></svg></use
+>
+
+              <span class="max-w-16 truncate md:max-w-none">Home</span>
+            </a>
+          </li>
+        
+      
+        
+          
+          <li class="flex min-w-0 items-center gap-1 md:gap-2">
+            <span class="text-muted-foreground/50 shrink-0"
+              ><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-right"></use></svg></use
+>
+
+            </span>
+            <a
+              href="/projects/"
+              class="text-muted-foreground hover:text-primary hover:bg-primary/10 flex shrink-0 items-center gap-1 rounded-lg px-1 py-0.5 transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] md:px-3 md:py-1.5"
+            >
+              <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-folder"></use></svg></use
+>
+
+              <span class="max-w-16 truncate md:max-w-none">Projects</span>
+            </a>
+          </li>
+        
+      
+
+
+      
+      <li class="flex min-w-0 items-center gap-1 md:gap-2">
+        <span class="text-muted-foreground/50 shrink-0"
+          ><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-right"></use></svg></use
+>
+
+        </span>
+        <span class="text-foreground flex min-w-0 items-center gap-1 font-medium">
+          <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-file-text"></use></svg></use
+>
+
+          <span class="max-w-32 truncate md:max-w-[16rem] lg:max-w-none">6-DOF Underwater Robot Development</span>
+        </span>
+      </li>
+    </ol>
+  </nav>
+
+
+        
+  
+  <header class="mb-10">
+    
+
+
+    
+    <h1 class="text-foreground mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">
+      6-DOF Underwater Robot Development
+    </h1>
+
+    
+    
+      <div class="text-muted-foreground text-lg leading-relaxed md:text-xl">
+        6-DOF Full-Freedom Underwater Robot: Structure Design, Control Scheme and Extension Module Design
+      </div>
+    
+  </header>
+
+  
+  <div class="mb-12">
+    <div class="flex flex-wrap items-center gap-2.5 text-sm font-medium">
+      
+        <span
+          class="bg-muted/45 text-foreground border-border inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm"
+        >
+          <svg class="h-4 w-4 text-primary shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-calendar"></use></svg></use
+>
+
+          <time datetime="2026-02-08">
+            February 8, 2026
+          </time>
+        </span>
+      
+
+      
+
+      
+        
+          <a
+            href="/tags/robot/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Robot</span>
+          </a>
+        
+          <a
+            href="/tags/machine/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Machine</span>
+          </a>
+        
+          <a
+            href="/tags/control/"
+            class="bg-background text-foreground border-border hover:bg-primary hover:text-primary-foreground hover:border-primary focus:ring-primary/20 inline-flex h-10 items-center gap-2 rounded-lg border px-3.5 shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 focus:ring-2 focus:outline-none"
+          >
+            <svg class="h-4 w-4 shrink-0" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-tag"></use></svg></use
+>
+
+            <span>Control</span>
+          </a>
+        
+      
+
+      
+    </div>
+  </div>
+
+  
+  <div class="bg-card border-border rounded-xl border p-6 shadow-sm md:p-8 md:px-10">
+    <article class="prose prose-neutral dark:prose-invert max-w-none">
+      <h2 id="1-project-overview">1. Project Overview<a href="#1-project-overview" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><p>This project designs a 6-DOF (Degree of Freedom) fully-actuated underwater robot (AUV) for underwater grasping tasks and high-performance motion control. Compared with traditional under-actuated or over-actuated AUVs, the 6-DOF fully-actuated scheme can achieve higher-level motion control capability on a compact design basis. Additionally, to simultaneously satisfy high-precision underwater grasping and high-performance motion control, this paper designs two motion modes for the AUV: grasping mode and cruising mode. The grasping mode uses traditional control schemes to improve precision, while the cruising mode uses Deep Reinforcement Learning (DRL) for smooth motion control. Furthermore, the AUV is designed with 4 expansion module interfaces for connecting various extension modules to meet diverse underwater operation tasks.</p>
+<h3 id="11-design-objectives">1.1 Design Objectives<a href="#11-design-objectives" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li><input checked="" disabled="" type="checkbox"> High-performance mechanical structure design</li>
+<li><input checked="" disabled="" type="checkbox"> Traditional control scheme design</li>
+<li><input checked="" disabled="" type="checkbox"> DRL control scheme design</li>
+<li><input disabled="" type="checkbox"> Autonomous path navigation</li>
+<li><input disabled="" type="checkbox"> Target recognition and grasping</li>
+<li><input disabled="" type="checkbox"> Expansion module development</li>
+</ul>
+<h3 id="12-technical-support">1.2 Technical Support<a href="#12-technical-support" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li>mjlab &amp; Mujoco</li>
+<li>ROS2</li>
+<li>SSH &amp; Git</li>
+<li>Python &amp; C++</li>
+</ul>
+<h2 id="2-structure-design">2. Structure Design<a href="#2-structure-design" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="21-thruster-distribution-scheme">2.1 Thruster Distribution Scheme<a href="#21-thruster-distribution-scheme" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>Thruster distribution is divided into three categories: under-actuated, fully-actuated, and over-actuated.</p>
+<table>
+	<thead>
+			<tr>
+					<th>Type</th>
+					<th>Characteristics</th>
+					<th>Application</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Under-actuated</td>
+					<td>Fewer thrusters than DOFs</td>
+					<td>Simple observation tasks</td>
+			</tr>
+			<tr>
+					<td>Fully-actuated</td>
+					<td>Equal thrusters and DOFs</td>
+					<td>Precise operation tasks</td>
+			</tr>
+			<tr>
+					<td>Over-actuated</td>
+					<td>More thrusters than DOFs</td>
+					<td>High redundancy tasks</td>
+			</tr>
+	</tbody>
+</table>
+<p>Considering that the robot needs to achieve high-level grasping tasks on a compact design basis, this design adopts the <strong>6-DOF fully-actuated scheme</strong>.</p>
+<p>The conventional fully-actuated scheme uses 6 fixed independent thrusters with mature control strategies, but is not conducive to compact design. Therefore, this paper designs a <strong>4-thruster + 2-servo</strong> asymmetric vector propulsion scheme:</p>
+<ul>
+<li>4 main thrusters control thrust magnitude</li>
+<li>2 servos control thrust direction of the 4 thrusters</li>
+<li>4 thrusters are arranged in a cross pattern; upper and lower thrusters rotate in opposite directions, left and right thrusters rotate in the same direction</li>
+</ul>
+<h3 id="22-mechanical-structure">2.2 Mechanical Structure<a href="#22-mechanical-structure" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>The robot body adopts a frame-type structure, mainly consisting of:</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-0"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-0"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-0">
+    <pre tabindex="0"><code>Robot System
+├── Electronic Control Housing
+│   ├── Sealed flange
+│   ├── Custom housing
+│   ├── Electronic equipment
+│   └── Buoyancy material
+├── Power System
+│   ├── Custom housing
+│   ├── Power system bracket
+│   ├── Y, Z-axis transmission shafts
+│   ├── Main thrusters × 4
+│   └── Servos × 2
+├── Extension Modules
+│   ├── Robotic arm
+│   ├── External charging
+│   └── Rescue device
+└── Sensor System
+    ├── Depth sensor
+    ├── Inertial Measurement Unit (IMU)
+    └── Camera</code></pre>
+    <div hidden data-code-source>Robot System
+├── Electronic Control Housing
+│   ├── Sealed flange
+│   ├── Custom housing
+│   ├── Electronic equipment
+│   └── Buoyancy material
+├── Power System
+│   ├── Custom housing
+│   ├── Power system bracket
+│   ├── Y, Z-axis transmission shafts
+│   ├── Main thrusters × 4
+│   └── Servos × 2
+├── Extension Modules
+│   ├── Robotic arm
+│   ├── External charging
+│   └── Rescue device
+└── Sensor System
+    ├── Depth sensor
+    ├── Inertial Measurement Unit (IMU)
+    └── Camera</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h2 id="3-control-scheme">3. Control Scheme<a href="#3-control-scheme" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="31-pid-based-control-scheme">3.1 PID-based Control Scheme<a href="#31-pid-based-control-scheme" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>For grasping mode, to ensure motion precision, a PID controller is used for low-level motion control:</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-1"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        CPP
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-1"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-1">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">PIDController</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">kp</span><span class="p">,</span> <span class="n">ki</span><span class="p">,</span> <span class="n">kd</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">setpoint</span><span class="p">,</span> <span class="n">current_value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">integral</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">last_error</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="nf">compute</span><span class="p">(</span><span class="kt">double</span> <span class="n">feedback</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">error</span> <span class="o">=</span> <span class="n">setpoint</span> <span class="o">-</span> <span class="n">feedback</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">integral</span> <span class="o">+=</span> <span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">derivative</span> <span class="o">=</span> <span class="n">error</span> <span class="o">-</span> <span class="n">last_error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="n">last_error</span> <span class="o">=</span> <span class="n">error</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span> <span class="o">+</span> <span class="n">ki</span> <span class="o">*</span> <span class="n">integral</span> <span class="o">+</span> <span class="n">kd</span> <span class="o">*</span> <span class="n">derivative</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span></span></span></code></pre></div>
+    <div hidden data-code-source>class PIDController {
+public:
+    double kp, ki, kd;
+    double setpoint, current_value;
+    double integral = 0;
+    double last_error = 0;
+    
+    double compute(double feedback) {
+        double error = setpoint - feedback;
+        integral &#43;= error;
+        double derivative = error - last_error;
+        last_error = error;
+        return kp * error &#43; ki * integral &#43; kd * derivative;
+    }
+};</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="32-drl-based-control-strategy">3.2 DRL-based Control Strategy<a href="#32-drl-based-control-strategy" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><p>For cruising missions, to ensure motion smoothness, Deep Reinforcement Learning (DRL) is used for control strategy training, with mjlab used for model training. The code framework is as follows:</p>
+<div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-2"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-2"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-2">
+    <pre tabindex="0"><code>auv_mjlab/
+├── src/
+│   ├── tasks/
+│   │   └── velocity/              # Velocity control task
+│   │       ├── config/
+│   │       │   └── auv/
+│   │       │       ├── env_cfgs.py    # Environment configuration
+│   │       │       └── rl_cfg.py       # RL algorithm configuration
+│   │       ├── mdp/
+│   │       │   ├── observations.py    # Observation function
+│   │       │   ├── rewards.py         # Reward function
+│   │       │   ├── terminations.py     # Termination conditions
+│   │       │   └── velocity_command.py # Velocity command generator
+│   │       └── rl/
+│   │           └── runner.py          # Training runner
+│   └── assets/
+│       └── robots/                     # Robot model configuration
+├── scripts/
+│   ├── train.py                        # Training script
+│   ├── play.py                         # Playback script
+│   └── list_envs.py                    # Environment list
+└── README.md</code></pre>
+    <div hidden data-code-source>auv_mjlab/
+├── src/
+│   ├── tasks/
+│   │   └── velocity/              # Velocity control task
+│   │       ├── config/
+│   │       │   └── auv/
+│   │       │       ├── env_cfgs.py    # Environment configuration
+│   │       │       └── rl_cfg.py       # RL algorithm configuration
+│   │       ├── mdp/
+│   │       │   ├── observations.py    # Observation function
+│   │       │   ├── rewards.py         # Reward function
+│   │       │   ├── terminations.py     # Termination conditions
+│   │       │   └── velocity_command.py # Velocity command generator
+│   │       └── rl/
+│   │           └── runner.py          # Training runner
+│   └── assets/
+│       └── robots/                     # Robot model configuration
+├── scripts/
+│   ├── train.py                        # Training script
+│   ├── play.py                         # Playback script
+│   └── list_envs.py                    # Environment list
+└── README.md</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h4 id="331-scene-configuration-scene">3.3.1 Scene Configuration (Scene)<a href="#331-scene-configuration-scene" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><strong>Number of Environments</strong>: Supports large-scale parallel training</li>
+<li><strong>Terrain Type</strong>: Flat plane (plane) underwater environment</li>
+<li><strong>Robot</strong>: AUV Unmanned Underwater Vehicle</li>
+</ul>
+<h4 id="332-action-space-actions">3.3.2 Action Space (Actions)<a href="#332-action-space-actions" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>The AUV has two types of actuators:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Actuator Type</th>
+					<th>Joint Name</th>
+					<th>Function</th>
+					<th>Action Scale</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Servo</td>
+					<td><code>joint_servo_up</code>, <code>joint_servo_left</code></td>
+					<td>Control rudder angle</td>
+					<td>±1.5 rad</td>
+			</tr>
+			<tr>
+					<td>Thruster</td>
+					<td><code>joint_prop_up</code>, <code>joint_prop_down</code>, <code>joint_prop_left</code>, <code>joint_prop_right</code></td>
+					<td>Thrust magnitude</td>
+					<td>(-30N, 43N)</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="333-command-space-commands">3.3.3 Command Space (Commands)<a href="#333-command-space-commands" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>The velocity command generator uses <code>UniformVelocityCommandCfg</code>, generating commands including:</p>
+<ul>
+<li><strong>Linear Velocity Command</strong>:
+<ul>
+<li>X-axis (forward/backward): -0.5 ~ 2.0 m/s</li>
+</ul>
+</li>
+<li><strong>Angular Velocity Command</strong>:
+<ul>
+<li>X-axis (roll): -1.0 ~ 1.0 rad/s</li>
+<li>Y-axis (pitch): -1.0 ~ 1.0 rad/s</li>
+<li>Z-axis (yaw): -1.0 ~ 1.0 rad/s</li>
+</ul>
+</li>
+</ul>
+<h4 id="334-observation-space-observations">3.3.4 Observation Space (Observations)<a href="#334-observation-space-observations" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>Observations received by the agent include:</p>
+<table>
+	<thead>
+			<tr>
+					<th>Observation</th>
+					<th>Description</th>
+					<th>Dimension</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>command</code></td>
+					<td>Target velocity command</td>
+					<td>4</td>
+			</tr>
+			<tr>
+					<td><code>base_lin_vel</code></td>
+					<td>Body linear velocity</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>base_ang_vel</code></td>
+					<td>Body angular velocity</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>projected_gravity</code></td>
+					<td>Gravity projection vector</td>
+					<td>3</td>
+			</tr>
+			<tr>
+					<td><code>joint_pos</code></td>
+					<td>Servo angles</td>
+					<td>2</td>
+			</tr>
+			<tr>
+					<td><code>joint_vel</code></td>
+					<td>Joint velocities</td>
+					<td>6</td>
+			</tr>
+			<tr>
+					<td><code>last_action</code></td>
+					<td>Previous frame action</td>
+					<td>8</td>
+			</tr>
+	</tbody>
+</table>
+<h4 id="335-reward-function-rewards">3.3.5 Reward Function (Rewards)<a href="#335-reward-function-rewards" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>Reward design is divided into core objective rewards and penalty terms:</p>
+<p><strong>Core Rewards</strong>:</p>
+<ul>
+<li><code>track_linear_velocity</code>: Track target linear velocity</li>
+<li><code>track_angular_velocity</code>: Track target angular velocity</li>
+<li><code>alive</code>: Survival reward</li>
+</ul>
+<p><strong>Penalty Terms</strong>:</p>
+<ul>
+<li><code>action_rate_l2</code>: Penalize action change rate to prevent motor jitter (weight -0.01)</li>
+<li><code>action_l2</code>: Penalize action magnitude to encourage energy saving (weight -0.005)</li>
+<li><code>joint_acc_l2</code>: Penalize joint acceleration</li>
+</ul>
+<h4 id="336-event-system-events">3.3.6 Event System (Events)<a href="#336-event-system-events" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><strong>Joint Reset</strong>: Reset robot joint state at the start of training</li>
+<li><strong>Hydrodynamics</strong>: Add resistance and buoyancy in water</li>
+</ul>
+<h4 id="337-termination-conditions-terminations">3.3.7 Termination Conditions (Terminations)<a href="#337-termination-conditions-terminations" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><ul>
+<li><code>time_out</code>: Exceeds certain time</li>
+<li><code>excessive_lin_vel</code>: AUV linear velocity too fast termination</li>
+<li><code>excessive_ang_vel</code>: AUV angular velocity too fast termination</li>
+</ul>
+<h4 id="338-curriculum-learning-curriculum">3.3.8 Curriculum Learning (Curriculum)<a href="#338-curriculum-learning-curriculum" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h4><p>To improve training convergence, this paper sets up curriculum learning, dividing AUV training into 3 stages:</p>
+<ul>
+<li>Stage 1: Train only one dimension of velocity or angular velocity</li>
+<li>Stage 2: Train velocity and single-direction angular velocity</li>
+<li>Stage 3: Train velocity and any-direction angular velocity</li>
+</ul>
+<h2 id="4-features-under-development">4. Features Under Development<a href="#4-features-under-development" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><ul>
+<li><input disabled="" type="checkbox"> Autonomous path navigation</li>
+<li><input disabled="" type="checkbox"> Target recognition and grasping</li>
+<li><input disabled="" type="checkbox"> Expansion module development</li>
+</ul>
+<h2 id="5-project-reproduction">5. Project Reproduction<a href="#5-project-reproduction" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h2><h3 id="51-environment-requirements">5.1 Environment Requirements<a href="#51-environment-requirements" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><ul>
+<li>Python 3.11</li>
+<li>CUDA 11.8+ (GPU training)</li>
+<li>Mujoco physics engine</li>
+<li>Latest version of mjlab</li>
+</ul>
+<h3 id="52-training">5.2 Training<a href="#52-training" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-3"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        BASH
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-3"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-3">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uv run scripts/train.py Mjlab-Velocity-Flat-CQU-AUV --env.scene.num-envs<span class="o">=</span>&lt;number_of_parallel_envs&gt; --agent.max-iterations<span class="o">=</span>&lt;number_of_iterations&gt;</span></span></code></pre></div>
+    <div hidden data-code-source>uv run scripts/train.py Mjlab-Velocity-Flat-CQU-AUV --env.scene.num-envs=&lt;number_of_parallel_envs&gt; --agent.max-iterations=&lt;number_of_iterations&gt;</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="53-playback">5.3 Playback<a href="#53-playback" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-4"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        BASH
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-4"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-4">
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">uv run scripts/play.py Mjlab-Velocity-Flat-CQU-AUV <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --checkpoint-file logs/rsl_rl/auv_velocity/&lt;timestamp&gt;/model_&lt;iteration&gt;.pt <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --num-envs <span class="m">1</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --viewer viser <span class="se">\
+</span></span></span><span class="line"><span class="cl">    --no-terminations True</span></span></code></pre></div>
+    <div hidden data-code-source>uv run scripts/play.py Mjlab-Velocity-Flat-CQU-AUV \
+    --checkpoint-file logs/rsl_rl/auv_velocity/&lt;timestamp&gt;/model_&lt;iteration&gt;.pt \
+    --num-envs 1 \
+    --viewer viser \
+    --no-terminations True</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+<h3 id="54-tensorboard-curves">5.4 TensorBoard Curves<a href="#54-tensorboard-curves" class="heading-anchor" aria-label="Link to this section"><svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-link"></use></svg></use
+>
+</a></h3><div
+  class="code-block-container border-border bg-card my-6 overflow-hidden rounded-xl border shadow-sm transition-all duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md"
+  data-code-block
+  data-code-id="code-5"
+  data-collapsible="true"
+  data-default-state="expanded"
+  data-collapsed="false"
+  data-auto-collapse-lines="30"
+  data-auto-collapse-height="400"
+  data-collapsed-height="120"
+>
+  
+  <div
+    class="code-block-header bg-muted/30 border-border flex items-center justify-between border-b px-4 py-3"
+  >
+    
+    <div class="flex items-center gap-2">
+      <div class="text-muted-foreground shrink-0">
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-code"></use></svg></use
+>
+
+      </div>
+      <span class="text-muted-foreground text-sm font-medium">
+        PLAINTEXT
+      </span>
+    </div>
+
+    
+    <div class="flex items-center gap-2">
+      <button
+          class="collapse-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+          type="button"
+          data-code-action="toggle-collapse"
+          data-label-expand="Expand"
+          data-label-collapse="Collapse"
+          title="Collapse"
+          aria-label="Collapse"
+          aria-controls="code-5"
+          aria-expanded="true"
+        >
+          <span class="collapse-chevron transition-transform duration-200 ease-out">
+            <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+          </span>
+          <span class="collapse-text hidden sm:inline">Collapse</span>
+        </button>
+      <button
+        class="copy-code-btn text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 flex items-center gap-1.5 rounded-md px-2 py-1 text-xs font-medium transition-all duration-200 ease-out focus:ring-2 focus:outline-none"
+        type="button"
+        data-code-action="copy"
+        data-label-copy="Copy"
+        data-label-copied="Copied"
+        title="Copy"
+        aria-label="Copy"
+      >
+        <span class="copy-icon">
+          <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-copy"></use></svg></use
+>
+
+        </span>
+        <span class="copy-text hidden sm:inline">Copy</span>
+      </button>
+    </div>
+  </div>
+
+  
+  <div class="code-block-content relative" id="code-5">
+    <pre tabindex="0"><code>bash
+tensorboard --logdir logs/rsl_rl/auv_velocity --port 6006</code></pre>
+    <div hidden data-code-source>bash
+tensorboard --logdir logs/rsl_rl/auv_velocity --port 6006</div>
+    
+    <div
+      class="collapse-overlay to-card/90 pointer-events-none absolute inset-0 bg-linear-to-b from-transparent via-transparent opacity-0 transition-opacity duration-300"
+      hidden
+    >
+      <button
+        class="collapse-overlay-btn text-muted-foreground bg-card/80 border-border/50 hover:bg-primary/10 hover:text-primary hover:border-primary/30 absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center justify-center rounded-full border p-2 backdrop-blur-sm transition-all duration-200"
+        type="button"
+        data-code-action="expand"
+        aria-label="Expand"
+        title="Expand"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+      </button>
+    </div>
+  </div>
+</div>
+
+    </article>
+  </div>
+
+  
+  <div class="mt-12">
+    
+  </div>
+
+      </div>
+
+      <footer class="px-4 py-6">
+  
+  
+
+
+  
+  
+
+
+  
+  <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+    
+    <div class="text-muted-foreground text-center text-sm md:text-left">
+      <p class="mb-2">
+        &copy;
+        2026
+        Long Chen
+      </p>
+      <p class="flex flex-wrap items-center justify-center gap-1 md:justify-start">
+        <span>Powered by</span>
+        <a
+          href="https://gohugo.io/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:text-primary/80 font-medium transition-colors duration-200 hover:underline"
+        >
+          Hugo
+        </a>
+        <span>&</span>
+        <a
+          href="https://github.com/tom2almighty/hugo-narrow"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:text-primary/80 font-medium transition-colors duration-200 hover:underline"
+        >
+          Narrow
+        </a>
+      </p>
+    </div>
+
+    
+    
+
+  </div>
+</footer>
+
+      
+
+
+
+
+
+<div
+  id="dock"
+  class="pointer-events-none fixed bottom-4 left-1/2 z-9999 w-fit -translate-x-1/2 translate-y-24 opacity-0 transition-all duration-300 ease-out sm:right-0 sm:left-0 sm:mx-auto sm:translate-x-0"
+  data-dock-mode="scroll"
+  role="toolbar"
+  aria-label="Quick actions toolbar"
+>
+  <nav
+    class="border-border bg-card/80 scrollbar-hide xs:px-3 xs:py-2 mx-auto flex max-w-[calc(100vw-2rem)] min-w-fit items-center justify-center overflow-x-auto rounded-2xl border px-4 py-3 shadow-lg backdrop-blur-sm sm:px-4 sm:py-3"
+  >
+    
+    
+      <button
+        id="dock-back"
+        class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-2 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-3 sm:py-2"
+        title="Back"
+        aria-label="Back"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-arrow-left"></use></svg></use
+>
+
+        <span class="hidden sm:inline">Back</span>
+      </button>
+
+      
+      <div class="bg-border xs:mx-1 mx-2 h-6 w-px sm:mx-2"></div>
+    
+
+
+    <button
+      id="dock-search"
+      class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-3 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-4 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-4 sm:py-2"
+      title="Search"
+      aria-label="Search"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+      <span class="hidden md:inline">Search</span>
+    </button>
+
+    
+    <div class="bg-border xs:mx-1 mx-2 h-6 w-px sm:mx-2"></div>
+
+    
+    
+    
+
+
+    
+    <button
+      id="dock-top"
+      class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus:ring-primary/20 xs:px-2 xs:py-1.5 flex shrink-0 items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-105 focus:ring-2 focus:outline-none sm:px-3 sm:py-2"
+      title="Back to top"
+      aria-label="Back to top"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-arrow-up"></use></svg></use
+>
+
+      <span class="hidden sm:inline">Top</span>
+    </button>
+  </nav>
+</div>
+
+
+
+
+      <aside
+    id="toc-container"
+    class="toc-side"
+    data-position="side"
+  >
+      <div id="toc-layer">
+        <div id="toc-anchor">
+          <div id="toc-side">
+            
+            <div
+              id="toc-rail"
+              class="scrollbar-hide"
+              role="button"
+              tabindex="0"
+              aria-controls="toc-panel"
+              aria-expanded="false"
+              aria-label="Table of contents"
+            ></div>
+
+            
+            <div id="toc-trigger-wrap">
+              <button
+                id="toc-trigger"
+                class="bg-card/80 border-border text-muted-foreground hover:text-primary hover:bg-primary/10 ring-offset-background focus-visible:ring-ring flex cursor-pointer items-center gap-2 rounded-full border px-4 py-1.5 text-sm shadow-sm backdrop-blur-sm transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+                aria-controls="toc-panel"
+                aria-expanded="false"
+              >
+                <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-list"></use></svg></use
+>
+
+                <span id="toc-trigger-title" class="max-w-[200px] truncate">Table of contents</span>
+                <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-chevron-down"></use></svg></use
+>
+
+              </button>
+            </div>
+
+            
+            <div id="toc-panel" class="flex flex-col overflow-hidden">
+              <div
+                class="text-foreground mb-3 flex shrink-0 items-center justify-between gap-2 text-sm font-bold"
+              >
+                <span class="truncate">Table of contents</span>
+                <div class="flex shrink-0 items-center gap-1">
+                  <button
+                    id="toc-pin"
+                    class="text-muted-foreground hover:text-primary hover:bg-primary/10 focus-visible:ring-ring cursor-pointer items-center rounded p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                    aria-pressed="false"
+                    aria-label="Pin table of contents"
+                    title="Pin table of contents"
+                    data-label-pin="Pin table of contents"
+                    data-label-unpin="Unpin table of contents"
+                  >
+                    <span id="toc-pin-on">
+                      <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-pin"></use></svg></use
+>
+
+                    </span>
+                    <span id="toc-pin-off">
+                      <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-pin-off"></use></svg></use
+>
+
+                    </span>
+                  </button>
+                  <button
+                    id="toc-close"
+                    class="text-muted-foreground hover:text-foreground focus-visible:ring-ring cursor-pointer items-center rounded p-1 transition-colors focus-visible:ring-2 focus-visible:outline-none"
+                    aria-label="Close table of contents"
+                    title="Close table of contents"
+                  >
+                    <svg class="h-3 w-3" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+                  </button>
+                </div>
+              </div>
+              <div
+                id="toc-side-content"
+                class="scrollbar-hide [&_a]:text-muted-foreground [&_a:hover]:bg-primary/10 [&_a:hover]:text-primary [&_a.active]:bg-primary/10 [&_a.active]:text-primary relative min-h-0 flex-1 overflow-y-auto text-sm [&_a]:block [&_a]:rounded-md [&_a]:px-2 [&_a]:py-1 [&_a]:wrap-break-word [&_a]:whitespace-normal [&_a]:transition-colors [&_a.active]:font-medium [&_li]:my-1.5 [&_nav>ul]:pl-0 [&_ul]:list-none [&_ul]:pl-4"
+              >
+                <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-project-overview">1. Project Overview</a>
+      <ul>
+        <li><a href="#11-design-objectives">1.1 Design Objectives</a></li>
+        <li><a href="#12-technical-support">1.2 Technical Support</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-structure-design">2. Structure Design</a>
+      <ul>
+        <li><a href="#21-thruster-distribution-scheme">2.1 Thruster Distribution Scheme</a></li>
+        <li><a href="#22-mechanical-structure">2.2 Mechanical Structure</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-control-scheme">3. Control Scheme</a>
+      <ul>
+        <li><a href="#31-pid-based-control-scheme">3.1 PID-based Control Scheme</a></li>
+        <li><a href="#32-drl-based-control-strategy">3.2 DRL-based Control Strategy</a>
+          <ul>
+            <li><a href="#331-scene-configuration-scene">3.3.1 Scene Configuration (Scene)</a></li>
+            <li><a href="#332-action-space-actions">3.3.2 Action Space (Actions)</a></li>
+            <li><a href="#333-command-space-commands">3.3.3 Command Space (Commands)</a></li>
+            <li><a href="#334-observation-space-observations">3.3.4 Observation Space (Observations)</a></li>
+            <li><a href="#335-reward-function-rewards">3.3.5 Reward Function (Rewards)</a></li>
+            <li><a href="#336-event-system-events">3.3.6 Event System (Events)</a></li>
+            <li><a href="#337-termination-conditions-terminations">3.3.7 Termination Conditions (Terminations)</a></li>
+            <li><a href="#338-curriculum-learning-curriculum">3.3.8 Curriculum Learning (Curriculum)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-features-under-development">4. Features Under Development</a></li>
+    <li><a href="#5-project-reproduction">5. Project Reproduction</a>
+      <ul>
+        <li><a href="#51-environment-requirements">5.1 Environment Requirements</a></li>
+        <li><a href="#52-training">5.2 Training</a></li>
+        <li><a href="#53-playback">5.3 Playback</a></li>
+        <li><a href="#54-tensorboard-curves">5.4 TensorBoard Curves</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div></aside>
+      
+<dialog
+  id="search-modal"
+  class="bg-card text-foreground border-border m-auto max-h-[80vh] w-11/12 max-w-2xl overflow-hidden rounded-xl border p-0 shadow-xl"
+  aria-labelledby="search-title"
+  tabindex="-1"
+>
+  
+  <div class="border-border flex items-center gap-3 border-b p-4">
+    
+    <div class="text-muted-foreground h-5 w-5 shrink-0">
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+    </div>
+    <h2 id="search-title" class="sr-only">Search</h2>
+
+    
+    <div class="relative flex-1">
+      
+      <button
+        id="search-clear"
+        type="button"
+        class="text-muted-foreground hover:text-foreground hover:bg-muted/50 pointer-events-none absolute top-1/2 left-0 z-10 h-5 w-5 -translate-y-1/2 rounded opacity-0 transition-all duration-200"
+        title="Clear"
+        aria-label="Clear"
+      >
+        <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+      </button>
+
+      
+      <input
+        id="search-input"
+        type="text"
+        role="combobox"
+        aria-autocomplete="list"
+        aria-controls="search-items"
+        aria-expanded="false"
+        aria-labelledby="search-title"
+        placeholder="Search posts..."
+        class="text-foreground placeholder:text-muted-foreground w-full border-none bg-transparent pl-8 text-lg outline-none"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        autofocus
+      />
+    </div>
+
+    
+    <button
+      id="search-close"
+      class="text-muted-foreground hover:text-foreground hover:bg-muted/50 flex h-6 w-6 items-center justify-center rounded-md p-0.5 transition-all duration-200"
+      title="Close"
+      aria-label="Close"
+    >
+      <svg class="h-4 w-4" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-close"></use></svg></use
+>
+
+    </button>
+  </div>
+
+  
+  <div id="search-results" class="max-h-96 overflow-y-auto">
+    
+    <div id="search-empty" class="flex flex-col items-center justify-center py-12 text-center">
+      <div class="bg-muted/50 mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+        <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-search"></use></svg></use
+>
+
+      </div>
+      <h3 class="text-foreground mb-2 text-lg font-semibold">
+        Start searching
+      </h3>
+    </div>
+
+    
+    <div id="search-loading" class="flex items-center justify-center py-8" hidden>
+      <div
+        class="mr-3 h-6 w-6 animate-spin rounded-full border-2 border-current border-t-transparent"
+      ></div>
+      <span class="text-muted-foreground">Searching...</span>
+    </div>
+
+    
+    <div
+      id="search-no-results"
+      class="flex flex-col items-center justify-center py-12 text-center"
+      hidden
+    >
+      <div class="bg-muted/50 mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+        <svg class="h-6 w-6" aria-hidden="true" viewBox="0 0 24 24"><use href="/icons/sprite.6899c0c1c4fba71ee5a6d406d0e9945a54fe98a73639be0e1618170dd4b7c873.svg#icon-text"></use></svg></use
+>
+
+      </div>
+      <h3 class="text-foreground mb-2 text-lg font-semibold">
+        No results
+      </h3>
+    </div>
+
+    
+    <div id="search-results-list" hidden>
+      
+      <div
+        id="search-stats"
+        class="text-muted-foreground border-border border-b px-4 py-3 text-sm"
+        data-count-other="Found %d results"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+      
+      <ul id="search-items" class="divide-border divide-y" role="listbox">
+        
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="border-border bg-muted/20 border-t px-4 py-3"><div class="text-muted-foreground flex items-center justify-between text-xs">
+      <div class="flex items-center gap-2 md:gap-4">
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↑↓</kbd>
+          <span class="hidden sm:inline">Navigate</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">↵</kbd>
+          <span class="hidden sm:inline">Select</span>
+        </div>
+        <div class="flex items-center gap-1">
+          <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">ESC</kbd>
+          <span class="hidden sm:inline">Close</span>
+        </div>
+      </div>
+      <div class="search-hint-desktop flex items-center gap-1">
+        <kbd class="bg-muted border-border rounded border px-1.5 py-0.5 text-xs">⌘K</kbd>
+        <span>Shortcut</span>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+      
+
+
+      
+
+
+    </main>
+  </body>
+</html>

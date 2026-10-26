@@ -1,0 +1,11 @@
+.home-news-content {
+  line-height: 1.8;
+}
+
+.home-news-content > p {
+  margin: 0;
+}
+
+.home-news-content > p + p {
+  margin-top: 0.875rem;
+}
